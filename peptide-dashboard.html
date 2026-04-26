@@ -682,16 +682,34 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
     <p>Everything on Elixa is for research and educational purposes only. None of it should be taken as a recommendation to use, buy, or avoid any compound. Always speak to a doctor before making any health decisions.</p>
 
     <h3>How we rate each peptide</h3>
-    <p>Every peptide gets an evidence rating based on three simple questions:</p>
+    <p>Every peptide gets an evidence rating based on three weighted questions:</p>
 
-    <h3>Has it been tested in real people?</h3>
-    <p>This carries the most weight. If a compound has been through proper clinical trials — studies conducted in actual humans, published in medical journals — that's the most reliable evidence we have. Semaglutide, for example, has been studied in tens of thousands of people. BPC-157 has almost no human trial data at all. That difference matters enormously.</p>
+    <!-- Tier 1 -->
+    <div style="margin:14px 0 8px;padding:12px 16px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);border-left:3px solid #4ade80;border-radius:0 var(--radius-sm) var(--radius-sm) 0">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <span style="background:#4ade80;color:#030f05;font-size:.65rem;font-weight:800;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+        <h3 style="color:#4ade80;margin:0;font-size:.82rem">Has it been tested in real people? <span style="font-size:.72rem;opacity:.8;font-weight:600">— 50% of the score</span></h3>
+      </div>
+      <p style="margin:0">This carries the most weight. If a compound has been through proper clinical trials — studies conducted in actual humans, published in medical journals — that's the most reliable evidence we have. Semaglutide has been studied in tens of thousands of people. BPC-157 has almost no human trial data at all. That difference matters enormously.</p>
+    </div>
 
-    <h3>What do lab and animal studies show?</h3>
-    <p>Before human trials happen, compounds are tested in labs and animals. This evidence is promising, but it doesn't always translate to the same effects in humans. It's a signal worth tracking — not a guarantee.</p>
+    <!-- Tier 2 -->
+    <div style="margin:8px 0;padding:12px 16px;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.2);border-left:3px solid #22d3ee;border-radius:0 var(--radius-sm) var(--radius-sm) 0">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <span style="background:#22d3ee;color:#030f18;font-size:.65rem;font-weight:800;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+        <h3 style="color:#22d3ee;margin:0;font-size:.82rem">What do lab and animal studies show? <span style="font-size:.72rem;opacity:.8;font-weight:600">— 25% of the score</span></h3>
+      </div>
+      <p style="margin:0">Before human trials happen, compounds are tested in labs and animals. This evidence is promising, but it doesn't always translate to the same effects in humans. It's a meaningful signal — not a guarantee.</p>
+    </div>
 
-    <h3>What are real-world users reporting?</h3>
-    <p>Community observations from people who have used these compounds provide useful real-world signal. We include this as context — not as scientific proof.</p>
+    <!-- Tier 3 -->
+    <div style="margin:8px 0 14px;padding:12px 16px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);border-left:3px solid #fbbf24;border-radius:0 var(--radius-sm) var(--radius-sm) 0">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <span style="background:#fbbf24;color:#18100a;font-size:.65rem;font-weight:800;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+        <h3 style="color:#fbbf24;margin:0;font-size:.82rem">What are real-world users reporting? <span style="font-size:.72rem;opacity:.8;font-weight:600">— 25% of the score</span></h3>
+      </div>
+      <p style="margin:0">Community observations from people who have used these compounds provide useful real-world signal. We include this as context — not as scientific proof.</p>
+    </div>
 
     <h3>The Research Confidence bar</h3>
     <p>Each peptide detail page shows a single bar — from <strong>Experimental</strong> on the left to <strong>Clinically Validated</strong> on the right. This tells you, at a glance, how much trust to place in the evidence. A peptide sitting at "Clinically Validated" has robust human trial data and regulatory approval. One at "Experimental" is interesting but largely untested in humans.</p>
@@ -699,11 +717,32 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
     <h3>The Landscape Map</h3>
     <p>The map shows all peptides plotted by two things: how strong the research is (left to right) and how widely approved it is by health regulators like the FDA and SAHPRA (bottom to top). Compounds in the top-right are approved and well-studied. Bottom-left means early research only. Bubble size reflects overall evidence strength.</p>
 
-    <h3>Data sources & updates</h3>
-    <p>We cross-reference PubMed, ClinicalTrials.gov, the FDA medicines database, SAHPRA's registered medicines list, and the WADA prohibited substances list. Entries are reviewed when significant new research or regulatory decisions are published.</p>
-
     <h3>South Africa context</h3>
     <p>Every entry includes a note specific to South African availability and legal status. SAHPRA is South Africa's medicines regulator — if a compound isn't SAHPRA-approved, it exists in a legal grey area regardless of its FDA or other international status.</p>
+
+    <!-- Formula block -->
+    <div style="margin-top:20px;padding:16px 18px;background:rgba(129,140,248,.06);border:1px solid rgba(129,140,248,.2);border-radius:var(--radius-sm)">
+      <div style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#818cf8;margin-bottom:10px">The Evidence Score Formula</div>
+      <div style="font-family:monospace;font-size:.82rem;color:#c7d2fe;line-height:1.9;background:rgba(0,0,0,.25);padding:12px 14px;border-radius:5px;margin-bottom:12px">
+        <span style="color:#4ade80">T1</span> = Human Studies Score &nbsp;×&nbsp; <span style="color:#4ade80">0.50</span><br>
+        <span style="color:#22d3ee">T2</span> = Animal &amp; Lab Score &nbsp;×&nbsp; <span style="color:#22d3ee">0.25</span><br>
+        <span style="color:#fbbf24">T3</span> = Community Signal Score &nbsp;×&nbsp; <span style="color:#fbbf24">0.25</span><br>
+        <span style="color:#94a3b8;font-size:.75rem">────────────────────────────────────</span><br>
+        <strong style="color:#e2e8f0">Composite = (T1 × 0.50) + (T2 × 0.25) + (T3 × 0.25)</strong>
+      </div>
+      <div style="font-size:.75rem;color:var(--text-secondary);margin-bottom:10px">Each tier is scored 0–10. The composite produces a final score out of 10, which maps to the Research Confidence bar position.</div>
+      <div style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#818cf8;margin-bottom:7px">Primary data sources</div>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:.75rem;color:var(--text-secondary)">
+        <span>📄 &nbsp;<strong style="color:var(--text-primary)">PubMed / MEDLINE</strong> — peer-reviewed human and animal studies (pubmed.ncbi.nlm.nih.gov)</span>
+        <span>🧪 &nbsp;<strong style="color:var(--text-primary)">ClinicalTrials.gov</strong> — registered trial records, phases, outcomes (clinicaltrials.gov)</span>
+        <span>🏛 &nbsp;<strong style="color:var(--text-primary)">FDA Drugs Database</strong> — US approvals, NDAs, BLAs (fda.gov)</span>
+        <span>🇿🇦 &nbsp;<strong style="color:var(--text-primary)">SAHPRA</strong> — South African registered medicines (sahpra.org.za)</span>
+        <span>🏆 &nbsp;<strong style="color:var(--text-primary)">WADA Prohibited List</strong> — sport doping classifications (wada-ama.org)</span>
+        <span>🌍 &nbsp;<strong style="color:var(--text-primary)">EMA / TGA / HC / PMDA</strong> — European, Australian, Canadian, Japanese regulatory databases</span>
+        <span>📰 &nbsp;<strong style="color:var(--text-primary)">NEJM, Lancet, Nature</strong> — flagship journals for pivotal trial publications</span>
+        <span>👥 &nbsp;<strong style="color:var(--text-primary)">Community signal</strong> — aggregated from structured forums, patient communities, and practitioner reports. Treated as observational context only.</span>
+      </div>
+    </div>
 
     <div class="modal-footer">
       <button class="btn-primary" onclick="closeMethodology()">Got it — take me to the research</button>
@@ -2586,10 +2625,11 @@ function renderBestFor(p) {
   const riskBadge = getRiskBadge(p);
   if (!chips && !purposeText && !riskBadge) return '';
   const legend = `<div style="display:flex;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap">
-    <span style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted)">Key</span>
-    <span style="font-size:10px;color:#4ade80;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block"></span>Strong Evidence</span>
-    <span style="font-size:10px;color:#fbbf24;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#fbbf24;display:inline-block"></span>Shows Promise</span>
-    <span style="font-size:10px;color:#c084fc;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#c084fc;display:inline-block"></span>Anecdotal</span>
+    <span style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted)">Effectiveness</span>
+    <span style="font-size:10px;color:#4ade80;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block"></span>Most Prominent</span>
+    <span style="font-size:10px;color:#facc15;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#facc15;display:inline-block"></span>High Benefit</span>
+    <span style="font-size:10px;color:#f59e0b;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#f59e0b;display:inline-block"></span>Adequate</span>
+    <span style="font-size:10px;color:#64748b;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#64748b;display:inline-block"></span>Lower Benefit</span>
   </div>`;
   return `<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
@@ -2603,15 +2643,17 @@ function renderBestFor(p) {
 }
 
 function getPurposeColor(score) {
-  if (score >= 7) return '#4ade80';   // neon green — strong / most prominent evidence
-  if (score >= 5) return '#fbbf24';   // amber      — shows promise
-  if (score >= 3) return '#c084fc';   // purple     — anecdotal / limited evidence
-  return '#64748b';                    // grey       — minimal / no evidence
+  if (score >= 8) return '#4ade80';   // neon green  — most prominent benefit
+  if (score >= 6) return '#facc15';   // bright yellow — high benefit
+  if (score >= 4) return '#f59e0b';   // amber         — adequate benefit
+  if (score >= 3) return '#64748b';   // grey          — lower benefit
+  return '#374151';                    // dark grey     — minimal / not shown
 }
 function getPurposeTier(score) {
-  if (score >= 7) return 'Strong Evidence';
-  if (score >= 5) return 'Shows Promise';
-  if (score >= 3) return 'Anecdotal';
+  if (score >= 8) return 'Most Prominent';
+  if (score >= 6) return 'High Benefit';
+  if (score >= 4) return 'Adequate';
+  if (score >= 3) return 'Lower Benefit';
   return '';
 }
 function renderPurposeBarometers(p) {
@@ -2698,6 +2740,38 @@ const GLOSSARY_TERMS = {
   'cortisol': 'A stress hormone that affects energy, metabolism, and how the body handles pressure.',
   'prolactin': 'A hormone mainly involved in milk production but also linked to mood and sexual health.',
   'HSDD': 'A condition where someone has a persistently low interest in sexual activity that causes distress.',
+  // ── Biochemical mechanism terms ──
+  'antioxidant': 'A molecule that neutralises free radicals and reduces oxidative damage to cells and tissues, protecting against ageing and disease.',
+  'oxidative stress': 'A state where harmful free radicals overwhelm the body\'s natural defences, causing cellular damage linked to ageing, inflammation, and chronic disease.',
+  'tripeptide': 'A molecule made of exactly three amino acids linked together — the smallest functional peptide unit, capable of acting as a signalling molecule in the body.',
+  'angiogenesis': 'The formation of new blood vessels from existing ones — essential for wound healing, tissue repair, and recovery from injury.',
+  'VEGF': 'Vascular Endothelial Growth Factor — a protein that signals the body to grow new blood vessels, playing a key role in healing and tissue regeneration.',
+  'BDNF': 'Brain-Derived Neurotrophic Factor — a protein that supports the growth, maintenance, and survival of brain cells, important for learning and memory.',
+  'NGF': 'Nerve Growth Factor — a protein that promotes the survival and growth of nerve cells throughout the body, important for sensory and autonomic function.',
+  'ghrelin': 'A hormone produced in the stomach that signals hunger to the brain and directly stimulates the release of growth hormone.',
+  'nootropic': 'A substance that may enhance cognitive functions such as memory, focus, or mental clarity — sometimes called a "smart drug."',
+  'thermogenesis': 'The process by which the body generates heat and burns calories — higher thermogenesis typically means a faster metabolic rate.',
+  'neuroprotective': 'Able to protect nerve cells from damage, degeneration, or death — important in brain injury, stroke, and neurodegenerative conditions.',
+  'anxiolytic': 'A substance that reduces anxiety without causing significant sedation — the functional category that includes common anti-anxiety medications.',
+  'GnRH': 'Gonadotropin-Releasing Hormone — a brain hormone that controls the release of the reproductive hormones LH and FSH from the pituitary gland.',
+  'circadian rhythm': 'The body\'s internal 24-hour biological clock that regulates sleep, wakefulness, hormone release, and many metabolic processes.',
+  'nitric oxide': 'A gas molecule the body produces naturally that relaxes blood vessel walls, improves circulation, and plays a role in immune function.',
+  'secretagogue': 'A substance that causes another substance to be secreted — in peptide contexts, typically an agent that triggers the body\'s own growth hormone release.',
+  'fibroblast': 'A cell type found in connective tissue that produces collagen and other structural fibres essential for tissue repair and wound healing.',
+  'T-cell': 'A type of white blood cell central to the immune system, responsible for identifying and destroying infected or abnormal cells.',
+  'glucagon': 'A hormone released by the pancreas that raises blood sugar by prompting the liver to release stored glucose — the counterpart to insulin.',
+  'adipose tissue': 'The body\'s fat tissue — stores energy, cushions organs, and produces hormones (including leptin) that regulate metabolism and appetite.',
+  'ischaemia': 'A restriction in blood supply to tissues, causing a shortage of oxygen and nutrients that can lead to cell damage or death.',
+  'neuropeptide': 'A short protein produced in the nervous system that acts as a signalling molecule, influencing pain, mood, sleep, appetite, and other brain functions.',
+  'synaptogenesis': 'The formation of new synapses — the connections between nerve cells — which underlies learning, memory, and brain plasticity.',
+  'enkephalin': 'A natural opioid-like signalling peptide in the brain that helps regulate pain, mood, and stress responses.',
+  'serotonergic': 'Relating to the brain\'s serotonin system, which influences mood, anxiety, appetite, and sleep.',
+  'dopaminergic': 'Relating to the brain\'s dopamine system, which plays a central role in reward, motivation, movement, and pleasure.',
+  'pulsatile': 'Released in discrete bursts or pulses rather than continuously — the natural pattern for growth hormone secretion and some other hormones.',
+  'haematopoietic': 'Relating to the production of blood cells — haematopoietic effects mean a substance stimulates red blood cell production.',
+  'cytoprotective': 'Protecting cells from damage or death — cytoprotective peptides help shield tissues from stress, toxins, or injury.',
+  'collagen': 'The most abundant protein in the body — the structural scaffold of skin, tendons, cartilage, and bone that gives them strength and elasticity.',
+  'albumin': 'The most abundant protein in blood plasma, which transports molecules around the body. Some peptides bind to albumin to extend their half-life significantly.',
 };
 
 // Sort keys longest-first so multi-word terms match before their sub-terms
@@ -3596,10 +3670,9 @@ function renderPeptideDetail(id) {
 
   const effHTML = p.efficacy.map(e => {
     const s = STR_MAP[e.strength];
-    // Build PubMed search URL from peptide name + source citation text
-    // Strip parenthetical numbers (N=x) and keep key terms for best search results
-    const searchTerms = (p.name + ' ' + e.domain + ' ' + e.source)
-      .replace(/N=[0-9,+]+/g,'').replace(/\([^)]{0,8}\)/g,'').replace(/[—–]/g,' ').trim();
+    // Build PubMed search URL: peptide name + domain only (short = best results)
+    const cleanDomain = e.domain.replace(/\([^)]+\)/g,'').replace(/[^a-zA-Z0-9 ]/g,' ').trim();
+    const searchTerms = (p.name + ' ' + cleanDomain).split(/\s+/).slice(0,5).join(' ');
     const pubmedUrl = 'https://pubmed.ncbi.nlm.nih.gov/?term=' + encodeURIComponent(searchTerms);
     return `<div class="eff-card">
       <a href="${pubmedUrl}" target="_blank" rel="noopener" class="eff-src-btn" title="Search PubMed for source studies" onclick="event.stopPropagation()">
@@ -3734,6 +3807,11 @@ function renderPeptideDetail(id) {
       </div>
     </div>
 
+    <div style="margin-top:10px;padding:11px 16px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.73rem;color:var(--text-dim);line-height:1.6">
+      <strong style="color:var(--text-secondary);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px">How this score was compiled</strong>
+      Each tier is scored 0–10 by editorial assessment against published evidence. Human Studies (50%) draws from peer-reviewed clinical trials on PubMed and ClinicalTrials.gov. Lab &amp; Animal Research (25%) reflects the depth of preclinical mechanistic and animal-model literature. Real-World Reports (25%) aggregates observed outcomes from structured community sources including r/Peptides, Longecity, and practitioner notes — treated as anecdotal signal, not clinical proof. The composite score is not algorithmic; it is a calibrated editorial judgement updated as significant new evidence or regulatory decisions emerge. <span style="cursor:pointer;color:#38bdf8;text-decoration:none" onclick="openMethodology()">View full methodology →</span>
+    </div>
+
     ${saHTML}
 
     <div id="sec-effects">
@@ -3792,21 +3870,26 @@ function renderRing(p) {
   </svg>`;
 }
 
+const TIER_SOURCES = {
+  t1: `<span style="font-size:.67rem;color:var(--text-muted);margin-top:5px;display:block">Sources: <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none">PubMed</a> · <a href="https://clinicaltrials.gov" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none">ClinicalTrials.gov</a> · NEJM · FDA/EMA filings</span>`,
+  t2: `<span style="font-size:.67rem;color:var(--text-muted);margin-top:5px;display:block">Sources: <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none">PubMed</a> · bioRxiv preprints · In vitro & animal model literature</span>`,
+  t3: `<span style="font-size:.67rem;color:var(--text-muted);margin-top:5px;display:block">Sources: r/Peptides · r/PeptidesScience · r/nootropics · Longecity forums · Practitioner reports</span>`
+};
 function getTier1Desc(p) {
-  if (p.t1 >= 8) return `Robust human clinical trial data. Multiple large RCTs with strong effect sizes. ${p.fdaLabel}.`;
-  if (p.t1 >= 6) return `Meaningful human clinical data exists. Phase 2–3 trial data available. Further confirmatory trials ongoing.`;
-  if (p.t1 >= 4) return `Limited human clinical data. Small trials or early-phase studies only. Human evidence not yet robust.`;
-  return `Minimal to no published human clinical trial data. Primarily preclinical evidence base.`;
+  if (p.t1 >= 8) return `Robust human clinical trial data. Multiple large RCTs with strong effect sizes. ${p.fdaLabel}.${TIER_SOURCES.t1}`;
+  if (p.t1 >= 6) return `Meaningful human clinical data exists. Phase 2–3 trial data available. Further confirmatory trials ongoing.${TIER_SOURCES.t1}`;
+  if (p.t1 >= 4) return `Limited human clinical data. Small trials or early-phase studies only. Human evidence not yet robust.${TIER_SOURCES.t1}`;
+  return `Minimal to no published human clinical trial data. Primarily preclinical evidence base.${TIER_SOURCES.t1}`;
 }
 function getTier2Desc(p) {
-  if (p.t2 >= 8) return `Extensive preclinical evidence across multiple animal models. Strong mechanistic understanding. Consistent findings.`;
-  if (p.t2 >= 6) return `Good preclinical data. Multiple animal model studies and/or in vitro mechanistic data. Promising findings.`;
-  return `Limited preclinical data. Some animal or in vitro studies exist but coverage is narrow.`;
+  if (p.t2 >= 8) return `Extensive preclinical evidence across multiple animal models. Strong mechanistic understanding. Consistent findings.${TIER_SOURCES.t2}`;
+  if (p.t2 >= 6) return `Good preclinical data. Multiple animal model studies and/or in vitro mechanistic data. Promising findings.${TIER_SOURCES.t2}`;
+  return `Limited preclinical data. Some animal or in vitro studies exist but coverage is narrow.${TIER_SOURCES.t2}`;
 }
 function getTier3Desc(p) {
-  if (p.t3 >= 8) return `Strong community consensus. Widely used with consistent anecdotal benefit reports. Side-effect profile well-characterised by community.`;
-  if (p.t3 >= 6) return `Positive community sentiment. Reported benefits broadly consistent with preclinical mechanism. Some variability in reports.`;
-  return `Limited or emerging community data. Less widely used or community reports are mixed.`;
+  if (p.t3 >= 8) return `Strong community consensus. Widely used with consistent anecdotal benefit reports. Side-effect profile well-characterised by community.${TIER_SOURCES.t3}`;
+  if (p.t3 >= 6) return `Positive community sentiment. Reported benefits broadly consistent with preclinical mechanism. Some variability in reports.${TIER_SOURCES.t3}`;
+  return `Limited or emerging community data. Less widely used or community reports are mixed.${TIER_SOURCES.t3}`;
 }
 
 // ═══════════════════════════════════════════════════════════
