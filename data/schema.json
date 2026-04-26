@@ -1,0 +1,213 @@
+{
+  "_meta": {
+    "schema_version": "1.0.0",
+    "created": "2026-04-25",
+    "description": "Master schema for the Peptide Information Dashboard knowledge base. Every peptide entry must conform to this structure.",
+    "scoring_notes": {
+      "tier1_weight": 0.50,
+      "tier2_weight": 0.25,
+      "tier3_weight": 0.25,
+      "composite_formula": "(tier1.score × 0.50) + (tier2.score × 0.25) + (tier3.score × 0.25)",
+      "score_range": "0.0 – 10.0",
+      "tier1_description": "Human RCTs, peer-reviewed journals, registered clinical trials, meta-analyses. Gold standard — verifiable, replicable science.",
+      "tier2_description": "Animal studies, in-vitro research, off-label human use with published case data, promising preclinical findings. Evidence exists but human consensus not yet established.",
+      "tier3_description": "Aggregated user/community reports, forum consensus, anecdotal benefit and side-effect tracking. Weighted at 25% — directionally useful, not scientifically conclusive."
+    }
+  },
+  "_peptide_template": {
+    "id": "string — snake_case unique identifier e.g. semaglutide",
+    "name": "string — primary name",
+    "alt_names": ["array of brand names, alternate identifiers, abbreviations"],
+    "category": "string — one of: glp1_metabolic | recovery_repair | gh_axis | longevity | cognitive_neuro | sexual_health | metabolic_fatloss | immune",
+    "subcategory": "string — e.g. GLP-1 Receptor Agonist",
+    "tags": ["array — cross-category searchable tags e.g. weight_loss, anti_aging, neuroprotection"],
+
+    "mechanism": {
+      "simple": "string — plain English, max 2 sentences. For non-technical users.",
+      "technical": "string — full mechanistic description including receptor targets, pathways, downstream effects."
+    },
+
+    "formats_available_sa": {
+      "vial": "boolean",
+      "pen": "boolean",
+      "capsule": "boolean",
+      "nasal_spray": "boolean",
+      "topical": "boolean",
+      "oral_tablet": "boolean",
+      "notes": "string — e.g. 'Available as pen and vial; most SA vendors stock 6mg and 10mg vials'"
+    },
+
+    "regulatory": {
+      "sahpra": {
+        "status": "string — one of: registered | scheduled_unregistered | unscheduled | not_evaluated | banned",
+        "schedule": "string — e.g. Schedule 5, or null",
+        "registered_products": ["array of registered product names if any"],
+        "notes": "string — practical context for SA users"
+      },
+      "fda": {
+        "status": "string — one of: approved | phase3 | phase2 | phase1 | ind_filed | preclinical | not_evaluated | banned",
+        "approved_indications": ["array"],
+        "approval_dates": {},
+        "accelerated_pathway": "boolean — Fast Track / Breakthrough / Orphan",
+        "notes": "string"
+      },
+      "ema": {
+        "status": "string — same options as FDA",
+        "approved_indications": ["array"],
+        "notes": "string"
+      },
+      "other_jurisdictions": [
+        {
+          "authority": "string — e.g. TGA (Australia), MHRA (UK)",
+          "status": "string",
+          "notes": "string"
+        }
+      ],
+      "overall_legal_context_sa": "string — plain-language summary of where this peptide sits legally for a South African user"
+    },
+
+    "clinical_trials": {
+      "active_trials": [
+        {
+          "name": "string",
+          "phase": "number — 1, 2, 3, or 4",
+          "indication": "string",
+          "nct_id": "string — ClinicalTrials.gov identifier",
+          "sponsor": "string",
+          "enrollment": "number",
+          "status": "string — recruiting | active | completed | suspended | withdrawn",
+          "estimated_completion": "string — e.g. 2026-Q2",
+          "primary_endpoint": "string",
+          "notes": "string"
+        }
+      ],
+      "key_completed_trials": [
+        {
+          "name": "string",
+          "phase": "number",
+          "indication": "string",
+          "year_completed": "number",
+          "key_result": "string — one sentence plain-English result",
+          "nct_id": "string"
+        }
+      ],
+      "anticipated_approvals": [
+        {
+          "indication": "string",
+          "authority": "string — FDA / EMA / SAHPRA",
+          "estimated_date": "string",
+          "basis": "string — what data this estimate is based on",
+          "confidence": "string — high | medium | speculative"
+        }
+      ]
+    },
+
+    "tier1": {
+      "weight": 0.50,
+      "score": "number 0–10",
+      "evidence_level": "string — strong | moderate | limited | none",
+      "human_trial_count": "number — approximate number of human trials",
+      "summary": "string — 2–4 sentence synthesis of what the human science shows",
+      "key_findings": [
+        {
+          "finding": "string",
+          "source": "string — Author et al., Journal, Year",
+          "url": "string or null"
+        }
+      ],
+      "meta_analyses": ["array of any meta-analyses or systematic reviews"],
+      "consensus_statement": "string — what the scientific community currently agrees on"
+    },
+
+    "tier2": {
+      "weight": 0.25,
+      "score": "number 0–10",
+      "evidence_level": "string — strong | moderate | limited | none",
+      "summary": "string — what preclinical/off-label data suggests",
+      "animal_study_findings": [
+        {
+          "finding": "string",
+          "model": "string — e.g. rat, mouse, in-vitro",
+          "source": "string"
+        }
+      ],
+      "off_label_human_uses": ["array — documented off-label uses with any supporting data"],
+      "promising_areas": ["array — areas showing early preclinical promise worth watching"]
+    },
+
+    "tier3": {
+      "weight": 0.25,
+      "score": "number 0–10",
+      "summary": "string — synthesis of community/user report consensus",
+      "reported_benefits": [
+        {
+          "benefit": "string",
+          "frequency": "string — very common | common | occasional | rare (by report volume)",
+          "notes": "string"
+        }
+      ],
+      "reported_side_effects": [
+        {
+          "effect": "string",
+          "frequency": "string",
+          "severity": "string — mild | moderate | severe",
+          "notes": "string"
+        }
+      ],
+      "community_sentiment": "string — overall tone: very positive | positive | mixed | cautious | negative",
+      "contradiction_flag": "boolean — true if Tier 3 reports significantly contradict Tier 1/2 science",
+      "contradiction_notes": "string — describe the contradiction if flagged"
+    },
+
+    "composite_score": "number 0–10 — calculated: (T1×0.5)+(T2×0.25)+(T3×0.25)",
+
+    "efficacy_by_domain": [
+      {
+        "domain": "string — e.g. Weight Loss, GI Healing, Cognitive Function",
+        "score": "number 0–10",
+        "primary_evidence_tier": "string — tier1 | tier2 | tier3",
+        "notes": "string"
+      }
+    ],
+
+    "safety": {
+      "contraindications": ["array — absolute contraindications"],
+      "precautions": ["array — use with caution in these populations"],
+      "known_interactions": [
+        {
+          "substance": "string",
+          "interaction": "string",
+          "severity": "string — mild | moderate | severe"
+        }
+      ],
+      "side_effects": {
+        "common": ["array — >10% incidence in trials"],
+        "uncommon": ["array — 1–10%"],
+        "rare": ["array — <1% but documented"],
+        "serious": ["array — regardless of frequency, clinically significant"]
+      },
+      "safety_flags": ["array — prominent warnings to surface in UI e.g. 'Not for use in pregnancy'"],
+      "wada_status": "string — prohibited | not_prohibited | n/a"
+    },
+
+    "dosing_context": {
+      "disclaimer": "For informational/research purposes only. Not medical advice.",
+      "typical_research_protocols": "string — general ranges seen in literature, not a prescription",
+      "half_life": "string",
+      "administration_route": ["array — subcutaneous | intramuscular | oral | intranasal | topical"]
+    },
+
+    "sources": [
+      {
+        "type": "string — journal | trial_registry | regulatory_doc | review | community",
+        "title": "string",
+        "url": "string or null",
+        "year": "number",
+        "tier_relevance": "string — tier1 | tier2 | tier3"
+      }
+    ],
+
+    "last_verified": "string — ISO date YYYY-MM-DD",
+    "data_confidence": "string — high | medium | low — overall confidence in completeness of this entry"
+  }
+}

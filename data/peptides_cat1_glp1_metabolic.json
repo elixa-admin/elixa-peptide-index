@@ -1,0 +1,1599 @@
+{
+  "_meta": {
+    "category": "glp1_metabolic",
+    "category_label": "GLP-1 / Metabolic",
+    "description": "Peptides and analogues acting on metabolic hormone receptors — primarily GLP-1R, GIPR, GcgR, and amylin receptors. The most clinically validated category in peptide medicine, with multiple FDA-approved products and extensive Phase 3 trial data.",
+    "peptide_count": 6,
+    "last_updated": "2026-04-25",
+    "schema_version": "1.0.0"
+  },
+
+  "peptides": [
+
+    {
+      "id": "semaglutide",
+      "name": "Semaglutide",
+      "alt_names": ["Ozempic", "Wegovy", "Rybelsus", "NNC9204-0092"],
+      "category": "glp1_metabolic",
+      "subcategory": "GLP-1 Receptor Agonist",
+      "tags": ["weight_loss", "diabetes", "cardiovascular", "metabolic", "glp1", "approved", "kidney_protection"],
+
+      "mechanism": {
+        "simple": "Mimics a natural gut hormone (GLP-1) to reduce appetite, slow digestion, and help the body manage blood sugar — leading to significant and sustained weight loss.",
+        "technical": "Synthetic analogue of glucagon-like peptide-1 (GLP-1) with 94% amino acid sequence homology. Activates GLP-1 receptors in the pancreas (stimulates glucose-dependent insulin secretion, suppresses glucagon), gut (slows gastric emptying), and hypothalamus (reduces appetite via pro-opiomelanocortin/CART pathway). Half-life of ~7 days enabled by albumin-binding fatty acid modification and substitution at position 34 (Arg→Lys) protecting against DPP-4 degradation."
+      },
+
+      "formats_available_sa": {
+        "vial": true,
+        "pen": true,
+        "capsule": false,
+        "nasal_spray": false,
+        "topical": false,
+        "oral_tablet": true,
+        "notes": "Ozempic available as pre-filled pen (0.25/0.5mg and 1mg doses). Rybelsus as oral tablet (3mg, 7mg, 14mg). Wegovy (2.4mg) approved SA Aug 2025. Grey-market vials widely stocked by SA vendors in 6mg and 10mg concentrations for research use."
+      },
+
+      "regulatory": {
+        "sahpra": {
+          "status": "registered",
+          "schedule": "Schedule 4",
+          "registered_products": [
+            "Ozempic 0.25mg/0.5mg pen — T2D indication",
+            "Ozempic 1mg pen — T2D + CV risk reduction",
+            "Rybelsus 3mg/7mg/14mg oral tablets — T2D (registered 2024, not yet commercially sold)",
+            "Wegovy 2.4mg pen — obesity/weight management (approved August 2025)"
+          ],
+          "notes": "SAHPRA has formally approved Ozempic for T2D use. Wegovy received SA approval in August 2025. SAHPRA has issued explicit warnings against compounded, grey-market, and falsified GLP-1 products circulating in SA, citing serious safety risks. Grey-market vials stocked by SA peptide vendors are unregistered and carry regulatory risk."
+        },
+        "fda": {
+          "status": "approved",
+          "approved_indications": [
+            "Type 2 Diabetes (Ozempic, 2017)",
+            "Cardiovascular risk reduction in T2D (Ozempic, 2023)",
+            "Chronic weight management / obesity (Wegovy, 2021)",
+            "Obstructive sleep apnea with obesity (Wegovy, 2024)",
+            "Type 2 Diabetes — oral formulation (Rybelsus, 2019)",
+            "Chronic kidney disease progression in T2D (2024, based on FLOW trial)"
+          ],
+          "approval_dates": {
+            "ozempic_t2d": "December 2017",
+            "rybelsus_oral": "September 2019",
+            "wegovy_obesity": "June 2021",
+            "ozempic_cv_risk": "March 2023",
+            "wegovy_osa": "2024"
+          },
+          "accelerated_pathway": false,
+          "notes": "Semaglutide is among the most extensively reviewed and approved peptide therapeutics in FDA history. Multiple supplemental NDAs have expanded indications progressively."
+        },
+        "ema": {
+          "status": "approved",
+          "approved_indications": ["Type 2 Diabetes", "Obesity/weight management", "Cardiovascular risk reduction"],
+          "notes": "Ozempic and Wegovy both approved under EMA. Rybelsus also approved in EU."
+        },
+        "other_jurisdictions": [
+          {
+            "authority": "TGA (Australia)",
+            "status": "approved",
+            "notes": "Ozempic and Wegovy both TGA-approved"
+          },
+          {
+            "authority": "MHRA (UK)",
+            "status": "approved",
+            "notes": "All three formulations approved"
+          }
+        ],
+        "overall_legal_context_sa": "Semaglutide is a Schedule 4 medicine in South Africa — legal only with a valid prescription dispensed by a registered pharmacist. SAHPRA-registered forms (Ozempic, Wegovy) are legal. Grey-market vials circulating through SA peptide vendors are unregistered, carry no quality guarantee, and their sale and purchase exists in a legally grey zone. SAHPRA has issued specific public warnings about falsified and compounded semaglutide."
+      },
+
+      "clinical_trials": {
+        "active_trials": [
+          {
+            "name": "EVOKE / EVOKE+",
+            "phase": 3,
+            "indication": "Early Alzheimer's Disease",
+            "nct_id": "NCT04777396",
+            "sponsor": "Novo Nordisk",
+            "enrollment": 1840,
+            "status": "active",
+            "estimated_completion": "2026-Q3",
+            "primary_endpoint": "Change in CDR-SB score at 156 weeks",
+            "notes": "First GLP-1 Phase 3 trial in Alzheimer's disease. Results anticipated 2026 and considered potentially landmark."
+          },
+          {
+            "name": "ESSENCE (MASH with cirrhosis)",
+            "phase": 3,
+            "indication": "Metabolic-associated steatohepatitis (MASH) with compensated cirrhosis",
+            "nct_id": "NCT04549506",
+            "sponsor": "Novo Nordisk",
+            "enrollment": 1200,
+            "status": "active",
+            "estimated_completion": "2026",
+            "primary_endpoint": "Liver histology improvement — fibrosis regression without worsening of MASH",
+            "notes": ""
+          },
+          {
+            "name": "SOUL",
+            "phase": 3,
+            "indication": "CV outcomes in T2D with oral semaglutide",
+            "nct_id": "NCT03512132",
+            "sponsor": "Novo Nordisk",
+            "enrollment": 9650,
+            "status": "active",
+            "estimated_completion": "2025-2026",
+            "primary_endpoint": "MACE (Major Adverse Cardiovascular Events)",
+            "notes": "Testing oral Rybelsus formulation for cardiovascular outcomes"
+          }
+        ],
+        "key_completed_trials": [
+          {
+            "name": "SELECT",
+            "phase": 3,
+            "indication": "Cardiovascular outcomes in obesity without diabetes",
+            "year_completed": 2023,
+            "key_result": "20% relative reduction in MACE vs placebo in 17,604 non-diabetic obese adults over ~33 months.",
+            "nct_id": "NCT03574597"
+          },
+          {
+            "name": "STEP 1",
+            "phase": 3,
+            "indication": "Chronic weight management in obesity",
+            "year_completed": 2021,
+            "key_result": "14.9% mean body weight reduction at 68 weeks vs 2.4% placebo; 86% lost ≥5% body weight.",
+            "nct_id": "NCT03548935"
+          },
+          {
+            "name": "FLOW",
+            "phase": 3,
+            "indication": "Chronic kidney disease in T2D",
+            "year_completed": 2024,
+            "key_result": "24% reduction in kidney-disease progression or CV/kidney death. Trial stopped early for overwhelming efficacy.",
+            "nct_id": "NCT03819153"
+          },
+          {
+            "name": "SUSTAIN-6",
+            "phase": 3,
+            "indication": "CV outcomes in T2D",
+            "year_completed": 2016,
+            "key_result": "26% reduction in MACE vs placebo in T2D patients with high CV risk.",
+            "nct_id": "NCT01720446"
+          }
+        ],
+        "anticipated_approvals": [
+          {
+            "indication": "Alzheimer's Disease",
+            "authority": "FDA",
+            "estimated_date": "2027 (if EVOKE positive)",
+            "basis": "EVOKE Phase 3 completion expected 2026; FDA review ~12 months",
+            "confidence": "speculative"
+          },
+          {
+            "indication": "MASH",
+            "authority": "FDA / EMA",
+            "estimated_date": "2027",
+            "basis": "ESSENCE Phase 3 results expected 2026",
+            "confidence": "medium"
+          }
+        ]
+      },
+
+      "tier1": {
+        "weight": 0.50,
+        "score": 9.5,
+        "evidence_level": "strong",
+        "human_trial_count": 40,
+        "summary": "Semaglutide has among the largest and most rigorous body of human clinical evidence of any peptide therapeutic. The STEP, SUSTAIN, SELECT, and FLOW trial programs collectively enrolled over 75,000 patients across multiple continents. Weight loss, glycaemic control, and cardiovascular outcomes are established beyond reasonable scientific doubt.",
+        "key_findings": [
+          {
+            "finding": "Mean 14.9% body weight reduction at 68 weeks in obesity (STEP 1); up to 17.4% with intensive lifestyle intervention",
+            "source": "Wilding JPH et al., NEJM, 2021",
+            "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183"
+          },
+          {
+            "finding": "20% relative risk reduction in major adverse cardiovascular events in 17,604 non-diabetic obese adults (SELECT trial)",
+            "source": "Lincoff AM et al., NEJM, 2023",
+            "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2307563"
+          },
+          {
+            "finding": "24% reduction in kidney disease progression/death, trial stopped early for efficacy (FLOW trial)",
+            "source": "Perkovic V et al., NEJM, 2024",
+            "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2403347"
+          },
+          {
+            "finding": "Significant reduction in AHI events in obstructive sleep apnea (SURMOUNT-OSA sub-analysis)",
+            "source": "Wharton S et al., NEJM, 2024",
+            "url": null
+          }
+        ],
+        "meta_analyses": [
+          "Shi Q et al. (2022) BMJ — Network meta-analysis confirming semaglutide superior to all other GLP-1 agents for weight loss",
+          "McGuire DK et al. (2021) Lancet Diabetes — comparative CV outcomes across GLP-1 class"
+        ],
+        "consensus_statement": "Semaglutide produces clinically meaningful, sustained weight loss and glycaemic control with a well-characterised cardiovascular benefit. It is the reference standard for GLP-1 agonist therapy and represents a genuine paradigm shift in obesity pharmacotherapy."
+      },
+
+      "tier2": {
+        "weight": 0.25,
+        "score": 7.8,
+        "evidence_level": "moderate",
+        "summary": "Emerging human and preclinical data suggests semaglutide has meaningful effects well beyond metabolic disease — including neurodegeneration, addiction/substance use disorders, inflammatory conditions, and PCOS. Much of this is early-stage, but the mechanistic rationale (GLP-1 receptors expressed widely in the brain and immune tissue) is strong.",
+        "animal_study_findings": [
+          {
+            "finding": "Reduced amyloid-beta accumulation and neuroinflammation in mouse Alzheimer's models",
+            "model": "APP/PS1 transgenic mouse",
+            "source": "Femminella GD et al., Neuropharmacology, 2017"
+          },
+          {
+            "finding": "Significant reduction in alcohol consumption and addictive behaviour in preclinical models",
+            "model": "Rat self-administration model",
+            "source": "Klausen MK et al., JCI, 2022"
+          }
+        ],
+        "off_label_human_uses": [
+          "Polycystic ovary syndrome (PCOS) — improving insulin sensitivity and menstrual regularity",
+          "Non-alcoholic fatty liver disease (NAFLD/MASH) — used off-label ahead of formal approval",
+          "Addiction / alcohol use disorder — small human trials showing reduced cravings",
+          "Inflammatory bowel disease — observational data suggesting reduced flare frequency"
+        ],
+        "promising_areas": [
+          "Alzheimer's and Parkinson's neuroprotection (EVOKE Phase 3 results pending 2026)",
+          "Substance use disorders — early Phase 2 trial data",
+          "Heart failure with preserved ejection fraction (HFpEF)",
+          "Chronic pain and inflammation"
+        ]
+      },
+
+      "tier3": {
+        "weight": 0.25,
+        "score": 7.2,
+        "summary": "Community sentiment is overwhelmingly positive for weight loss efficacy. Users consistently report significant appetite suppression beginning week 1–2, with meaningful weight loss by week 4–8. Primary complaints are GI side effects (especially at dose escalation) and cost/access. A growing segment of users report mood improvement, reduced alcohol cravings, and reduced compulsive eating — aligning with emerging Tier 2 research.",
+        "reported_benefits": [
+          {
+            "benefit": "Significant appetite and hunger reduction",
+            "frequency": "very common",
+            "notes": "Most consistently reported effect; often described as 'food noise goes quiet'"
+          },
+          {
+            "benefit": "Substantial body weight loss",
+            "frequency": "very common",
+            "notes": "Users typically report 5–15% body weight over 3–6 months at clinical doses"
+          },
+          {
+            "benefit": "Reduced alcohol/substance cravings",
+            "frequency": "common",
+            "notes": "Frequently reported as unexpected benefit; aligns with neuroscience research"
+          },
+          {
+            "benefit": "Improved blood glucose and energy stability",
+            "frequency": "common",
+            "notes": "Reported by both diabetic and non-diabetic users"
+          },
+          {
+            "benefit": "Improved mood and reduced anxiety",
+            "frequency": "occasional",
+            "notes": "Reported by a meaningful minority; possibly related to weight loss and GLP-1 CNS effects"
+          }
+        ],
+        "reported_side_effects": [
+          {
+            "effect": "Nausea and vomiting",
+            "frequency": "very common",
+            "severity": "mild to moderate",
+            "notes": "Most pronounced during dose escalation; typically resolves within 2–4 weeks"
+          },
+          {
+            "effect": "Diarrhoea / loose stools",
+            "frequency": "common",
+            "severity": "mild",
+            "notes": "Common early side effect, usually transient"
+          },
+          {
+            "effect": "Constipation",
+            "frequency": "common",
+            "severity": "mild",
+            "notes": "Especially at higher doses; due to gastric emptying delay"
+          },
+          {
+            "effect": "Fatigue / low energy",
+            "frequency": "common",
+            "severity": "mild",
+            "notes": "Especially in first 1–2 weeks of each dose increase"
+          },
+          {
+            "effect": "Muscle loss ('Ozempic body')",
+            "frequency": "common",
+            "severity": "moderate",
+            "notes": "Significant community concern — rapid weight loss without resistance training leads to lean mass loss. Users strongly advised to incorporate resistance training and adequate protein."
+          },
+          {
+            "effect": "Hair loss (telogen effluvium)",
+            "frequency": "occasional",
+            "severity": "mild",
+            "notes": "Reported in community; likely secondary to rapid caloric deficit rather than direct drug effect"
+          },
+          {
+            "effect": "Injection site reactions",
+            "frequency": "occasional",
+            "severity": "mild",
+            "notes": "Minor bruising and irritation; more common with grey-market vials vs. pens"
+          }
+        ],
+        "community_sentiment": "very positive",
+        "contradiction_flag": false,
+        "contradiction_notes": ""
+      },
+
+      "composite_score": 8.5,
+
+      "efficacy_by_domain": [
+        { "domain": "Weight Loss", "score": 9.5, "primary_evidence_tier": "tier1", "notes": "Best-in-class GLP-1 for weight loss until tirzepatide/retatrutide; 14.9% mean BWL in Phase 3" },
+        { "domain": "Type 2 Diabetes Management", "score": 9.4, "primary_evidence_tier": "tier1", "notes": "~1.5–1.8% HbA1c reduction across SUSTAIN program" },
+        { "domain": "Cardiovascular Protection", "score": 9.0, "primary_evidence_tier": "tier1", "notes": "SELECT: 20% MACE reduction; first CV outcome benefit shown independent of diabetes" },
+        { "domain": "Kidney Protection", "score": 8.5, "primary_evidence_tier": "tier1", "notes": "FLOW trial stopped early for overwhelming efficacy; 24% reduction in CKD progression" },
+        { "domain": "Liver Fat / MASH", "score": 7.0, "primary_evidence_tier": "tier2", "notes": "Phase 2 data positive; Phase 3 ESSENCE results pending" },
+        { "domain": "Cognitive / Alzheimer's", "score": 4.5, "primary_evidence_tier": "tier2", "notes": "Mechanistic rationale strong; EVOKE Phase 3 results pending 2026" },
+        { "domain": "Sleep Apnea (OSA)", "score": 7.5, "primary_evidence_tier": "tier1", "notes": "FDA approved for OSA with obesity 2024; ~55% reduction in AHI events" }
+      ],
+
+      "safety": {
+        "contraindications": [
+          "Personal or family history of medullary thyroid carcinoma (MTC)",
+          "Multiple endocrine neoplasia syndrome type 2 (MEN2)",
+          "Known hypersensitivity to semaglutide or any excipient",
+          "Pregnancy (discontinue at least 2 months before planned conception)"
+        ],
+        "precautions": [
+          "Diabetic retinopathy — rapid HbA1c reduction may temporarily worsen retinopathy; ophthalmologic monitoring advised",
+          "History of pancreatitis — use with caution",
+          "Severe gastrointestinal disease",
+          "Renal impairment (especially when GI side effects cause dehydration)"
+        ],
+        "known_interactions": [
+          {
+            "substance": "Oral medications (any)",
+            "interaction": "Gastric emptying delay may alter absorption of oral drugs taken concomitantly",
+            "severity": "moderate"
+          },
+          {
+            "substance": "Insulin / sulphonylureas",
+            "interaction": "Additive glucose-lowering effect increases hypoglycaemia risk",
+            "severity": "moderate"
+          },
+          {
+            "substance": "Warfarin / oral anticoagulants",
+            "interaction": "Monitor INR — altered absorption may affect anticoagulant levels",
+            "severity": "moderate"
+          }
+        ],
+        "side_effects": {
+          "common": ["Nausea (44%)", "Diarrhoea (30%)", "Vomiting (24%)", "Constipation (24%)", "Abdominal pain (20%)"],
+          "uncommon": ["Fatigue", "Dizziness", "Dyspepsia", "Eructation", "Hypoglycaemia (in T2D patients)"],
+          "rare": ["Pancreatitis", "Diabetic retinopathy complications", "Acute kidney injury (secondary to dehydration)", "Hypersensitivity reactions including anaphylaxis"],
+          "serious": ["Thyroid C-cell tumours (preclinical finding in rodents — human relevance uncertain)", "Acute pancreatitis", "Severe hypoglycaemia (when combined with insulin)"]
+        },
+        "safety_flags": [
+          "⚠ Contraindicated in personal or family history of medullary thyroid carcinoma",
+          "⚠ SAHPRA warns against unregistered grey-market semaglutide — quality and dosing cannot be guaranteed",
+          "⚠ Discontinue at least 2 months before planned pregnancy",
+          "⚠ Muscle mass preservation requires deliberate resistance training and adequate protein intake"
+        ],
+        "wada_status": "not_prohibited"
+      },
+
+      "dosing_context": {
+        "disclaimer": "For informational and research reference only. Not medical advice. Semaglutide is a Schedule 4 medicine in South Africa and requires a prescription.",
+        "typical_research_protocols": "Clinical doses: 0.25mg weekly (starting), escalating to 0.5mg, 1mg, 2mg, up to 2.4mg (Wegovy). Grey-market SA vials typically 6mg or 10mg multi-dose; dosing requires careful calculation.",
+        "half_life": "~7 days (enables once-weekly dosing)",
+        "administration_route": ["subcutaneous", "oral"]
+      },
+
+      "sources": [
+        { "type": "journal", "title": "STEP 1 Trial — Wilding JPH et al., NEJM 2021", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183", "year": 2021, "tier_relevance": "tier1" },
+        { "type": "journal", "title": "SELECT Trial — Lincoff AM et al., NEJM 2023", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2307563", "year": 2023, "tier_relevance": "tier1" },
+        { "type": "journal", "title": "FLOW Trial — Perkovic V et al., NEJM 2024", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2403347", "year": 2024, "tier_relevance": "tier1" },
+        { "type": "regulatory_doc", "title": "SAHPRA position on GLP-1 compounded products", "url": "https://www.sahpra.org.za/news-and-updates/sahpras-position-on-glp1-and-gip-glp1-products-that-are-compounded-substandard-and-falsifiedas/", "year": 2024, "tier_relevance": "tier1" },
+        { "type": "review", "title": "Spotlight NSP — Which weight-loss medicines available in SA", "url": "https://www.spotlightnsp.co.za/2025/02/06/ozempic-and-other-breakthrough-weight-loss-medicines-in-sa/", "year": 2025, "tier_relevance": "tier1" }
+      ],
+
+      "last_verified": "2026-04-25",
+      "data_confidence": "high"
+    },
+
+    {
+      "id": "tirzepatide",
+      "name": "Tirzepatide",
+      "alt_names": ["Mounjaro", "Zepbound", "LY3298176"],
+      "category": "glp1_metabolic",
+      "subcategory": "GLP-1 / GIP Dual Receptor Agonist",
+      "tags": ["weight_loss", "diabetes", "cardiovascular", "metabolic", "glp1", "gip", "approved", "sleep_apnea", "heart_failure"],
+
+      "mechanism": {
+        "simple": "A dual-action hormone mimic that activates two appetite and insulin-regulating receptors simultaneously (GLP-1 and GIP), producing greater weight loss than single-receptor agents.",
+        "technical": "Single synthetic peptide that co-agonises both GLP-1R and GIPR with balanced potency. GIPR agonism enhances insulin secretion, improves beta-cell function, reduces glucagon secretion, and acts on adipose tissue to improve lipid clearance. GIP co-agonism also appears to attenuate GI side effects seen with GLP-1 monotherapy. Full agonism at both receptors produces synergistic metabolic effects exceeding either receptor alone."
+      },
+
+      "formats_available_sa": {
+        "vial": true,
+        "pen": true,
+        "capsule": false,
+        "nasal_spray": false,
+        "topical": false,
+        "oral_tablet": false,
+        "notes": "Mounjaro (Eli Lilly/Aspen) launched in SA December 2024 as autoinjector pen (2.5mg, 5mg, 7.5mg, 10mg, 12.5mg, 15mg). Grey-market vials widely available from SA vendors in 30mg and 60mg multi-dose vials."
+      },
+
+      "regulatory": {
+        "sahpra": {
+          "status": "registered",
+          "schedule": "Schedule 4",
+          "registered_products": [
+            "Mounjaro (tirzepatide) autoinjector pen — T2D indication (launched Dec 2024)",
+            "Obesity / weight management indication approved October 2025"
+          ],
+          "notes": "Aspen Pharmacare is the authorised distributor in SA. Mounjaro launched in SA December 2024 for T2D. In October 2025, SAHPRA approved the obesity/weight management indication. Grey-market vials from SA research vendors exist outside this registration."
+        },
+        "fda": {
+          "status": "approved",
+          "approved_indications": [
+            "Type 2 Diabetes (Mounjaro, May 2022)",
+            "Chronic weight management / obesity (Zepbound, November 2023)",
+            "Obstructive sleep apnea with obesity (Zepbound, 2024)"
+          ],
+          "approval_dates": {
+            "mounjaro_t2d": "May 2022",
+            "zepbound_obesity": "November 2023",
+            "osa_indication": "2024"
+          },
+          "accelerated_pathway": false,
+          "notes": "Tirzepatide achieved fastest-to-1-billion-dollar-sales in pharmaceutical history (Mounjaro). SURPASS-CVOT demonstrated superiority to dulaglutide on CV outcomes 2023."
+        },
+        "ema": {
+          "status": "approved",
+          "approved_indications": ["Type 2 Diabetes", "Obesity / weight management"],
+          "notes": "EMA approved Mounjaro for T2D and obesity in Europe."
+        },
+        "other_jurisdictions": [
+          { "authority": "TGA (Australia)", "status": "approved", "notes": "Mounjaro approved for T2D and obesity" },
+          { "authority": "MHRA (UK)", "status": "approved", "notes": "Mounjaro and Zepbound both approved" }
+        ],
+        "overall_legal_context_sa": "Tirzepatide (Mounjaro) is legally available in South Africa on prescription for T2D and obesity as of 2025, dispensed through registered pharmacies. Grey-market vials from SA peptide vendors are unregistered. SAHPRA warnings about compounded GLP-1 products apply equally to tirzepatide."
+      },
+
+      "clinical_trials": {
+        "active_trials": [
+          {
+            "name": "SURMOUNT-NASH",
+            "phase": 3,
+            "indication": "MASH (Metabolic-associated steatohepatitis) with fibrosis F2–F3",
+            "nct_id": "NCT04166773",
+            "sponsor": "Eli Lilly",
+            "enrollment": 720,
+            "status": "active",
+            "estimated_completion": "2026",
+            "primary_endpoint": "MASH resolution with no worsening of fibrosis; fibrosis improvement ≥1 stage",
+            "notes": "Interim data reported 2024 showed significant superiority vs placebo"
+          },
+          {
+            "name": "SURMOUNT-MMO",
+            "phase": 3,
+            "indication": "Cardiovascular outcomes in obesity",
+            "nct_id": "NCT05556512",
+            "sponsor": "Eli Lilly",
+            "enrollment": 13000,
+            "status": "active",
+            "estimated_completion": "2027",
+            "primary_endpoint": "Major adverse cardiovascular events (MACE)",
+            "notes": "Large long-term CV safety and efficacy trial"
+          },
+          {
+            "name": "SURPASS-6",
+            "phase": 3,
+            "indication": "T2D requiring high-dose insulin",
+            "nct_id": "NCT04537923",
+            "sponsor": "Eli Lilly",
+            "enrollment": 675,
+            "status": "active",
+            "estimated_completion": "2025",
+            "primary_endpoint": "HbA1c reduction; hypoglycaemia events",
+            "notes": ""
+          }
+        ],
+        "key_completed_trials": [
+          {
+            "name": "SURMOUNT-1",
+            "phase": 3,
+            "indication": "Obesity / chronic weight management",
+            "year_completed": 2022,
+            "key_result": "20.9% mean body weight reduction at 72 weeks vs 3.1% placebo; 91% lost ≥5% on 15mg dose.",
+            "nct_id": "NCT04184622"
+          },
+          {
+            "name": "SURPASS-2",
+            "phase": 3,
+            "indication": "T2D — head-to-head vs semaglutide 1mg",
+            "year_completed": 2021,
+            "key_result": "Tirzepatide 15mg superior to semaglutide 1mg: HbA1c −2.34% vs −1.86%; weight loss −11.2kg vs −5.7kg.",
+            "nct_id": "NCT03987919"
+          },
+          {
+            "name": "SURPASS-CVOT",
+            "phase": 3,
+            "indication": "CV outcomes vs dulaglutide in T2D",
+            "year_completed": 2023,
+            "key_result": "16% reduction in MACE vs dulaglutide; established non-inferiority and superiority for CV outcomes.",
+            "nct_id": "NCT04255433"
+          },
+          {
+            "name": "SUMMIT (HFpEF)",
+            "phase": 3,
+            "indication": "Heart failure with preserved ejection fraction in obesity",
+            "year_completed": 2024,
+            "key_result": "Significant improvement in KCCQ scores, 6-minute walk test, and CRP reduction vs placebo.",
+            "nct_id": "NCT04847557"
+          }
+        ],
+        "anticipated_approvals": [
+          {
+            "indication": "MASH",
+            "authority": "FDA / EMA / SAHPRA",
+            "estimated_date": "2026–2027",
+            "basis": "SURMOUNT-NASH Phase 3; interim data positive",
+            "confidence": "medium"
+          },
+          {
+            "indication": "Heart failure (HFpEF)",
+            "authority": "FDA",
+            "estimated_date": "2026",
+            "basis": "SUMMIT trial results; sNDA anticipated",
+            "confidence": "medium"
+          }
+        ]
+      },
+
+      "tier1": {
+        "weight": 0.50,
+        "score": 9.6,
+        "evidence_level": "strong",
+        "human_trial_count": 30,
+        "summary": "Tirzepatide has the strongest Phase 3 weight loss efficacy data of any approved pharmaceutical to date. The SURMOUNT and SURPASS programmes represent some of the most rigorous cardiometabolic clinical trial work ever conducted. It surpassed semaglutide in head-to-head comparison (SURPASS-2) and demonstrated the first meaningful pharmacological treatment effect in HFpEF.",
+        "key_findings": [
+          {
+            "finding": "20.9% mean body weight reduction at 72 weeks in obesity without diabetes (SURMOUNT-1) — highest of any approved weight-loss drug at the time",
+            "source": "Jastreboff AM et al., NEJM, 2022",
+            "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038"
+          },
+          {
+            "finding": "Superior to semaglutide 1mg on both HbA1c reduction and weight loss in T2D head-to-head (SURPASS-2)",
+            "source": "Frias JP et al., NEJM, 2021",
+            "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2107519"
+          },
+          {
+            "finding": "16% reduction in MACE vs dulaglutide in T2D patients with high CV risk (SURPASS-CVOT)",
+            "source": "Lincoff AM et al., NEJM, 2023",
+            "url": null
+          },
+          {
+            "finding": "Significant improvement in symptoms, exercise capacity, and inflammation in HFpEF patients with obesity (SUMMIT)",
+            "source": "Bhatt DL et al., NEJM, 2024",
+            "url": null
+          }
+        ],
+        "meta_analyses": [
+          "Rodriguez PJ et al. (2023) JAMA — comparative effectiveness of GLP-1/GIP vs GLP-1 alone; tirzepatide significantly superior on weight outcomes"
+        ],
+        "consensus_statement": "Tirzepatide represents the current gold standard in approved pharmacotherapy for obesity and T2D, with established superiority over semaglutide on weight outcomes and a compelling cardiometabolic efficacy and safety profile."
+      },
+
+      "tier2": {
+        "weight": 0.25,
+        "score": 7.5,
+        "evidence_level": "moderate",
+        "summary": "Mechanistic breadth of dual GLP-1/GIP agonism is generating substantial research interest beyond metabolic indications. MASH, PCOS, addiction, osteoarthritis, and neurodegenerative applications are all active areas. SUMMIT HFpEF results were a genuine clinical surprise and have opened cardiac applications.",
+        "animal_study_findings": [
+          {
+            "finding": "Reduced hepatic steatosis and fibrosis in NASH mouse models beyond weight-loss effect alone",
+            "model": "HFD-induced NASH mouse",
+            "source": "Gastaldelli A et al., Cell Metabolism, 2022"
+          },
+          {
+            "finding": "Neuroprotective effects in Parkinson's models — reduced dopaminergic neuron loss",
+            "model": "MPTP mouse model",
+            "source": "Carli M et al., Neurotherapeutics, 2023"
+          }
+        ],
+        "off_label_human_uses": [
+          "MASH / NAFLD — widely prescribed off-label pending formal approval",
+          "PCOS — improving insulin resistance, menstrual regularity, and androgen levels",
+          "Heart failure with preserved ejection fraction — off-label based on SUMMIT data",
+          "Addiction / alcohol use disorder — emerging observational data"
+        ],
+        "promising_areas": [
+          "Parkinson's and neurodegeneration (GIPR expressed in substantia nigra)",
+          "Osteoarthritis (via weight loss and direct anti-inflammatory effects)",
+          "Chronic kidney disease (Phase 3 trial being designed)"
+        ]
+      },
+
+      "tier3": {
+        "weight": 0.25,
+        "score": 7.8,
+        "summary": "Community sentiment is extremely positive — tirzepatide users consistently report greater weight loss than they experienced on semaglutide, with a perception of fewer GI side effects at equivalent weight-loss doses. The 'better than Ozempic' narrative is strongly established in community discourse, consistent with trial data.",
+        "reported_benefits": [
+          { "benefit": "Greater weight loss than semaglutide", "frequency": "very common", "notes": "Consistently reported by users who have trialled both; aligns with SURPASS-2 head-to-head data" },
+          { "benefit": "More tolerable GI side effects than semaglutide at equivalent doses", "frequency": "common", "notes": "Counterintuitive given dual mechanism; GIPR agonism may dampen GI effects" },
+          { "benefit": "Significant appetite and hunger reduction", "frequency": "very common", "notes": "Described as more complete 'silence of food noise' than semaglutide" },
+          { "benefit": "Improved energy levels (after initial adjustment period)", "frequency": "common", "notes": "" },
+          { "benefit": "Improved blood glucose stability and reduced cravings", "frequency": "common", "notes": "" }
+        ],
+        "reported_side_effects": [
+          { "effect": "Nausea and vomiting", "frequency": "common", "severity": "mild to moderate", "notes": "Less severe than semaglutide per community consensus" },
+          { "effect": "Muscle mass loss", "frequency": "common", "severity": "moderate", "notes": "Same concern as semaglutide — resistance training and protein intake critical" },
+          { "effect": "Constipation", "frequency": "common", "severity": "mild", "notes": "" },
+          { "effect": "Fatigue on dose escalation", "frequency": "common", "severity": "mild", "notes": "" },
+          { "effect": "Hair thinning", "frequency": "occasional", "severity": "mild", "notes": "Secondary to caloric deficit and rapid weight loss" },
+          { "effect": "Injection site reactions", "frequency": "occasional", "severity": "mild", "notes": "" }
+        ],
+        "community_sentiment": "very positive",
+        "contradiction_flag": false,
+        "contradiction_notes": ""
+      },
+
+      "composite_score": 8.6,
+
+      "efficacy_by_domain": [
+        { "domain": "Weight Loss", "score": 9.7, "primary_evidence_tier": "tier1", "notes": "Currently best-in-class approved agent; 20.9% BWL Phase 3" },
+        { "domain": "Type 2 Diabetes Management", "score": 9.5, "primary_evidence_tier": "tier1", "notes": "Superior to semaglutide 1mg in head-to-head; −2.34% HbA1c" },
+        { "domain": "Cardiovascular Protection", "score": 8.8, "primary_evidence_tier": "tier1", "notes": "16% MACE reduction vs dulaglutide; non-inferior to semaglutide" },
+        { "domain": "Heart Failure (HFpEF)", "score": 8.0, "primary_evidence_tier": "tier1", "notes": "SUMMIT: first drug to show clinically meaningful benefit in obese HFpEF" },
+        { "domain": "Liver Fat / MASH", "score": 7.5, "primary_evidence_tier": "tier2", "notes": "Phase 3 SURMOUNT-NASH ongoing; interim data very promising" },
+        { "domain": "Sleep Apnea (OSA)", "score": 7.8, "primary_evidence_tier": "tier1", "notes": "FDA-approved for OSA with obesity; substantial AHI event reduction" }
+      ],
+
+      "safety": {
+        "contraindications": [
+          "Personal or family history of medullary thyroid carcinoma (MTC)",
+          "Multiple endocrine neoplasia syndrome type 2 (MEN2)",
+          "Known hypersensitivity to tirzepatide",
+          "Pregnancy"
+        ],
+        "precautions": [
+          "History of pancreatitis",
+          "Diabetic retinopathy",
+          "Severe gastrointestinal disease",
+          "Renal impairment with GI-related dehydration risk"
+        ],
+        "known_interactions": [
+          { "substance": "Oral medications", "interaction": "Delayed gastric emptying may alter absorption", "severity": "moderate" },
+          { "substance": "Insulin / sulphonylureas", "interaction": "Increased hypoglycaemia risk", "severity": "moderate" }
+        ],
+        "side_effects": {
+          "common": ["Nausea (25–33%)", "Diarrhoea (20%)", "Vomiting (13%)", "Constipation (11%)"],
+          "uncommon": ["Fatigue", "Dyspepsia", "Dizziness", "Abdominal distension"],
+          "rare": ["Acute pancreatitis", "Hypersensitivity reactions", "Acute kidney injury"],
+          "serious": ["Thyroid C-cell tumours (preclinical rodent signal)", "Acute pancreatitis", "Severe hypoglycaemia with insulin"]
+        },
+        "safety_flags": [
+          "⚠ Contraindicated in personal or family history of medullary thyroid carcinoma",
+          "⚠ Muscle mass preservation requires resistance training and high-protein diet",
+          "⚠ Discontinue before planned pregnancy"
+        ],
+        "wada_status": "not_prohibited"
+      },
+
+      "dosing_context": {
+        "disclaimer": "For informational and research reference only. Not medical advice. Tirzepatide is a Schedule 4 medicine in South Africa requiring prescription.",
+        "typical_research_protocols": "Clinical starting dose 2.5mg weekly; escalate by 2.5mg every 4 weeks to maintenance dose (5–15mg weekly). Grey-market SA vials typically 30mg or 60mg multi-dose.",
+        "half_life": "~5 days",
+        "administration_route": ["subcutaneous"]
+      },
+
+      "sources": [
+        { "type": "journal", "title": "SURMOUNT-1 — Jastreboff AM et al., NEJM 2022", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038", "year": 2022, "tier_relevance": "tier1" },
+        { "type": "journal", "title": "SURPASS-2 — Frias JP et al., NEJM 2021", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2107519", "year": 2021, "tier_relevance": "tier1" },
+        { "type": "regulatory_doc", "title": "Aspen SA Mounjaro launch — News24, Oct 2025", "url": "https://www.news24.com/business/companies/aspen-climbs-as-sa-approves-popular-drug-for-weight-loss-20251013-0636", "year": 2025, "tier_relevance": "tier1" }
+      ],
+
+      "last_verified": "2026-04-25",
+      "data_confidence": "high"
+    },
+
+    {
+      "id": "retatrutide",
+      "name": "Retatrutide",
+      "alt_names": ["LY3437943", "Eli Lilly triple agonist"],
+      "category": "glp1_metabolic",
+      "subcategory": "GLP-1 / GIP / Glucagon Triple Receptor Agonist",
+      "tags": ["weight_loss", "metabolic", "diabetes", "glp1", "gip", "glucagon", "phase3", "osteoarthritis", "liver"],
+
+      "mechanism": {
+        "simple": "A triple-action metabolic hormone mimic that activates three receptors simultaneously — driving the highest weight loss ever recorded for a pharmaceutical agent in clinical trials.",
+        "technical": "Simultaneous agonism of GLP-1R (appetite suppression, insulin secretion), GIPR (enhanced insulin/glucagon balance, lipid metabolism), and glucagon receptor (GcgR — hepatic glucose output, thermogenesis via brown adipose tissue activation, lipolysis). The GcgR component is the key differentiator from dual agonists — it drives additional fat oxidation and thermogenic energy expenditure beyond what GLP-1/GIP agonism alone achieves."
+      },
+
+      "formats_available_sa": {
+        "vial": true,
+        "pen": true,
+        "capsule": false,
+        "nasal_spray": false,
+        "topical": false,
+        "oral_tablet": false,
+        "notes": "Not FDA or SAHPRA approved; widely available in SA grey market as vials (32mg and 64mg) and pens. Sold by Body Pharma and HD Labs among others. Research use only."
+      },
+
+      "regulatory": {
+        "sahpra": {
+          "status": "not_evaluated",
+          "schedule": null,
+          "registered_products": [],
+          "notes": "Not registered or evaluated by SAHPRA. Circulates as unregistered research peptide. No legal prescription pathway available in SA."
+        },
+        "fda": {
+          "status": "phase3",
+          "approved_indications": [],
+          "approval_dates": {},
+          "accelerated_pathway": false,
+          "notes": "TRIUMPH Phase 3 programme underway. TRIUMPH-4 (obesity + osteoarthritis) reported positive topline results December 2025: 28.7% mean BWL at 68 weeks — highest recorded for any pharmaceutical. NDA filing anticipated 2026. 7 additional Phase 3 readouts expected in 2026."
+        },
+        "ema": {
+          "status": "phase3",
+          "approved_indications": [],
+          "notes": "Global Phase 3 trials include EU sites; EMA submission anticipated to follow FDA NDA."
+        },
+        "other_jurisdictions": [],
+        "overall_legal_context_sa": "Retatrutide has no regulatory approval anywhere in the world as of April 2026. It is a grey-market research peptide in South Africa, sold without regulatory oversight. While Phase 3 data is compelling, long-term safety in humans is not yet fully established."
+      },
+
+      "clinical_trials": {
+        "active_trials": [
+          {
+            "name": "TRIUMPH-1 (Obesity)",
+            "phase": 3,
+            "indication": "Obesity / chronic weight management",
+            "nct_id": "NCT06015009",
+            "sponsor": "Eli Lilly",
+            "enrollment": 2300,
+            "status": "active",
+            "estimated_completion": "2026",
+            "primary_endpoint": "Percentage body weight change at 48 weeks",
+            "notes": ""
+          },
+          {
+            "name": "TRIUMPH-2 (Type 2 Diabetes)",
+            "phase": 3,
+            "indication": "T2D glycaemic control",
+            "nct_id": "NCT06015022",
+            "sponsor": "Eli Lilly",
+            "enrollment": 1800,
+            "status": "recruiting",
+            "estimated_completion": "2026",
+            "primary_endpoint": "HbA1c change",
+            "notes": ""
+          },
+          {
+            "name": "TRIUMPH-3 (Cardiovascular)",
+            "phase": 3,
+            "indication": "Cardiovascular outcomes in obese high-risk patients",
+            "nct_id": "NCT06288074",
+            "sponsor": "Eli Lilly",
+            "enrollment": 10000,
+            "status": "recruiting",
+            "estimated_completion": "2028",
+            "primary_endpoint": "MACE",
+            "notes": ""
+          },
+          {
+            "name": "TRIUMPH-4 (Obesity + Osteoarthritis)",
+            "phase": 3,
+            "indication": "Obesity with knee osteoarthritis",
+            "nct_id": "NCT05931367",
+            "sponsor": "Eli Lilly",
+            "enrollment": 445,
+            "status": "completed",
+            "estimated_completion": "December 2025",
+            "primary_endpoint": "Body weight change + WOMAC pain score",
+            "notes": "POSITIVE TOPLINE RESULTS (Dec 2025): 28.7% BWL; 75.8% WOMAC pain reduction at 68 weeks. First Phase 3 success."
+          }
+        ],
+        "key_completed_trials": [
+          {
+            "name": "Phase 2 — Obesity (NEJM 2023)",
+            "phase": 2,
+            "indication": "Obesity",
+            "year_completed": 2023,
+            "key_result": "Up to 24.2% body weight reduction at 24 weeks on 12mg — highest ever reported for any pharmaceutical weight-loss agent at that time.",
+            "nct_id": "NCT04881760"
+          },
+          {
+            "name": "Phase 2 — Type 2 Diabetes (Lancet 2023)",
+            "phase": 2,
+            "indication": "Type 2 Diabetes",
+            "year_completed": 2023,
+            "key_result": "11.6mg dose: HbA1c −2.02%, body weight −16.9% at 36 weeks vs placebo.",
+            "nct_id": "NCT04867785"
+          }
+        ],
+        "anticipated_approvals": [
+          {
+            "indication": "Obesity / Chronic Weight Management",
+            "authority": "FDA",
+            "estimated_date": "2026-Q4 / 2027-Q1",
+            "basis": "TRIUMPH-4 positive; NDA filing anticipated late 2026; standard 12-month FDA review",
+            "confidence": "medium"
+          },
+          {
+            "indication": "Obesity + Osteoarthritis",
+            "authority": "FDA",
+            "estimated_date": "2027",
+            "basis": "TRIUMPH-4 data supports sNDA for osteoarthritis pain indication",
+            "confidence": "medium"
+          }
+        ]
+      },
+
+      "tier1": {
+        "weight": 0.50,
+        "score": 8.8,
+        "evidence_level": "strong",
+        "human_trial_count": 6,
+        "summary": "Retatrutide's Phase 2 and early Phase 3 human data is extraordinary — the 24.2% body weight loss in Phase 2 and 28.7% in TRIUMPH-4 Phase 3 are the highest pharmacological weight loss figures ever reported. Phase 3 programme is large and well-designed. Full approval data set is not yet complete but trajectory is clearly positive. A new safety signal (cardiovascular, likely rate-related) emerged in some Phase 3 interim analyses and requires monitoring.",
+        "key_findings": [
+          {
+            "finding": "24.2% body weight reduction at 24 weeks on 12mg dose in Phase 2 — highest ever at time of publication",
+            "source": "Jastreboff AM et al., NEJM, 2023",
+            "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2301972"
+          },
+          {
+            "finding": "28.7% mean body weight loss in TRIUMPH-4 Phase 3 (obesity + osteoarthritis); 75.8% reduction in WOMAC pain scores",
+            "source": "Eli Lilly press release / Lilly Investor Relations, December 2025",
+            "url": "https://investor.lilly.com/news-releases/news-release-details/lillys-triple-agonist-retatrutide-delivered-weight-loss-average"
+          },
+          {
+            "finding": "HbA1c −2.02% and body weight −16.9% in T2D Phase 2 patients at 36 weeks",
+            "source": "Rosenstock J et al., The Lancet, 2023",
+            "url": null
+          }
+        ],
+        "meta_analyses": [],
+        "consensus_statement": "Retatrutide has the most potent weight-loss signal of any pharmaceutical agent studied in humans. Phase 3 data is still accumulating; a new cardiovascular safety signal requires scrutiny. Expected to be the most efficacious anti-obesity medicine if approved."
+      },
+
+      "tier2": {
+        "weight": 0.25,
+        "score": 7.2,
+        "evidence_level": "moderate",
+        "summary": "The triple agonist mechanism opens potential applications in MASH, osteoarthritis (direct + weight-loss mediated), sleep apnea, and metabolic bone disease. Glucagon receptor activity adds thermogenic and hepatic effects not seen in dual agonists, raising interest in liver disease and energy expenditure applications.",
+        "animal_study_findings": [
+          {
+            "finding": "Greater hepatic fat reduction than GLP-1/GIP dual agonism alone in NASH models, driven by GcgR-mediated hepatic lipid oxidation",
+            "model": "DIO mouse NASH model",
+            "source": "Coskun T et al., Cell Metabolism, 2022"
+          }
+        ],
+        "off_label_human_uses": [
+          "No established off-label uses — compound not yet approved in any jurisdiction"
+        ],
+        "promising_areas": [
+          "Knee osteoarthritis (TRIUMPH-4 data compelling beyond weight loss alone)",
+          "MASH — liver fat specifically targeted by glucagon pathway",
+          "Sleep apnea",
+          "Metabolic bone disease"
+        ]
+      },
+
+      "tier3": {
+        "weight": 0.25,
+        "score": 6.8,
+        "summary": "Early community reporting from SA and international users is very positive on weight loss efficacy — many report exceeding results seen on tirzepatide. Side effects are consistently reported as more intense than tirzepatide, particularly GI effects and fatigue. Community caution is growing around grey-market dosing accuracy given high potency.",
+        "reported_benefits": [
+          { "benefit": "Exceptional weight loss — users report fastest and greatest results vs other GLP-1s", "frequency": "very common", "notes": "Consistent with Phase 3 data showing 28.7% BWL" },
+          { "benefit": "Reduced appetite described as 'more complete' than tirzepatide", "frequency": "common", "notes": "" },
+          { "benefit": "Noticeable reduction in liver area bloating/inflammation", "frequency": "occasional", "notes": "Anecdotal; possibly reflects hepatic GcgR mechanism" }
+        ],
+        "reported_side_effects": [
+          { "effect": "Intense nausea, especially during initiation", "frequency": "very common", "severity": "moderate to severe", "notes": "More pronounced than tirzepatide per community consensus" },
+          { "effect": "Fatigue and low energy", "frequency": "very common", "severity": "moderate", "notes": "More pronounced than tirzepatide" },
+          { "effect": "Muscle loss at aggressive dosing", "frequency": "common", "severity": "moderate", "notes": "Critical concern — resistance training and protein essential" },
+          { "effect": "Heart rate increase", "frequency": "occasional", "severity": "mild to moderate", "notes": "Consistent with Phase 3 safety signal; glucagon receptor effect on heart rate" },
+          { "effect": "Vomiting", "frequency": "common", "severity": "moderate", "notes": "Higher than tirzepatide per user reports" }
+        ],
+        "community_sentiment": "positive",
+        "contradiction_flag": false,
+        "contradiction_notes": ""
+      },
+
+      "composite_score": 8.4,
+
+      "efficacy_by_domain": [
+        { "domain": "Weight Loss", "score": 9.9, "primary_evidence_tier": "tier1", "notes": "Highest BWL ever recorded — 28.7% Phase 3, 24.2% Phase 2" },
+        { "domain": "Type 2 Diabetes Management", "score": 8.8, "primary_evidence_tier": "tier1", "notes": "Phase 2 T2D data strong; Phase 3 T2D ongoing" },
+        { "domain": "Osteoarthritis Pain", "score": 8.5, "primary_evidence_tier": "tier1", "notes": "TRIUMPH-4: 75.8% WOMAC pain reduction; may support standalone indication" },
+        { "domain": "Liver Fat / MASH", "score": 7.5, "primary_evidence_tier": "tier2", "notes": "GcgR pathway adds hepatic fat-burning beyond GLP-1/GIP; Phase 3 MASH data pending" },
+        { "domain": "Cardiovascular", "score": 5.5, "primary_evidence_tier": "tier2", "notes": "Phase 3 CV outcomes trial ongoing; heart rate signal requires monitoring" }
+      ],
+
+      "safety": {
+        "contraindications": [
+          "Personal or family history of medullary thyroid carcinoma",
+          "MEN2 syndrome",
+          "Pregnancy",
+          "Known cardiovascular arrhythmia (pending further Phase 3 safety data)"
+        ],
+        "precautions": [
+          "Cardiovascular disease — heart rate elevation signal requires monitoring",
+          "History of pancreatitis",
+          "Hepatic impairment",
+          "Grey-market vials — dosing accuracy not guaranteed; very high potency means small errors are consequential"
+        ],
+        "known_interactions": [
+          { "substance": "Oral medications", "interaction": "Delayed gastric emptying", "severity": "moderate" },
+          { "substance": "Antihypertensives / cardiac medications", "interaction": "Heart rate elevation may interact with rate-controlling drugs", "severity": "moderate" }
+        ],
+        "side_effects": {
+          "common": ["Nausea", "Vomiting", "Diarrhoea", "Fatigue", "Decreased appetite"],
+          "uncommon": ["Constipation", "Heart rate increase", "Abdominal pain"],
+          "rare": ["Acute pancreatitis"],
+          "serious": ["Cardiovascular safety signal (heart rate/rhythm) — Phase 3 monitoring ongoing", "Thyroid C-cell tumour risk (class effect)", "Severe dehydration from GI side effects"]
+        },
+        "safety_flags": [
+          "⚠ Phase 3 cardiovascular safety signal (heart rate increase) — use caution in CV disease",
+          "⚠ Not approved in any jurisdiction — no regulated supply chain in SA",
+          "⚠ Highest potency GLP-1-class agent available — grey-market dosing errors carry significant risk",
+          "⚠ Muscle mass loss a major concern — mandatory resistance training and protein intake"
+        ],
+        "wada_status": "not_prohibited"
+      },
+
+      "dosing_context": {
+        "disclaimer": "For research reference only. Not medical advice. Not approved anywhere. Grey-market use carries significant unknown risks.",
+        "typical_research_protocols": "Phase 3 uses 4mg, 9mg, and 12mg weekly doses after titration. Grey-market SA pens typically 32mg or 64mg multi-dose. Starting doses in community protocols typically 0.5–1mg weekly with slow escalation.",
+        "half_life": "~6 days",
+        "administration_route": ["subcutaneous"]
+      },
+
+      "sources": [
+        { "type": "journal", "title": "Phase 2 Obesity — Jastreboff AM et al., NEJM 2023", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2301972", "year": 2023, "tier_relevance": "tier1" },
+        { "type": "journal", "title": "Phase 2 T2D — Rosenstock J et al., Lancet 2023", "url": null, "year": 2023, "tier_relevance": "tier1" },
+        { "type": "regulatory_doc", "title": "TRIUMPH-4 Phase 3 topline results — Eli Lilly, Dec 2025", "url": "https://investor.lilly.com/news-releases/news-release-details/lillys-triple-agonist-retatrutide-delivered-weight-loss-average", "year": 2025, "tier_relevance": "tier1" }
+      ],
+
+      "last_verified": "2026-04-25",
+      "data_confidence": "high"
+    },
+
+    {
+      "id": "cagrisema",
+      "name": "CagriSema",
+      "alt_names": ["Cagrilintide + Semaglutide", "CagriSema 2.4/2.4", "Novo Nordisk combination"],
+      "category": "glp1_metabolic",
+      "subcategory": "GLP-1 Receptor Agonist + Amylin Analogue Combination",
+      "tags": ["weight_loss", "diabetes", "metabolic", "glp1", "amylin", "phase3", "nda_filed"],
+
+      "mechanism": {
+        "simple": "Combines a GLP-1 hormone mimic (semaglutide) with a pancreatic hormone mimic (cagrilintide/amylin) in a single weekly injection — working through two separate but complementary appetite pathways to produce greater weight loss than either alone.",
+        "technical": "Fixed-dose combination of semaglutide 2.4mg (GLP-1R agonist) and cagrilintide 2.4mg (long-acting amylin analogue). Amylin (IAPP) acts in the hindbrain (area postrema and nucleus tractus solitarius) to slow gastric emptying, reduce post-meal glucagon, and enhance satiety independently of the hypothalamic GLP-1 pathway. The two mechanisms are complementary and synergistic — amylin also augments GLP-1's suppression of post-meal glucose excursions. Cagrilintide is a modified amylin analogue with ~7-day half-life enabling once-weekly dosing."
+      },
+
+      "formats_available_sa": {
+        "vial": true,
+        "pen": true,
+        "capsule": false,
+        "nasal_spray": false,
+        "topical": false,
+        "oral_tablet": false,
+        "notes": "Not SAHPRA approved. Grey-market SA vendors stock combined 12mg vials and pens. Also sold as cagrilintide and semaglutide separately. NDA filed with FDA December 2025 — US approval expected 2026."
+      },
+
+      "regulatory": {
+        "sahpra": {
+          "status": "not_evaluated",
+          "schedule": null,
+          "registered_products": [],
+          "notes": "Not evaluated by SAHPRA. If FDA-approved in 2026, a SAHPRA application could follow within 1–2 years. Currently circulates in SA grey market."
+        },
+        "fda": {
+          "status": "phase3",
+          "approved_indications": [],
+          "approval_dates": {},
+          "accelerated_pathway": false,
+          "notes": "NDA submitted to FDA December 18, 2025 for obesity/weight management indication. FDA review expected to conclude late 2026. If approved, would be the first injectable GLP-1/amylin combination approved anywhere."
+        },
+        "ema": {
+          "status": "phase3",
+          "approved_indications": [],
+          "notes": "EMA filing anticipated following FDA submission."
+        },
+        "other_jurisdictions": [],
+        "overall_legal_context_sa": "Fully grey-market in SA. No legal prescription pathway available. Compounded or grey-market versions may be inaccurately dosed given the dual-component complexity."
+      },
+
+      "clinical_trials": {
+        "active_trials": [
+          {
+            "name": "REDEFINE 3 (CKD)",
+            "phase": 3,
+            "indication": "Chronic kidney disease with obesity",
+            "nct_id": "NCT05394519",
+            "sponsor": "Novo Nordisk",
+            "enrollment": 1200,
+            "status": "active",
+            "estimated_completion": "2026",
+            "primary_endpoint": "eGFR slope and renal outcomes",
+            "notes": ""
+          }
+        ],
+        "key_completed_trials": [
+          {
+            "name": "REDEFINE 1 (Obesity without T2D)",
+            "phase": 3,
+            "indication": "Obesity / chronic weight management",
+            "year_completed": 2025,
+            "key_result": "Mean 20.4% body weight reduction at 68 weeks vs −3.0% placebo; 60% of patients lost ≥20% body weight; 23% lost ≥30%.",
+            "nct_id": "NCT05567796"
+          },
+          {
+            "name": "REDEFINE 2 (Obesity with T2D)",
+            "phase": 3,
+            "indication": "Obesity + Type 2 Diabetes",
+            "year_completed": 2025,
+            "key_result": "Mean 13.7% body weight reduction; 73.5% achieved HbA1c ≤6.5% vs 15.9% placebo. Published NEJM June 2025.",
+            "nct_id": "NCT05394519"
+          }
+        ],
+        "anticipated_approvals": [
+          {
+            "indication": "Obesity / Chronic Weight Management",
+            "authority": "FDA",
+            "estimated_date": "2026-Q4",
+            "basis": "NDA filed December 2025; standard 12-month review cycle",
+            "confidence": "high"
+          },
+          {
+            "indication": "Obesity + Type 2 Diabetes",
+            "authority": "FDA",
+            "estimated_date": "2026-Q4",
+            "basis": "REDEFINE 2 positive data included in NDA package",
+            "confidence": "high"
+          }
+        ]
+      },
+
+      "tier1": {
+        "weight": 0.50,
+        "score": 8.9,
+        "evidence_level": "strong",
+        "human_trial_count": 4,
+        "summary": "REDEFINE 1 and 2 are large, well-designed Phase 3 trials published in NEJM (June 2025), demonstrating that CagriSema produces greater weight loss than semaglutide alone (20.4% vs ~15%) and superior glycaemic outcomes in T2D. GI side effects are meaningfully higher (72.5% vs 34.4% placebo) but mostly mild/moderate. The NDA is filed — FDA approval in 2026 appears highly likely.",
+        "key_findings": [
+          {
+            "finding": "Mean 20.4% BWL at 68 weeks; 60% of patients lost ≥20% bodyweight (REDEFINE 1, obesity without T2D)",
+            "source": "NEJM, June 2025 — REDEFINE 1 investigators",
+            "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2502081"
+          },
+          {
+            "finding": "Mean 13.7% BWL + 73.5% achieving HbA1c ≤6.5% in T2D patients (REDEFINE 2)",
+            "source": "NEJM, June 2025 — REDEFINE 2 investigators",
+            "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2502082"
+          },
+          {
+            "finding": "88% of REDEFINE 1 patients with prediabetes returned to normoglycaemia",
+            "source": "REDEFINE 1 subgroup analysis",
+            "url": null
+          }
+        ],
+        "meta_analyses": [],
+        "consensus_statement": "CagriSema demonstrates statistically significant and clinically meaningful advantages over semaglutide alone in both weight loss and glycaemic control. FDA approval in 2026 is highly anticipated. The higher GI burden is a clinician and patient consideration."
+      },
+
+      "tier2": {
+        "weight": 0.25,
+        "score": 6.8,
+        "evidence_level": "moderate",
+        "summary": "Amylin analogues have a distinct mechanism from GLP-1 agents, and the combination opens research avenues not explored by GLP-1 agents alone — particularly in post-meal glucose control, lean mass preservation (amylin may protect against muscle loss), and binge eating behaviour via hindbrain satiety pathways.",
+        "animal_study_findings": [
+          {
+            "finding": "Amylin co-agonism with GLP-1 produces additive lean mass preservation beyond GLP-1 alone in diet-induced obesity models",
+            "model": "DIO rat",
+            "source": "Enebo LB et al., Lancet, 2021 (Phase 2 data)"
+          }
+        ],
+        "off_label_human_uses": ["No established off-label uses — compound not yet approved"],
+        "promising_areas": [
+          "Lean mass preservation during GLP-1 induced weight loss — amylin pathway may help preserve muscle",
+          "Binge eating disorder — amylin has hindbrain satiety mechanisms relevant to loss-of-control eating",
+          "Renal protection (REDEFINE 3 Phase 3 ongoing)"
+        ]
+      },
+
+      "tier3": {
+        "weight": 0.25,
+        "score": 6.2,
+        "summary": "Community data is limited given relatively recent SA availability. Early users report potent weight loss but significantly higher nausea than semaglutide alone. Some report the combination as 'too strong' at standard doses. Given grey-market dual-component vials, dosing accuracy concerns are heightened.",
+        "reported_benefits": [
+          { "benefit": "Weight loss exceeding semaglutide experience", "frequency": "common", "notes": "Users who've tried both report superior results" },
+          { "benefit": "Stronger appetite suppression", "frequency": "common", "notes": "" }
+        ],
+        "reported_side_effects": [
+          { "effect": "Nausea significantly more pronounced than semaglutide alone", "frequency": "very common", "severity": "moderate to severe", "notes": "72.5% GI AE rate in Phase 3 aligns with community reports" },
+          { "effect": "Vomiting", "frequency": "common", "severity": "moderate", "notes": "" },
+          { "effect": "Fatigue and weakness", "frequency": "common", "severity": "moderate", "notes": "" }
+        ],
+        "community_sentiment": "positive",
+        "contradiction_flag": false,
+        "contradiction_notes": ""
+      },
+
+      "composite_score": 8.2,
+
+      "efficacy_by_domain": [
+        { "domain": "Weight Loss", "score": 9.3, "primary_evidence_tier": "tier1", "notes": "20.4% Phase 3 BWL; between semaglutide and retatrutide" },
+        { "domain": "Type 2 Diabetes Management", "score": 9.1, "primary_evidence_tier": "tier1", "notes": "73.5% achieved HbA1c ≤6.5%; superior to semaglutide alone" },
+        { "domain": "Post-meal glucose control", "score": 9.0, "primary_evidence_tier": "tier1", "notes": "Amylin mechanism specifically targets postprandial glucose spikes" },
+        { "domain": "Kidney Protection", "score": 5.5, "primary_evidence_tier": "tier2", "notes": "REDEFINE 3 Phase 3 ongoing" }
+      ],
+
+      "safety": {
+        "contraindications": ["Personal or family history of medullary thyroid carcinoma", "MEN2", "Pregnancy", "Hypersensitivity to semaglutide or cagrilintide"],
+        "precautions": ["History of pancreatitis", "Severe GI disease", "Renal impairment"],
+        "known_interactions": [
+          { "substance": "Oral medications", "interaction": "Delayed gastric emptying", "severity": "moderate" },
+          { "substance": "Insulin / sulphonylureas", "interaction": "Additive hypoglycaemia risk", "severity": "moderate" }
+        ],
+        "side_effects": {
+          "common": ["Nausea (72.5% in Phase 3)", "Vomiting", "Diarrhoea", "Constipation", "Fatigue"],
+          "uncommon": ["Dizziness", "Injection site reactions"],
+          "rare": ["Pancreatitis"],
+          "serious": ["Thyroid C-cell tumour risk (class)", "Acute pancreatitis", "Severe dehydration from GI effects"]
+        },
+        "safety_flags": [
+          "⚠ Higher GI burden than semaglutide alone — consider patient tolerance before initiating",
+          "⚠ Not approved in any jurisdiction as of April 2026",
+          "⚠ Dual-component grey-market vials carry significant dosing accuracy concerns"
+        ],
+        "wada_status": "not_prohibited"
+      },
+
+      "dosing_context": {
+        "disclaimer": "Research reference only. Not approved. Requires prescription for component agents (semaglutide) in SA.",
+        "typical_research_protocols": "Phase 3 uses fixed 2.4mg/2.4mg once weekly. Grey-market SA vials typically 12mg combined.",
+        "half_life": "~7 days (both components)",
+        "administration_route": ["subcutaneous"]
+      },
+
+      "sources": [
+        { "type": "journal", "title": "REDEFINE 1 — NEJM June 2025", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2502081", "year": 2025, "tier_relevance": "tier1" },
+        { "type": "journal", "title": "REDEFINE 2 — NEJM June 2025", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2502082", "year": 2025, "tier_relevance": "tier1" },
+        { "type": "regulatory_doc", "title": "Novo Nordisk NDA filing announcement — December 2025", "url": "https://www.prnewswire.com/news-releases/novo-nordisk-files-for-fda-approval-of-cagrisema-the-first-once-weekly-combination-of-glp1-and-amylin-analogues-for-weight-management-302645862.html", "year": 2025, "tier_relevance": "tier1" }
+      ],
+
+      "last_verified": "2026-04-25",
+      "data_confidence": "high"
+    },
+
+    {
+      "id": "survodutide",
+      "name": "Survodutide",
+      "alt_names": ["BI 456906", "Boehringer Ingelheim / Zealand Pharma"],
+      "category": "glp1_metabolic",
+      "subcategory": "GLP-1 / Glucagon Dual Receptor Agonist",
+      "tags": ["weight_loss", "mash", "liver", "metabolic", "glp1", "glucagon", "phase3", "breakthrough_therapy"],
+
+      "mechanism": {
+        "simple": "A dual hormone mimic activating GLP-1 (appetite/insulin) and glucagon (liver fat burning and thermogenesis) receptors simultaneously — with particular strength in treating liver disease alongside obesity.",
+        "technical": "Balanced dual agonist of GLP-1R and GcgR (glucagon receptor), developed by Boehringer Ingelheim and Zealand Pharma. GcgR agonism drives hepatic fat oxidation via PPAR-alpha activation, thermogenesis via brown adipose tissue activation, and increased energy expenditure. Unlike GIP/GLP-1 combinations (tirzepatide), survodutide pairs GLP-1 with glucagon, making it particularly suited to MASH treatment where hepatic lipid clearance is the primary target. The GcgR component also increases basal metabolic rate beyond caloric restriction alone."
+      },
+
+      "formats_available_sa": {
+        "vial": true,
+        "pen": false,
+        "capsule": false,
+        "nasal_spray": false,
+        "topical": false,
+        "oral_tablet": false,
+        "notes": "Available from some SA grey-market vendors (e.g., researchpeptides.co.za stocks 10mg vials). Not SAHPRA approved. Phase 3 ongoing internationally."
+      },
+
+      "regulatory": {
+        "sahpra": {
+          "status": "not_evaluated",
+          "schedule": null,
+          "registered_products": [],
+          "notes": "Not evaluated by SAHPRA. Grey-market research peptide in SA."
+        },
+        "fda": {
+          "status": "phase3",
+          "approved_indications": [],
+          "approval_dates": {},
+          "accelerated_pathway": true,
+          "notes": "FDA Breakthrough Therapy Designation granted September 2024 for MASH with moderate/advanced fibrosis. SYNCHRONIZE Phase 3 obesity trials ongoing (completion expected 2026). LIVERAGE Phase 3 MASH trials ongoing. NDA filing anticipated 2027."
+        },
+        "ema": {
+          "status": "phase3",
+          "approved_indications": [],
+          "notes": "EMA PRIME scheme acceptance November 2023 — recognises potential to address unmet medical need."
+        },
+        "other_jurisdictions": [
+          { "authority": "NMPA (China)", "status": "phase3", "notes": "Breakthrough Therapy Designation granted June 2024" }
+        ],
+        "overall_legal_context_sa": "Grey-market research peptide. Not approved anywhere. FDA Breakthrough Therapy designation for MASH is a significant regulatory milestone but does not constitute approval."
+      },
+
+      "clinical_trials": {
+        "active_trials": [
+          {
+            "name": "SYNCHRONIZE-1 (Obesity without T2D)",
+            "phase": 3,
+            "indication": "Obesity / overweight without T2D",
+            "nct_id": "NCT05835973",
+            "sponsor": "Boehringer Ingelheim",
+            "enrollment": 2500,
+            "status": "active",
+            "estimated_completion": "2026",
+            "primary_endpoint": "Percentage body weight change",
+            "notes": "Recruitment complete"
+          },
+          {
+            "name": "SYNCHRONIZE-2 (Obesity with T2D)",
+            "phase": 3,
+            "indication": "Obesity with Type 2 Diabetes",
+            "nct_id": "NCT05836038",
+            "sponsor": "Boehringer Ingelheim",
+            "enrollment": 2000,
+            "status": "active",
+            "estimated_completion": "2026",
+            "primary_endpoint": "HbA1c and body weight",
+            "notes": ""
+          },
+          {
+            "name": "LIVERAGE (MASH)",
+            "phase": 3,
+            "indication": "MASH with fibrosis F2–F3",
+            "nct_id": null,
+            "sponsor": "Boehringer Ingelheim",
+            "enrollment": 1200,
+            "status": "active",
+            "estimated_completion": "2027",
+            "primary_endpoint": "Liver biopsy — fibrosis improvement without worsening MASH",
+            "notes": "FDA Breakthrough Therapy designation supports this programme"
+          },
+          {
+            "name": "SYNCHRONIZE-CVOT",
+            "phase": 3,
+            "indication": "Cardiovascular outcomes in obesity",
+            "nct_id": null,
+            "sponsor": "Boehringer Ingelheim",
+            "enrollment": 4935,
+            "status": "recruiting",
+            "estimated_completion": "2028",
+            "primary_endpoint": "MACE",
+            "notes": ""
+          }
+        ],
+        "key_completed_trials": [
+          {
+            "name": "Phase 2 — Obesity (Lancet 2023)",
+            "phase": 2,
+            "indication": "Obesity",
+            "year_completed": 2023,
+            "key_result": "Dose-dependent weight loss up to 18.7% at 46 weeks on 4.8mg dose; significant liver fat reduction on MRI-PDFF.",
+            "nct_id": null
+          },
+          {
+            "name": "Phase 2 — MASH",
+            "phase": 2,
+            "indication": "MASH with fibrosis",
+            "year_completed": 2023,
+            "key_result": "Significant liver fat and fibrosis marker reduction; supported FDA Breakthrough Therapy filing.",
+            "nct_id": null
+          }
+        ],
+        "anticipated_approvals": [
+          {
+            "indication": "MASH with fibrosis",
+            "authority": "FDA",
+            "estimated_date": "2027",
+            "basis": "Breakthrough Therapy designation; LIVERAGE Phase 3 completion 2027",
+            "confidence": "medium"
+          },
+          {
+            "indication": "Obesity",
+            "authority": "FDA",
+            "estimated_date": "2027",
+            "basis": "SYNCHRONIZE Phase 3 primary completion 2026; NDA ~12 months thereafter",
+            "confidence": "medium"
+          }
+        ]
+      },
+
+      "tier1": {
+        "weight": 0.50,
+        "score": 7.2,
+        "evidence_level": "moderate",
+        "human_trial_count": 4,
+        "summary": "Survodutide has robust Phase 2 human data and an active Phase 3 programme, but Phase 3 efficacy results are not yet available. The FDA Breakthrough Therapy designation for MASH reflects genuine unmet medical need and promising Phase 2 liver data. Weight loss in Phase 2 (~18.7%) is strong. Full Phase 3 data expected 2026–2027.",
+        "key_findings": [
+          {
+            "finding": "Up to 18.7% body weight reduction at 46 weeks in Phase 2 obesity trial; significant liver fat reduction on MRI-PDFF",
+            "source": "Boehringer Ingelheim Phase 2 data, Lancet 2023",
+            "url": null
+          },
+          {
+            "finding": "FDA Breakthrough Therapy Designation granted for MASH treatment, September 2024",
+            "source": "Boehringer Ingelheim press release",
+            "url": "https://www.boehringer-ingelheim.com/human-health/metabolic-diseases/survodutide-us-fda-breakthrough-therapy-phase-3-trials-mash"
+          }
+        ],
+        "meta_analyses": [],
+        "consensus_statement": "Survodutide shows strong early human data, particularly for liver disease. Full Phase 3 efficacy data is pending. GLP-1/glucagon dual agonism is well-validated mechanistically, with retatrutide's Phase 3 success providing supporting evidence for the glucagon receptor approach."
+      },
+
+      "tier2": {
+        "weight": 0.25,
+        "score": 7.5,
+        "evidence_level": "moderate",
+        "summary": "Glucagon receptor agonism has particularly strong preclinical support for MASH and metabolic bone disease. The mechanism is better validated at the animal level than GIP combinations for hepatic fat clearance.",
+        "animal_study_findings": [
+          {
+            "finding": "Superior hepatic fat reduction vs GLP-1 monotherapy in DIO rat NASH models via GcgR-PPAR-alpha lipid oxidation pathway",
+            "model": "DIO rat",
+            "source": "Kannt A et al., J Hepatology, 2021"
+          }
+        ],
+        "off_label_human_uses": ["No established off-label uses — not approved anywhere"],
+        "promising_areas": [
+          "MASH / liver fibrosis — primary development priority; FDA Breakthrough Therapy",
+          "Metabolic bone disease — glucagon affects bone turnover",
+          "PCOS with hepatic steatosis"
+        ]
+      },
+
+      "tier3": {
+        "weight": 0.25,
+        "score": 5.8,
+        "summary": "Limited community data given smaller SA market penetration vs semaglutide/tirzepatide. Users who have tried it report meaningful weight loss with more pronounced GI effects than tirzepatide. Niche interest from SA users with known NAFLD/MASH.",
+        "reported_benefits": [
+          { "benefit": "Significant weight loss", "frequency": "common", "notes": "Community reports 10–18% BWL consistent with Phase 2 data" },
+          { "benefit": "Visible abdominal fat reduction reported by users", "frequency": "common", "notes": "Possibly reflects GcgR visceral fat effect" }
+        ],
+        "reported_side_effects": [
+          { "effect": "Nausea", "frequency": "very common", "severity": "moderate", "notes": "" },
+          { "effect": "Heart rate elevation", "frequency": "occasional", "severity": "mild", "notes": "Class effect of glucagon receptor agonism" },
+          { "effect": "Fatigue", "frequency": "common", "severity": "mild", "notes": "" }
+        ],
+        "community_sentiment": "positive",
+        "contradiction_flag": false,
+        "contradiction_notes": ""
+      },
+
+      "composite_score": 7.1,
+
+      "efficacy_by_domain": [
+        { "domain": "Weight Loss", "score": 8.0, "primary_evidence_tier": "tier1", "notes": "Phase 2: up to 18.7% BWL; Phase 3 results pending" },
+        { "domain": "Liver Fat / MASH", "score": 8.5, "primary_evidence_tier": "tier1", "notes": "Lead indication; FDA Breakthrough Therapy; strongest liver data of the GLP-1 class" },
+        { "domain": "Visceral / Hepatic Fat", "score": 8.5, "primary_evidence_tier": "tier2", "notes": "GcgR pathway specifically drives hepatic lipid oxidation" },
+        { "domain": "Type 2 Diabetes", "score": 7.0, "primary_evidence_tier": "tier1", "notes": "Phase 3 T2D arm ongoing" },
+        { "domain": "Cardiovascular", "score": 5.0, "primary_evidence_tier": "tier2", "notes": "CVOT ongoing; heart rate signal requires monitoring" }
+      ],
+
+      "safety": {
+        "contraindications": ["Personal/family history of MTC", "MEN2", "Pregnancy"],
+        "precautions": ["Cardiovascular disease (heart rate elevation)", "Hepatic impairment paradox — monitor liver enzymes despite hepatic indication", "History of pancreatitis"],
+        "known_interactions": [
+          { "substance": "Beta-blockers / cardiac rate agents", "interaction": "GcgR-mediated heart rate increase may oppose rate control", "severity": "moderate" }
+        ],
+        "side_effects": {
+          "common": ["Nausea", "Diarrhoea", "Vomiting", "Fatigue"],
+          "uncommon": ["Heart rate increase", "Constipation"],
+          "rare": ["Pancreatitis"],
+          "serious": ["Cardiovascular rate effect — monitor in CV disease", "Thyroid C-cell tumour risk (class)"]
+        },
+        "safety_flags": [
+          "⚠ Not approved anywhere — Phase 3 data still accumulating",
+          "⚠ Heart rate elevation due to glucagon receptor — caution in cardiac patients",
+          "⚠ Grey-market supply in SA; quality not guaranteed"
+        ],
+        "wada_status": "not_prohibited"
+      },
+
+      "dosing_context": {
+        "disclaimer": "Research reference only. Not approved.",
+        "typical_research_protocols": "Phase 3 uses 2.4mg and 4.8mg weekly doses. Grey-market SA vials typically 10mg.",
+        "half_life": "~7 days",
+        "administration_route": ["subcutaneous"]
+      },
+
+      "sources": [
+        { "type": "regulatory_doc", "title": "FDA Breakthrough Therapy for MASH — Boehringer Ingelheim", "url": "https://www.boehringer-ingelheim.com/human-health/metabolic-diseases/survodutide-us-fda-breakthrough-therapy-phase-3-trials-mash", "year": 2024, "tier_relevance": "tier1" },
+        { "type": "journal", "title": "SYNCHRONIZE Phase 3 design — PMC 2024", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11664303/", "year": 2024, "tier_relevance": "tier1" }
+      ],
+
+      "last_verified": "2026-04-25",
+      "data_confidence": "medium"
+    },
+
+    {
+      "id": "aod9604",
+      "name": "AOD 9604",
+      "alt_names": ["AOD-9604", "hGH Fragment 176-191", "Advanced Obesity Drug 9604"],
+      "category": "glp1_metabolic",
+      "subcategory": "GH Fragment / Fat Metabolism Peptide",
+      "tags": ["weight_loss", "fat_loss", "metabolic", "research_only", "hgh_fragment", "gras"],
+
+      "mechanism": {
+        "simple": "A small fragment of human growth hormone designed to trigger fat burning without the growth-promoting effects of full GH — activating beta-3 adrenergic receptors in fat cells to release stored fat.",
+        "technical": "Synthetic fragment of the C-terminus of human growth hormone (amino acids 176–191), corresponding to the region responsible for hGH's lipolytic activity. Activates beta-3 adrenergic receptors (β3-AR) in adipocytes to stimulate lipolysis and inhibit lipogenesis. Does not bind IGF-1R or insulin receptors, so it lacks the anabolic and anti-insulin effects of full hGH. Also studied for chondroprotective properties via regulation of TGF-β3 and RUNX-2 in cartilage — potentially relevant for osteoarthritis."
+      },
+
+      "formats_available_sa": {
+        "vial": true,
+        "pen": true,
+        "capsule": false,
+        "nasal_spray": false,
+        "topical": false,
+        "oral_tablet": false,
+        "notes": "Widely available from SA peptide vendors. Also found in combination pens (AOD + Tesamorelin + MOTS-C 'Shredded' pen at bodybeacon.co.za). Research use only."
+      },
+
+      "regulatory": {
+        "sahpra": {
+          "status": "not_evaluated",
+          "schedule": null,
+          "registered_products": [],
+          "notes": "Not evaluated or scheduled by SAHPRA. Research use only in SA."
+        },
+        "fda": {
+          "status": "not_evaluated",
+          "approved_indications": [],
+          "approval_dates": {},
+          "accelerated_pathway": false,
+          "notes": "AOD 9604 was previously FDA GRAS (Generally Recognized as Safe) as a food ingredient — distinct from drug approval. In December 2024, the FDA placed AOD 9604 on its Category 2 list (503A Bulks), effectively restricting it from US compounding pharmacies due to limited long-term safety data, peptide impurities concerns, and potential immunogenicity. Drug development was abandoned by Metabolic Pharmaceuticals in 2007 after a pivotal Phase 3 trial failed to show significant weight loss vs placebo."
+        },
+        "ema": {
+          "status": "not_evaluated",
+          "approved_indications": [],
+          "notes": "No EMA evaluation."
+        },
+        "other_jurisdictions": [],
+        "overall_legal_context_sa": "Research peptide in SA. Not regulated. FDA's 2024 decision to restrict it from compounding pharmacies in the US is relevant context — the failed pivotal trial and safety data gaps are significant concerns for informed users."
+      },
+
+      "clinical_trials": {
+        "active_trials": [],
+        "key_completed_trials": [
+          {
+            "name": "Phase 2b — Weight Loss (Metabolic Pharmaceuticals)",
+            "phase": 2,
+            "indication": "Obesity",
+            "year_completed": 2003,
+            "key_result": "12-week trial: 2.6kg loss vs 0.8kg placebo. Modest but statistically significant effect.",
+            "nct_id": "Not registered (pre-CTgov)"
+          },
+          {
+            "name": "Phase 3 Pivotal — OPTIONS (METAOD006)",
+            "phase": 3,
+            "indication": "Obesity — weight loss",
+            "year_completed": 2007,
+            "key_result": "FAILED: 24-week trial of 536 subjects showed no statistically significant weight loss vs placebo. Development abandoned.",
+            "nct_id": "Not registered"
+          }
+        ],
+        "anticipated_approvals": []
+      },
+
+      "tier1": {
+        "weight": 0.50,
+        "score": 2.8,
+        "evidence_level": "limited",
+        "human_trial_count": 6,
+        "summary": "AOD 9604 has an unusual history — early Phase 1/2 trials demonstrated safety in ~900 participants, and short-term (12-week) trials showed modest weight loss. However, the pivotal Phase 3 trial failed to demonstrate significant weight loss in 536 subjects over 24 weeks, leading Metabolic Pharmaceuticals to abandon the programme in 2007. The compound was subsequently stripped of compounding pharmacy status in the US by the FDA in December 2024. Human evidence for fat loss is, at this time, weak.",
+        "key_findings": [
+          {
+            "finding": "Modest but statistically significant 2.6kg weight loss vs 0.8kg placebo in 12-week Phase 2b (1mg/day dose)",
+            "source": "Metabolic Pharmaceuticals / news-medical.net, 2004",
+            "url": "https://www.news-medical.net/news/2004/12/16/6878.aspx"
+          },
+          {
+            "finding": "Phase 3 pivotal trial (536 subjects, 24 weeks) FAILED to show significant weight loss vs placebo — development halted",
+            "source": "Metabolic Pharmaceuticals press release, 2007",
+            "url": null
+          },
+          {
+            "finding": "FDA Category 2 decision (December 2024): AOD 9604 removed from 503A compounding bulks list due to safety data gaps",
+            "source": "FDA 503A Bulks evaluation, 2024",
+            "url": "https://downloads.regulations.gov/FDA-2024-N-4777-0002/attachment_4.pdf"
+          }
+        ],
+        "meta_analyses": [],
+        "consensus_statement": "Human clinical evidence does not support AOD 9604 as an effective weight loss agent at doses studied. The failed Phase 3 pivotal trial is the defining data point. Animal and in-vitro data suggests lipolytic activity but this did not translate to meaningful human fat loss outcomes."
+      },
+
+      "tier2": {
+        "weight": 0.25,
+        "score": 5.5,
+        "evidence_level": "moderate",
+        "summary": "While human weight loss data is weak, AOD 9604 has more promising preclinical and emerging data in osteoarthritis and cartilage repair. Several animal studies show chondroprotective effects, and it has been studied (with some small positive results) for cartilage regeneration.",
+        "animal_study_findings": [
+          {
+            "finding": "Significant stimulation of lipolysis and inhibition of lipogenesis in 3T3-L1 adipocytes via β3-AR activation",
+            "model": "In vitro adipocyte / mouse",
+            "source": "Ng FM et al., Journal of Molecular Endocrinology, 2000"
+          },
+          {
+            "finding": "Chondroprotective effects — stimulated cartilage repair and reduced OA progression in sheep model via TGF-β3/RUNX-2 pathway",
+            "model": "Ovine osteoarthritis model",
+            "source": "Ryan ST et al., Cartilage, 2016"
+          }
+        ],
+        "off_label_human_uses": [
+          "Fat loss / body composition — widely used off-label in peptide community despite negative Phase 3",
+          "Osteoarthritis / joint regeneration — emerging interest area"
+        ],
+        "promising_areas": [
+          "Cartilage repair and osteoarthritis (more compelling preclinical data than weight loss)",
+          "Combination use with other lipolytic or metabolic peptides"
+        ]
+      },
+
+      "tier3": {
+        "weight": 0.25,
+        "score": 6.0,
+        "summary": "Community sentiment is genuinely mixed — some users report modest but real fat loss (particularly abdominal), while a significant number report no noticeable effect. This split is consistent with the clinical trial history. Users tend to stack AOD 9604 with other peptides, making it difficult to attribute effects specifically. Generally considered very well tolerated.",
+        "reported_benefits": [
+          { "benefit": "Modest fat loss, particularly abdominal / visceral", "frequency": "occasional", "notes": "Less consistently reported than GLP-1 agents; community split on efficacy" },
+          { "benefit": "Good tolerability — minimal side effects", "frequency": "very common", "notes": "The main consistent community finding is tolerability, not strong efficacy" },
+          { "benefit": "Joint comfort improvement (anecdotal)", "frequency": "occasional", "notes": "Consistent with chondroprotective preclinical data" }
+        ],
+        "reported_side_effects": [
+          { "effect": "Injection site redness/irritation", "frequency": "occasional", "severity": "mild", "notes": "" },
+          { "effect": "Headache in first week", "frequency": "occasional", "severity": "mild", "notes": "" },
+          { "effect": "No significant systemic side effects", "frequency": "very common", "notes": "Safety profile broadly confirmed by Phase 1/2 human trials" }
+        ],
+        "community_sentiment": "mixed",
+        "contradiction_flag": true,
+        "contradiction_notes": "Community reports of fat loss efficacy are significantly at odds with the failed Phase 3 pivotal trial. Users should be aware that the most rigorous human clinical test of AOD 9604 did not demonstrate meaningful weight loss. Positive community reports may reflect placebo effect, concurrent dietary changes, or stacking effects from other peptides."
+      },
+
+      "composite_score": 4.3,
+
+      "efficacy_by_domain": [
+        { "domain": "Fat Loss / Weight Loss", "score": 2.5, "primary_evidence_tier": "tier1", "notes": "Phase 3 failed to show significant effect; human evidence weak" },
+        { "domain": "Lipolysis (Mechanistic)", "score": 6.5, "primary_evidence_tier": "tier2", "notes": "Mechanism is validated in vitro; does not translate to meaningful clinical fat loss" },
+        { "domain": "Osteoarthritis / Cartilage Repair", "score": 5.5, "primary_evidence_tier": "tier2", "notes": "More compelling preclinical data for this indication than weight loss" },
+        { "domain": "Safety Profile", "score": 9.0, "primary_evidence_tier": "tier1", "notes": "Phase 1/2 trials in ~900 subjects — excellent tolerability consistently demonstrated" }
+      ],
+
+      "safety": {
+        "contraindications": ["Known hypersensitivity"],
+        "precautions": ["Pregnancy (insufficient data)", "FDA 2024 decision cites immunogenicity and impurity concerns for compounded versions"],
+        "known_interactions": [],
+        "side_effects": {
+          "common": ["Injection site mild irritation"],
+          "uncommon": ["Headache"],
+          "rare": [],
+          "serious": ["FDA 2024: potential immunogenicity concerns with compounded versions — peptide impurities"]
+        },
+        "safety_flags": [
+          "⚠ Phase 3 pivotal trial FAILED — human evidence for weight loss is weak",
+          "⚠ FDA removed from US compounding pharmacy list (Dec 2024) — safety data gaps",
+          "⚠ Community contradiction flag: reported benefits inconsistent with clinical trial outcomes"
+        ],
+        "wada_status": "not_prohibited"
+      },
+
+      "dosing_context": {
+        "disclaimer": "Research reference only. Failed Phase 3 weight loss programme. Not approved.",
+        "typical_research_protocols": "Phase 2 trials used 0.25mg–1mg daily subcutaneous. Community protocols typically 300–500mcg daily, periumbilical injection.",
+        "half_life": "~30 minutes (short acting — daily dosing required)",
+        "administration_route": ["subcutaneous"]
+      },
+
+      "sources": [
+        { "type": "journal", "title": "AOD 9604 Phase 2b results — news-medical.net 2004", "url": "https://www.news-medical.net/news/2004/12/16/6878.aspx", "year": 2004, "tier_relevance": "tier1" },
+        { "type": "regulatory_doc", "title": "FDA 503A Bulks Category 2 decision — December 2024", "url": "https://downloads.regulations.gov/FDA-2024-N-4777-0002/attachment_4.pdf", "year": 2024, "tier_relevance": "tier1" },
+        { "type": "journal", "title": "Chondroprotective effects — Ryan ST et al., Cartilage 2016", "url": null, "year": 2016, "tier_relevance": "tier2" }
+      ],
+
+      "last_verified": "2026-04-25",
+      "data_confidence": "high"
+    }
+
+  ]
+}
