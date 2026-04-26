@@ -124,6 +124,10 @@ header{display:flex;align-items:center;gap:14px;padding:13px 24px;border-bottom:
 .hero-info h2{font-size:1.5rem;font-weight:700;margin-bottom:3px}
 .hero-alts{font-size:.74rem;color:#c8d5e8;margin-bottom:8px}
 .hero-mech{font-size:.83rem;color:var(--text-secondary);line-height:1.65;max-width:600px}
+.mech-simple{font-size:.82rem;color:var(--text-primary);line-height:1.7;max-width:600px;margin-bottom:10px}
+.mech-simple-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#818cf8;opacity:.7;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.mech-science-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);opacity:.7;margin-bottom:4px;display:flex;align-items:center;gap:5px;margin-top:10px}
+.mech-divider{border:none;border-top:1px solid var(--border);margin:10px 0;max-width:600px}
 .hero-badges{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
 .badge{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 14px;border-radius:var(--radius-sm);border:1px solid;font-size:.69rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;min-width:100px;text-align:center}
 
@@ -152,6 +156,10 @@ header{display:flex;align-items:center;gap:14px;padding:13px 24px;border-bottom:
 .reg-cosmetic{border-color:#151e2b;color:#1e2d3d;background:transparent;opacity:.3}
 .reg-prohibited{border-color:#2d1515;color:#4a1a1a;background:transparent;opacity:.35}
 .reg-wada-row{display:flex;justify-content:flex-end;align-items:center;gap:6px;font-size:10px;font-weight:700;padding:5px 0 0;border-top:1px solid var(--border);margin-top:2px}
+a.reg-chip{text-decoration:none;cursor:pointer;transition:filter .15s,transform .15s,opacity .15s}
+a.reg-chip:hover{filter:brightness(1.5);transform:scale(1.05);opacity:1!important}
+a.reg-wada-row{text-decoration:none;cursor:pointer;transition:opacity .15s}
+a.reg-wada-row:hover{opacity:.75}
 
 /* ── SCORE PANEL ── */
 .score-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:20px;align-items:center}
@@ -2795,6 +2803,53 @@ function expandGlossaryTerms(text) {
 }
 
 // ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
+// SIMPLE MECHANISM — plain-language (ELI16) descriptions
+// Shown ABOVE the scientific mechanism in the hero card
+// ═══════════════════════════════════════════════════════════
+const SIMPLE_MECHANISM = {
+  semaglutide:        "Your gut makes a hormone called GLP-1 every time you eat — it tells your brain you're full, slows digestion, and nudges your pancreas to release insulin. Semaglutide is a lab-made copy of that hormone, but engineered to last a whole week in your body instead of just minutes. The result: you feel fuller longer, eat less without thinking about it, and your blood sugar stays steadier. Bonus — large trials showed it also cuts the risk of heart attacks and strokes.",
+  tirzepatide:        "Semaglutide copies one 'fullness hormone'. This one copies two — GLP-1 and GIP — at the same time, like sending two 'stop eating' messages to your brain simultaneously instead of one. That double signal produces greater weight loss than anything that came before it, with a broadly similar safety profile.",
+  retatrutide:        "If tirzepatide is two signals, this is three. It adds glucagon — a hormone that cranks up your body's calorie-burning furnace — on top of the two fullness signals. The result is the largest pharmaceutical weight loss ever recorded in a clinical trial (24.2% body weight). It's still in trials and not yet approved anywhere.",
+  liraglutide:        "The original GLP-1 drug — the pioneer that proved this entire class of medicine could safely help people lose weight and control blood sugar. It works the same way as semaglutide but needs a daily injection and is a bit less powerful. Largely superseded now, but still widely prescribed worldwide.",
+  aod9604:            "Scientists took growth hormone — a molecule that does many things — and snipped out just the small piece responsible for burning fat. AOD 9604 is that fragment. The idea was to get fat-burning benefits without the growth or blood sugar effects of the full hormone. It passed safety trials but never quite proved it worked well enough to get approved.",
+  bpc157:             "Your stomach lining makes a protective protein to stop it from digesting itself. BPC-157 is a tiny piece of that protein. It acts like a rapid-response repair team — accelerating wound healing, encouraging new blood vessels to grow, calming gut inflammation, and helping tendons and muscles recover. Almost all research is in animals, but the healing results have been striking.",
+  tb500:              "A fragment of a protein found inside every single cell in your body. When tissue gets damaged, TB-500 helps cells move to where they're needed, encourages new blood vessel growth, and turns down inflammation. It's been studied mainly for wound healing, cardiac repair, and muscle recovery — still mostly in animal models.",
+  ara290:             "The hormone erythropoietin (EPO) makes red blood cells — but it also has a separate, quieter job: repairing damaged tissue. ARA-290 is clipped from the part of EPO that does the repair work, without any blood-cell-making effect. It's been tested in small human studies for nerve damage (neuropathy) and a rare inflammatory condition called sarcoidosis.",
+  cjc1295_ipa:        "Think of these two as a tag team. CJC-1295 sends a long-lasting signal to your brain telling it to release growth hormone more often — and it sticks around for up to two weeks. Ipamorelin gives a cleaner, sharper burst of GH release when you want it. Together they amplify GH output significantly without raising cortisol or prolactin the way older GH drugs did.",
+  sermorelin:         "Instead of injecting growth hormone directly into your body, sermorelin coaches your brain to release more of its own. It's a shorter copy of the natural brain signal (GHRH) that triggers your pituitary gland to produce GH — keeping the natural pulsatile rhythm your body expects, rather than flooding your system all at once.",
+  ipamorelin:         "Mimics ghrelin (your hunger hormone) just enough to trigger a clean, precise pulse of growth hormone — without raising cortisol, prolactin, or your appetite much at all. It's considered one of the most selective GH-releasing peptides because it does exactly one job cleanly, without much collateral activation.",
+  tesamorelin:        "An FDA-approved copy of the brain signal for GH release, specifically designed to reduce deep belly fat in HIV patients who develop it as a drug side effect. Rather than giving GH directly, it tells your pituitary to produce its own in a natural rhythm — avoiding the blood sugar and swelling risks of external GH therapy.",
+  hexarelin:          "One of the most powerful GH-releasing peptides known. It also has a completely separate direct protective effect on the heart — discovered when researchers noticed it reduced cardiac damage in animal models. The downside: your body adapts to it quickly (desensitisation), which limits how long it can be used effectively.",
+  mk677:              "Technically not a peptide at all — it's a pill. But it mimics ghrelin (the hunger hormone) so effectively that it drives a sustained, significant rise in growth hormone and IGF-1. Think of it as a long-duration GH trigger you can swallow. The trade-offs: it makes you meaningfully hungrier and can push blood sugar in the wrong direction with prolonged use.",
+  ghkcu:              "Your body naturally produces this tiny copper-carrying molecule in large amounts when you're young — and far less as you age. It works by switching on a remarkable range of genes (~4,000) involved in tissue repair, collagen production, antioxidant defences, and skin regeneration. It's one of the reasons wounds heal faster in young people.",
+  epitalon:           "A four-amino-acid peptide originally extracted from the pineal gland — the tiny brain structure that controls your sleep cycle. It's been studied primarily in Russia for its potential to slow ageing, mainly by lengthening telomeres (the protective caps on the end of your DNA that get shorter every time a cell divides). Still very experimental by Western standards.",
+  motsc:              "Most of your DNA sits in the cell nucleus — but you have a second, tiny set of DNA inside your mitochondria (the power plants of your cells). MOTS-c is a peptide actually encoded in that mitochondrial DNA. It acts as a molecular messenger, signalling between the power plant and the control room, helping regulate how your body uses energy. Completely experimental — the science is early but genuinely fascinating.",
+  glutathione:        "Your body makes its own master antioxidant — a three-piece molecule that acts as the chief cleaner-upper of cellular damage, detoxification, and immune support. Levels naturally drop with age, chronic illness, and oxidative stress. IV glutathione is widely used in SA clinics for immune support, skin brightening, and anti-ageing — though the evidence for some of these uses is still catching up with the practice.",
+  semax:              "Taken from a small piece of ACTH (a brain hormone), then chemically extended to make it more stable. Once it reaches the brain, it boosts the production of BDNF and NGF — two growth factors that help brain cells survive, grow new connections, and communicate better. Used clinically in Russia for stroke recovery, cognitive issues, and nerve protection.",
+  selank:             "Derived from tuftsin — a natural immune peptide your spleen makes — with a short stabilising tail added. It reduces anxiety by fine-tuning your brain's natural opioid and serotonin systems, producing a calming effect without the sedation, tolerance, or dependency risk of standard benzodiazepine anxiety medications. Registered as an anxiolytic in Russia.",
+  dsip:               "Your brain naturally produces this tiny peptide during deep sleep. Think of it as your body's own 'sleep quality signal' — it promotes the deep restorative phase of sleep (the kind that actually makes you wake up feeling recovered), dials down stress hormone responses, and helps the body's hormonal system reset overnight. Most of the research is old and in animals.",
+  dihexa:             "A synthetic peptide that supercharges hepatocyte growth factor (HGF) signalling in the brain — the system that tells neurons to form new connections with each other. In animal studies it's shown to be millions of times more potent than BDNF at stimulating new synaptic growth. The human data is almost entirely absent, which means it sits firmly in the 'intriguing but far from proven' category.",
+  pt141:              "Unlike Viagra (which works on blood vessels in the genitals), PT-141 works entirely in the brain. It activates specific melanocortin receptors in your central nervous system that switch on sexual desire — targeting the 'want to' rather than the 'can'. It's FDA-approved as Vyleesi for low sexual desire in premenopausal women who find it distressing.",
+  melanotan2:         "A broad activator of your melanocortin system — the network in the brain that controls skin pigmentation, sexual arousal, and appetite. Originally developed as a tanning drug, it simultaneously stimulates melanin production, sexual arousal, and appetite suppression. The sheer number of effects it triggered — including nausea, spontaneous erections, and blood pressure changes — caused pharmaceutical development to be abandoned.",
+  kisspeptin10:       "Kisspeptin neurons in your hypothalamus are the master on/off switch for your entire reproductive system — controlling puberty onset, the monthly hormonal cycle in women, and testosterone production in men. Giving kisspeptin externally essentially presses that switch, triggering your body to release its own reproductive hormones. It's in clinical trials for fertility and hormonal disorders.",
+  thymosin_a1:        "Your thymus gland (in your chest, active mainly in childhood) produces this peptide to train and mature T-cells — the white blood cells that are central to fighting infections and cancer. Think of it as a quality controller for your immune system. Approved in over 35 countries for hepatitis B, cancer immune support, and immune deficiency states.",
+  humanin:            "Produced inside your mitochondria (your cells' power plants), humanin is a tiny protective signalling molecule that helps cells survive when they're under stress — essentially telling them not to die prematurely. It's been studied in the context of Alzheimer's disease, ageing, and metabolic disorders. The science is early-stage but points to a genuinely novel cellular protection mechanism.",
+  collagen_peptides:  "Collagen is the structural scaffolding of your body — the protein that gives skin its firmness, joints their cushioning, and tendons their strength. These peptides are collagen broken into small, easily absorbed fragments (hydrolyzed). Once absorbed, they provide the amino acid building blocks your body needs to produce its own new collagen — which declines naturally from your mid-20s onwards.",
+  ghrp2:              "One of the original growth hormone-releasing peptides. It stimulates a strong GH pulse through the ghrelin receptor — more powerfully than ipamorelin but less selectively. The downside: it also raises cortisol and prolactin alongside GH, which limits how much benefit you get long-term compared to more targeted options.",
+  igf1lr3:            "IGF-1 is the main messenger through which growth hormone actually builds muscle, bone, and tissue — GH tells the liver to produce IGF-1, and IGF-1 does the actual construction work. LR3 is a modified version engineered to stay active much longer in the body and to avoid getting intercepted by binding proteins. More anabolic activity per unit, for longer.",
+  pegmgf:             "After muscle is mechanically stressed (exercise or injury), it releases a growth factor called MGF that signals stem cells inside the muscle to wake up, multiply, and repair the damage. PEG-MGF is a chemically stabilised version of that signal, designed to last long enough to actually reach and activate those stem cells. Studied mainly for muscle wasting and recovery.",
+  follistatin:        "Your body naturally limits how much muscle you can build using a protein called myostatin — a built-in brake on muscle growth. Follistatin blocks myostatin, effectively releasing that brake. In animal models this has produced dramatic muscle increases. It's being researched for muscle-wasting diseases, though its extreme effects in animals have also attracted controversial attention in performance contexts.",
+  cerebrolysin:       "Made from pig brain proteins, this is a mixture of small brain growth factors and neuropeptides that work together as a broad brain support cocktail. Think of it as giving damaged brain tissue a multi-ingredient repair kit rather than one specific drug. Used clinically in China, Eastern Europe, and parts of Asia for stroke, Alzheimer's, and brain injury.",
+  vip:                "A signalling peptide found throughout your nervous system, lungs, and gut that does several things: relaxes smooth muscle, regulates immune responses, and helps set your circadian clock. It's been studied for inflammatory lung conditions, gut disorders, and more recently for Long COVID, where immune and inflammatory dysregulation is a central feature.",
+  oxytocin:           "The bonding and trust hormone — released during childbirth, breastfeeding, physical touch, and close social connection. Medically it's used to trigger or strengthen uterine contractions during labour. Beyond that, it reduces social anxiety, promotes feelings of trust and connection, and has anti-inflammatory properties. It's one of the most researched and approved peptide drugs in existence.",
+  gonadorelin:        "GnRH is the brain's master switch for reproduction — it pulses from the hypothalamus every 60–90 minutes to tell the pituitary to release LH and FSH, which then tell the gonads to produce testosterone or oestrogen. Gonadorelin is a synthetic copy of that pulse. Used medically to test the reproductive axis, treat some hormonal conditions, and preserve fertility during certain cancer treatments.",
+  ll37:               "Your body's built-in antibiotic. Part of a family of natural antimicrobial peptides that form your first line of immune defence — they physically puncture the membranes of bacteria and viruses on contact, killing them directly. LL-37 also activates other immune cells and promotes wound healing. Studied for antibiotic-resistant infections, wound care, and inflammatory skin conditions like psoriasis.",
+  glatiramer_acetate: "Multiple sclerosis happens when your immune system mistakenly attacks myelin — the protective coating on your nerve fibres. Glatiramer acetate is a synthetic mixture of amino acid chains designed to look like myelin to your immune system. It essentially tricks your immune cells into attacking the drug instead of your own nerves — acting as a decoy that retrains the immune response. FDA-approved and widely used for relapsing MS.",
+  octreotide:         "Somatostatin is a hormone your body uses as an off-switch for other hormones — telling glands to stop producing. Octreotide is a longer-lasting synthetic copy of somatostatin. It's used to treat conditions where the body overproduces hormones (like the excess GH in acromegaly, or the hormones from carcinoid tumours) and to reduce secretions in certain gut conditions.",
+  teriparatide:       "Parathyroid hormone controls calcium in the body and governs bone turnover. Here's the counterintuitive science: injected continuously, PTH causes bone loss — but injected in short daily pulses, it does the opposite and actually builds new bone. Teriparatide is the first 1–34 fragment of PTH given as daily pulses. It's one of the only osteoporosis treatments that actually adds bone mass rather than just slowing its loss.",
+};
+
 // RISK LEVEL — per-peptide safety profile
 // ═══════════════════════════════════════════════════════════
 const RISK_LEVEL = {
@@ -3522,6 +3577,76 @@ function renderPulsePage() {
 // ═══════════════════════════════════════════════════════════
 // REGULATORY GRID
 // ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
+// REGULATORY AGENCY URLS
+// search: called when a compound has approved/conditional status → tries drug-specific search page
+// base:   fallback for research/trials/cosmetic/prohibited → authority main page
+// ═══════════════════════════════════════════════════════════
+const AGENCY_URLS = {
+  fda:    { base:'https://www.fda.gov/drugs',
+            search: t => `https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=BasicSearch.process&query=${encodeURIComponent(t)}` },
+  ema:    { base:'https://www.ema.europa.eu/en/medicines',
+            search: t => `https://www.ema.europa.eu/en/medicines/search?q=${encodeURIComponent(t)}` },
+  mhra:   { base:'https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency',
+            search: t => `https://products.mhra.gov.uk/?query=${encodeURIComponent(t)}&page=1&pageSize=10&tab=products` },
+  tga:    { base:'https://www.tga.gov.au/',
+            search: t => `https://www.tga.gov.au/search-page?query=${encodeURIComponent(t)}` },
+  hc:     { base:'https://www.canada.ca/en/health-canada/services/drugs-health-products.html',
+            search: t => `https://health-products.canada.ca/dpd-bdpp/dispatch-repartition.do?lang=eng&query=${encodeURIComponent(t)}` },
+  pmda:   { base:'https://www.pmda.go.jp/english/',
+            search: t => `https://www.pmda.go.jp/english/review-services/reviews/approved-information/drugs/0001.html` },
+  anvisa: { base:'https://www.gov.br/anvisa/pt-br',
+            search: t => `https://consultas.anvisa.gov.br/#/bulario/` },
+  nmpa:   { base:'http://english.nmpa.gov.cn/',
+            search: t => `http://english.nmpa.gov.cn/` },
+  sahpra: { base:'https://www.sahpra.org.za/',
+            search: t => `https://www.sahpra.org.za/medicines-control/` },
+};
+
+// INN / generic search term per peptide for regulatory database lookups
+const PEPTIDE_INN = {
+  semaglutide:        'semaglutide',
+  tirzepatide:        'tirzepatide',
+  retatrutide:        'retatrutide',
+  liraglutide:        'liraglutide',
+  aod9604:            'AOD 9604',
+  bpc157:             'BPC-157',
+  tb500:              'thymosin beta 4',
+  ara290:             'cibinetide ARA 290',
+  cjc1295_ipa:        'CJC-1295',
+  sermorelin:         'sermorelin',
+  ipamorelin:         'ipamorelin',
+  tesamorelin:        'tesamorelin',
+  hexarelin:          'hexarelin',
+  mk677:              'ibutamoren MK-677',
+  ghkcu:              'copper peptide GHK-Cu',
+  epitalon:           'epitalon tetrapeptide',
+  motsc:              'MOTS-c peptide',
+  glutathione:        'glutathione',
+  semax:              'semax ACTH peptide',
+  selank:             'selank anxiolytic',
+  dsip:               'delta sleep inducing peptide',
+  dihexa:             'dihexa nootropic',
+  pt141:              'bremelanotide',
+  melanotan2:         'melanotan II',
+  kisspeptin10:       'kisspeptin',
+  thymosin_a1:        'thymalfasin thymosin alpha-1',
+  humanin:            'humanin mitochondrial peptide',
+  collagen_peptides:  'collagen peptides hydrolyzed',
+  ghrp2:              'GHRP-2',
+  igf1lr3:            'IGF-1 LR3',
+  pegmgf:             'PEG-MGF mechano growth factor',
+  follistatin:        'follistatin',
+  cerebrolysin:       'cerebrolysin',
+  vip:                'vasoactive intestinal peptide',
+  oxytocin:           'oxytocin',
+  gonadorelin:        'gonadorelin',
+  ll37:               'LL-37 cathelicidin',
+  glatiramer_acetate: 'glatiramer acetate',
+  octreotide:         'octreotide',
+  teriparatide:       'teriparatide',
+};
+
 function renderRegulatoryBadges(p) {
   const reg = REGULATORY_STATUS[p.id] || {};
   const agencies = [
@@ -3537,11 +3662,15 @@ function renderRegulatoryBadges(p) {
   ];
   const cls = {approved:'reg-approved',conditional:'reg-conditional',trials:'reg-trials',research:'reg-research',cosmetic:'reg-cosmetic',prohibited:'reg-prohibited'};
   const sym = {approved:'✓',conditional:'◐',trials:'◷',research:'—',cosmetic:'OTC',prohibited:'✗'};
-  const lbl = {approved:'Approved',conditional:'Limited',trials:'In Trials',research:'Not Approved',cosmetic:'OTC / Cosmetic',prohibited:'Prohibited'};
+  const lbl = {approved:'Approved',conditional:'Limited approval',trials:'In Clinical Trials',research:'Not Approved',cosmetic:'OTC / Cosmetic',prohibited:'Prohibited'};
 
   const wadaProhibited = reg.wada === 'prohibited';
   const wadaColor = wadaProhibited ? '#f87171' : '#4ade80';
   const wadaText  = wadaProhibited ? '✗ WADA Prohibited — banned in competitive sport' : '✓ WADA Permitted — allowed in competitive sport';
+  const wadaUrl   = 'https://www.wada-ama.org/en/prohibited-list';
+
+  // INN search term for this peptide
+  const innTerm = PEPTIDE_INN[p.id] || p.name;
 
   return `<div class="reg-panel">
     <div class="reg-panel-title">Global Regulatory Status</div>
@@ -3551,14 +3680,21 @@ function renderRegulatoryBadges(p) {
         const c = cls[s] || 'reg-research';
         const statusText = sym[s] || '—';
         const tooltip = lbl[s] || 'Not Approved';
-        return `<div class="reg-chip ${c}" title="${a.flag} ${a.lbl}: ${tooltip}">
+        const agInfo = AGENCY_URLS[a.key];
+        // Use search URL for approved/conditional; fallback base URL for all others
+        const href = agInfo
+          ? ((s === 'approved' || s === 'conditional') ? agInfo.search(innTerm) : agInfo.base)
+          : '#';
+        return `<a class="reg-chip ${c}" href="${href}" target="_blank" rel="noopener noreferrer"
+            title="${a.flag} ${a.lbl}: ${tooltip} — click to open ${a.lbl} registry ↗">
           <span class="reg-flag">${a.flag}</span>
           <span class="reg-lbl">${a.lbl}</span>
           <span class="reg-status">${statusText}</span>
-        </div>`;
+        </a>`;
       }).join('')}
     </div>
-    <div class="reg-wada-row" style="color:${wadaColor}">${wadaText}</div>
+    <a class="reg-wada-row" href="${wadaUrl}" target="_blank" rel="noopener noreferrer"
+       style="color:${wadaColor}" title="Open WADA Prohibited List ↗">${wadaText}</a>
   </div>`;
 }
 
@@ -3746,6 +3882,12 @@ function renderPeptideDetail(id) {
         <div class="hero-alts">${p.altNames}</div>
         ${brandsHTML}
         <div style="font-size:.67rem;font-weight:600;color:${catColor};opacity:.7;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;margin-top:6px">${p.class}</div>
+        ${SIMPLE_MECHANISM[p.id] ? `
+          <div class="mech-simple-label">💡 In plain terms</div>
+          <div class="mech-simple">${SIMPLE_MECHANISM[p.id]}</div>
+          <hr class="mech-divider">
+          <div class="mech-science-label">⚗️ Mechanism of action</div>
+        ` : ''}
         <div class="hero-mech">${expandGlossaryTerms(p.mechanism)}</div>
       </div>
       <div class="hero-badges" style="align-items:flex-end">
