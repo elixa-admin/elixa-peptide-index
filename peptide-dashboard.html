@@ -130,6 +130,18 @@ header{display:flex;align-items:center;gap:14px;padding:13px 24px;border-bottom:
 .mech-simple-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#818cf8;opacity:.7;margin-bottom:4px;display:flex;align-items:center;gap:5px}
 .mech-science-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);opacity:.7;margin-bottom:4px;display:flex;align-items:center;gap:5px;margin-top:10px}
 .mech-divider{border:none;border-top:1px solid var(--border);margin:10px 0;max-width:600px}
+/* ── Hype Detector callout ── */
+.hype-callout{background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.22);border-left:3px solid #f59e0b;border-radius:8px;margin-top:4px;overflow:hidden}
+.hype-toggle{display:flex;align-items:center;gap:8px;padding:11px 14px;cursor:pointer;font-size:.76rem;font-weight:700;color:#fbbf24;letter-spacing:.03em;list-style:none;user-select:none}
+.hype-toggle::marker,.hype-toggle::-webkit-details-marker{display:none}
+.hype-toggle-icon{font-size:.85rem;transition:transform .2s;flex-shrink:0}
+details[open] .hype-toggle-icon{transform:rotate(90deg)}
+.hype-body{padding:0 14px 12px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.hype-body{grid-template-columns:1fr}}
+.hype-col-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.hype-claim-label{color:#f59e0b}
+.hype-reality-label{color:#4ade80}
+.hype-col-text{font-size:.77rem;line-height:1.65;color:var(--text-secondary)}
 /* ── Research Maturity Badge ── */
 .maturity-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;border:1px solid;font-size:.67rem;font-weight:700;letter-spacing:.05em;cursor:help;margin-bottom:8px;transition:filter .15s}
 .maturity-badge:hover{filter:brightness(1.25)}
@@ -2978,6 +2990,67 @@ function renderKnownUnknowns(p) {
   </div>`;
 }
 
+// ═══════════════════════════════════════════════════════════
+// HYPE DETECTOR — Thread 2 data
+// Collapsible "Hype vs Reality" callout in Safety section
+// Only shown for peptides with known overclaiming patterns
+// ═══════════════════════════════════════════════════════════
+const HYPE_WARNINGS = {
+  bpc157: {
+    claim:   "Often described as a 'miracle healing peptide' for tendons, ligaments, gut repair, and systemic inflammation.",
+    reality: "Most evidence comes from animal studies. Human data are limited and no large, high-quality clinical trials confirm broad healing claims."
+  },
+  tb500: {
+    claim:   "Promoted for rapid injury recovery, muscle repair, and enhanced athletic performance.",
+    reality: "Based on thymosin beta-4 biology, but TB-500 itself lacks robust human clinical evidence demonstrating meaningful recovery or performance benefits."
+  },
+  melanotan2: {
+    claim:   "Marketed as a tanning shortcut with added libido and appetite suppression effects.",
+    reality: "Acts on melanocortin pathways, but safety concerns, inconsistent dosing, and lack of regulatory approval limit confidence in its use."
+  },
+  mk677: {
+    claim:   "Positioned as an oral growth hormone booster for muscle gain, fat loss, sleep, and anti-ageing.",
+    reality: "Human trials show increased GH/IGF-1, but outcomes are mixed and side effects include increased appetite, fluid retention, and insulin resistance."
+  },
+  epitalon: {
+    claim:   "Hyped as an anti-ageing compound that extends lifespan and lengthens telomeres.",
+    reality: "Some intriguing cellular and ageing data exist, but modern large-scale human trials validating longevity benefits are lacking."
+  },
+  dihexa: {
+    claim:   "Described as a potent nootropic capable of repairing brain connections and reversing cognitive decline.",
+    reality: "Research is primarily preclinical. There is no strong human evidence supporting safety or real-world cognitive enhancement."
+  },
+  cjc1295_ipa: {
+    claim:   "Advertised as a powerful GH-releasing stack for fat loss, muscle growth, and recovery.",
+    reality: "CJC-1295 can elevate GH in humans, but combined use with ipamorelin lacks strong clinical outcomes proving body composition or performance benefits."
+  },
+  dsip: {
+    claim:   "Promoted as a sleep-regulating peptide improving deep sleep, stress response, and overnight recovery.",
+    reality: "Early studies are small and inconsistent. Evidence does not strongly support the broad sleep and recovery claims seen online."
+  },
+};
+
+function renderHypeWarning(p) {
+  const h = HYPE_WARNINGS[p.id];
+  if (!h) return '';
+  return `<details class="hype-callout">
+    <summary class="hype-toggle">
+      <span class="hype-toggle-icon">▶</span>
+      ⚡ Hype vs Reality — community claims checked
+    </summary>
+    <div class="hype-body">
+      <div>
+        <div class="hype-col-label hype-claim-label">💬 What's claimed online</div>
+        <div class="hype-col-text">${h.claim}</div>
+      </div>
+      <div>
+        <div class="hype-col-label hype-reality-label">🔬 What evidence shows</div>
+        <div class="hype-col-text">${h.reality}</div>
+      </div>
+    </div>
+  </details>`;
+}
+
 // RISK LEVEL — per-peptide safety profile
 // ═══════════════════════════════════════════════════════════
 const RISK_LEVEL = {
@@ -3640,248 +3713,225 @@ function getPeptideThreeData() {
 let _threeInstance = null;
 
 function buildThreeJsLandscape(container, peptidesData, onSelect) {
-  const CATEGORY_COLOURS = {
-    metabolic: 0x22c55e,
-    recovery:  0x22d3ee,
-    gh:        0xfacc15,
-    longevity: 0xa855f7,
-    cognitive: 0x6366f1,
-    sexual:    0xec4899,
-    immune:    0x14b8a6,
-  };
-  const BG = "#060b16";
+  if (!container) return;
   container.innerHTML = "";
-  container.style.position = "relative";
-  container.style.background = BG;
-  container.style.overflow = "hidden";
 
-  if (!isWebGLAvailable()) return buildSvgFallback(container, peptidesData, onSelect);
+  const categoryColors = {
+    metabolic: "#22c55e", recovery:  "#22d3ee",
+    gh:        "#facc15", GH:        "#facc15",
+    longevity: "#a855f7", cognitive: "#6366f1",
+    sexual:    "#ec4899", immune:    "#14b8a6",
+  };
 
+  // ── Score helpers defined first — needed by BOTH 3D and SVG fallback paths ──
+  const toScore = (value, fallback = 50) => {
+    if (typeof value === "number") return Math.max(0, Math.min(100, value));
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? Math.max(0, Math.min(100, parsed)) : fallback;
+  };
+  const getEvidence   = p => toScore(p.evidenceScore   ?? p.evidence_strength ?? p.evidence         ?? p.evidenceStrength,   50);
+  const getRegulatory = p => toScore(p.regulatoryScore  ?? p.regulatory_approval ?? p.regulatory    ?? p.regulatoryApproval, 50);
+  const getConfidence = p => toScore(p.confidenceScore  ?? p.userConfidence     ?? p.confidence      ?? p.user_confidence,   50);
+  const getCategory   = p => String(p.category || p.primaryCategory || p.type || "recovery").toLowerCase();
+  const mapRange      = (value, minOut, maxOut) => minOut + (value / 100) * (maxOut - minOut);
+
+  // ── WebGL check ──
+  const hasWebGL = (() => {
+    try {
+      const c = document.createElement("canvas");
+      return !!(window.WebGLRenderingContext && (c.getContext("webgl") || c.getContext("experimental-webgl")));
+    } catch(e) { return false; }
+  })();
+
+  if (!hasWebGL || typeof THREE === "undefined") {
+    drawFallbackSvg(container, peptidesData, onSelect, categoryColors);
+    return { destroy() { container.innerHTML = ""; } };
+  }
+
+  // ── Scene setup ──
   const width  = container.clientWidth  || 900;
-  const height = container.clientHeight || 500;
-
+  const height = container.clientHeight || 600;
   const scene    = new THREE.Scene();
-  scene.background = new THREE.Color(BG);
+  scene.background = new THREE.Color("#060b16");
   const camera   = new THREE.PerspectiveCamera(55, width / height, 0.1, 2000);
-  camera.position.set(0, 80, 180);
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+  camera.position.set(0, 0, 420);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(width, height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   container.appendChild(renderer.domElement);
 
   const group = new THREE.Group();
   scene.add(group);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.65));
+  const pointLight = new THREE.PointLight(0xffffff, 1.2, 900);
+  pointLight.position.set(120, 160, 280);
+  scene.add(pointLight);
 
+  // ── Orbs + labels ──
+  const orbMeshes = [];
+  peptidesData.slice(0, 40).forEach((peptide, index) => {
+    const evidence   = getEvidence(peptide);
+    const regulatory = getRegulatory(peptide);
+    const confidence = getConfidence(peptide);
+    const category   = getCategory(peptide);
+    const x = mapRange(evidence,   -180,  180);
+    const y = mapRange(regulatory, -130,  130);
+    const z = mapRange(confidence,  -90,   90);
+    const color  = categoryColors[category] || "#22d3ee";
+    const radius = 5 + confidence * 0.12;
+
+    const orb = new THREE.Mesh(
+      new THREE.SphereGeometry(radius, 32, 32),
+      new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.8, roughness: 0.28, metalness: 0.15 })
+    );
+    orb.position.set(x, y, z);
+    orb.userData = { peptide, index };
+    group.add(orb);
+    orbMeshes.push(orb);
+
+    // Glow halo
+    group.add(Object.assign(
+      new THREE.Mesh(
+        new THREE.SphereGeometry(radius * 1.85, 32, 32),
+        new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.18, blending: THREE.AdditiveBlending, depthWrite: false })
+      ),
+      { position: orb.position.clone() }
+    ));
+
+    // Floating name label
+    const lc = document.createElement("canvas");
+    lc.width = 256; lc.height = 64;
+    const ctx = lc.getContext("2d");
+    ctx.fillStyle = "rgba(230,238,248,0.92)";
+    ctx.font = "600 24px system-ui,-apple-system,sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(peptide.name || peptide.id || `Peptide ${index + 1}`, 128, 38);
+    const label = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(lc), transparent: true, opacity: 0.75 }));
+    label.position.set(x, y + radius + 12, z);
+    label.scale.set(62, 16, 1);
+    group.add(label);
+  });
+
+  // ── Star field ──
+  const starPos = new Float32Array(900 * 3);
+  for (let i = 0; i < 900; i++) {
+    starPos[i*3]   = (Math.random() - 0.5) * 1200;
+    starPos[i*3+1] = (Math.random() - 0.5) * 800;
+    starPos[i*3+2] = (Math.random() - 0.5) * 900;
+  }
+  const starGeo = new THREE.BufferGeometry();
+  starGeo.setAttribute("position", new THREE.BufferAttribute(starPos, 3));
+  const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: "#e6eef8", size: 1.4, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending }));
+  scene.add(stars);
+
+  // ── Axes ──
+  const axMat = new THREE.LineBasicMaterial({ color: "#1e6bff", transparent: true, opacity: 0.35 });
+  [
+    [[-200,-150,0],[200,-150,0]],
+    [[-200,-150,0],[-200,150,0]],
+    [[-200,-150,-100],[-200,-150,110]],
+  ].forEach(pts => {
+    group.add(new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(pts.map(p => new THREE.Vector3(...p))),
+      axMat
+    ));
+  });
+
+  // ── Interaction ──
   const raycaster = new THREE.Raycaster();
   const mouse     = new THREE.Vector2();
-  let selectedOrb = null, isDragging = false;
-  let previousMouse = { x: 0, y: 0 };
-  let rotationVelocity = { x: 0, y: 0 };
+  let isDragging  = false, previousX = 0, previousY = 0;
 
-  const tooltip = document.createElement("div");
-  tooltip.style.cssText = `position:absolute;pointer-events:none;display:none;padding:8px 10px;border:1px solid rgba(255,255,255,.15);border-radius:10px;background:rgba(6,11,22,.92);color:#e6eef8;font:12px system-ui,sans-serif;box-shadow:0 0 20px rgba(34,211,238,.18);z-index:5;`;
-  container.appendChild(tooltip);
-
-  addLights(); addAxes(); addStars(); addPeptideOrbs();
-
-  renderer.domElement.addEventListener("mousedown", onMouseDown);
-  window.addEventListener("mouseup",   onMouseUp);
-  window.addEventListener("mousemove", onMouseMove);
-  renderer.domElement.addEventListener("click",  onClick);
-  renderer.domElement.addEventListener("wheel",  onWheel, { passive: false });
-  window.addEventListener("resize", onResize);
-  animate();
-
-  function normalise(value, min, max, targetMin, targetMax) {
-    const v = Number(value || 0);
-    return targetMin + ((v - min) / (max - min)) * (targetMax - targetMin);
-  }
-  function peptidePosition(p) {
-    return new THREE.Vector3(
-      normalise(p.evidenceScore,   0, 100, -80, 80),
-      normalise(p.regulatoryScore, 0, 100, -55, 55),
-      normalise(p.confidenceScore, 0, 100, -45, 45)
-    );
-  }
-  function addPeptideOrbs() {
-    peptidesData.forEach(p => {
-      const colour   = CATEGORY_COLOURS[(p.category || "").toLowerCase()] || 0xffffff;
-      const confidence = Number(p.confidenceScore || 40);
-      const radius   = normalise(confidence, 0, 100, 2.2, 7.5);
-      const geometry = new THREE.SphereGeometry(radius, 32, 32);
-      const material = new THREE.ShaderMaterial({
-        uniforms: {
-          glowColour: { value: new THREE.Color(colour) },
-          intensity:  { value: 1.45 },
-        },
-        vertexShader: `
-          varying vec3 vNormal; varying vec3 vPositionNormal;
-          void main() {
-            vNormal = normalize(normalMatrix * normal);
-            vPositionNormal = normalize((modelViewMatrix * vec4(position,1.0)).xyz);
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-          }`,
-        fragmentShader: `
-          uniform vec3 glowColour; uniform float intensity;
-          varying vec3 vNormal; varying vec3 vPositionNormal;
-          void main() {
-            float glow = pow(0.72 - dot(vNormal, vPositionNormal), 2.0) * intensity;
-            gl_FragColor = vec4(glowColour * (0.45 + glow), 0.82);
-          }`,
-        transparent: true,
-        blending:    THREE.AdditiveBlending,
-        depthWrite:  false,
-      });
-      const orb = new THREE.Mesh(geometry, material);
-      orb.position.copy(peptidePosition(p));
-      orb.userData = { peptide: p, baseRadius: radius };
-      group.add(orb);
-      const halo = new THREE.Mesh(
-        new THREE.SphereGeometry(radius * 1.9, 32, 32),
-        new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity: 0.08, blending: THREE.AdditiveBlending, depthWrite: false })
-      );
-      halo.position.copy(orb.position);
-      halo.userData = { peptide: p, halo: true };
-      group.add(halo);
-    });
-  }
-  function addStars() {
-    const count = 1100, positions = [];
-    for (let i = 0; i < count; i++) {
-      positions.push(THREE.MathUtils.randFloatSpread(600), THREE.MathUtils.randFloatSpread(360), THREE.MathUtils.randFloatSpread(600));
-    }
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-    scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0x8fb7ff, size: 0.9, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false })));
-  }
-  function addAxes() {
-    const mat = new THREE.LineBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.75 });
-    [
-      [[-90,-60,0],[90,-60,0]],
-      [[-90,-60,0],[-90,60,0]],
-      [[-90,-60,-50],[-90,-60,50]],
-    ].forEach(pts => {
-      const geo = new THREE.BufferGeometry().setFromPoints(pts.map(p => new THREE.Vector3(...p)));
-      group.add(new THREE.Line(geo, mat));
-    });
-    addAxisLabel("Evidence Strength →",    58, -72, 0);
-    addAxisLabel("Regulatory Approval ↑", -110, 42, 0);
-    addAxisLabel("Confidence Depth",      -112,-70, 42);
-  }
-  function addAxisLabel(text, x, y, z) {
-    const canvas = document.createElement("canvas");
-    canvas.width = 512; canvas.height = 96;
-    const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "rgba(230,238,248,.9)";
-    ctx.font = "28px system-ui,sans-serif";
-    ctx.fillText(text, 20, 56);
-    const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true }));
-    sprite.position.set(x, y, z);
-    sprite.scale.set(48, 9, 1);
-    group.add(sprite);
-  }
-  function addLights() {
-    scene.add(new THREE.AmbientLight(0xffffff, 0.45));
-    const light = new THREE.PointLight(0x22d3ee, 1.6, 400);
-    light.position.set(80, 120, 140);
-    scene.add(light);
-  }
-  function onMouseDown(e) { isDragging = true; previousMouse.x = e.clientX; previousMouse.y = e.clientY; }
-  function onMouseUp()    { isDragging = false; }
-  function onMouseMove(e) {
+  renderer.domElement.addEventListener("click", e => {
     const rect = renderer.domElement.getBoundingClientRect();
-    mouse.x = ((e.clientX - rect.left) / rect.width)  *  2 - 1;
-    mouse.y = ((e.clientY - rect.top)  / rect.height) * -2 + 1;
-    if (isDragging) {
-      const dx = e.clientX - previousMouse.x, dy = e.clientY - previousMouse.y;
-      rotationVelocity.y = dx * 0.006; rotationVelocity.x = dy * 0.006;
-      group.rotation.y += rotationVelocity.y; group.rotation.x += rotationVelocity.x;
-      previousMouse.x = e.clientX; previousMouse.y = e.clientY;
-    }
-    showHover(e);
-  }
-  function showHover(e) {
+    mouse.x =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
+    mouse.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
     raycaster.setFromCamera(mouse, camera);
-    const hits = raycaster.intersectObjects(group.children, true).filter(h => h.object.userData.peptide && !h.object.userData.halo);
-    if (!hits.length) { tooltip.style.display = "none"; return; }
-    const p = hits[0].object.userData.peptide;
-    tooltip.innerHTML = `<strong>${p.name || p.id}</strong><br>Evidence: ${p.evidenceScore ?? "-"}&nbsp;/&nbsp;Approval: ${p.regulatoryScore ?? "-"}&nbsp;/&nbsp;Confidence: ${p.confidenceScore ?? "-"}`;
-    const rect = container.getBoundingClientRect();
-    tooltip.style.left = `${e.clientX - rect.left + 14}px`;
-    tooltip.style.top  = `${e.clientY - rect.top  + 14}px`;
-    tooltip.style.display = "block";
-  }
-  function onClick() {
-    raycaster.setFromCamera(mouse, camera);
-    const hits = raycaster.intersectObjects(group.children, true).filter(h => h.object.userData.peptide && !h.object.userData.halo);
-    if (!hits.length) return;
-    if (selectedOrb) selectedOrb.scale.set(1, 1, 1);
-    selectedOrb = hits[0].object;
-    selectedOrb.scale.set(1.35, 1.35, 1.35);
-    if (typeof onSelect === "function") onSelect(selectedOrb.userData.peptide);
-  }
-  function onWheel(e) {
+    const hits = raycaster.intersectObjects(orbMeshes);
+    if (hits.length && typeof onSelect === "function") onSelect(hits[0].object.userData.peptide);
+  });
+
+  renderer.domElement.addEventListener("mousedown", e => { isDragging = true; previousX = e.clientX; previousY = e.clientY; });
+  const onUp   = () => { isDragging = false; };
+  const onMove = e => {
+    if (!isDragging) return;
+    group.rotation.y += (e.clientX - previousX) * 0.006;
+    group.rotation.x += (e.clientY - previousY) * 0.006;
+    previousX = e.clientX; previousY = e.clientY;
+  };
+  window.addEventListener("mouseup",   onUp);
+  window.addEventListener("mousemove", onMove);
+
+  renderer.domElement.addEventListener("wheel", e => {
     e.preventDefault();
-    camera.position.z = THREE.MathUtils.clamp(camera.position.z + e.deltaY * 0.08, 90, 320);
-  }
-  function onResize() {
+    camera.position.z = Math.max(180, Math.min(760, camera.position.z + e.deltaY * 0.35));
+  }, { passive: false });
+
+  const onResize = () => {
     const w = container.clientWidth || width, h = container.clientHeight || height;
     camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.setSize(w, h);
-  }
+  };
+  window.addEventListener("resize", onResize);
+
+  // ── Animation loop ──
   function animate() {
     requestAnimationFrame(animate);
-    if (!isDragging) {
-      group.rotation.y += rotationVelocity.y; group.rotation.x += rotationVelocity.x;
-      rotationVelocity.x *= 0.94; rotationVelocity.y *= 0.94;
-    }
-    const t = performance.now() * 0.001;
-    group.children.forEach(obj => {
-      if (obj.userData.peptide) obj.position.y += Math.sin(t + obj.position.x * 0.03) * 0.002;
+    stars.rotation.y += 0.0005;
+    orbMeshes.forEach((orb, i) => {
+      orb.rotation.y += 0.008;
+      orb.position.y += Math.sin(Date.now() * 0.0015 + i) * 0.008;
     });
     renderer.render(scene, camera);
   }
-  function isWebGLAvailable() {
-    try {
-      const c = document.createElement("canvas");
-      return !!(window.WebGLRenderingContext && (c.getContext("webgl") || c.getContext("experimental-webgl")));
-    } catch { return false; }
-  }
-  function buildSvgFallback(container, data, onSelect) {
-    const svgNS = "http://www.w3.org/2000/svg";
-    const w = container.clientWidth || 900, h = container.clientHeight || 500;
-    const svg = document.createElementNS(svgNS, "svg");
+  animate();
+
+  // ── SVG fallback (defined as function declaration so it's hoisted — but helpers above it aren't, which is why they're defined first) ──
+  function drawFallbackSvg(container, data, onSelect, colors) {
+    const w = container.clientWidth || 900, h = container.clientHeight || 600;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("width","100%"); svg.setAttribute("height","100%");
     svg.setAttribute("viewBox",`0 0 ${w} ${h}`);
-    svg.style.background = BG;
-    container.appendChild(svg);
-    const axis = document.createElementNS(svgNS,"g");
-    axis.setAttribute("stroke","#334155"); axis.setAttribute("stroke-width","1.5");
-    axis.innerHTML = `<line x1="80" y1="${h-70}" x2="${w-60}" y2="${h-70}"/><line x1="80" y1="${h-70}" x2="80" y2="50"/><text x="${w-230}" y="${h-35}" fill="#e6eef8" font-size="14">Evidence Strength →</text><text x="28" y="70" fill="#e6eef8" font-size="14" transform="rotate(-90 28 70)">Regulatory Approval ↑</text>`;
+    svg.style.background = "#060b16"; svg.style.borderRadius = "18px";
+    const axis = document.createElementNS("http://www.w3.org/2000/svg","g");
+    axis.innerHTML = `
+      <line x1="80" y1="${h-70}" x2="${w-60}" y2="${h-70}" stroke="#1e6bff" stroke-opacity="0.45"/>
+      <line x1="80" y1="${h-70}" x2="80" y2="50" stroke="#1e6bff" stroke-opacity="0.45"/>
+      <text x="${w/2}" y="${h-25}" fill="#e6eef8" font-size="13" text-anchor="middle">Evidence Strength</text>
+      <text x="24" y="${h/2}" fill="#e6eef8" font-size="13" transform="rotate(-90 24 ${h/2})" text-anchor="middle">Regulatory Approval</text>`;
     svg.appendChild(axis);
-    data.forEach(p => {
-      const x = 80 + ((Number(p.evidenceScore||0)/100)*(w-140));
-      const y = (h-70)-((Number(p.regulatoryScore||0)/100)*(h-120));
-      const r = 5 + ((Number(p.confidenceScore||0)/100)*11);
-      const colour = "#"+((CATEGORY_COLOURS[(p.category||"").toLowerCase()]||0xffffff).toString(16).padStart(6,"0"));
-      const circle = document.createElementNS(svgNS,"circle");
-      circle.setAttribute("cx",x); circle.setAttribute("cy",y); circle.setAttribute("r",r);
-      circle.setAttribute("fill",colour); circle.setAttribute("opacity","0.82");
-      circle.style.filter = `drop-shadow(0 0 10px ${colour})`; circle.style.cursor = "pointer";
-      circle.addEventListener("click", () => { if (typeof onSelect === "function") onSelect(p); });
-      const title = document.createElementNS(svgNS,"title");
-      title.textContent = `${p.name||p.id}\nEvidence: ${p.evidenceScore}\nApproval: ${p.regulatoryScore}\nConfidence: ${p.confidenceScore}`;
-      circle.appendChild(title); svg.appendChild(circle);
+    data.slice(0, 40).forEach((peptide, index) => {
+      const evidence   = getEvidence(peptide);
+      const regulatory = getRegulatory(peptide);
+      const confidence = getConfidence(peptide);
+      const category   = getCategory(peptide);
+      const x = 80 + (evidence   / 100) * (w - 140);
+      const y = (h - 70) - (regulatory / 100) * (h - 120);
+      const r = 5 + confidence * 0.09;
+      const color = colors[category] || "#22d3ee";
+      const circle = document.createElementNS("http://www.w3.org/2000/svg","circle");
+      circle.setAttribute("cx", x); circle.setAttribute("cy", y); circle.setAttribute("r", r);
+      circle.setAttribute("fill", color); circle.setAttribute("opacity","0.9");
+      circle.style.filter = `drop-shadow(0 0 10px ${color})`; circle.style.cursor = "pointer";
+      circle.addEventListener("click", () => { if (typeof onSelect === "function") onSelect(peptide); });
+      const label = document.createElementNS("http://www.w3.org/2000/svg","text");
+      label.setAttribute("x", x); label.setAttribute("y", y - r - 6);
+      label.setAttribute("fill","#e6eef8"); label.setAttribute("font-size","10");
+      label.setAttribute("text-anchor","middle"); label.setAttribute("opacity","0.75");
+      label.textContent = peptide.name || peptide.id || `Peptide ${index + 1}`;
+      svg.appendChild(circle); svg.appendChild(label);
     });
-    return { type:"svg-fallback", element:svg };
+    container.appendChild(svg);
   }
+
   return {
-    type:"three", scene, camera, renderer,
+    type: "three",
     destroy() {
-      window.removeEventListener("mouseup",   onMouseUp);
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup",   onUp);
+      window.removeEventListener("mousemove", onMove);
       window.removeEventListener("resize",    onResize);
-      renderer.dispose(); container.innerHTML = "";
-    }
+      renderer.dispose();
+      container.innerHTML = "";
+    },
   };
 }
 
@@ -4417,6 +4467,7 @@ function renderPeptideDetail(id) {
     <div id="sec-safety">
       <div class="sec-hdr">Safety Profile</div>
       ${safetyHTML}
+      ${renderHypeWarning(p)}
     </div>
 
     ${pulseHTML}
