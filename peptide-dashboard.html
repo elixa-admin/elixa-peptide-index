@@ -144,7 +144,7 @@ details[open] .hype-toggle-icon{transform:rotate(90deg)}
 .hype-col-text{font-size:.77rem;line-height:1.65;color:var(--text-secondary)}
 /* ── Research Maturity Badge ── */
 .maturity-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;border:1px solid;font-size:.67rem;font-weight:700;letter-spacing:.05em;cursor:help;margin-bottom:8px;transition:filter .15s}
-.maturity-badge:hover{filter:brightness(1.25)}
+@media(hover:hover){.maturity-badge:hover{filter:brightness(1.25)}}
 .maturity-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .maturity-s1{border-color:rgba(239,68,68,.4);color:#f87171;background:rgba(239,68,68,.07)}
 .maturity-s2{border-color:rgba(249,115,22,.4);color:#fb923c;background:rgba(249,115,22,.07)}
@@ -181,9 +181,11 @@ details[open] .hype-toggle-icon{transform:rotate(90deg)}
 .reg-prohibited{border-color:#2d1515;color:#4a1a1a;background:transparent;opacity:.35}
 .reg-wada-row{display:flex;justify-content:flex-end;align-items:center;gap:6px;font-size:10px;font-weight:700;padding:5px 0 0;border-top:1px solid var(--border);margin-top:2px}
 a.reg-chip{text-decoration:none;cursor:pointer;transition:filter .15s,transform .15s,opacity .15s}
-a.reg-chip:hover{filter:brightness(1.5);transform:scale(1.05);opacity:1!important}
 a.reg-wada-row{text-decoration:none;cursor:pointer;transition:opacity .15s}
-a.reg-wada-row:hover{opacity:.75}
+@media(hover:hover){
+  a.reg-chip:hover{filter:brightness(1.5);transform:scale(1.05);opacity:1!important}
+  a.reg-wada-row:hover{opacity:.75}
+}
 
 /* ── SCORE PANEL ── */
 .score-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:20px;align-items:center}
@@ -572,6 +574,23 @@ body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 
 .info-note{color:#94a3b8;font-size:.75rem;margin-top:10px}
+
+/* ── Three.js Landscape container ── */
+#threeLandscapeContainer{height:500px}
+@media(max-width:768px){#threeLandscapeContainer{height:320px}}
+@media(max-width:480px){#threeLandscapeContainer{height:260px}}
+
+/* ── Landscape How-to-Read 3-col grid ── */
+.landscape-info-grid{display:grid;grid-template-columns:1fr 1fr 1fr}
+@media(max-width:600px){.landscape-info-grid{grid-template-columns:1fr}}
+
+/* ── Overview evidence bar rows ── */
+.ev-row{display:grid;grid-template-columns:180px 1fr auto;gap:14px;align-items:center;border-radius:6px;padding:4px 6px;transition:background .15s;cursor:pointer}
+.ev-row-label{font-size:.72rem;font-weight:700;min-width:140px;text-align:right;white-space:nowrap}
+@media(max-width:600px){
+  .ev-row{grid-template-columns:1fr auto;gap:8px}
+  .ev-row-label{min-width:0;font-size:.65rem;max-width:100px;overflow:hidden;text-overflow:ellipsis}
+}
 </style>
 </head>
 <body>
@@ -3459,17 +3478,17 @@ function renderOverview() {
                          : cl.label === 'Preclinical'          ? '#a78bfa'
                          : '#475569';
           return `
-          <div style="display:grid;grid-template-columns:180px 1fr auto;gap:14px;align-items:center;border-radius:6px;padding:4px 6px;transition:background .15s;cursor:pointer"
+          <div class="ev-row"
                onmouseenter="this.style.background='rgba(255,255,255,.03)';showBarTT('${p.id}',event)"
                onmouseleave="this.style.background='transparent';hideBarTT()"
                onclick="showPeptide('${p.id}')">
-            <div style="display:flex;align-items:center;gap:8px">
-              <span style="font-size:.8rem;font-weight:600;color:var(--text-primary)">${p.name}</span>
+            <div style="display:flex;align-items:center;gap:8px;min-width:0">
+              <span style="font-size:.8rem;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</span>
             </div>
             <div style="height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden">
               <div style="height:100%;width:${p.composite * 10}%;background:${barColor};border-radius:4px;transition:width .7s cubic-bezier(.22,1,.36,1)"></div>
             </div>
-            <span style="font-size:.72rem;font-weight:700;color:${cl.color};min-width:140px;text-align:right">${cl.label}</span>
+            <span class="ev-row-label" style="color:${cl.color}">${cl.label}</span>
           </div>`;}).join('')}
       </div>
     </div>
@@ -3703,7 +3722,7 @@ function getPeptideThreeData() {
     id:              p.id,
     name:            p.name,
     category:        _CAT_TO_THREE[p.category] || 'immune',
-    evidenceScore:   Math.min(100, (p.t1Score || 0) * 10),
+    evidenceScore:   Math.min(100, (p.t1 || 0) * 10),
     regulatoryScore: _calcRegulatoryScore(p.id),
     confidenceScore: USER_CONFIDENCE[p.id] ?? USER_CONFIDENCE[p.id.replace('_ipa','')] ?? 50,
   }));
@@ -3862,6 +3881,51 @@ function buildThreeJsLandscape(container, peptidesData, onSelect) {
   window.addEventListener("mouseup",   onUp);
   window.addEventListener("mousemove", onMove);
 
+  // ── Touch support (drag to rotate, pinch to zoom, tap to select) ──
+  let touchStartX = 0, touchStartY = 0, pinchStartDist = 0;
+  const onTouchStart = e => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    } else if (e.touches.length === 2) {
+      pinchStartDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    }
+    e.preventDefault();
+  };
+  const onTouchMove = e => {
+    if (e.touches.length === 1) {
+      group.rotation.y += (e.touches[0].clientX - touchStartX) * 0.006;
+      group.rotation.x += (e.touches[0].clientY - touchStartY) * 0.006;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    } else if (e.touches.length === 2) {
+      const d = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      camera.position.z = Math.max(180, Math.min(760, camera.position.z - (d - pinchStartDist) * 0.8));
+      pinchStartDist = d;
+    }
+    e.preventDefault();
+  };
+  const onTouchEnd = e => {
+    if (e.changedTouches.length === 1 && e.touches.length === 0) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      const t = e.changedTouches[0];
+      mouse.x =  ((t.clientX - rect.left) / rect.width)  * 2 - 1;
+      mouse.y = -((t.clientY - rect.top)  / rect.height) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+      const hits = raycaster.intersectObjects(orbMeshes);
+      if (hits.length && typeof onSelect === "function") onSelect(hits[0].object.userData.peptide);
+    }
+  };
+  renderer.domElement.addEventListener("touchstart", onTouchStart, { passive: false });
+  renderer.domElement.addEventListener("touchmove",  onTouchMove,  { passive: false });
+  renderer.domElement.addEventListener("touchend",   onTouchEnd);
+
   renderer.domElement.addEventListener("wheel", e => {
     e.preventDefault();
     camera.position.z = Math.max(180, Math.min(760, camera.position.z + e.deltaY * 0.35));
@@ -3929,6 +3993,9 @@ function buildThreeJsLandscape(container, peptidesData, onSelect) {
       window.removeEventListener("mouseup",   onUp);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("resize",    onResize);
+      renderer.domElement.removeEventListener("touchstart", onTouchStart);
+      renderer.domElement.removeEventListener("touchmove",  onTouchMove);
+      renderer.domElement.removeEventListener("touchend",   onTouchEnd);
       renderer.dispose();
       container.innerHTML = "";
     },
@@ -3955,7 +4022,7 @@ function renderLandscapePage() {
       </div>
 
       <!-- Three.js canvas mounts here; SVG fallback also lands here -->
-      <div id="threeLandscapeContainer" style="width:100%;height:500px;border-radius:8px;overflow:hidden"></div>
+      <div id="threeLandscapeContainer" style="width:100%;border-radius:8px;overflow:hidden"></div>
     </div>
 
     <!-- How to read the map -->
@@ -3983,7 +4050,7 @@ function renderLandscapePage() {
 
       <div style="background:rgba(129,140,248,.06);border:1px solid rgba(129,140,248,.15);border-radius:8px;padding:14px">
         <div style="font-size:.78rem;font-weight:700;color:#818cf8;margin-bottom:8px">💡 Making Informed Decisions — What to Look For</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;font-size:.73rem;color:var(--text-secondary);line-height:1.6">
+        <div class="landscape-info-grid" style="gap:12px;font-size:.73rem;color:var(--text-secondary);line-height:1.6">
           <div><strong style="color:var(--text-primary);display:block;margin-bottom:3px">1. Check the zone first</strong>Top-right compounds carry the least risk from a regulatory and evidence standpoint. Bottom-left compounds are the most experimental.</div>
           <div><strong style="color:var(--text-primary);display:block;margin-bottom:3px">2. Look at circle size</strong>Larger circles = more overall evidence across all sources. A small circle in the top-right is more reassuring than a large circle in the bottom-left.</div>
           <div><strong style="color:var(--text-primary);display:block;margin-bottom:3px">3. Open the profile</strong>Click any circle to see the full breakdown — what regulators around the world say, what studies exist, how it's used, and what the risks are.</div>
