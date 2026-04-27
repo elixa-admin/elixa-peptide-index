@@ -591,6 +591,81 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
   .ev-row{grid-template-columns:1fr auto;gap:8px}
   .ev-row-label{min-width:0;font-size:.65rem;max-width:100px;overflow:hidden;text-overflow:ellipsis}
 }
+
+/* ── SNAPSHOT CARD ── */
+.snapshot-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;margin:16px 0}
+.snapshot-card h3{margin:0 0 14px;color:var(--text-primary);font-size:15px;font-weight:700}
+.snapshot-defs{display:grid;gap:10px}
+.snapshot-row{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:start}
+.snapshot-label{color:var(--text-secondary);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.snapshot-value{color:var(--text-primary);font-size:14px;line-height:1.45}
+@media(max-width:600px){.snapshot-row{grid-template-columns:1fr;gap:4px}}
+
+/* ── DECISION FLAGS ── */
+.decision-flags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.dflag{display:inline-flex;align-items:center;border-radius:999px;padding:6px 12px;font-size:11px;font-weight:700;line-height:1;white-space:nowrap;border:1px solid transparent}
+.dflag-warn{background:rgba(245,158,11,.15);color:#f59e0b;border-color:rgba(245,158,11,.25)}
+.dflag-ok{background:rgba(16,185,129,.1);color:#10b981;border-color:rgba(16,185,129,.2)}
+.dflag-neutral{background:var(--bg-card);color:var(--text-secondary);border-color:var(--border)}
+
+/* ── SECTION ACCORDION ── */
+.sec-accordion{margin:14px 0;border:0}
+.sec-accordion>summary{display:flex;flex-direction:row;justify-content:space-between;align-items:center;cursor:pointer;padding:12px 0;border-bottom:1px solid var(--border);font-weight:600;color:var(--text-primary);list-style:none}
+.sec-accordion>summary::-webkit-details-marker{display:none}
+.sec-accordion>summary::after{content:"›";display:inline-block;color:var(--text-secondary);font-size:22px;line-height:1;transform:rotate(0deg);transition:transform .2s ease,color .2s ease}
+.sec-accordion[open]>summary::after{transform:rotate(90deg);color:var(--accent-blue)}
+.sec-accordion-content{padding:14px 0 4px}
+
+/* ── ELIXA INSIGHT ── */
+.insight-callout{background:var(--bg-card);border-left:3px solid var(--accent-blue);border-radius:12px;padding:14px;margin:14px 0;color:var(--text-secondary);font-size:14px;line-height:1.55;font-style:italic}
+.insight-callout strong{display:block;color:var(--text-primary);font-style:normal;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0}
+.trust-row{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--text-secondary);font-size:12px;margin-bottom:8px}
+.trust-row strong{color:var(--text-primary);font-size:13px}
+.trust-track{width:100%;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.trust-fill{height:100%;border-radius:3px;transition:width .25s ease}
+.trust-fill-high{background:#10b981}
+.trust-fill-moderate-high,.trust-fill-moderate,.trust-fill-medium,.trust-fill-mixed{background:#f59e0b}
+.trust-fill-low,.trust-fill-very-low{background:#ef4444}
+.trust-note{margin:10px 0 0;color:var(--text-secondary);font-size:12px;line-height:1.45}
+
+/* ── RELATED COMPOUNDS ── */
+.related-section{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;margin:24px 0 16px}
+.related-section h3{margin:0 0 12px;color:var(--text-primary);font-size:15px;font-weight:700}
+.related-chips{display:flex;flex-wrap:wrap;gap:8px}
+.related-chip{appearance:none;border:1px solid var(--border);border-left-width:3px;background:var(--bg-card);color:var(--text-primary);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s}
+.related-chip:hover{background:rgba(255,255,255,.05);transform:translateY(-1px)}
+
+/* ── COMPARE BAR ── */
+#compareBar{position:fixed;bottom:0;left:0;right:0;z-index:1000;display:none;flex-direction:row;justify-content:space-between;align-items:center;gap:16px;background:#0d1929;border-top:1px solid var(--border);padding:12px 20px;box-shadow:0 -12px 28px rgba(0,0,0,.28)}
+.compare-bar-left{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+.compare-bar-actions{display:flex;align-items:center;gap:8px}
+.compare-bar-title{color:var(--text-primary);font-size:13px;font-weight:800}
+.compare-pill{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;background:rgba(255,255,255,.055);border:1px solid var(--border);color:var(--text-primary);font-size:12px;font-weight:700}
+.compare-action,.compare-clear,.comparison-back{appearance:none;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer}
+.compare-action{border:1px solid var(--accent-blue);background:var(--accent-blue);color:#06101f}
+.compare-action:disabled{opacity:.45;cursor:not-allowed}
+.compare-clear,.comparison-back{border:1px solid var(--border);background:transparent;color:var(--text-secondary)}
+.compare-btn{position:absolute;top:6px;right:6px;z-index:5;appearance:none;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text-muted);border-radius:999px;padding:3px 7px;font-size:10px;font-weight:800;cursor:pointer;transition:background .15s,color .15s}
+.compare-btn:hover,.compare-btn.active{background:rgba(56,189,248,.15);color:var(--accent-blue);border-color:rgba(56,189,248,.35)}
+
+/* ── COMPARISON PAGE ── */
+.comparison-page{padding-bottom:84px}
+.comparison-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}
+.comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.compare-profile{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px}
+.compare-profile h2{margin:0 0 8px;color:var(--text-primary);font-size:20px}
+.compare-score{color:var(--text-secondary);font-size:13px;margin-bottom:14px}
+.compare-section-title{margin:16px 0 8px;color:var(--text-primary);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+@media(max-width:760px){
+  #compareBar{flex-direction:column;align-items:stretch;padding:12px}
+  .compare-bar-actions{width:100%}
+  .compare-action,.compare-clear{flex:1}
+  .comparison-header{align-items:flex-start;flex-direction:column}
+  .comparison-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -930,6 +1005,207 @@ const RESEARCH_PULSE = [
     headline:"Chinese Phase 4 data: Thymosin Alpha-1 reduces post-COVID immune dysregulation markers by 34% vs standard care",
     source:"Chinese Journal of Infectious Diseases", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+alpha+1+COVID" },
+,
+  { date:"Jan 2025", peptideId:"aod9604", peptide:"AOD-9604", color:"#a3e635",
+    headline:"Recent reviews continued to describe AOD-9604 as a GH-fragment analogue with limited clinical evidence for fat loss, despite persistent use in wellness and compounding markets.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=AOD-9604" },
+  { date:"Mar 2024", peptideId:"aod9604", peptide:"AOD-9604", color:"#a3e635",
+    headline:"Researchers and regulators continued to separate AOD-9604 from approved obesity medicines, noting that its metabolic claims remain far less established than GLP-1 therapies.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=AOD-9604" },
+  { date:"Feb 2025", peptideId:"ghkcu", peptide:"GHK-Cu", color:"#c084fc",
+    headline:"Skin-ageing and wound-repair research continued to examine GHK-Cu for collagen signalling, tissue remodelling and cosmetic dermatology applications.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu" },
+  { date:"Jun 2024", peptideId:"ghkcu", peptide:"GHK-Cu", color:"#c084fc",
+    headline:"Cosmetic peptide reviews highlighted GHK-Cu as one of the better-known copper peptides, while noting that topical skin evidence is stronger than systemic anti-ageing claims.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu" },
+  { date:"Jan 2025", peptideId:"cjc1295_ipamorelin", peptide:"CJC-1295 / Ipamorelin", color:"#fbbf24",
+    headline:"Clinical interest in GH secretagogue combinations remained concentrated in wellness and hormone-clinic settings, with limited regulator-reviewed evidence for anti-ageing or body-composition claims.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295+/+Ipamorelin" },
+  { date:"Apr 2024", peptideId:"cjc1295_ipamorelin", peptide:"CJC-1295 / Ipamorelin", color:"#fbbf24",
+    headline:"Endocrine safety discussions continued to emphasise monitoring IGF-1, glucose and fluid-retention markers when GH-axis peptides are used outside formal indications.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295+/+Ipamorelin" },
+  { date:"Feb 2025", peptideId:"sermorelin", peptide:"Sermorelin", color:"#fde68a",
+    headline:"Sermorelin remained one of the more clinically familiar GH-releasing peptides, but recent commentary continued to distinguish endocrine testing history from anti-ageing marketing.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Sermorelin" },
+  { date:"Aug 2024", peptideId:"sermorelin", peptide:"Sermorelin", color:"#fde68a",
+    headline:"Hormone-clinic use of sermorelin persisted, though evidence for broad longevity, fat-loss or performance outcomes remained less robust than its GH-stimulation rationale.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Sermorelin" },
+  { date:"Jan 2025", peptideId:"ipamorelin", peptide:"Ipamorelin", color:"#fcd34d",
+    headline:"Ipamorelin continued to appear in GH-optimisation protocols, but modern controlled human outcome studies remained limited.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Ipamorelin" },
+  { date:"May 2024", peptideId:"ipamorelin", peptide:"Ipamorelin", color:"#fcd34d",
+    headline:"Research summaries described ipamorelin as a selective GH secretagogue, while cautioning that selectivity does not equal proven long-term safety.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Ipamorelin" },
+  { date:"Mar 2025", peptideId:"hexarelin", peptide:"Hexarelin", color:"#f59e0b",
+    headline:"Hexarelin remained primarily a research compound, with interest focused on GH release and cardiometabolic signalling rather than approved therapeutic use.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Hexarelin" },
+  { date:"Jul 2024", peptideId:"hexarelin", peptide:"Hexarelin", color:"#f59e0b",
+    headline:"Endocrine reviews continued to flag older GH secretagogues like hexarelin as biologically potent but underdeveloped for modern clinical application.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Hexarelin" },
+  { date:"Jan 2025", peptideId:"selank", peptide:"Selank", color:"#818cf8",
+    headline:"Neuropeptide reviews continued to describe Selank as a regionally used anxiolytic candidate, but global regulator-reviewed evidence remained limited.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Selank" },
+  { date:"Sep 2024", peptideId:"selank", peptide:"Selank", color:"#818cf8",
+    headline:"Research interest in Selank focused on stress, anxiety and immune-neuroendocrine signalling, with most claims still requiring stronger controlled human trials.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Selank" },
+  { date:"Feb 2025", peptideId:"dsip", peptide:"DSIP", color:"#6366f1",
+    headline:"Sleep research discussions continued to treat DSIP cautiously, noting that its clinical effects remain inconsistent and not well validated.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=DSIP" },
+  { date:"Jun 2024", peptideId:"dsip", peptide:"DSIP", color:"#6366f1",
+    headline:"DSIP remained a frequently cited experimental sleep peptide, but recent evidence summaries found no clear modern consensus for routine use.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=DSIP" },
+  { date:"Jan 2025", peptideId:"dihexa", peptide:"Dihexa", color:"#4f46e5",
+    headline:"Dihexa remained largely preclinical, with interest centred on synaptogenesis and neurodegenerative-disease models rather than human therapeutic evidence.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Dihexa" },
+  { date:"Apr 2024", peptideId:"dihexa", peptide:"Dihexa", color:"#4f46e5",
+    headline:"Cognitive-enhancement discussions continued to flag Dihexa as high-risk from an evidence perspective because human safety data remain minimal.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Dihexa" },
+  { date:"Mar 2025", peptideId:"ara290", peptide:"ARA-290", color:"#67e8f9",
+    headline:"ARA-290 research continued to focus on small-fibre neuropathy, inflammation and tissue-protective signalling, with clinical translation still incomplete.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=ARA-290" },
+  { date:"Jul 2024", peptideId:"ara290", peptide:"ARA-290", color:"#67e8f9",
+    headline:"Studies of EPO-derived peptides kept ARA-290 in the spotlight for potential non-haematopoietic repair effects, but approval pathways remained unsettled.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=ARA-290" },
+  { date:"Feb 2025", peptideId:"thymosin_alpha1", peptide:"Thymosin Alpha-1", color:"#34d399",
+    headline:"Immune-modulation reviews continued to discuss thymosin alpha-1 for infection, immune dysfunction and adjunctive therapy contexts, with evidence varying by indication.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Thymosin+Alpha-1" },
+  { date:"Oct 2024", peptideId:"thymosin_alpha1", peptide:"Thymosin Alpha-1", color:"#34d399",
+    headline:"Global regulatory status remained uneven: thymosin alpha-1 is used in some countries, but is not uniformly approved across major Western regulators.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Thymosin+Alpha-1" },
+  { date:"Jan 2025", peptideId:"epitalon", peptide:"Epitalon", color:"#d8b4fe",
+    headline:"Longevity reviews continued to mention Epitalon in telomere and ageing discussions, while emphasising that human outcome evidence remains weak.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Epitalon" },
+  { date:"May 2024", peptideId:"epitalon", peptide:"Epitalon", color:"#d8b4fe",
+    headline:"Biohacker interest in Epitalon remained high, but recent scientific commentary continued to separate early mechanistic claims from proven anti-ageing therapy.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Epitalon" },
+  { date:"Feb 2025", peptideId:"motsc", peptide:"MOTS-c", color:"#e879f9",
+    headline:"MOTS-c remained an active mitochondrial peptide of interest in metabolic ageing, exercise biology and insulin-sensitivity research.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=MOTS-c" },
+  { date:"Aug 2024", peptideId:"motsc", peptide:"MOTS-c", color:"#e879f9",
+    headline:"Preclinical and early translational studies continued to investigate MOTS-c as a stress-response peptide, but clinical use remains investigational.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=MOTS-c" },
+  { date:"Jan 2025", peptideId:"kisspeptin10", peptide:"Kisspeptin-10", color:"#f43f5e",
+    headline:"Kisspeptin-10 research continued in reproductive endocrinology, especially around puberty, fertility signalling and hypothalamic hormone regulation.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Kisspeptin-10" },
+  { date:"Jun 2024", peptideId:"kisspeptin10", peptide:"Kisspeptin-10", color:"#f43f5e",
+    headline:"Clinical interest remained specialist rather than wellness-oriented, with kisspeptin mainly used to probe the reproductive hormone axis.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Kisspeptin-10" },
+  { date:"Mar 2025", peptideId:"humanin", peptide:"Humanin", color:"#c084fc",
+    headline:"Humanin remained a mitochondrial peptide of interest in ageing biology, metabolic stress and cellular protection research.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Humanin" },
+  { date:"Sep 2024", peptideId:"humanin", peptide:"Humanin", color:"#c084fc",
+    headline:"Recent reviews described Humanin as promising in preclinical ageing models, but still far from validated human therapy.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Humanin" },
+  { date:"Jan 2025", peptideId:"collagen", peptide:"Collagen Peptides", color:"#c084fc",
+    headline:"Human studies continued to support modest benefits of collagen peptides for skin elasticity, hydration and joint comfort, depending on dose and duration.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Collagen+Peptides" },
+  { date:"Apr 2024", peptideId:"collagen", peptide:"Collagen Peptides", color:"#c084fc",
+    headline:"Nutrition reviews noted that collagen peptide effects are plausible but generally modest, with product quality and study design influencing outcomes.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Collagen+Peptides" },
+  { date:"Feb 2025", peptideId:"ghrp2", peptide:"GHRP-2", color:"#fbbf24",
+    headline:"GHRP-2 remained a legacy GH secretagogue with limited modern clinical development compared with newer endocrine therapies.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=GHRP-2" },
+  { date:"Jul 2024", peptideId:"ghrp2", peptide:"GHRP-2", color:"#fbbf24",
+    headline:"Research summaries continued to describe GHRP-2 as biologically active but not a regulator-approved wellness or performance compound.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=GHRP-2" },
+  { date:"Jan 2025", peptideId:"igf1lr3", peptide:"IGF-1 LR3", color:"#fbbf24",
+    headline:"IGF-1 LR3 remained an experimental analogue discussed in performance circles, with no approved therapeutic pathway and significant safety uncertainty.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=IGF-1+LR3" },
+  { date:"May 2024", peptideId:"igf1lr3", peptide:"IGF-1 LR3", color:"#fbbf24",
+    headline:"Growth-factor safety discussions continued to warn that IGF-pathway manipulation raises metabolic and abnormal-growth concerns outside specialist medicine.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=IGF-1+LR3" },
+  { date:"Feb 2025", peptideId:"pegmgf", peptide:"PEG-MGF", color:"#fbbf24",
+    headline:"PEG-MGF remained a research-stage muscle-repair concept, with limited credible human clinical evidence for performance or recovery use.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=PEG-MGF" },
+  { date:"Aug 2024", peptideId:"pegmgf", peptide:"PEG-MGF", color:"#fbbf24",
+    headline:"Myogenic growth-factor discussions continued to focus mainly on preclinical mechanisms, not approved treatment protocols.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=PEG-MGF" },
+  { date:"Mar 2025", peptideId:"follistatin", peptide:"Follistatin", color:"#fbbf24",
+    headline:"Follistatin research remained centred on myostatin inhibition, muscle-wasting disease concepts and gene-therapy style approaches rather than consumer peptide use.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Follistatin" },
+  { date:"Oct 2024", peptideId:"follistatin", peptide:"Follistatin", color:"#fbbf24",
+    headline:"Performance-market interest stayed high, but regulators have not approved follistatin as a muscle-growth therapy.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Follistatin" },
+  { date:"Jan 2025", peptideId:"vip", peptide:"Vasoactive Intestinal Peptide", color:"#818cf8",
+    headline:"VIP research continued in inflammatory, pulmonary and immune-signalling contexts, but routine clinical use remains limited and highly specialised.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Vasoactive+Intestinal+Peptide" },
+  { date:"Jun 2024", peptideId:"vip", peptide:"Vasoactive Intestinal Peptide", color:"#818cf8",
+    headline:"Studies continued to examine VIP\'s immune-modulating and vasodilatory effects, while safety and delivery challenges limited broader translation.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Vasoactive+Intestinal+Peptide" },
+  { date:"Feb 2025", peptideId:"ll37", peptide:"LL-37", color:"#34d399",
+    headline:"LL-37 remained an important antimicrobial peptide in innate-immunity research, especially around infection, wound biology and inflammatory signalling.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=LL-37" },
+  { date:"Sep 2024", peptideId:"ll37", peptide:"LL-37", color:"#34d399",
+    headline:"Research continued to show LL-37 has both antimicrobial and immune-modulating effects, but therapeutic use remains investigational due to complexity and safety questions.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=LL-37" },
+  { date:"Jan 2025", peptideId:"gonadorelin", peptide:"Gonadorelin", color:"#f472b6",
+    headline:"Gonadorelin remained an established reproductive-endocrine tool for diagnostic testing and specialist hormone-axis management.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Gonadorelin" },
+  { date:"Apr 2024", peptideId:"gonadorelin", peptide:"Gonadorelin", color:"#f472b6",
+    headline:"Recent endocrine practice continued to treat gonadorelin as a regulated specialist medicine rather than a general wellness peptide.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Gonadorelin" },
+  { date:"Feb 2025", peptideId:"teriparatide", peptide:"Teriparatide", color:"#38bdf8",
+    headline:"Osteoporosis research continued to compare teriparatide with other bone-building and antiresorptive strategies for high-risk patients.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Teriparatide" },
+  { date:"Jul 2024", peptideId:"teriparatide", peptide:"Teriparatide", color:"#38bdf8",
+    headline:"Clinical guidance continued to position teriparatide as an established anabolic bone therapy, typically reserved for severe or high-fracture-risk osteoporosis.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Teriparatide" },
+  { date:"Jan 2025", peptideId:"glatiramer_acetate", peptide:"Glatiramer Acetate", color:"#34d399",
+    headline:"Multiple sclerosis treatment reviews continued to list glatiramer acetate as an established disease-modifying option, though newer high-efficacy therapies increasingly dominate.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Glatiramer+Acetate" },
+  { date:"May 2024", peptideId:"glatiramer_acetate", peptide:"Glatiramer Acetate", color:"#34d399",
+    headline:"Long-term safety data continued to support glatiramer\'s role as a lower-risk injectable MS therapy, especially where tolerability is prioritised.",
+    source:"Research Review", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Glatiramer+Acetate" }
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -2276,7 +2552,148 @@ const PEPTIDES = [
       {year:"2001",title:"Effect of PTH (1-34) on Fractures and BMD in Postmenopausal Women with Osteoporosis",finding:"Teriparatide reduced vertebral fractures by 65% and non-vertebral fractures by 53% vs placebo.",journal:"New England Journal of Medicine"},
     ],
     safety:{contraindications:["Hypercalcaemia","Bone cancer or history of skeletal malignancies","Pregnancy and lactation","Prior radiation to the skeleton","Paget's disease of bone"],precautions:["History of kidney stones — increased risk","Orthostatic hypotension — first dose risk","WADA prohibited"],common:["Nausea","Leg cramps","Dizziness","Injection site reactions"],serious:["Osteosarcoma — black box warning (rat data; risk in humans uncertain; 24-month limit)"]}
+
+
+  },
+  {
+    id:"nad_plus", name:"NAD+", category:"longevity",
+    altNames:"Nicotinamide Adenine Dinucleotide · NR · NMN",
+    brandNames:["NAD+","Nicotinamide Riboside","NMN"],
+    class:"Cellular Energy Cofactor", icon:"⚡", color:"#a855f7",
+    iconBg:"linear-gradient(135deg,#150a2a,#1e0a3c)",
+    t1:5.8, t2:7.4, t3:7.2, composite:6.55,
+    evidence_x:5.5, access_y:7.0,
+    fdaStatus:"research", fdaLabel:"Research Stage",
+    sahpraStatus:"grey", sahpraLabel:"Supplement / Grey Market SA",
+    wadaStatus:"wada-ok", wadaLabel:"Not Prohibited",
+    mechanism:"NAD+ is a core molecule used by cells to convert nutrients into energy, repair DNA, regulate stress responses and support mitochondrial function. Levels tend to decline with age and metabolic stress. Raising NAD+ biology is biologically plausible but human outcome evidence for anti-ageing benefit remains preliminary.",
+    technicalMech:"Nicotinamide adenine dinucleotide is a redox cofactor cycling between NAD+ and NADH in mitochondrial energy metabolism. Acts as substrate for sirtuins, PARPs and CD38, linking NAD+ availability to DNA repair, mitochondrial biogenesis, inflammatory signalling and cellular stress responses. NR and NMN are oral precursors with different pharmacokinetics.",
+    whatItDoes:{title:"NAD+ — What It Does",body:`<p>NAD+ is essential for cellular energy production and is involved in hundreds of metabolic reactions. It declines with age, which is why NAD+ boosting has attracted longevity research interest.</p><ul><li>Energy metabolism and mitochondrial function</li><li>DNA repair via PARP enzymes</li><li>Sirtuin activation (longevity-associated)</li><li>Cellular stress response modulation</li></ul><p style="color:#94a3b8;font-size:.75rem;margin-top:10px">⚠ Strong mechanistic rationale, but human outcome evidence for meaningful anti-ageing benefit remains preliminary.</p>`},
+    saContext:"In South Africa, NAD+ products appear as IV wellness infusions, oral supplements or compounded clinic offerings. SAHPRA status depends on formulation, route and claims — injectable preparations should not be treated like ordinary supplements.",
+    purposes:{weightBody:3,recoveryTissue:5,inflammation:4,energyPerf:7,cognitiveNeuro:5,sleep:3,cardiovascular:4,skinLongevity:7},
+    dosing:{intro:{dose:"250–1000mg/day oral (NR/NMN) or IV protocol",note:"Route-dependent — IV requires clinical setting"},maintenance:{dose:"500mg/day oral NR or NMN (common research range)",note:""},frequency:"Daily oral; IV intermittently",halfLife:"Short plasma half-life; downstream NAD+ pool effects persist",cycle:"Ongoing supplementation in most protocols",notes:"IV NAD+ protocols vary widely; clinical supervision required. Oral NR/NMN are the most accessible forms. Start low; adjust based on tolerance."},
+    administration:[{method:"IV Infusion",bio:100,note:"Fastest route — clinical supervision required"},{method:"Oral",bio:10,note:"NR or NMN precursors — most common form"},{method:"IM Injection",bio:70,note:"Less common; clinic-administered"}],
+    efficacy:[
+      {domain:"NAD+ Metabolite Restoration",strength:"mod",bar:70,source:"Human supplementation studies (NR/NMN)"},
+      {domain:"Longevity / Lifespan",strength:"prelim",bar:20,source:"Strong mechanistic rationale; no human outcome proof"},
+      {domain:"Metabolic Health",strength:"low",bar:40,source:"Small human studies — inconsistent findings"},
+      {domain:"Fatigue & Energy",strength:"low",bar:35,source:"Anecdotal and small-scale human reports"},
+    ],
+    trials:[
+      {phase:"ph-2",phaseLabel:"Phase 2",name:"NR supplementation and NAD+ metabolomics",desc:"Human intervention studies measuring NAD-related metabolite changes with NR and NMN.",sponsor:"Multiple academic centres",enrolled:"30–120",status:"completed",statusLabel:"Completed",id:"NCT02835664"},
+    ],
+    studies:[
+      {year:"2023",title:"Dietary Supplementation With NAD+-Boosting Compounds in Humans",finding:"Consistent NAD-metabolite increases observed but mixed evidence for durable clinical benefit.",journal:"Nutrients"},
+      {year:"2024",title:"Clinical evidence for NAD+ precursors to slow ageing-related decline",finding:"NAD+ biology is promising; human outcome evidence remains preliminary.",journal:"GeroScience"},
+    ],
+    safety:{contraindications:["Active cancer — consult oncologist first","Severe liver or kidney disease without review"],precautions:["Pregnancy or breastfeeding — insufficient data","Potential BP changes with IV use","Theoretical interactions with cancer biology"],common:["Flushing","Nausea","Headache","Fatigue during infusion","Injection-site discomfort"],serious:["Blood-pressure fluctuation during IV use","Unknown long-term effects of chronic high-dose NAD+ boosting"]}
+  },
+
+  {
+    id:"tb4", name:"Thymosin Beta-4", category:"recovery",
+    altNames:"Tβ4 · TB4 · RGN-259 (ophthalmic)",
+    brandNames:["Thymosin Beta-4","Tβ4","RGN-259"],
+    class:"Tissue Repair Peptide (Endogenous)", icon:"🔧", color:"#10b981",
+    iconBg:"linear-gradient(135deg,#021a0e,#03261a)",
+    t1:4.8, t2:8.0, t3:6.8, composite:6.1,
+    evidence_x:4.5, access_y:5.0,
+    fdaStatus:"research", fdaLabel:"Research Stage",
+    sahpraStatus:"grey", sahpraLabel:"Grey Market SA",
+    wadaStatus:"wada-ok", wadaLabel:"Potentially Prohibited — Check WADA",
+    mechanism:"Thymosin Beta-4 is a naturally occurring peptide involved in cell movement, tissue repair, blood-vessel formation and inflammation control. Often confused with TB-500, which is a synthetic fragment marketed in recovery circles. The strongest clinical evidence is in ophthalmic wound healing, not systemic injury recovery.",
+    technicalMech:"A 43-amino-acid actin-sequestering peptide that binds G-actin and influences cytoskeletal organisation, cell migration, angiogenesis, anti-inflammatory signalling and tissue remodelling. Investigated in dermal, corneal, cardiac and inflammatory injury models. Topical ophthalmic use has the most clinical development.",
+    whatItDoes:{title:"Thymosin Beta-4 — What It Does",body:`<p>Thymosin Beta-4 is the native endogenous peptide involved in tissue repair — separate from TB-500, which is a synthetic fragment. Clinical development has focused on wound and eye surface healing.</p><ul><li>Tissue repair and cell migration</li><li>Angiogenesis (blood vessel formation)</li><li>Anti-inflammatory signalling</li><li>Corneal and wound healing (strongest evidence)</li></ul><p style="color:#94a3b8;font-size:.75rem;margin-top:10px">⚠ Broad athletic-injury recovery claims are far less proven than the ophthalmic data. Grey-market supply carries quality risk.</p>`},
+    saContext:"In South Africa, Thymosin Beta-4 should not be assumed to be SAHPRA-approved. Topical or ophthalmic formulations differ from systemic injectable products, and grey-market supply carries quality and legal risk.",
+    purposes:{weightBody:null,recoveryTissue:8,inflammation:6,energyPerf:3,cognitiveNeuro:2,sleep:null,cardiovascular:4,skinLongevity:5},
+    dosing:{intro:{dose:"No approved systemic dosing",note:"Ophthalmic: product-specific; injectable: no standard"},maintenance:{dose:"Research context only",note:""},frequency:"Research dependent",halfLife:"Short systemic half-life; tissue effects may outlast plasma exposure",cycle:"No established cycle",notes:"No standard clinical recovery protocol exists. Ophthalmic thymosin-derived products follow trial-specific regimens. Systemic injectable use lacks standardised guidance."},
+    administration:[{method:"Topical / Ophthalmic",bio:20,note:"Best-established route — corneal / skin applications"},{method:"SC Injection",bio:70,note:"Used in research; no approved systemic protocol"},{method:"IM Injection",bio:75,note:"Research use only"}],
+    efficacy:[
+      {domain:"Wound Healing",strength:"mod",bar:65,source:"Preclinical and early clinical wound studies"},
+      {domain:"Corneal Healing",strength:"mod",bar:68,source:"Ophthalmic RGN-259 development programme"},
+      {domain:"Sports Injury Recovery",strength:"low",bar:30,source:"Community use — no controlled human trials"},
+      {domain:"Anti-Inflammation",strength:"prelim",bar:40,source:"Preclinical animal and in vitro studies"},
+    ],
+    trials:[
+      {phase:"ph-3",phaseLabel:"Phase 3",name:"RGN-259 for Dry Eye and Corneal Healing",desc:"Thymosin beta-4 ophthalmic drops studied for dry eye disease and neurotrophic keratopathy.",sponsor:"RegeneRx Biopharmaceuticals",enrolled:"600",status:"completed",statusLabel:"Completed",id:"NCT02597699"},
+    ],
+    studies:[
+      {year:"2021",title:"Progress on the Function and Application of Thymosin β4",finding:"Reviewed broad repair, angiogenesis and anti-inflammatory roles across tissue models.",journal:"International Journal of Molecular Sciences"},
+      {year:"2025",title:"Engineered Tandem Thymosin Peptide Promotes Corneal Wound Healing",finding:"Supported continued interest in thymosin-derived peptides for ocular repair.",journal:"Ocular Surface"},
+    ],
+    safety:{contraindications:["Active cancer — GF activity; consult oncologist","Pregnancy or breastfeeding — insufficient data"],precautions:["Competitive sport — check WADA status","Grey-market product quality risk","Unknown long-term systemic safety"],common:["Injection-site irritation","Transient redness","Headache","Mild fatigue"],serious:["Theoretical angiogenic concern in malignancy","Product-quality risk in grey-market preparations"]}
+  },
+
+  {
+    id:"cagrisema", name:"CagriSema", category:"glp1",
+    altNames:"Cagrilintide + Semaglutide · CagriSema 2.4",
+    brandNames:["CagriSema","Cagrilintide/Semaglutide"],
+    class:"Amylin + GLP-1 Dual Agonist", icon:"🎯", color:"#3b82f6",
+    iconBg:"linear-gradient(135deg,#05112a,#071a3e)",
+    t1:8.1, t2:7.3, t3:7.4, composite:7.73,
+    evidence_x:8.0, access_y:4.0,
+    fdaStatus:"phase3", fdaLabel:"Phase 3 / Under Review",
+    sahpraStatus:"research", sahpraLabel:"Not Registered SA",
+    wadaStatus:"wada-ok", wadaLabel:"Not Prohibited",
+    mechanism:"A once-weekly combination of cagrilintide (amylin analogue) and semaglutide (GLP-1 agonist). Targets appetite from two directions: GLP-1 reduces hunger and improves glucose control, while amylin signalling adds further satiety and meal-size regulation. Phase 3 data is strong but it is still under regulatory review.",
+    technicalMech:"Fixed-ratio once-weekly combination: cagrilintide 2.4mg (amylin/calcitonin receptor complex agonist) + semaglutide 2.4mg (GLP-1 receptor agonist). Additive satiety via complementary CNS and peripheral pathways. Phase 3 REDEFINE programme showed large weight-loss effects.",
+    whatItDoes:{title:"CagriSema — What It Does",body:`<p>CagriSema combines two different appetite-suppressing mechanisms in a single weekly injection. The GLP-1 component (semaglutide) and the amylin component (cagrilintide) work through different pathways to compound satiety signals.</p><ul><li>Weight loss via dual satiety pathways</li><li>Blood glucose improvement (type 2 diabetes)</li><li>Blood pressure and inflammatory marker reduction</li></ul><p style="color:#94a3b8;font-size:.75rem;margin-top:10px">⚠ Still under regulatory review. Not yet approved. Grey-market access is unapproved and high-risk.</p>`},
+    saContext:"CagriSema should be treated as investigational in South Africa. No SAHPRA registration confirmed as of 2026. Access through informal or grey-market channels is not equivalent to approval and carries significant quality, legal and safety risk.",
+    purposes:{weightBody:9,recoveryTissue:null,inflammation:4,energyPerf:3,cognitiveNeuro:3,sleep:2,cardiovascular:5,skinLongevity:2},
+    dosing:{intro:{dose:"2.4mg each (cagrilintide + semaglutide) SC weekly",note:"Investigational — trial protocol only"},maintenance:{dose:"Fixed once-weekly combination in phase 3",note:""},frequency:"Once weekly SC",halfLife:"~7 days (semaglutide component)",cycle:"Long-term per trial protocol",notes:"No approved consumer dosing. Phase 3 REDEFINE trials use gradual escalation for tolerability. Access outside formal trials is unapproved."},
+    administration:[{method:"SC Injection",bio:80,note:"Once-weekly subcutaneous — trial administration protocol"}],
+    efficacy:[
+      {domain:"Weight Loss",strength:"high",bar:90,source:"REDEFINE Phase 3 trials — ~20%+ weight loss"},
+      {domain:"Glucose Control (T2D)",strength:"high",bar:85,source:"REDEFINE 2 — HbA1c reduction alongside weight loss"},
+      {domain:"Blood Pressure / Inflammation",strength:"mod",bar:60,source:"Phase 3 analyses — systolic BP and hs-CRP"},
+      {domain:"vs Tirzepatide",strength:"low",bar:45,source:"REDEFINE 4 — did not meet non-inferiority endpoint"},
+    ],
+    trials:[
+      {phase:"ph-3",phaseLabel:"Phase 3",name:"REDEFINE 1",desc:"CagriSema produced substantial weight loss at 68 weeks in adults with obesity or overweight.",sponsor:"Novo Nordisk",enrolled:"3400",status:"completed",statusLabel:"Completed",id:"NCT05567705"},
+      {phase:"ph-3",phaseLabel:"Phase 3",name:"REDEFINE 4 (vs Tirzepatide)",desc:"~23% weight loss at 84 weeks but did not meet non-inferiority vs tirzepatide.",sponsor:"Novo Nordisk",enrolled:"809",status:"completed",statusLabel:"Completed",id:"NCT05709353"},
+    ],
+    studies:[
+      {year:"2025",title:"CagriSema Phase 3 REDEFINE Programme",finding:"Combination therapy showed strong weight-loss and metabolic effects broadly consistent with incretin and amylin tolerability profiles.",journal:"Novo Nordisk Clinical Programme"},
+      {year:"2024",title:"Cagrilintide plus semaglutide for weight management",finding:"Supported the rationale that amylin and GLP-1 signalling may produce additive satiety and weight-loss effects.",journal:"Clinical Obesity Research"},
+    ],
+    safety:{contraindications:["Personal/family history of medullary thyroid carcinoma","MEN2 syndrome","Pregnancy unless medically directed"],precautions:["Gastrointestinal effects — nausea/vomiting/diarrhoea","Gallbladder disease monitoring","Dehydration risk","Pancreatitis monitoring"],common:["Nausea","Vomiting","Diarrhoea","Constipation","Reduced appetite"],serious:["Gallbladder disease risk","Pancreatitis concern","Hypoglycaemia when combined with insulin/sulfonylureas"]}
+  },
+
+  {
+    id:"survodutide", name:"Survodutide", category:"glp1",
+    altNames:"BI 456906 · GLP-1/Glucagon Dual Agonist",
+    brandNames:["Survodutide","BI 456906"],
+    class:"GLP-1 / Glucagon Dual Agonist", icon:"🔬", color:"#3b82f6",
+    iconBg:"linear-gradient(135deg,#05112a,#071a3e)",
+    t1:7.6, t2:7.8, t3:6.7, composite:7.43,
+    evidence_x:7.5, access_y:3.5,
+    fdaStatus:"phase3", fdaLabel:"Phase 3",
+    sahpraStatus:"research", sahpraLabel:"Investigational Only SA",
+    wadaStatus:"wada-ok", wadaLabel:"Not Prohibited",
+    mechanism:"Survodutide activates both GLP-1 and glucagon receptors. GLP-1 activity reduces appetite and improves glucose regulation; glucagon receptor activation may increase energy expenditure and promote liver fat mobilisation — making it especially interesting for obesity and MASH/liver disease research.",
+    technicalMech:"BI 456906 is a once-weekly GLP-1 and glucagon receptor dual agonist. GLP-1 receptor activation enhances glucose-dependent insulin secretion, suppresses glucagon, and reduces appetite. Glucagon receptor activation increases hepatic lipid oxidation and energy expenditure. This metabolic-liver biology is the basis of its MASH development strategy.",
+    whatItDoes:{title:"Survodutide — What It Does",body:`<p>Survodutide targets two receptors — GLP-1 and glucagon — to address both appetite and liver metabolism simultaneously. This makes it unique among obesity candidates for its liver-disease angle.</p><ul><li>Weight loss via GLP-1 appetite suppression</li><li>Liver fat reduction via glucagon receptor biology</li><li>MASH (metabolic-associated liver disease) — key development focus</li><li>Cardiovascular outcomes programme ongoing</li></ul><p style="color:#94a3b8;font-size:.75rem;margin-top:10px">⚠ Still investigational. Not approved. Boehringer Ingelheim / Zealand Pharma Phase 3 SYNCHRONIZE programme active.</p>`},
+    saContext:"Survodutide is investigational and not SAHPRA-approved in South Africa. Access outside formal trials is unapproved and carries quality, legal and medical risk.",
+    purposes:{weightBody:8,recoveryTissue:null,inflammation:4,energyPerf:3,cognitiveNeuro:2,sleep:null,cardiovascular:5,skinLongevity:null},
+    dosing:{intro:{dose:"Investigational once-weekly SC doses",note:"Multiple dose levels studied in phase 2/3"},maintenance:{dose:"Phase 3 SYNCHRONIZE protocol — dose-escalation design",note:""},frequency:"Once weekly SC",halfLife:"Designed for once-weekly dosing",cycle:"Long-term per trial protocol",notes:"No approved consumer dosing. Gradual escalation used in trials for gastrointestinal tolerability. Access outside formal trials is unapproved."},
+    administration:[{method:"SC Injection",bio:75,note:"Once-weekly subcutaneous — trial administration protocol"}],
+    efficacy:[
+      {domain:"Obesity / Weight Loss",strength:"high",bar:85,source:"Phase 2 — dose-dependent weight loss over 46 weeks"},
+      {domain:"MASH / Liver Histology",strength:"high",bar:82,source:"Phase 2 MASH NEJM 2024 — significant histological improvement"},
+      {domain:"Liver Fat Reduction",strength:"mod",bar:65,source:"Phase 2 — dual GLP-1/glucagon liver-fat biology"},
+      {domain:"Cardiovascular Outcomes",strength:"prelim",bar:25,source:"Phase 3 SYNCHRONIZE programme underway"},
+    ],
+    trials:[
+      {phase:"ph-2",phaseLabel:"Phase 2",name:"Survodutide Obesity Dose-Finding",desc:"Clinically meaningful dose-dependent weight loss in adults with obesity over 46 weeks.",sponsor:"Boehringer Ingelheim / Zealand Pharma",enrolled:"387",status:"completed",statusLabel:"Completed",id:"NCT04667377"},
+      {phase:"ph-2",phaseLabel:"Phase 2",name:"Survodutide MASH Trial",desc:"Improved liver histology in people with MASH and fibrosis vs placebo.",sponsor:"Boehringer Ingelheim / Zealand Pharma",enrolled:"293",status:"completed",statusLabel:"Completed",id:"NCT04771273"},
+      {phase:"ph-3",phaseLabel:"Phase 3",name:"SYNCHRONIZE Cardiovascular Programme",desc:"Large phase 3 programme evaluating obesity, cardiometabolic outcomes and related risks.",sponsor:"Boehringer Ingelheim / Zealand Pharma",enrolled:"9000",status:"active",statusLabel:"Active",id:"NCT05879406"},
+    ],
+    studies:[
+      {year:"2024",title:"Glucagon and GLP-1 receptor dual agonist survodutide for obesity",finding:"Demonstrated dose-dependent weight reduction and supported phase 3 development.",journal:"The Lancet Diabetes & Endocrinology"},
+      {year:"2024",title:"A Phase 2 Randomized Trial of Survodutide in MASH and Fibrosis",finding:"Showed significant improvement in MASH histology, strengthening liver-disease development case.",journal:"New England Journal of Medicine"},
+    ],
+    safety:{contraindications:["Pregnancy unless trial-approved","History of pancreatitis without specialist review"],precautions:["Gastrointestinal tolerability — escalate gradually","Gallbladder risk","Dehydration monitoring","Severe GI disease — assess before use"],common:["Nausea","Vomiting","Diarrhoea","Reduced appetite","Constipation"],serious:["Pancreatitis concern","Gallbladder disease","Dehydration","Unknown long-term glucagon-pathway effects"]}
   }
+
 ]; // END PEPTIDES ARRAY
 
 // ═══════════════════════════════════════════════════════════
@@ -3220,6 +3637,133 @@ function renderConfidenceBar(p) {
   </div>`;
 }
 
+
+// ═══════════════════════════════════════════════════════════
+// STACKS — Typical peptide combination protocols
+// ═══════════════════════════════════════════════════════════
+const STACKS = {
+  wolverine_recovery:{name:"Wolverine Recovery Stack",peptides:["bpc157","tb500","ghkcu"],rationale:"This is a commonly discussed injury-recovery combination aimed at local tissue repair, soft-tissue remodelling and skin/connective-tissue support. The rationale is biologically plausible, but controlled human evidence remains limited.",protocols:["BPC-157: research-discussed ranges often reference 250–500mcg SC near the affected area once or twice daily for 4–6 weeks","TB-500: research-discussed ranges often reference 2–2.5mg SC once or twice weekly for 4–6 weeks","GHK-Cu: topical cosmetic use is more established; injectable use is far less standardised"],caution:"Not an approved injury protocol. Human evidence is limited, product quality varies, and TB-500/BPC-157 may raise sport-governance concerns."},
+  metabolic_reset:{name:"Metabolic Reset Stack",peptides:["semaglutide","tirzepatide","retatrutide"],rationale:"These incretin-based therapies target appetite, glucose regulation and weight reduction through GLP-1 and related pathways. Semaglutide and tirzepatide have strong clinical evidence; retatrutide remains investigational.",protocols:["Semaglutide: use only according to approved prescribing information and clinician-directed titration","Tirzepatide: use only according to approved prescribing information and clinician-directed titration","Retatrutide: investigational — no approved dosing outside formal trials"],caution:"These should not be combined casually. Overlapping incretin activity can increase gastrointestinal, gallbladder, nutritional and metabolic risks."},
+  gh_axis_optimisation:{name:"GH Axis Optimisation Stack",peptides:["cjc1295","sermorelin","ipamorelin"],rationale:"This stack represents the GH-secretagogue concept: encouraging endogenous growth-hormone signalling rather than directly administering GH. Popular in longevity clinics but often marketed beyond the evidence.",protocols:["CJC-1295/Ipamorelin: wellness-clinic references commonly discuss evening SC dosing, but ranges vary widely","Sermorelin: prescription-style use should follow clinician-directed endocrine protocols","Ipamorelin: research and clinic references vary; long-term protocols not firmly established"],caution:"Do not stack multiple GH secretagogues without medical oversight. Risks include endocrine disruption, glucose effects, fluid retention and inappropriate IGF-1 elevation."},
+  longevity_signal:{name:"Longevity Signal Stack",peptides:["epitalon","motsc","humanin","glutathione"],rationale:"A research-oriented longevity concept combining telomere-related claims, mitochondrial signalling and antioxidant support. Intellectually interesting but clinical longevity evidence is still early and uneven.",protocols:["Epitalon: research and longevity-clinic references vary widely; no major-regulator approved anti-ageing protocol","MOTS-c: investigational; no standard approved human dosing protocol","Humanin: investigational; no standard approved human dosing protocol","Glutathione: route and dose depend heavily on formulation; injectable use should be clinician-supervised"],caution:"Longevity claims are especially prone to overstatement. This stack should be treated as experimental, not proven age-reversal therapy."},
+  cognitive_focus:{name:"Cognitive Focus Stack",peptides:["semax","selank","cerebrolysin"],rationale:"This stack reflects the neuropeptide interest area: focus, stress resilience and neurocognitive support. Some regional medical use and small studies exist, but broad global regulatory confidence remains limited.",protocols:["Semax: regional intranasal use exists, but globally standardised dosing is not established","Selank: regional intranasal use exists, but anxiolytic protocols are not broadly regulator-validated","Cerebrolysin: where used medically, dosing is condition-specific and clinician-directed"],caution:"Evidence quality, product legitimacy and jurisdictional legality vary significantly."},
+  sleep_recovery_neuro:{name:"Sleep & Neuro-Recovery Stack",peptides:["dsip","selank","glutathione"],rationale:"Combines a sleep-associated peptide concept with stress-modulation and antioxidant support. Popular in experimental wellness circles, but sleep benefits remain clinically uncertain.",protocols:["DSIP: no standard approved dosing protocol; research references are inconsistent","Selank: regional intranasal use exists, global clinical validation is limited","Glutathione: formulation and route determine dosing; injectable use requires oversight"],caution:"DSIP evidence is weak and inconsistent. Sleep disorders should not be self-managed with experimental peptides."},
+  sexual_health_axis:{name:"Sexual Health Axis Stack",peptides:["pt141","kisspeptin10","gonadorelin"],rationale:"Targets different levels of sexual and reproductive signalling: melanocortin-driven desire, hypothalamic reproductive signalling and pituitary gonadotropin release. PT-141 has the strongest formal evidence.",protocols:["PT-141: use only according to approved prescribing information where legally available","Kisspeptin-10: investigational endocrine research compound; no approved consumer protocol","Gonadorelin: medical use is specialist and indication-specific"],caution:"Hormonal and sexual-health pathways are complex. This is not a casual libido stack and should not replace proper endocrine evaluation."},
+  immune_resilience:{name:"Immune Resilience Stack",peptides:["thymosin_a1","ll37","vip","glutathione"],rationale:"Combines immune-modulating concepts with antimicrobial peptide biology, inflammatory signalling and antioxidant support. Thymosin alpha-1 has the most clinical history; LL-37 and VIP remain much less settled.",protocols:["Thymosin alpha-1: where approved or prescribed, dosing is indication-specific","LL-37: investigational; no approved routine human dosing protocol","VIP: investigational or specialist-use only; no general wellness dosing standard","Glutathione: dose and route depend on formulation and clinical context"],caution:"Immune modulation can be risky in autoimmune disease, cancer, infection or immunosuppression. Medical oversight is essential."},
+  elite_performance:{name:"Elite Performance Stack",peptides:["cjc1295","igf1lr3","pegmgf","follistatin"],rationale:"An extreme performance-oriented stack built around GH/IGF-1 signalling, muscle repair and myostatin-related pathways. Biologically aggressive and far beyond a normal wellness stack.",protocols:["CJC-1295/Ipamorelin: clinic references vary; not a regulator-standardised performance protocol","IGF-1 LR3: research-stage compound with no approved enhancement protocol","PEG-MGF: research-stage compound with no approved enhancement protocol","Follistatin: experimental myostatin-pathway compound with no approved protocol"],caution:"High-risk. Potential concerns include abnormal growth signalling, metabolic disruption, organ stress, cancer-theory concerns and sport prohibition risk."},
+  skin_repair_beauty:{name:"Skin Repair & Collagen Stack",peptides:["ghkcu","collagen_peptides","glutathione"],rationale:"Focuses on skin quality, collagen support and oxidative-stress pathways. More defensible when framed around cosmetic and nutritional support rather than systemic age reversal.",protocols:["GHK-Cu: topical cosmetic use is the most practical and better-established route","Collagen: oral collagen peptide studies commonly use gram-level daily intake","Glutathione: oral, liposomal and injectable routes differ; claims should be matched to formulation evidence"],caution:"Expected effects are usually modest. Injectable cosmetic claims require far more caution than topical or nutritional use."}
+};
+
+// ═══════════════════════════════════════════════════════════
+// REGULATORY_SUMMARY — Human-readable regulatory overview per peptide
+// ═══════════════════════════════════════════════════════════
+const REGULATORY_SUMMARY = {
+  semaglutide:"Approved by the FDA, EMA, TGA and SAHPRA for specific diabetes and/or obesity indications, depending on brand and jurisdiction. One of the most widely regulated peptide-based metabolic medicines globally.",
+  tirzepatide:"Approved by the FDA and EMA for type 2 diabetes and obesity/weight management, with South African access expanding through regulated channels. Its global regulatory footprint is growing quickly.",
+  retatrutide:"Still investigational and not approved by major regulators such as the FDA, EMA, TGA or SAHPRA. Current use should be understood as clinical-trial research, not authorised treatment.",
+  liraglutide:"Approved by major regulators including the FDA, EMA and TGA for type 2 diabetes and/or weight management, depending on product and dose. It has a longer regulatory history than newer GLP-1 medicines.",
+  aod9604:"Not approved by major regulators as an obesity or fat-loss medicine. Mostly encountered in research, compounding or grey-market settings rather than formal prescription pathways.",
+  bpc157:"Not approved by the FDA, EMA, TGA or SAHPRA as a medicine. It remains a research-stage and grey-market peptide despite widespread online use claims.",
+  tb500:"Not approved by major regulators for injury recovery or performance use. Generally treated as a research-stage compound and carries additional concern in sport-governed environments.",
+  ghkcu:"Commonly used in topical cosmetic products, but injectable or systemic use is not broadly approved by major medicine regulators. Regulatory status depends heavily on formulation, route and claims.",
+  cjc1295:"Not approved as a combined therapeutic product by major regulators. Mostly seen in anti-ageing, hormone-clinic or grey-market contexts rather than formal regulatory medicine pathways.",
+  sermorelin:"Has medical history as a growth-hormone-releasing hormone analogue, but availability and approval status vary by country. Should not be treated as an over-the-counter wellness product.",
+  ipamorelin:"Not approved by major regulators as a mainstream therapeutic medicine. Mostly encountered in research, compounding or wellness-clinic settings.",
+  tesamorelin:"FDA-approved for reducing excess abdominal fat in adults with HIV-associated lipodystrophy. A specialist medicine, not a general weight-loss or body-composition product.",
+  mk677:"Not approved by the FDA, EMA, TGA or SAHPRA as a medicine. Remains an investigational growth-hormone secretagogue often sold in grey-market performance and wellness channels.",
+  ghrp6:"Not broadly approved by major regulators as a therapeutic medicine. Mainly found in research or grey-market peptide settings.",
+  hexarelin:"Not approved by major regulators for consumer or clinical wellness use. Remains a research-stage growth-hormone secretagogue.",
+  glutathione:"Regulatory status depends on route and claims: oral supplements and cosmetics are treated differently from injectable preparations. Injectable use should not be assumed to be approved.",
+  semax:"Used or marketed in some regional medical contexts, but not approved by major Western regulators such as the FDA, EMA, TGA or SAHPRA. Remains globally non-standard as a medicine.",
+  selank:"Regionally known and used in some markets, but not approved by major Western regulators. Should be treated as a limited-evidence neuropeptide rather than a globally accepted therapy.",
+  dsip:"Not approved by major regulators as a sleep or neurological medicine. Remains research-stage with no widely accepted clinical regulatory pathway.",
+  dihexa:"Not approved by major regulators and remains experimental. Human therapeutic use is not established through formal regulatory review.",
+  pt141:"FDA-approved as bremelanotide for hypoactive sexual desire disorder in premenopausal women. Broader libido, male sexual-health or performance uses are off-label or unapproved depending on jurisdiction.",
+  melanotan2:"Not approved by major regulators as a tanning or sexual-health medicine. Widely associated with grey-market use and safety concerns.",
+  ara290:"Not approved by major regulators as a medicine. Remains investigational, mainly studied in neuropathy, inflammation and tissue-protection contexts.",
+  thymosin_a1:"Approved or used in some countries for immune-related indications (especially under thymalfasin brands), but not uniformly approved by FDA, EMA, TGA or SAHPRA. Global regulatory acceptance is uneven.",
+  epitalon:"Not approved by major regulators as an anti-ageing or longevity medicine. Remains a research-stage compound with claims that exceed regulatory validation.",
+  motsc:"Not approved by major regulators as a medicine. Remains an early-stage mitochondrial peptide of scientific interest rather than an authorised therapy.",
+  kisspeptin10:"Not broadly approved as a therapeutic medicine by major regulators. Mainly used in specialist endocrine and reproductive research contexts.",
+  humanin:"Not approved by major regulators as a medicine. Remains a research-stage mitochondrial peptide with no established clinical regulatory status.",
+  collagen_peptides:"Generally sold as a food, supplement or cosmetic-support ingredient rather than a prescription medicine. Regulatory treatment depends on claims, formulation and country.",
+  ghrp2:"Not broadly approved by major regulators as a therapeutic medicine. Mostly encountered in research or grey-market growth-hormone secretagogue settings.",
+  igf1lr3:"Not approved by major regulators for therapeutic or performance use. An experimental IGF-1 analogue — not to be confused with regulated medical IGF-1 products.",
+  pegmgf:"Not approved by major regulators as a medicine. Remains a research-stage growth-factor-related compound with no authorised clinical use.",
+  follistatin:"Not approved by major regulators as a muscle-growth or performance therapy. Remains experimental, particularly around myostatin-related applications.",
+  cerebrolysin:"Approved or used in some countries for neurological conditions, but not uniformly accepted by major Western regulators. Regulatory status and evidence confidence vary significantly by region.",
+  vip:"Not approved by major regulators as a general therapeutic peptide. Some investigational or specialist contexts exist, but routine clinical use is not broadly authorised.",
+  ll37:"Not approved by major regulators as a therapeutic medicine. Remains an investigational antimicrobial and immune-related peptide.",
+  gonadorelin:"Approved in defined medical contexts related to reproductive endocrinology and diagnostic testing. Use is specialist and should follow regulated prescription pathways.",
+  octreotide:"Approved by major regulators including the FDA and EMA for specialist endocrine and gastrointestinal indications. A regulated prescription medicine, not a wellness peptide.",
+  teriparatide:"Approved by major regulators including the FDA and EMA for osteoporosis in high-risk patients. Clear medical indications and defined treatment limits apply.",
+  glatiramer_acetate:"Approved by major regulators including the FDA and EMA as a disease-modifying therapy for relapsing forms of multiple sclerosis. An established prescription medicine.",
+  nad_plus:"In South Africa, NAD+ products may appear as supplements, IV wellness infusions or compounded offerings. SAHPRA status depends on formulation, route and claims. Not approved as an anti-ageing medicine.",
+  tb4:"Not approved by major regulators as a systemic recovery or sports-medicine treatment. Ophthalmic thymosin-derived products have clinical development; injectable systemic use lacks regulatory backing.",
+  cagrisema:"Investigational — under regulatory review following Phase 3 REDEFINE trials. Not yet approved by FDA, EMA, TGA or SAHPRA. Grey-market access is unapproved and high-risk.",
+  survodutide:"Investigational — Phase 3 SYNCHRONIZE programme active. Not approved by FDA, EMA, TGA or SAHPRA. Access outside formal trials is unapproved."
+};
+
+// ═══════════════════════════════════════════════════════════
+// MAP_PREVIEW_TAGLINE — Short tagline for 3D landscape orb hover
+// ═══════════════════════════════════════════════════════════
+const MAP_PREVIEW_TAGLINE = {
+  semaglutide:"Weekly GLP-1 medicine for weight and blood sugar control.",
+  tirzepatide:"Dual-action incretin medicine for diabetes and weight loss.",
+  retatrutide:"Triple-action metabolic candidate still in clinical trials.",
+  liraglutide:"Daily GLP-1 medicine for diabetes and weight management.",
+  aod9604:"Fat-loss peptide with limited convincing human evidence.",
+  bpc157:"Experimental repair peptide popular for injury recovery claims.",
+  tb500:"Research peptide linked to soft-tissue repair claims.",
+  ghkcu:"Copper peptide best known for skin and wound support.",
+  cjc1295:"GH-axis combination used for growth-hormone stimulation.",
+  sermorelin:"Growth-hormone releasing peptide with clinical history.",
+  ipamorelin:"Selective GH secretagogue promoted for recovery and body composition.",
+  tesamorelin:"Approved specialist medicine for HIV-associated abdominal fat.",
+  mk677:"Oral GH secretagogue affecting appetite, sleep and IGF-1.",
+  ghrp6:"Older GH secretagogue known for appetite stimulation.",
+  hexarelin:"Potent GH secretagogue with limited human evidence.",
+  glutathione:"Antioxidant molecule used in wellness and skin contexts.",
+  semax:"Neuropeptide studied for focus and neurological support.",
+  selank:"Neuropeptide studied for anxiety and calm-focus effects.",
+  dsip:"Sleep-associated peptide with uncertain clinical evidence.",
+  dihexa:"Experimental cognitive compound with mostly preclinical evidence.",
+  pt141:"Melanocortin medicine approved for specific sexual-health use.",
+  melanotan2:"Unapproved tanning peptide with significant safety concerns.",
+  ara290:"Investigational peptide studied for neuropathy and inflammation.",
+  thymosin_a1:"Immune-modulating peptide approved in some countries.",
+  epitalon:"Longevity peptide with speculative anti-ageing claims.",
+  motsc:"Mitochondrial peptide studied for metabolism and ageing.",
+  kisspeptin10:"Reproductive-hormone peptide used in endocrine research.",
+  humanin:"Mitochondrial peptide explored in ageing biology.",
+  collagen_peptides:"Nutritional peptides for skin, joints and connective tissue.",
+  ghrp2:"GH secretagogue researched for growth-hormone release.",
+  igf1lr3:"Experimental IGF-1 analogue linked to growth signalling.",
+  pegmgf:"Experimental muscle-repair peptide with limited human data.",
+  follistatin:"Experimental myostatin-related compound for muscle-growth research.",
+  cerebrolysin:"Neuropeptide mixture used regionally for neurological conditions.",
+  vip:"Immune and inflammatory signalling peptide under investigation.",
+  ll37:"Antimicrobial peptide studied for immune defence.",
+  gonadorelin:"Medical peptide used in reproductive hormone testing.",
+  octreotide:"Specialist medicine for hormone and gastrointestinal disorders.",
+  teriparatide:"Approved bone-building medicine for severe osteoporosis.",
+  glatiramer_acetate:"Approved immune therapy for relapsing multiple sclerosis.",
+  nad_plus:"Cellular energy cofactor studied for longevity and metabolic support.",
+  tb4:"Native repair peptide — strongest evidence in corneal and wound healing.",
+  cagrisema:"Dual amylin+GLP-1 weekly injection for powerful weight loss.",
+  survodutide:"GLP-1/glucagon dual agonist studied for obesity and liver disease."
+};
+
+// ═══════════════════════════════════════════════════════════
+// UX DATA OBJECTS — Paste ChatGPT-generated content to fill these stubs
+// resolvePeptide() handles missing data gracefully via typeof checks
+// ═══════════════════════════════════════════════════════════
+const DECISION_FLAGS = {};
+const TRUST_SIGNALS = {};
+const PEPTIDE_SNAPSHOT = {};
+const ELIXA_INSIGHTS = {};
+const RELATED_COMPOUNDS = {};
+
 // ═══════════════════════════════════════════════════════════
 // SIDEBAR
 // ═══════════════════════════════════════════════════════════
@@ -3248,13 +3792,17 @@ function renderSidebar() {
     filtered.map(p => {
       const isActive = currentView === p.id;
       const cl = getConfidenceLabel(getConfidence(p));
-      return `<button class="p-btn ${isActive ? 'active' : ''}" onclick="showPeptide('${p.id}')" style="border-left:3px solid ${p.color}22;padding-left:8px">
-        <div class="p-names">
-          <span class="p-name" style="color:${isActive ? 'var(--accent-blue)' : 'var(--text-primary)'}">${p.name}</span>
-          <span class="p-class">${p.class}</span>
-        </div>
-        <span style="font-size:.65rem;font-weight:700;color:${cl.color};white-space:nowrap;flex-shrink:0">${cl.label}</span>
-      </button>`;
+      const isCompared = compareState && compareState.items && compareState.items.includes(p.id);
+      return `<div style="position:relative">
+        <button class="p-btn ${isActive ? 'active' : ''}" onclick="showPeptide('${p.id}')" style="border-left:3px solid ${p.color}22;padding-left:8px;padding-right:34px">
+          <div class="p-names">
+            <span class="p-name" style="color:${isActive ? 'var(--accent-blue)' : 'var(--text-primary)'}">${p.name}</span>
+            <span class="p-class">${p.class}</span>
+          </div>
+          <span style="font-size:.65rem;font-weight:700;color:${cl.color};white-space:nowrap;flex-shrink:0">${cl.label}</span>
+        </button>
+        <button type="button" class="compare-btn ${isCompared ? 'active' : ''}" data-compare-id="${p.id}" onclick="toggleCompare('${p.id}',event)">${isCompared ? '✓' : '+'}</button>
+      </div>`;
     }).join('');
 }
 
@@ -4316,6 +4864,7 @@ function renderBrandAttribution(brands) {
 function renderPeptideDetail(id) {
   const p = PEPTIDES.find(x => x.id === id);
   if (!p) return;
+  const rp = resolvePeptide(id) || p;
   const main = document.getElementById("main");
   const catColor = (CATEGORIES.find(c => c.id === p.category) || {}).color || p.color;
 
@@ -4459,6 +5008,11 @@ function renderPeptideDetail(id) {
     </div>
 
     <div id="sec-overview">
+      ${renderSnapshot(rp)}
+      ${renderInsight(rp)}
+      ${renderDecisionFlags(rp)}
+      ${renderTrust(rp)}
+      ${renderRegSummary(rp)}
       ${renderBestFor(p)}
       ${renderKnownUnknowns(p)}
     </div>
@@ -4521,23 +5075,31 @@ function renderPeptideDetail(id) {
       ${renderAdministration(p)}
     </div>
 
-    <div id="sec-studies">
-      <div class="sec-hdr">Key Published Studies</div>
-      <div class="studies-list">${studiesHTML}</div>
-    </div>
+    <details class="sec-accordion" id="sec-studies">
+      <summary>Key Published Studies</summary>
+      <div class="sec-accordion-content">
+        <div class="studies-list">${studiesHTML}</div>
+      </div>
+    </details>
 
-    <div id="sec-trials">
-      <div class="sec-hdr">Clinical Trials</div>
-      <div class="trials-list">${trialsHTML}</div>
-    </div>
+    <details class="sec-accordion" id="sec-trials">
+      <summary>Clinical Trials</summary>
+      <div class="sec-accordion-content">
+        <div class="trials-list">${trialsHTML}</div>
+      </div>
+    </details>
 
-    <div id="sec-safety">
-      <div class="sec-hdr">Safety Profile</div>
-      ${safetyHTML}
-      ${renderHypeWarning(p)}
-    </div>
+    <details class="sec-accordion" id="sec-safety">
+      <summary>Safety Profile</summary>
+      <div class="sec-accordion-content">
+        ${safetyHTML}
+        ${renderHypeWarning(p)}
+      </div>
+    </details>
 
     ${pulseHTML}
+
+    ${renderRelated(rp)}
 
     <div style="background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:var(--radius-sm);padding:12px 16px;font-size:.74rem;color:#92400e;line-height:1.6">
       ⚠ <strong>Research purposes only.</strong> This profile is for informational use only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional. <span style="cursor:pointer;color:#fbbf24;text-decoration:underline" onclick="openMethodology()">View full methodology →</span>
@@ -4546,6 +5108,9 @@ function renderPeptideDetail(id) {
 
   requestAnimationFrame(() => {
     document.querySelectorAll('[data-w]').forEach(el => { el.style.width = el.dataset.w; });
+    initAccordions();
+    updateCompareBar();
+    updateCompareButtons();
   });
   initAnchorNav();
 }
@@ -4811,6 +5376,202 @@ function setVH() {
 }
 setVH();
 window.addEventListener('resize', setVH);
+
+// ═══════════════════════════════════════════════════════════
+// UX UPGRADE — Core render functions
+// ═══════════════════════════════════════════════════════════
+
+function resolvePeptide(id) {
+  const p = PEPTIDES.find(x => x.id === id);
+  if (!p) return null;
+  return {
+    ...p,
+    snapshot: (typeof PEPTIDE_SNAPSHOT  !== 'undefined') ? PEPTIDE_SNAPSHOT[id]  || null : null,
+    insight:  (typeof ELIXA_INSIGHTS    !== 'undefined') ? ELIXA_INSIGHTS[id]    || null : null,
+    flags:    (typeof DECISION_FLAGS    !== 'undefined') ? DECISION_FLAGS[id]    || null : null,
+    trust:    (typeof TRUST_SIGNALS     !== 'undefined') ? TRUST_SIGNALS[id]     || null : null,
+    related:  (typeof RELATED_COMPOUNDS !== 'undefined') ? RELATED_COMPOUNDS[id] || []   : [],
+    riskData: (typeof RISK_LEVEL        !== 'undefined') ? RISK_LEVEL[id]        || null : null,
+    regSummary:(typeof REGULATORY_SUMMARY!=='undefined') ? REGULATORY_SUMMARY[id]|| null : null,
+  };
+}
+
+function renderSnapshot(rp) {
+  if (!rp || !rp.snapshot) return '';
+  const s = rp.snapshot;
+  return `
+    <section class="snapshot-card">
+      <h3>Executive Snapshot</h3>
+      <div class="snapshot-defs">
+        <div class="snapshot-row"><div class="snapshot-label">Summary</div><div class="snapshot-value">${s.summary || 'No short summary available.'}</div></div>
+        <div class="snapshot-row"><div class="snapshot-label">Known For</div><div class="snapshot-value">${s.primary || 'Not clearly established.'}</div></div>
+        <div class="snapshot-row"><div class="snapshot-label">Evidence</div><div class="snapshot-value">${s.evidence || 'Evidence level unclear.'}</div></div>
+        <div class="snapshot-row"><div class="snapshot-label">Regulatory</div><div class="snapshot-value">${s.regulatory || 'Regulatory status varies by jurisdiction.'}</div></div>
+        <div class="snapshot-row"><div class="snapshot-label">Key Risk</div><div class="snapshot-value">${s.risk || 'Risk profile not fully established.'}</div></div>
+      </div>
+    </section>`;
+}
+
+function renderInsight(rp) {
+  if (!rp || !rp.insight) return '';
+  return `<aside class="insight-callout"><strong>Elixa Insight</strong>${rp.insight}</aside>`;
+}
+
+function renderDecisionFlags(rp) {
+  if (!rp || !rp.flags) return '';
+  const f = rp.flags;
+  const chips = [];
+  chips.push(f.requires_medical_supervision
+    ? `<span class="dflag dflag-warn">Medical supervision required</span>`
+    : `<span class="dflag dflag-ok">Lower supervision burden</span>`);
+  chips.push(f.legal_grey_area
+    ? `<span class="dflag dflag-warn">Legal grey area</span>`
+    : `<span class="dflag dflag-ok">Clearer legal pathway</span>`);
+  if (f.sport_banned) chips.push(`<span class="dflag dflag-warn">WADA concern</span>`);
+  if (f.long_term_unknown) chips.push(`<span class="dflag dflag-warn">Long-term unknown</span>`);
+  chips.push(f.strong_human_evidence
+    ? `<span class="dflag dflag-ok">Strong human evidence</span>`
+    : `<span class="dflag dflag-neutral">Limited human evidence</span>`);
+  return `<div class="decision-flags">${chips.join('')}</div>`;
+}
+
+function renderTrust(rp) {
+  if (!rp || !rp.trust) return '';
+  const trust = rp.trust;
+  const rawLevel = String(trust.level || 'Moderate');
+  const levelKey = rawLevel.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  let width = 55;
+  if (levelKey === 'high') width = 90;
+  else if (levelKey === 'moderate-high') width = 75;
+  else if (levelKey === 'moderate' || levelKey === 'mixed') width = 60;
+  else if (levelKey === 'moderate-low') width = 45;
+  else if (levelKey === 'low') width = 32;
+  else if (levelKey === 'very-low') width = 18;
+  return `
+    <section class="trust-bar">
+      <div class="trust-row">
+        <span><strong>Trust Signal</strong></span>
+        <span>${rawLevel} · Human evidence: ${trust.human || 'Limited'}</span>
+      </div>
+      <div class="trust-track"><div class="trust-fill trust-fill-${levelKey}" style="width:${width}%"></div></div>
+      ${trust.note || trust.reviewed ? `<p class="trust-note">${trust.note || ''}${trust.reviewed ? ` Last reviewed: ${trust.reviewed}.` : ''}</p>` : ''}
+    </section>`;
+}
+
+function renderRelated(rp) {
+  if (!rp || !Array.isArray(rp.related) || rp.related.length === 0) return '';
+  const chips = rp.related.map(id => {
+    const rel = resolvePeptide(id);
+    if (!rel) return '';
+    return `<button type="button" class="related-chip" style="border-left-color:${rel.color || 'var(--accent-blue)'}" onclick="showPeptide('${rel.id}')">${rel.name}</button>`;
+  }).join('');
+  if (!chips.trim()) return '';
+  return `<section class="related-section"><h3>Related Compounds</h3><div class="related-chips">${chips}</div></section>`;
+}
+
+function renderRegSummary(rp) {
+  if (!rp || !rp.regSummary) return '';
+  return `<div style="background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.15);border-radius:8px;padding:12px 14px;font-size:.8rem;color:var(--text-secondary);line-height:1.6;margin:14px 0">
+    <div style="font-size:.65rem;font-weight:700;color:var(--accent-blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Regulatory Overview</div>
+    ${rp.regSummary}
+  </div>`;
+}
+
+// ── Compare bar ──
+const compareState = { items: [] };
+
+function ensureCompareBar() {
+  let bar = document.getElementById('compareBar');
+  if (!bar) {
+    bar = document.createElement('div');
+    bar.id = 'compareBar';
+    document.body.appendChild(bar);
+  }
+  return bar;
+}
+
+function toggleCompare(id, e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const exists = compareState.items.includes(id);
+  if (exists) {
+    compareState.items = compareState.items.filter(x => x !== id);
+  } else {
+    if (compareState.items.length >= 2) compareState.items.shift();
+    compareState.items.push(id);
+  }
+  updateCompareBar();
+  updateCompareButtons();
+}
+
+function updateCompareButtons() {
+  document.querySelectorAll('.compare-btn').forEach(btn => {
+    const id = btn.getAttribute('data-compare-id');
+    const active = compareState.items.includes(id);
+    btn.classList.toggle('active', active);
+    btn.textContent = active ? '✓' : '+';
+  });
+}
+
+function updateCompareBar() {
+  const bar = ensureCompareBar();
+  if (!compareState.items.length) { bar.style.display = 'none'; bar.innerHTML = ''; return; }
+  const pills = compareState.items.map(id => {
+    const p = resolvePeptide(id);
+    return p ? `<span class="compare-pill" style="border-left:2px solid ${p.color||'var(--accent-blue)'}">${p.name}</span>` : '';
+  }).join('');
+  bar.innerHTML = `
+    <div class="compare-bar-left"><span class="compare-bar-title">Compare</span>${pills}</div>
+    <div class="compare-bar-actions">
+      <button type="button" class="compare-clear" onclick="clearComparison()">Clear</button>
+      <button type="button" class="compare-action" ${compareState.items.length < 2 ? 'disabled' : ''} onclick="showComparison()">Compare →</button>
+    </div>`;
+  bar.style.display = 'flex';
+}
+
+function clearComparison() { compareState.items = []; updateCompareBar(); updateCompareButtons(); }
+
+function showComparison() {
+  if (compareState.items.length < 2) return;
+  currentView = 'comparison';
+  renderComparisonPage();
+}
+
+function renderComparisonPage() {
+  const main = document.getElementById('main');
+  if (!main) return;
+  const selected = compareState.items.slice(0,2).map(id => resolvePeptide(id)).filter(Boolean);
+  if (selected.length < 2) return;
+  const cards = selected.map(rp => `
+    <article class="compare-profile">
+      <h2 style="color:${rp.color||'var(--text-primary)'}">${rp.name}</h2>
+      <div class="compare-score">Composite score: <strong>${typeof rp.composite==='number' ? rp.composite.toFixed(1)+'/10' : 'Not scored'}</strong></div>
+      ${renderSnapshot(rp)}
+      <div class="compare-section-title">Decision Flags</div>${renderDecisionFlags(rp)}
+      <div class="compare-section-title">Trust Level</div>${renderTrust(rp)}
+      ${rp.riskData ? `<div class="compare-section-title">Risk Level</div>
+        <section class="snapshot-card"><div class="snapshot-defs">
+          <div class="snapshot-row"><div class="snapshot-label">Level</div><div class="snapshot-value">${rp.riskData.level||'Not defined'}</div></div>
+          <div class="snapshot-row"><div class="snapshot-label">Rationale</div><div class="snapshot-value">${rp.riskData.rationale||'No rationale available.'}</div></div>
+        </div></section>` : ''}
+    </article>`).join('');
+  main.innerHTML = `
+    <section class="comparison-page">
+      <div class="comparison-header">
+        <div><h1>Peptide Comparison</h1><p style="color:var(--text-secondary);font-size:.85rem;margin-top:4px">Side-by-side evidence, risk, flags and trust signals.</p></div>
+        <button type="button" class="comparison-back" onclick="showOverview()">← Back</button>
+      </div>
+      <div class="comparison-grid">${cards}</div>
+    </section>`;
+  main.scrollTop = 0;
+}
+
+function initAccordions() {
+  document.querySelectorAll('.sec-accordion').forEach(details => {
+    if (details.dataset.accordionReady === 'true') return;
+    details.dataset.accordionReady = 'true';
+  });
+}
+
 </script>
 </body>
 </html>
