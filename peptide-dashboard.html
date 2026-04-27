@@ -666,6 +666,133 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
   .comparison-header{align-items:flex-start;flex-direction:column}
   .comparison-grid{grid-template-columns:1fr}
 }
+
+/* ══════════════════════════════════════════════════════
+   OVERVIEW HERO
+══════════════════════════════════════════════════════ */
+.ov-hero{
+  position:relative;
+  background:linear-gradient(145deg,rgba(79,70,229,.14) 0%,rgba(14,116,144,.09) 50%,rgba(6,11,22,0) 100%);
+  border:1px solid rgba(129,140,248,.22);
+  border-radius:16px;
+  padding:30px 28px 26px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+.ov-hero::before{
+  content:'';
+  position:absolute;top:-80px;right:-80px;
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(79,70,229,.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+.ov-hero-title{
+  font-size:1.55rem;font-weight:800;line-height:1.22;
+  background:linear-gradient(135deg,#c7d2fe 0%,#38bdf8 55%,#4ade80 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;
+}
+.ov-hero-sub{
+  font-size:.86rem;color:var(--text-secondary);line-height:1.68;
+  max-width:540px;margin-bottom:18px;
+}
+.ov-hero-searchbar{display:flex;gap:10px;max-width:500px}
+.ov-hero-searchbar input{
+  flex:1;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(129,140,248,.35);
+  border-radius:10px;padding:11px 16px;
+  color:var(--text-primary);font-size:.88rem;
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.ov-hero-searchbar input:focus{
+  border-color:var(--elixa-a);
+  box-shadow:0 0 0 3px rgba(129,140,248,.14);
+}
+.ov-hero-searchbar input::placeholder{color:var(--text-muted)}
+
+/* ══════════════════════════════════════════════════════
+   GOAL CHIPS
+══════════════════════════════════════════════════════ */
+.goal-chips-wrap{margin-bottom:22px}
+.goal-chips-label{
+  font-size:.61rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:10px;
+}
+.goal-chips{display:flex;flex-wrap:wrap;gap:8px}
+.goal-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;
+  border-radius:999px;border:1px solid var(--border);
+  background:var(--bg-card);
+  color:var(--text-secondary);font-size:.75rem;font-weight:600;
+  cursor:pointer;transition:all .18s;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+.goal-chip:hover,.goal-chip.gc-active{
+  background:rgba(56,189,248,.1);
+  border-color:rgba(56,189,248,.4);
+  color:var(--accent-blue);
+}
+.goal-chip.gc-active{box-shadow:0 0 0 2px rgba(56,189,248,.2)}
+
+/* ══════════════════════════════════════════════════════
+   FEATURED PEPTIDE CARDS
+══════════════════════════════════════════════════════ */
+.featured-wrap{margin-bottom:24px}
+.featured-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.featured-lbl{font-size:.61rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--text-muted)}
+.featured-more{font-size:.72rem;color:var(--accent-blue);background:none;border:none;cursor:pointer;padding:0}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.feat-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-top:2px solid var(--fc,#38bdf8);
+  border-radius:0 0 10px 10px;
+  padding:14px 14px 12px;
+  cursor:pointer;
+  transition:transform .18s,box-shadow .18s,background .15s;
+  position:relative;
+}
+.feat-card:hover{
+  transform:translateY(-2px);
+  background:var(--bg-hover);
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+}
+.feat-card-icon{font-size:1.35rem;margin-bottom:8px;display:block}
+.feat-card-name{font-size:.82rem;font-weight:700;color:var(--text-primary);margin-bottom:2px}
+.feat-card-class{font-size:.64rem;color:var(--text-secondary);margin-bottom:10px;line-height:1.4}
+.feat-card-foot{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.feat-score{font-size:.7rem;font-weight:800}
+.feat-badge{font-size:.58rem;font-weight:700;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.06)}
+
+/* ══════════════════════════════════════════════════════
+   POPULAR STACKS PAGE
+══════════════════════════════════════════════════════ */
+.stack-page-hero{
+  background:linear-gradient(135deg,rgba(56,189,248,.08) 0%,rgba(129,140,248,.06) 100%);
+  border:1px solid rgba(56,189,248,.2);border-radius:14px;
+  padding:22px 24px;margin-bottom:20px;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — new components
+══════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  .ov-hero{padding:20px 18px 18px}
+  .ov-hero-title{font-size:1.22rem}
+  .ov-hero-sub{font-size:.81rem;margin-bottom:14px;max-width:100%}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .goal-chip{font-size:.72rem;padding:7px 12px}
+  .goal-chips{gap:6px}
+}
+@media(max-width:480px){
+  .ov-hero-title{font-size:1.08rem}
+  .feat-grid{gap:8px}
+  .feat-card{padding:11px 11px 10px}
+  .feat-card-icon{font-size:1.1rem;margin-bottom:6px}
+}
 </style>
 </head>
 <body>
@@ -705,6 +832,7 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
     <button class="header-nav-btn active" id="nav-overview" onclick="showOverview()">Overview</button>
     <button class="header-nav-btn" id="nav-landscape" onclick="showLandscapeView()">Landscape Map</button>
     <button class="header-nav-btn" id="nav-pulse" onclick="showPulseView()">Research Pulse</button>
+    <button class="header-nav-btn" id="nav-stacks" onclick="showPopularStacks()">Stacks</button>
     <button class="header-nav-btn" id="nav-glossary" onclick="showGlossary()">Glossary</button>
     <button class="disclaimer-btn" onclick="openMethodology()">Methodology</button>
     <div class="research-badge">Research Use Only</div>
@@ -733,6 +861,10 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
     <button class="mnav-btn" id="mnav-landscape" onclick="showLandscapeView();closeSidebar()">
       <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2.5"/><circle cx="17" cy="7" r="2.5"/><circle cx="17" cy="17" r="1.5"/><circle cx="7" cy="7" r="1.5"/><path d="M3 21h18M3 3v18"/></svg>
       Map
+    </button>
+    <button class="mnav-btn" id="mnav-stacks" onclick="showPopularStacks();closeSidebar()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Stacks
     </button>
     <button class="mnav-btn" id="mnav-pulse" onclick="showPulseView();closeSidebar()">
       <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -963,6 +1095,7 @@ const CATEGORIES = [
   { id: "cognitive_neuro", label: "Cognitive & Neuro",   color: "#818cf8" },
   { id: "sexual_health",   label: "Sexual Health",       color: "#f472b6" },
   { id: "immune",          label: "Immune & Repair",     color: "#34d399" },
+  { id: "hormonal",        label: "Hormonal",            color: "#a78bfa" },
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -1205,7 +1338,55 @@ const RESEARCH_PULSE = [
   { date:"May 2024", peptideId:"glatiramer_acetate", peptide:"Glatiramer Acetate", color:"#34d399",
     headline:"Long-term safety data continued to support glatiramer\'s role as a lower-risk injectable MS therapy, especially where tolerability is prioritised.",
     source:"Research Review", type:"study",
-    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Glatiramer+Acetate" }
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Glatiramer+Acetate" },
+  { date:"Jan 2025", peptideId:"nad_plus", peptide:"NAD+", color:"#a855f7",
+    headline:"New clinical work explores NAD+ precursors improving mitochondrial function markers in ageing adults.",
+    source:"Cell Metabolism", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=NAD+" },
+  { date:"Oct 2024", peptideId:"nad_plus", peptide:"NAD+", color:"#a855f7",
+    headline:"Early-phase trials investigate NAD+ boosting strategies for neurodegenerative disease resilience.",
+    source:"ClinicalTrials.gov", type:"trial",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=NAD+" },
+  { date:"Feb 2025", peptideId:"tb4", peptide:"TB4", color:"#10b981",
+    headline:"Ongoing studies examine thymosin beta-4 analogues in cardiac repair following myocardial injury.",
+    source:"Journal of Clinical Investigation", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+beta+4" },
+  { date:"Aug 2024", peptideId:"tb4", peptide:"TB4", color:"#10b981",
+    headline:"Clinical research expands into corneal healing using thymosin beta-4–based topical formulations.",
+    source:"Investigative Ophthalmology & Visual Science", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+beta+4" },
+  { date:"Mar 2025", peptideId:"cagrisema", peptide:"CagriSema", color:"#3b82f6",
+    headline:"Phase 3 trials report significant weight-loss outcomes in obesity using dual-mechanism therapy.",
+    source:"New England Journal of Medicine", type:"trial",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=cagrisema" },
+  { date:"Nov 2024", peptideId:"cagrisema", peptide:"CagriSema", color:"#3b82f6",
+    headline:"Combination therapy shows improved glycaemic control compared to GLP-1 monotherapy in trials.",
+    source:"The Lancet Diabetes & Endocrinology", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=cagrisema" },
+  { date:"Apr 2025", peptideId:"survodutide", peptide:"Survodutide", color:"#3b82f6",
+    headline:"Late-stage trials highlight benefits in weight reduction and liver fat improvement in MASH patients.",
+    source:"Hepatology", type:"trial",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=survodutide" },
+  { date:"Sep 2024", peptideId:"survodutide", peptide:"Survodutide", color:"#3b82f6",
+    headline:"Dual agonist therapy shows promise in metabolic disease targeting both appetite and liver pathways.",
+    source:"Nature Medicine", type:"study",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=survodutide" },
+  { date:"Mar 2026", peptideId:"goserelin", peptide:"Goserelin", color:"#a78bfa",
+    headline:"STAMPEDE trial sub-group data reinforces upfront ADT + novel hormonal therapy benefit in high-risk prostate cancer — goserelin as backbone therapy.",
+    source:"The Lancet Oncology", type:"trial",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=Goserelin+prostate+cancer" },
+  { date:"Sep 2025", peptideId:"goserelin", peptide:"Goserelin", color:"#a78bfa",
+    headline:"SAHPRA confirms continued registration of Zoladex 3.6mg and 10.8mg depots; oncology prescribing guidelines updated for premenopausal breast cancer adjuvant use.",
+    source:"SAHPRA Medicines Register", type:"regulatory",
+    url:"https://www.sahpra.org.za" },
+  { date:"Feb 2026", peptideId:"leuprolide", peptide:"Leuprolide", color:"#818cf8",
+    headline:"HERO trial 5-year follow-up: relugolix vs leuprolide depot in prostate cancer — confirms comparable hormonal suppression with different cardiovascular risk profiles.",
+    source:"Journal of Clinical Oncology", type:"trial",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=leuprolide+prostate+cancer" },
+  { date:"Nov 2025", peptideId:"leuprolide", peptide:"Leuprolide", color:"#818cf8",
+    headline:"Endocrine Society clinical practice guidelines on GnRH agonist therapy updated — bone health monitoring and cardiovascular screening recommendations strengthened.",
+    source:"Endocrine Society", type:"regulatory",
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=leuprolide+GnRH+guidelines" }
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -2694,6 +2875,81 @@ const PEPTIDES = [
     safety:{contraindications:["Pregnancy unless trial-approved","History of pancreatitis without specialist review"],precautions:["Gastrointestinal tolerability — escalate gradually","Gallbladder risk","Dehydration monitoring","Severe GI disease — assess before use"],common:["Nausea","Vomiting","Diarrhoea","Reduced appetite","Constipation"],serious:["Pancreatitis concern","Gallbladder disease","Dehydration","Unknown long-term glucagon-pathway effects"]}
   }
 
+  ,{
+    id:"goserelin",name:"Goserelin",icon:"🔬",color:"#a78bfa",category:"hormonal",class:"GnRH agonist",
+    altNames:"Zoladex · Goserelin acetate",
+    mechanism:"A synthetic GnRH analogue that initially stimulates then continuously downregulates pituitary GnRH receptors. Sustained exposure desensitises the receptor, suppressing LH and FSH release and reducing sex hormones to castrate or menopausal levels. Used to deprive hormone-sensitive tumours and ectopic tissue of their hormonal driver.",
+    fdaStatus:"approved",fdaLabel:"FDA-approved for prostate cancer, endometriosis, and breast cancer in premenopausal women.",
+    whatItDoes:"Suppresses sex hormone production by continuously downregulating pituitary GnRH receptors. Reduces testosterone in men and oestrogen in women, used across hormone-sensitive cancers and reproductive conditions.",
+    purposes:{weightBody:2,recoveryTissue:1,inflammation:3,energyPerf:1,cognitiveNeuro:1,sleep:1,cardiovascular:3,skinLongevity:1},
+    saContext:"Goserelin (Zoladex) is SAHPRA-registered and available as a prescription specialist medicine in South Africa. It is used in oncology, gynaecology, and reproductive medicine — not a wellness or optimisation peptide.",
+    dosing:{
+      intro:{dose:"3.6mg SC implant every 28 days",note:"Standard monthly implant for most indications"},
+      maintenance:{dose:"10.8mg SC implant every 12 weeks",note:"3-monthly depot for prostate cancer"},
+      frequency:"Monthly (3.6mg) or every 12 weeks (10.8mg)",
+      halfLife:"~2–4 hours; sustained depot release over 4 or 12 weeks",
+      cycle:"Indication-specific — duration determined by oncology or reproductive specialist",
+      notes:"Administered as a biodegradable implant by a healthcare professional. Not self-administered. Dosing and duration are entirely clinician-directed."
+    },
+    administration:[{method:"SC Implant",bio:90,note:"Biodegradable depot pellet implanted subcutaneously — releases goserelin continuously over 4 or 12 weeks"}],
+    efficacy:[
+      {domain:"Prostate Cancer — Androgen Suppression",strength:"high",bar:92,source:"Castrate-level testosterone achieved in >95% of patients in pivotal trials"},
+      {domain:"Endometriosis — Pain and Lesion Control",strength:"high",bar:85,source:"RCT evidence demonstrates significant reduction in pelvic pain and lesion activity"},
+      {domain:"Breast Cancer — Ovarian Suppression",strength:"high",bar:80,source:"Approved adjuvant role in premenopausal HR+ breast cancer alongside chemotherapy"},
+    ],
+    trials:[
+      {phase:"ph-3",phaseLabel:"Phase 3",name:"SWOG S9346 — Intermittent Androgen Deprivation",desc:"Goserelin + bicalutamide in intermittent androgen deprivation therapy for prostate cancer.",sponsor:"NCI/SWOG",enrolled:"1535",status:"completed",statusLabel:"Completed",id:"NCT00002651"}
+    ],
+    studies:[
+      {year:"2003",title:"Goserelin for Premenopausal Breast Cancer — Overview",finding:"Established ovarian suppression with goserelin as effective adjuvant therapy in premenopausal HR+ breast cancer alongside chemotherapy.",journal:"Lancet"}
+    ],
+    safety:{
+      contraindications:["Pregnancy (except in specific oncology protocols)","Undiagnosed abnormal vaginal bleeding"],
+      precautions:["Bone mineral density monitoring with prolonged use","Anti-androgen cover at initiation to manage tumour flare","Cardiovascular and metabolic monitoring with long-term ADT"],
+      common:["Hot flushes","Sweating","Reduced libido","Mood changes","Headache","Injection-site discomfort"],
+      serious:["Bone mineral density loss","Initial hormone flare","Metabolic effects","Mood and cognitive changes with prolonged use"]
+    },
+    knownUnknowns:["Long-term cardiovascular effects with prolonged androgen deprivation","Optimal therapy duration in early-stage hormone-sensitive cancers"],
+    conditions:["prostate_cancer","endometriosis","breast_cancer"]
+  }
+  ,{
+    id:"leuprolide",name:"Leuprolide",icon:"🔬",color:"#818cf8",category:"hormonal",class:"GnRH agonist",
+    altNames:"Leuprorelin · Lupron · Lupron Depot · Eligard",
+    mechanism:"A potent synthetic GnRH agonist that produces an initial brief surge in LH and FSH (the 'flare'), then desensitises pituitary GnRH receptors through continuous stimulation. The result is profound suppression of gonadal sex hormone production. Available in multiple depot formulations ranging from daily SC injection to 6-monthly IM implants.",
+    fdaStatus:"approved",fdaLabel:"FDA-approved for prostate cancer, endometriosis, uterine fibroids, and central precocious puberty.",
+    whatItDoes:"Continuously stimulates then desensitises pituitary GnRH receptors, suppressing LH and FSH and reducing sex hormones. Used across prostate cancer, endometriosis, fibroids, paediatric precocious puberty, and breast cancer.",
+    purposes:{weightBody:2,recoveryTissue:1,inflammation:3,energyPerf:1,cognitiveNeuro:2,sleep:1,cardiovascular:3,skinLongevity:1},
+    saContext:"Leuprolide (Lupron) is available via SAHPRA-registered products as a specialist prescription medicine in South Africa. It is an oncology, gynaecology, and paediatric endocrinology drug — not a wellness or performance peptide.",
+    dosing:{
+      intro:{dose:"1mg SC daily or 7.5mg IM depot monthly",note:"Formulation depends entirely on indication and clinician choice"},
+      maintenance:{dose:"Multiple depot options: 7.5mg (1-month), 22.5mg (3-month), 30mg (4-month), 45mg (6-month)",note:"Condition and patient-specific"},
+      frequency:"Daily injection or depot every 1, 3, 4, or 6 months",
+      halfLife:"~3 hours; sustained from depot formulation over weeks to months",
+      cycle:"Indication-specific — ranges from months (endometriosis) to years (prostate cancer)",
+      notes:"Multiple formulations available. Clinician and indication determine which depot length is appropriate. Not self-administered without explicit medical direction."
+    },
+    administration:[{method:"SC/IM Injection or Depot",bio:90,note:"Bioavailability from depot formulations provides sustained hormone suppression over the dosing interval"}],
+    efficacy:[
+      {domain:"Prostate Cancer — Androgen Suppression",strength:"high",bar:93,source:"Castrate-level testosterone achieved in large pivotal trials"},
+      {domain:"Endometriosis — Symptom Control",strength:"high",bar:85,source:"RCT evidence supports significant pain and lesion reduction"},
+      {domain:"Uterine Fibroids — Size Reduction",strength:"high",bar:82,source:"Established pre-operative fibroid shrinkage evidence"},
+      {domain:"Central Precocious Puberty",strength:"high",bar:88,source:"FDA approval based on LH and FSH suppression in clinical trials"},
+    ],
+    trials:[
+      {phase:"ph-3",phaseLabel:"Phase 3",name:"PATCH Trial — Prostate Cancer ADT",desc:"Compared leuprolide-based androgen deprivation to transdermal oestradiol; demonstrated comparable hormonal suppression.",sponsor:"MRC CTU",enrolled:"1694",status:"completed",statusLabel:"Completed",id:"NCT00303784"}
+    ],
+    studies:[
+      {year:"2019",title:"Long-term Leuprolide in Central Precocious Puberty — Height Outcomes",finding:"Long-term GnRH agonist therapy demonstrated effective hormonal suppression and appropriate final adult height outcomes.",journal:"Hormone Research in Paediatrics"}
+    ],
+    safety:{
+      contraindications:["Pregnancy","Unexplained abnormal vaginal bleeding"],
+      precautions:["Bone mineral density monitoring with prolonged use","Tumour or symptom flare management at initiation","Cardiovascular and metabolic monitoring with long-term ADT","Mood and cognitive monitoring"],
+      common:["Hot flushes","Reduced libido","Mood changes","Headache","Injection-site reaction","Vaginal dryness","Fatigue"],
+      serious:["Bone mineral density loss","Initial disease flare","Metabolic syndrome risk","Cardiovascular events with prolonged ADT"]
+    },
+    knownUnknowns:["Optimal duration of androgen deprivation in intermediate-risk prostate cancer","Long-term cognitive and mood effects with extended therapy"],
+    conditions:["prostate_cancer","endometriosis","uterine_fibroids","precocious_puberty","breast_cancer"]
+  }
 ]; // END PEPTIDES ARRAY
 
 // ═══════════════════════════════════════════════════════════
@@ -2759,6 +3015,12 @@ const REGULATORY_STATUS = {
   glatiramer_acetate:{fda:'approved',  ema:'approved',    mhra:'approved',    tga:'approved',  hc:'approved',  pmda:'approved',  anvisa:'approved',  nmpa:'approved',  sahpra:'approved',  wada:'ok'},
   octreotide:        {fda:'approved',  ema:'approved',    mhra:'approved',    tga:'approved',  hc:'approved',  pmda:'approved',  anvisa:'approved',  nmpa:'approved',  sahpra:'approved',  wada:'ok'},
   teriparatide:      {fda:'approved',  ema:'approved',    mhra:'approved',    tga:'approved',  hc:'approved',  pmda:'approved',  anvisa:'approved',  nmpa:'approved',  sahpra:'approved',  wada:'prohibited'},
+  nad_plus:          {fda:'research',  ema:'research',    mhra:'research',    tga:'research',  hc:'research',  pmda:'research',  anvisa:'research',  nmpa:'research',  sahpra:'research',  wada:'ok'},
+  tb4:               {fda:'research',  ema:'research',    mhra:'research',    tga:'research',  hc:'research',  pmda:'research',  anvisa:'research',  nmpa:'research',  sahpra:'research',  wada:'ok'},
+  cagrisema:         {fda:'trials',    ema:'trials',      mhra:'trials',      tga:'research',  hc:'research',  pmda:'research',  anvisa:'research',  nmpa:'research',  sahpra:'research',  wada:'ok'},
+  survodutide:       {fda:'trials',    ema:'trials',      mhra:'trials',      tga:'research',  hc:'research',  pmda:'research',  anvisa:'research',  nmpa:'research',  sahpra:'research',  wada:'ok'},
+  goserelin:         {fda:'approved',  ema:'approved',    mhra:'approved',    tga:'approved',  hc:'approved',  pmda:'approved',  anvisa:'approved',  nmpa:'approved',  sahpra:'approved',  wada:'ok'},
+  leuprolide:        {fda:'approved',  ema:'approved',    mhra:'approved',    tga:'approved',  hc:'approved',  pmda:'approved',  anvisa:'approved',  nmpa:'approved',  sahpra:'approved',  wada:'ok'},
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -2815,6 +3077,12 @@ const USER_CONFIDENCE = {
   glatiramer_acetate:75, // Strong MS community — well established long-term use
   octreotide:        72, // Strong clinical track record, specialist use
   teriparatide:      70, // Strong clinical evidence — specialist osteoporosis use
+  nad_plus:          72,
+  tb4:               64,
+  cagrisema:         68,
+  survodutide:       63,
+  goserelin:         60,
+  leuprolide:        62,
 };
 
 // Helper: count peptides with at least one 'approved' from any agency
@@ -3308,6 +3576,12 @@ const RESEARCH_MATURITY = {
   glatiramer_acetate: { label:"Globally Approved",      stage:6, note:"Globally approved for relapsing forms of multiple sclerosis." },
   octreotide:         { label:"Globally Approved",      stage:6, note:"Globally approved for acromegaly and neuroendocrine-related indications." },
   teriparatide:       { label:"Globally Approved",      stage:6, note:"Globally approved for osteoporosis treatment in appropriate high-risk patients." },
+  nad_plus:           { label:"Research Stage",          stage:2, note:"Best viewed as a wellness-adjacent compound with user adoption ahead of strong clinical proof." },
+  tb4:                { label:"Emerging Clinical",        stage:3, note:"Best suited to research tracking — some human evidence emerging but approved clinical use remains limited." },
+  cagrisema:          { label:"Strong Evidence",         stage:4, note:"A late-stage metabolic therapy with strong trial momentum but not yet globally approved." },
+  survodutide:        { label:"Strong Evidence",         stage:4, note:"A late-stage investigational metabolic therapy with growing evidence but pending regulatory outcomes." },
+  goserelin:          { label:"Globally Approved",       stage:6, note:"Approved internationally for prostate cancer, endometriosis, and breast cancer management." },
+  leuprolide:         { label:"Globally Approved",       stage:6, note:"Approved internationally for prostate cancer, endometriosis, fibroids, and central precocious puberty." },
 };
 
 const _maturityMeta = [
@@ -3374,6 +3648,12 @@ const SIMPLE_MECHANISM = {
   glatiramer_acetate: "Multiple sclerosis happens when your immune system mistakenly attacks myelin — the protective coating on your nerve fibres. Glatiramer acetate is a synthetic mixture of amino acid chains designed to look like myelin to your immune system. It essentially tricks your immune cells into attacking the drug instead of your own nerves — acting as a decoy that retrains the immune response. FDA-approved and widely used for relapsing MS.",
   octreotide:         "Somatostatin is a hormone your body uses as an off-switch for other hormones — telling glands to stop producing. Octreotide is a longer-lasting synthetic copy of somatostatin. It's used to treat conditions where the body overproduces hormones (like the excess GH in acromegaly, or the hormones from carcinoid tumours) and to reduce secretions in certain gut conditions.",
   teriparatide:       "Parathyroid hormone controls calcium in the body and governs bone turnover. Here's the counterintuitive science: injected continuously, PTH causes bone loss — but injected in short daily pulses, it does the opposite and actually builds new bone. Teriparatide is the first 1–34 fragment of PTH given as daily pulses. It's one of the only osteoporosis treatments that actually adds bone mass rather than just slowing its loss.",
+  nad_plus:           "NAD+ is linked to how cells produce energy and respond to stress. Every cell in your body uses it constantly — like a rechargeable battery for hundreds of chemical reactions. Levels naturally decline with age, which is why researchers have become interested in whether replenishing NAD+ can slow that decline. The practical benefits of supplementing or infusing it depend heavily on the form used, dose, and individual context.",
+  tb4:                "Thymosin beta-4 is a protein your body produces naturally — it's involved in repair processes like cell movement, tissue recovery, and wound response. Think of it as part of the body's own emergency repair kit. It's often discussed as a recovery compound, but real-world injectable use is still well ahead of settled clinical evidence.",
+  cagrisema:          "CagriSema combines two complementary metabolic approaches into one weekly injection. Cagrilintide targets a hormone system that slows how quickly your stomach empties and reduces how much you eat between meals. Semaglutide targets the GLP-1 pathway, which tells your brain you're full and keeps blood sugar steadier. The combination aims to produce greater weight loss than either approach alone.",
+  survodutide:        "Survodutide targets appetite and energy regulation through two complementary hormonal pathways — one that reduces hunger and one that tells your body to burn more calories. It's being studied specifically for people with obesity and fatty liver disease, because the glucagon pathway may help the liver process fat more efficiently alongside the weight-loss effect.",
+  goserelin:          "Your hypothalamus sends a pulsed signal (GnRH) to your pituitary, which then tells your gonads to produce sex hormones. Goserelin mimics that signal continuously rather than in pulses — and this constant stimulation actually causes the pituitary to shut down its response. The result: testosterone in men and oestrogen in women drops to very low levels. This is the mechanism that makes it effective in hormone-sensitive cancers and endometriosis.",
+  leuprolide:         "Leuprolide works the same way as goserelin — it floods GnRH receptors in the pituitary with constant stimulation until they stop responding. Without LH and FSH signals, testosterone and oestrogen production falls sharply. In prostate cancer this starves the tumour of the hormone it needs to grow. In endometriosis it reduces oestrogen-driven tissue growth. In central precocious puberty it pauses premature hormonal development.",
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -3516,6 +3796,12 @@ const RISK_LEVEL = {
   melanotan2:   { level:'high',     rationale:'Unapproved and repeatedly warned against by regulators due to serious concerns including skin changes, contamination risk, and unknown long-term safety.' },
   kisspeptin10: { level:'moderate', rationale:'Studied in humans for reproductive hormone effects but remains investigational and lacks broad therapeutic approval.' },
   thymosin_a1:  { level:'moderate', rationale:'Approved in some countries as an immune-modulating peptide but not universally approved and still requires medical oversight.' },
+  nad_plus:     { level:'moderate', rationale:'NAD+ is widely used in wellness settings, but injectable use lacks strong long-term clinical evidence. Risks mainly relate to purity, dosing, route, and unrealistic anti-ageing claims.' },
+  tb4:          { level:'moderate', rationale:'Thymosin beta-4 is often discussed for recovery, but human evidence remains limited. Key risks include uncertain dosing, product quality, and long-term safety gaps.' },
+  cagrisema:    { level:'moderate', rationale:'CagriSema combines two metabolic mechanisms with strong trial data but final approval-level safety data still emerging. Main risks are gastrointestinal and tolerability.' },
+  survodutide:  { level:'moderate', rationale:'An investigational metabolic drug with promising trial activity. Key risks include GI side effects, liver-related monitoring, and incomplete long-term safety data.' },
+  goserelin:    { level:'moderate', rationale:'Globally approved specialist medicine with well-characterised risks including bone density loss, initial hormone flare, metabolic effects, and cardiovascular monitoring requirements with prolonged androgen deprivation.' },
+  leuprolide:   { level:'moderate', rationale:'Globally approved specialist medicine with well-characterised risks including bone density loss, initial disease flare, metabolic changes, and cardiovascular monitoring in long-term use.' },
 };
 
 function getRiskBadge(p) {
@@ -3701,7 +3987,9 @@ const REGULATORY_SUMMARY = {
   nad_plus:"In South Africa, NAD+ products may appear as supplements, IV wellness infusions or compounded offerings. SAHPRA status depends on formulation, route and claims. Not approved as an anti-ageing medicine.",
   tb4:"Not approved by major regulators as a systemic recovery or sports-medicine treatment. Ophthalmic thymosin-derived products have clinical development; injectable systemic use lacks regulatory backing.",
   cagrisema:"Investigational — under regulatory review following Phase 3 REDEFINE trials. Not yet approved by FDA, EMA, TGA or SAHPRA. Grey-market access is unapproved and high-risk.",
-  survodutide:"Investigational — Phase 3 SYNCHRONIZE programme active. Not approved by FDA, EMA, TGA or SAHPRA. Access outside formal trials is unapproved."
+  survodutide:"Investigational — Phase 3 SYNCHRONIZE programme active. Not approved by FDA, EMA, TGA or SAHPRA. Access outside formal trials is unapproved.",
+  goserelin:"Approved by major regulators including the FDA, EMA, TGA and SAHPRA for prostate cancer, endometriosis, and breast cancer. A specialist prescription medicine used under oncology, gynaecology, or urology supervision.",
+  leuprolide:"Approved by major regulators including the FDA, EMA, TGA and SAHPRA for prostate cancer, endometriosis, uterine fibroids, and central precocious puberty. A specialist prescription medicine requiring clinician oversight."
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -3751,18 +4039,359 @@ const MAP_PREVIEW_TAGLINE = {
   nad_plus:"Cellular energy cofactor studied for longevity and metabolic support.",
   tb4:"Native repair peptide — strongest evidence in corneal and wound healing.",
   cagrisema:"Dual amylin+GLP-1 weekly injection for powerful weight loss.",
-  survodutide:"GLP-1/glucagon dual agonist studied for obesity and liver disease."
+  survodutide:"GLP-1/glucagon dual agonist studied for obesity and liver disease.",
+  goserelin:"GnRH agonist implant for hormone-sensitive cancers and endometriosis.",
+  leuprolide:"GnRH agonist used across prostate cancer, endometriosis, and fibroids."
 };
 
 // ═══════════════════════════════════════════════════════════
 // UX DATA OBJECTS — Paste ChatGPT-generated content to fill these stubs
 // resolvePeptide() handles missing data gracefully via typeof checks
 // ═══════════════════════════════════════════════════════════
-const DECISION_FLAGS = {};
-const TRUST_SIGNALS = {};
-const PEPTIDE_SNAPSHOT = {};
-const ELIXA_INSIGHTS = {};
-const RELATED_COMPOUNDS = {};
+const DECISION_FLAGS = {
+  semaglutide: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  tirzepatide: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  retatrutide: { requires_medical_supervision: true, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  liraglutide: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  aod9604: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  bpc157: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  tb500: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  ara290: { requires_medical_supervision: true, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  cjc1295: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  sermorelin: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: true, long_term_unknown: false, strong_human_evidence: false },
+  ipamorelin: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  tesamorelin: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  hexarelin: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  mk677: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  ghkcu: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  epitalon: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  motsc: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  glutathione: { requires_medical_supervision: false, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: false },
+  semax: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  selank: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  dsip: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  dihexa: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  pt141: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  melanotan2: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  kisspeptin10: { requires_medical_supervision: true, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  thymosin_a1: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  ghrp2: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  ghrp6: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  igf1lr3: { requires_medical_supervision: true, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  pegmgf: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: true, long_term_unknown: true, strong_human_evidence: false },
+  follistatin: { requires_medical_supervision: true, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  cerebrolysin: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  vip: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  oxytocin: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  gonadorelin: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  ll37: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  glatiramer_acetate: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  octreotide: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  teriparatide: { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  collagen_peptides: { requires_medical_supervision: false, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: false },
+  humanin: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  nad_plus: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  tb4: { requires_medical_supervision: false, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  cagrisema: { requires_medical_supervision: true, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  survodutide: { requires_medical_supervision: true, legal_grey_area: true, sport_banned: false, long_term_unknown: true, strong_human_evidence: false },
+  goserelin:   { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true },
+  leuprolide:  { requires_medical_supervision: true, legal_grey_area: false, sport_banned: false, long_term_unknown: false, strong_human_evidence: true }
+};
+const TRUST_SIGNALS = {
+  semaglutide: { human: true, level: "high", reviewed: true, note: "Large RCTs and global approval." },
+  tirzepatide: { human: true, level: "high", reviewed: true, note: "Large metabolic trials and approval." },
+  retatrutide: { human: true, level: "moderate", reviewed: true, note: "Phase 2 obesity data." },
+  liraglutide: { human: true, level: "high", reviewed: true, note: "Longstanding approved GLP-1 therapy." },
+  aod9604: { human: true, level: "moderate", reviewed: true, note: "Human studies, weak efficacy." },
+  bpc157: { human: false, level: "low", reviewed: false, note: "Mostly animal repair studies." },
+  tb500: { human: false, level: "preclinical", reviewed: false, note: "Extrapolated thymosin beta-4 biology." },
+  ara290: { human: true, level: "moderate", reviewed: true, note: "Small neuropathy trials exist." },
+  cjc1295: { human: true, level: "moderate", reviewed: true, note: "Human GH-axis studies exist." },
+  sermorelin: { human: true, level: "moderate", reviewed: true, note: "Clinical GH stimulation history." },
+  ipamorelin: { human: true, level: "low", reviewed: false, note: "Limited human GH data." },
+  tesamorelin: { human: true, level: "high", reviewed: true, note: "Approved HIV lipodystrophy therapy." },
+  hexarelin: { human: true, level: "low", reviewed: false, note: "Small human endocrine studies." },
+  mk677: { human: true, level: "moderate", reviewed: true, note: "Human GH secretagogue trials." },
+  ghkcu: { human: true, level: "low", reviewed: false, note: "Skin and wound literature." },
+  epitalon: { human: true, level: "low", reviewed: false, note: "Limited regional ageing studies." },
+  motsc: { human: true, level: "low", reviewed: false, note: "Early metabolic human research." },
+  glutathione: { human: true, level: "moderate", reviewed: true, note: "Broad clinical antioxidant literature." },
+  semax: { human: true, level: "low", reviewed: false, note: "Regional neuropeptide research." },
+  selank: { human: true, level: "low", reviewed: false, note: "Limited anxiety-related studies." },
+  dsip: { human: true, level: "low", reviewed: false, note: "Older inconsistent sleep studies." },
+  dihexa: { human: false, level: "preclinical", reviewed: false, note: "Animal cognition research only." },
+  pt141: { human: true, level: "high", reviewed: true, note: "Approved sexual dysfunction drug." },
+  melanotan2: { human: true, level: "low", reviewed: false, note: "Limited unapproved human exposure." },
+  kisspeptin10: { human: true, level: "moderate", reviewed: true, note: "Human reproductive hormone studies." },
+  thymosin_a1: { human: true, level: "high", reviewed: true, note: "Approved in several countries." },
+  ghrp2: { human: true, level: "low", reviewed: false, note: "Limited GH-release studies." },
+  ghrp6: { human: true, level: "low", reviewed: false, note: "Early GH-release studies." },
+  igf1lr3: { human: false, level: "preclinical", reviewed: false, note: "Research analogue, not therapeutic." },
+  pegmgf: { human: false, level: "preclinical", reviewed: false, note: "Preclinical muscle-growth concept." },
+  follistatin: { human: true, level: "low", reviewed: false, note: "Gene-therapy research adjacent." },
+  cerebrolysin: { human: true, level: "high", reviewed: true, note: "Clinical neurorecovery studies exist." },
+  vip: { human: true, level: "high", reviewed: true, note: "Approved analogue and trials." },
+  oxytocin: { human: true, level: "high", reviewed: true, note: "Established obstetric medicine." },
+  gonadorelin: { human: true, level: "high", reviewed: true, note: "Established endocrine diagnostic use." },
+  ll37: { human: true, level: "high", reviewed: true, note: "Approved topical analogue exists." },
+  glatiramer_acetate: { human: true, level: "high", reviewed: true, note: "Approved MS therapy." },
+  octreotide: { human: true, level: "high", reviewed: true, note: "Established endocrine therapy." },
+  teriparatide: { human: true, level: "high", reviewed: true, note: "Approved osteoporosis therapy." },
+  collagen_peptides: { human: true, level: "moderate", reviewed: true, note: "Nutrition and skin RCTs." },
+  humanin: { human: false, level: "preclinical", reviewed: false, note: "Cell and animal ageing studies." },
+  nad_plus: { human: true, level: "low", reviewed: false, note: "Wellness use exceeds evidence." },
+  tb4: { human: true, level: "moderate", reviewed: true, note: "Some wound and cardiac trials." },
+  cagrisema: { human: true, level: "moderate", reviewed: true, note: "Late-stage metabolic trials." },
+  survodutide: { human: true, level: "moderate", reviewed: true, note: "Late-stage obesity and liver trials." },
+  goserelin:   { human: true, level: "high", reviewed: true, note: "Globally approved oncology and GynObs medicine." },
+  leuprolide:  { human: true, level: "high", reviewed: true, note: "Globally approved across multiple specialist indications." }
+};
+const PEPTIDE_SNAPSHOT = {
+  semaglutide: { summary: "Weekly GLP-1 injection for blood sugar control and weight loss.", primary: "Metabolic / Weight Management", evidence: "Multiple Phase 3 RCTs, globally approved", regulatory: "approved", risk: "moderate" },
+  tirzepatide: { summary: "Dual-action injection for weight loss and type 2 diabetes.", primary: "Metabolic / Weight Management", evidence: "Multiple Phase 3 RCTs, approved", regulatory: "approved", risk: "moderate" },
+  retatrutide: { summary: "Triple-action metabolic drug being studied for major weight loss.", primary: "Metabolic / Weight Management", evidence: "Phase 2 clinical trial data", regulatory: "experimental", risk: "unknown" },
+  liraglutide: { summary: "Daily GLP-1 injection for diabetes and weight management.", primary: "Metabolic / Weight Management", evidence: "Large clinical trial base", regulatory: "approved", risk: "moderate" },
+  aod9604: { summary: "Fat-loss fragment with weak human efficacy evidence.", primary: "Metabolic / Fat Loss", evidence: "Human studies with limited efficacy", regulatory: "research-only", risk: "unknown" },
+  bpc157: { summary: "Research peptide studied for gut and tissue repair.", primary: "Recovery / Tissue Repair", evidence: "Mostly animal studies", regulatory: "research-only", risk: "unknown" },
+  tb500: { summary: "Synthetic recovery peptide linked to thymosin beta-4 pathways.", primary: "Recovery / Tissue Repair", evidence: "Preclinical and anecdotal use", regulatory: "research-only", risk: "unknown" },
+  ara290: { summary: "Anti-inflammatory peptide studied for nerve pain and tissue protection.", primary: "Neuropathy / Inflammation", evidence: "Small human trials", regulatory: "experimental", risk: "unknown" },
+  cjc1295: { summary: "GH-axis peptide intended to increase growth hormone pulses.", primary: "Growth Hormone / Recovery", evidence: "Limited human GH data", regulatory: "research-only", risk: "unknown" },
+  sermorelin: { summary: "GH-releasing peptide used to test or stimulate growth hormone.", primary: "Growth Hormone / Endocrine", evidence: "Clinical GH stimulation history", regulatory: "approved", risk: "moderate" },
+  ipamorelin: { summary: "GH secretagogue used experimentally for recovery and body composition.", primary: "Growth Hormone / Recovery", evidence: "Limited human data", regulatory: "research-only", risk: "unknown" },
+  tesamorelin: { summary: "Approved peptide for HIV-associated abdominal fat reduction.", primary: "Metabolic / Lipodystrophy", evidence: "Randomised clinical trials", regulatory: "approved", risk: "moderate" },
+  hexarelin: { summary: "Potent GH secretagogue studied for endocrine and cardiac effects.", primary: "Growth Hormone / Recovery", evidence: "Small human studies", regulatory: "research-only", risk: "unknown" },
+  mk677: { summary: "Oral GH secretagogue that raises GH and IGF-1.", primary: "Growth Hormone / Body Composition", evidence: "Human clinical studies", regulatory: "experimental", risk: "moderate" },
+  ghkcu: { summary: "Copper peptide used in skin, hair, and repair research.", primary: "Skin / Recovery", evidence: "Limited human and cosmetic data", regulatory: "experimental", risk: "low" },
+  epitalon: { summary: "Ageing-focused peptide with limited regional human research.", primary: "Longevity / Ageing", evidence: "Limited regional studies", regulatory: "research-only", risk: "unknown" },
+  motsc: { summary: "Mitochondrial peptide studied for metabolism and cellular stress.", primary: "Longevity / Metabolic Health", evidence: "Mostly preclinical research", regulatory: "research-only", risk: "unknown" },
+  glutathione: { summary: "Antioxidant molecule used for oxidative stress and detox pathways.", primary: "Antioxidant / Wellness", evidence: "Broad human literature", regulatory: "experimental", risk: "low" },
+  semax: { summary: "Neuropeptide studied for focus, stress, and neurological recovery.", primary: "Cognitive / Neuroprotection", evidence: "Regional human studies", regulatory: "research-only", risk: "unknown" },
+  selank: { summary: "Neuropeptide studied for anxiety and stress resilience.", primary: "Cognitive / Anxiety", evidence: "Limited regional studies", regulatory: "research-only", risk: "unknown" },
+  dsip: { summary: "Sleep-related peptide with inconsistent human evidence.", primary: "Sleep / Recovery", evidence: "Older inconsistent studies", regulatory: "research-only", risk: "unknown" },
+  dihexa: { summary: "Experimental compound studied for synapse formation and cognition.", primary: "Cognitive / Neuroregeneration", evidence: "Animal cognition studies", regulatory: "research-only", risk: "unknown" },
+  pt141: { summary: "Melanocortin peptide approved for female sexual desire disorder.", primary: "Sexual Health", evidence: "Clinical trials and approval", regulatory: "approved", risk: "moderate" },
+  melanotan2: { summary: "Unapproved tanning peptide also associated with libido effects.", primary: "Pigmentation / Sexual Health", evidence: "Limited human exposure", regulatory: "research-only", risk: "high" },
+  kisspeptin10: { summary: "Reproductive hormone peptide studied for fertility signalling.", primary: "Reproductive Endocrinology", evidence: "Human hormone studies", regulatory: "experimental", risk: "unknown" },
+  thymosin_a1: { summary: "Immune-modulating peptide approved in some regions.", primary: "Immune Modulation", evidence: "Clinical studies and regional approval", regulatory: "approved", risk: "moderate" },
+  ghrp2: { summary: "GH-releasing peptide studied for growth hormone stimulation.", primary: "Growth Hormone / Recovery", evidence: "Limited human studies", regulatory: "research-only", risk: "unknown" },
+  ghrp6: { summary: "GH-releasing peptide often linked to appetite and GH release.", primary: "Growth Hormone / Appetite", evidence: "Limited human studies", regulatory: "research-only", risk: "unknown" },
+  igf1lr3: { summary: "Long-acting IGF-1 analogue used in experimental contexts.", primary: "Growth / Muscle Research", evidence: "Preclinical and informal use", regulatory: "research-only", risk: "high" },
+  pegmgf: { summary: "Modified growth-factor fragment studied for muscle repair signalling.", primary: "Muscle Repair / Growth", evidence: "Preclinical concept", regulatory: "research-only", risk: "unknown" },
+  follistatin: { summary: "Myostatin-related protein studied for muscle and wasting disorders.", primary: "Muscle Growth / Wasting", evidence: "Early human research adjacent", regulatory: "experimental", risk: "unknown" },
+  cerebrolysin: { summary: "Neuropeptide mixture used in some countries for brain injury recovery.", primary: "Neurological Recovery", evidence: "Human studies with mixed quality", regulatory: "approved", risk: "moderate" },
+  vip: { summary: "Peptide involved in inflammation, blood vessels, and lung signalling.", primary: "Immune / Pulmonary", evidence: "Approved analogue and trials", regulatory: "approved", risk: "moderate" },
+  oxytocin: { summary: "Hormone peptide used medically for labour and bleeding control.", primary: "Obstetric Medicine", evidence: "Established medical use", regulatory: "approved", risk: "moderate" },
+  gonadorelin: { summary: "GnRH peptide used for endocrine testing and reproductive signalling.", primary: "Reproductive Endocrinology", evidence: "Established clinical use", regulatory: "approved", risk: "moderate" },
+  ll37: { summary: "Antimicrobial peptide analogue used in wound-healing research.", primary: "Wound Healing / Antimicrobial", evidence: "Approved topical analogue data", regulatory: "approved", risk: "moderate" },
+  glatiramer_acetate: { summary: "Approved immune-modulating peptide mixture for multiple sclerosis.", primary: "Autoimmune / Multiple Sclerosis", evidence: "Large MS clinical trials", regulatory: "approved", risk: "moderate" },
+  octreotide: { summary: "Somatostatin analogue used for hormone-secreting tumours and bleeding.", primary: "Endocrine / Oncology Support", evidence: "Established clinical use", regulatory: "approved", risk: "moderate" },
+  teriparatide: { summary: "Parathyroid hormone fragment approved for osteoporosis treatment.", primary: "Bone Health / Osteoporosis", evidence: "Large osteoporosis trials", regulatory: "approved", risk: "moderate" },
+  collagen_peptides: { summary: "Dietary peptides used for skin, joint, and connective tissue support.", primary: "Nutrition / Skin and Joints", evidence: "Nutrition RCTs", regulatory: "approved", risk: "low" },
+  humanin: { summary: "Mitochondrial peptide studied for ageing and cellular protection.", primary: "Longevity / Neuroprotection", evidence: "Preclinical studies", regulatory: "research-only", risk: "unknown" },
+  nad_plus: { summary: "Cellular cofactor used in wellness settings for energy claims.", primary: "Longevity / Cellular Energy", evidence: "Limited direct clinical data", regulatory: "research-only", risk: "unknown" },
+  tb4: { summary: "Natural repair peptide studied for wounds, heart, and tissue recovery.", primary: "Recovery / Tissue Repair", evidence: "Human and preclinical studies", regulatory: "experimental", risk: "unknown" },
+  cagrisema: { summary: "Combination metabolic therapy studied for obesity and diabetes.", primary: "Metabolic / Weight Management", evidence: "Late-stage clinical trials", regulatory: "experimental", risk: "unknown" },
+  survodutide: { summary: "Dual metabolic drug studied for obesity and fatty liver disease.", primary: "Metabolic / Liver Health", evidence: "Late-stage clinical trials", regulatory: "experimental", risk: "unknown" },
+  goserelin:   { summary: "Long-acting GnRH implant for hormone suppression in cancer and endometriosis.", primary: "Oncology / Reproductive Medicine", evidence: "Large RCTs and global approval", regulatory: "approved", risk: "moderate" },
+  leuprolide:  { summary: "GnRH agonist depot for hormone suppression across multiple specialist indications.", primary: "Oncology / Reproductive / Paediatric Endocrinology", evidence: "Large RCTs and global approval", regulatory: "approved", risk: "moderate" }
+};
+const ELIXA_INSIGHTS = {
+  semaglutide: { positioning: "Users approach semaglutide as a clinically validated weight-loss tool, often through physicians or compounding pharmacies.", reality_check: "Many underestimate that discontinuation commonly leads to weight regain, and gastrointestinal effects are common during titration.", best_for: "Adults with obesity or type 2 diabetes seeking clinician-supervised metabolic therapy.", avoid_if: "Avoid with pregnancy, pancreatitis history, or personal or family history of medullary thyroid carcinoma." },
+  tirzepatide: { positioning: "Users see tirzepatide as a stronger next-generation option for weight loss and glucose control.", reality_check: "Its potency does not remove the need for nutrition, muscle preservation, and monitoring of side effects.", best_for: "Adults with obesity or type 2 diabetes needing evidence-based metabolic support.", avoid_if: "Avoid with pregnancy, pancreatitis concerns, or relevant thyroid cancer risk history." },
+  retatrutide: { positioning: "Users view retatrutide as a high-potential future fat-loss drug because of early trial results.", reality_check: "It remains investigational, so long-term safety and real-world tolerability are still unresolved.", best_for: "Research tracking by users interested in emerging metabolic therapies.", avoid_if: "Avoid outside formal medical research or without specialist supervision." },
+  liraglutide: { positioning: "Users approach liraglutide as an older, well-studied GLP-1 option for metabolic control.", reality_check: "Daily dosing and gastrointestinal effects make adherence harder than weekly alternatives.", best_for: "Adults who need an established GLP-1 option and can tolerate daily injections.", avoid_if: "Avoid with pregnancy, pancreatitis concerns, or relevant thyroid cancer risk history." },
+  aod9604: { positioning: "Users often approach AOD9604 as a fat-loss shortcut with fewer side effects than stronger metabolic drugs.", reality_check: "Human efficacy signals are weak, and online claims often exceed the evidence.", best_for: "Research comparison only, especially where users want to understand failed or limited metabolic candidates.", avoid_if: "Avoid if expecting clinically meaningful fat loss or proven obesity treatment." },
+  bpc157: { positioning: "Users approach BPC-157 as a repair peptide for tendon, gut, and injury recovery.", reality_check: "Most evidence is animal-based, and reliable human dosing or safety data is missing.", best_for: "Research education around tissue-repair biology and evidence gaps.", avoid_if: "Avoid if pregnant, immunocompromised, or using it to replace proper injury care." },
+  tb500: { positioning: "Users view TB-500 as a broad recovery and mobility peptide.", reality_check: "It is not the same as clinically studied thymosin beta-4, and evidence is largely extrapolated.", best_for: "Research discussions around repair signalling and anti-doping risk.", avoid_if: "Avoid in competitive sport or where product quality cannot be verified." },
+  ara290: { positioning: "Users approach ARA-290 as a more serious research peptide for nerve pain and inflammation.", reality_check: "Promising small studies exist, but it remains far from mainstream approval.", best_for: "Research tracking in neuropathy, inflammation, and tissue-protection contexts.", avoid_if: "Avoid without specialist input, especially with complex autoimmune or neurological disease." },
+  cjc1295: { positioning: "Users approach CJC-1295 as a growth-hormone optimisation compound.", reality_check: "GH-axis manipulation can affect glucose, water retention, and hormone balance.", best_for: "Research education around GH secretagogues and body-composition claims.", avoid_if: "Avoid with cancer history, uncontrolled diabetes, or competitive sport exposure." },
+  sermorelin: { positioning: "Users see sermorelin as a more medically familiar GH-stimulation option.", reality_check: "Benefits are often modest and depend heavily on age, baseline GH status, and clinical context.", best_for: "Clinician-supervised endocrine evaluation or GH-axis support where appropriate.", avoid_if: "Avoid with active malignancy, unexplained symptoms, or anti-doping concerns." },
+  ipamorelin: { positioning: "Users approach ipamorelin as a gentler GH secretagogue for recovery and sleep.", reality_check: "Human evidence is limited, and stacked use can blur risk attribution.", best_for: "Research comparison with other GH secretagogues.", avoid_if: "Avoid with cancer history, uncontrolled metabolic disease, or competitive sport testing." },
+  tesamorelin: { positioning: "Users approach tesamorelin as one of the few approved peptide therapies in metabolic care.", reality_check: "Its approval is specific to HIV-associated lipodystrophy, not general fat loss.", best_for: "Clinician-managed HIV-associated visceral fat reduction.", avoid_if: "Avoid with active malignancy, pregnancy, or unmanaged glucose problems." },
+  hexarelin: { positioning: "Users view hexarelin as a potent GH secretagogue with possible cardiac research interest.", reality_check: "Potency may increase endocrine side-effect concerns, and human evidence remains narrow.", best_for: "Research education around GH release and cardiac signalling.", avoid_if: "Avoid with heart disease, cancer history, or sport testing risk." },
+  mk677: { positioning: "Users approach MK-677 as an oral alternative to injectable GH secretagogues.", reality_check: "It can increase appetite, water retention, blood glucose, and insulin resistance markers.", best_for: "Research comparison in GH-axis and body-composition discussions.", avoid_if: "Avoid with diabetes risk, oedema, sleep apnoea, or competitive sport exposure." },
+  ghkcu: { positioning: "Users see GHK-Cu as a cosmetic and recovery peptide for skin, hair, and wound support.", reality_check: "Topical and cosmetic use is more credible than broad systemic anti-ageing claims.", best_for: "Skin-quality, cosmetic, and wound-healing research contexts.", avoid_if: "Avoid if sensitive to copper products or expecting systemic rejuvenation." },
+  epitalon: { positioning: "Users approach epitalon as a longevity peptide linked to telomeres and ageing.", reality_check: "Most claims rely on limited regional studies and weak independent replication.", best_for: "Longevity research education and evidence-gap mapping.", avoid_if: "Avoid if seeking proven anti-ageing intervention or clear dosing standards." },
+  motsc: { positioning: "Users view MOTS-c as a mitochondrial peptide for metabolism and ageing.", reality_check: "The biology is interesting, but therapeutic human evidence is still immature.", best_for: "Research tracking around mitochondrial function, insulin sensitivity, and ageing biology.", avoid_if: "Avoid if expecting proven weight loss or energy improvement." },
+  glutathione: { positioning: "Users approach glutathione for antioxidant support, detox claims, and skin-brightening interest.", reality_check: "Some biological roles are well established, but cosmetic and wellness claims vary widely.", best_for: "Users seeking to understand antioxidant support under professional guidance.", avoid_if: "Avoid if relying on it to treat serious disease or replace medical care." },
+  semax: { positioning: "Users approach Semax as a focus and neuroprotection peptide, often influenced by Russian clinical use.", reality_check: "Evidence is regionally concentrated and not broadly accepted by major regulators.", best_for: "Research education around cognitive peptides and stroke-recovery interest.", avoid_if: "Avoid if expecting stimulant-like performance or proven neuroregeneration." },
+  selank: { positioning: "Users view Selank as a calming peptide for anxiety and stress resilience.", reality_check: "Global evidence remains limited, and effects are not comparable to established psychiatric treatments.", best_for: "Research education around anxiolytic neuropeptides.", avoid_if: "Avoid if replacing prescribed anxiety or depression treatment." },
+  dsip: { positioning: "Users approach DSIP as a sleep peptide for deeper rest and recovery.", reality_check: "Human findings are inconsistent, and sleep claims are much stronger online than in literature.", best_for: "Research comparison within sleep and recovery peptide discussions.", avoid_if: "Avoid if insomnia has medical, psychiatric, or medication-related causes." },
+  dihexa: { positioning: "Users see Dihexa as one of the most exciting cognitive-repair compounds.", reality_check: "It has no meaningful human evidence, and preclinical promise does not equal safe cognitive enhancement.", best_for: "Research education around neuroregeneration and synapse biology.", avoid_if: "Avoid if seeking proven cognitive support or long-term safety confidence." },
+  pt141: { positioning: "Users approach PT-141 as a libido-focused peptide with real clinical validation.", reality_check: "It affects desire pathways, not general testosterone or physical performance.", best_for: "Clinician-supervised sexual desire disorder contexts.", avoid_if: "Avoid with uncontrolled blood pressure, cardiovascular risk, or nausea sensitivity." },
+  melanotan2: { positioning: "Users approach Melanotan II for tanning and libido effects.", reality_check: "It is unapproved, can darken moles, and carries meaningful dermatological safety concerns.", best_for: "Risk education around unregulated pigmentation peptides.", avoid_if: "Avoid with melanoma risk, changing moles, pregnancy, or poor dermatology follow-up." },
+  kisspeptin10: { positioning: "Users approach kisspeptin-10 as a hormone-signalling peptide for fertility and reproductive research.", reality_check: "It is not a simple testosterone booster and should not be used casually.", best_for: "Research education around reproductive endocrinology.", avoid_if: "Avoid with hormone-sensitive conditions or without endocrine supervision." },
+  thymosin_a1: { positioning: "Users view thymosin alpha-1 as an immune-support peptide with more clinical grounding than many alternatives.", reality_check: "It is not a universal immune booster, and outcomes depend heavily on disease context.", best_for: "Clinician-supervised immune modulation in regions where it is approved or studied.", avoid_if: "Avoid with complex autoimmune disease unless medically supervised." },
+  ghrp2: { positioning: "Users approach GHRP-2 as a GH-releasing peptide for recovery and body composition.", reality_check: "It may affect appetite, cortisol, prolactin, and glucose-related markers.", best_for: "Research comparison within GH secretagogue families.", avoid_if: "Avoid with endocrine disorders, cancer history, or competitive sport testing." },
+  ghrp6: { positioning: "Users approach GHRP-6 as a GH secretagogue often linked to appetite increase.", reality_check: "Its appetite effect can work against fat-loss goals, and evidence is limited.", best_for: "Research education around GH release and appetite signalling.", avoid_if: "Avoid with binge eating tendencies, diabetes risk, or anti-doping exposure." },
+  igf1lr3: { positioning: "Users approach IGF-1 LR3 as a muscle-growth research compound.", reality_check: "It carries higher theoretical risk because IGF signalling is linked to cell growth pathways.", best_for: "Risk education around experimental growth-factor analogues.", avoid_if: "Avoid with cancer history, diabetes risk, or any non-research setting." },
+  pegmgf: { positioning: "Users approach PEG-MGF as a muscle-repair and hypertrophy peptide.", reality_check: "Human evidence is extremely thin, and bodybuilding claims dominate the conversation.", best_for: "Research education around muscle repair signalling.", avoid_if: "Avoid with cancer concerns, competitive sport, or unverified sourcing." },
+  follistatin: { positioning: "Users see follistatin as a high-impact muscle-growth and myostatin-related compound.", reality_check: "Most interest comes from gene-therapy and disease research, not casual enhancement.", best_for: "Research education around muscle wasting and myostatin biology.", avoid_if: "Avoid outside specialist research or with unknown cancer risk." },
+  cerebrolysin: { positioning: "Users approach cerebrolysin for brain injury, stroke recovery, and cognitive decline support.", reality_check: "It has human studies and regional use, but global regulatory acceptance remains uneven.", best_for: "Clinician-led neurological rehabilitation contexts where available.", avoid_if: "Avoid if expecting guaranteed cognitive improvement or using without neurological oversight." },
+  vip: { positioning: "Users approach VIP as an immune and lung-related peptide with niche medical interest.", reality_check: "VIP biology is complex, and wellness claims often oversimplify vascular and immune effects.", best_for: "Research education around inflammation, pulmonary disease, and vasoactive peptide signalling.", avoid_if: "Avoid with low blood pressure, complex cardiac disease, or without specialist input." },
+  oxytocin: { positioning: "Users know oxytocin medically for labour but often encounter wellness claims around bonding and mood.", reality_check: "Social and emotional effects are context-dependent and not a simple empathy switch.", best_for: "Established obstetric use and specialist-supervised endocrine or psychiatric research.", avoid_if: "Avoid unsupervised use, pregnancy outside obstetric care, or cardiovascular instability." },
+  gonadorelin: { positioning: "Users approach gonadorelin as a reproductive hormone signalling tool.", reality_check: "It stimulates the upstream hormone axis but requires correct pulsed or diagnostic context.", best_for: "Clinician-managed fertility, endocrine testing, or reproductive-axis evaluation.", avoid_if: "Avoid without hormone testing or where pituitary disorders are suspected." },
+  ll37: { positioning: "Users approach LL-37 as an antimicrobial and wound-healing peptide.", reality_check: "Natural LL-37 biology is promising, but systemic self-use is not the same as approved topical analogues.", best_for: "Research education around antimicrobial peptides and wound repair.", avoid_if: "Avoid with autoimmune inflammation concerns or unregulated injectable products." },
+  glatiramer_acetate: { positioning: "Users encounter glatiramer acetate as a legitimate peptide-based immune therapy.", reality_check: "It is a disease-modifying MS drug, not a general immune or wellness peptide.", best_for: "Adults with relapsing multiple sclerosis under specialist care.", avoid_if: "Avoid outside neurology-led MS treatment." },
+  octreotide: { positioning: "Users approach octreotide as a serious hospital-grade peptide drug rather than a wellness compound.", reality_check: "It affects hormone secretion and gastrointestinal function, requiring close medical oversight.", best_for: "Clinician-managed endocrine tumours, acromegaly, or specific bleeding conditions.", avoid_if: "Avoid without specialist diagnosis, gallbladder monitoring, or glucose oversight." },
+  teriparatide: { positioning: "Users approach teriparatide as a proven bone-building peptide medicine.", reality_check: "It is time-limited, prescription-only therapy for high-risk osteoporosis, not general longevity support.", best_for: "Adults with severe osteoporosis or high fracture risk under specialist care.", avoid_if: "Avoid with bone cancers, unexplained high alkaline phosphatase, or hypercalcaemia." },
+  collagen_peptides: { positioning: "Users approach collagen peptides as a low-risk daily supplement for skin and joints.", reality_check: "Benefits are modest and depend on protein intake, training, age, and consistency.", best_for: "Users seeking nutritional support for skin elasticity, connective tissue, or joints.", avoid_if: "Avoid if allergic to source proteins or expecting drug-like repair." },
+  humanin: { positioning: "Users view humanin as a futuristic longevity and neuroprotection peptide.", reality_check: "The biology is intriguing but remains mostly preclinical and far from consumer-ready.", best_for: "Research education around mitochondrial peptides and ageing biology.", avoid_if: "Avoid if seeking validated anti-ageing or cognitive treatment." },
+  nad_plus: { positioning: "Users approach NAD+ for energy, ageing, and recovery claims in wellness clinics.", reality_check: "Direct NAD+ delivery claims often run ahead of strong outcomes data.", best_for: "Research education around cellular energy and NAD metabolism.", avoid_if: "Avoid if expecting proven anti-ageing effects or using unverified infusion providers." },
+  tb4: { positioning: "Users approach thymosin beta-4 as a tissue-repair peptide with more scientific basis than TB-500.", reality_check: "Promising repair biology does not mean broad recovery claims are clinically proven.", best_for: "Research tracking in wound healing, cardiac repair, and tissue regeneration.", avoid_if: "Avoid in competitive sport or without clarity on product identity and purity." },
+  cagrisema: { positioning: "Users view CagriSema as a powerful next-wave metabolic therapy.", reality_check: "It is still investigational, and tolerability of combination therapy remains important.", best_for: "Research tracking around obesity, diabetes, and incretin-based combinations.", avoid_if: "Avoid outside formal trials or clinician-supervised access." },
+  survodutide: { positioning: "Users approach survodutide as an emerging option for obesity and fatty liver disease.", reality_check: "Its liver and weight-loss signals are promising, but approval-level certainty is still developing.", best_for: "Research tracking around obesity, MASH, and dual metabolic mechanisms.", avoid_if: "Avoid without medical supervision or if expecting immediate consumer availability." },
+  goserelin:   { positioning: "Goserelin is approached as a serious prescription hormone-suppression medicine used in oncology and reproductive medicine.", reality_check: "It is not a wellness or optimisation peptide — its risks including bone density loss and hormone flare require specialist management.", best_for: "Adults with prostate cancer, endometriosis, or hormone-receptor positive breast cancer under specialist care.", avoid_if: "Avoid unsupervised use, pregnancy, or use without oncology, urology, or gynaecology guidance." },
+  leuprolide:  { positioning: "Leuprolide is a widely used specialist prescription medicine for hormone suppression across oncology, reproductive, and paediatric conditions.", reality_check: "Its multiple formulations and powerful hormonal effects require careful clinical selection and ongoing monitoring.", best_for: "Specialist-managed prostate cancer, endometriosis, fibroids, central precocious puberty, or selected breast cancer.", avoid_if: "Avoid unsupervised use, pregnancy, unexplained bleeding, or use without specialist prescription and monitoring." }
+};
+const RELATED_COMPOUNDS = {
+  semaglutide: ["tirzepatide", "liraglutide", "retatrutide"],
+  tirzepatide: ["semaglutide", "retatrutide", "cagrisema"],
+  retatrutide: ["tirzepatide", "semaglutide", "survodutide"],
+  liraglutide: ["semaglutide", "tirzepatide", "cagrisema"],
+  aod9604: ["tesamorelin", "mk677", "cjc1295"],
+  bpc157: ["tb500", "tb4", "ghkcu"],
+  tb500: ["tb4", "bpc157", "ghkcu"],
+  ara290: ["thymosin_a1", "vip", "humanin"],
+  cjc1295: ["ipamorelin", "sermorelin", "mk677"],
+  sermorelin: ["cjc1295", "ipamorelin", "tesamorelin"],
+  ipamorelin: ["cjc1295", "sermorelin", "ghrp2"],
+  tesamorelin: ["sermorelin", "cjc1295", "aod9604"],
+  hexarelin: ["ghrp2", "ghrp6", "mk677"],
+  mk677: ["cjc1295", "ipamorelin", "ghrp6"],
+  ghkcu: ["bpc157", "tb4", "collagen_peptides"],
+  epitalon: ["motsc", "humanin", "nad_plus"],
+  motsc: ["humanin", "epitalon", "nad_plus"],
+  glutathione: ["nad_plus", "motsc", "humanin"],
+  semax: ["selank", "cerebrolysin", "dihexa"],
+  selank: ["semax", "dsip", "cerebrolysin"],
+  dsip: ["selank", "semax", "epitalon"],
+  dihexa: ["semax", "cerebrolysin", "humanin"],
+  pt141: ["melanotan2", "oxytocin", "kisspeptin10"],
+  melanotan2: ["pt141", "kisspeptin10", "oxytocin"],
+  kisspeptin10: ["gonadorelin", "pt141", "oxytocin"],
+  thymosin_a1: ["tb4", "ara290", "ll37"],
+  ghrp2: ["ghrp6", "hexarelin", "ipamorelin"],
+  ghrp6: ["ghrp2", "hexarelin", "mk677"],
+  igf1lr3: ["pegmgf", "follistatin", "mk677"],
+  pegmgf: ["igf1lr3", "follistatin", "tb4"],
+  follistatin: ["igf1lr3", "pegmgf", "ghrp6"],
+  cerebrolysin: ["semax", "dihexa", "selank"],
+  vip: ["ara290", "ll37", "thymosin_a1"],
+  oxytocin: ["gonadorelin", "kisspeptin10", "pt141"],
+  gonadorelin: ["kisspeptin10", "oxytocin", "pt141"],
+  ll37: ["thymosin_a1", "vip", "tb4"],
+  glatiramer_acetate: ["thymosin_a1", "ara290", "vip"],
+  octreotide: ["tesamorelin", "gonadorelin", "teriparatide"],
+  teriparatide: ["collagen_peptides", "octreotide", "ghkcu"],
+  collagen_peptides: ["ghkcu", "teriparatide", "bpc157"],
+  humanin: ["motsc", "epitalon", "nad_plus"],
+  nad_plus: ["motsc", "humanin", "glutathione"],
+  tb4: ["tb500", "bpc157", "ghkcu"],
+  cagrisema: ["semaglutide", "tirzepatide", "survodutide"],
+  survodutide: ["retatrutide", "tirzepatide", "cagrisema"],
+  goserelin:   ["leuprolide", "gonadorelin", "kisspeptin10"],
+  leuprolide:  ["goserelin", "gonadorelin", "kisspeptin10"]
+};
+
+// ═══════════════════════════════════════════════════════════
+// CASE_EXAMPLES — Extraordinary real-world or clinical case examples per peptide
+// Format: { peptide_id: [{ title, context, outcome, note }] }
+// ═══════════════════════════════════════════════════════════
+const CASE_EXAMPLES = {
+  semaglutide: [
+    {
+      title:"SUSTAIN-6 — Cardiovascular Outcomes in T2DM",
+      context:"3,297 patients with type 2 diabetes and high cardiovascular risk randomised to semaglutide 0.5mg or 1mg SC weekly vs placebo over 104 weeks.",
+      outcome:"Significant reduction in major adverse cardiovascular events (MACE): HR 0.74 (95% CI 0.58–0.95). Weight loss of 4–6% observed as a secondary finding. FDA label subsequently updated to include CV benefit.",
+      note:"Published in NEJM 2016. This trial drove the expanded CV indication and repositioned semaglutide beyond glycaemic control."
+    },
+    {
+      title:"STEP 1 — Obesity (Non-Diabetic) Weight Loss Trial",
+      context:"1,961 adults with obesity (BMI ≥30) without diabetes randomised to semaglutide 2.4mg weekly (Wegovy dose) vs placebo for 68 weeks alongside lifestyle intervention.",
+      outcome:"Mean body weight reduction of 14.9% in the semaglutide group vs 2.4% in placebo. 70%+ of semaglutide participants achieved ≥10% weight loss. No new safety signals beyond established GI effects.",
+      note:"NEJM 2021. This trial underpinned FDA approval of Wegovy for chronic weight management — a landmark in obesity pharmacotherapy."
+    }
+  ],
+  tirzepatide: [
+    {
+      title:"SURMOUNT-1 — Obesity Weight Reduction Landmark Trial",
+      context:"2,539 adults with obesity (BMI ≥30) or BMI ≥27 with comorbidities, randomised to tirzepatide 5mg, 10mg, or 15mg weekly vs placebo for 72 weeks.",
+      outcome:"Mean weight loss: 15.0%, 19.5%, and 20.9% for the three dose groups respectively vs 3.1% placebo. The 15mg group achieved mean absolute loss of ~22.5 kg. Unprecedented outcomes in a pharmacological obesity trial.",
+      note:"NEJM 2022. These results established tirzepatide as the most effective approved obesity pharmacotherapy to date and accelerated its fast-track FDA review for Zepbound."
+    }
+  ],
+  bpc157: [
+    {
+      title:"Tendon-to-Bone Healing — Rodent Rotator Cuff Model",
+      context:"Sprague-Dawley rats underwent surgical detachment of the supraspinatus tendon. BPC-157 was administered intraperitoneally (10µg/kg) for 14 days post-surgery.",
+      outcome:"Histological and biomechanical assessment at 14 and 28 days showed significantly increased collagen organisation, vascularity, and tendon insertion strength vs saline controls. BPC-157 group demonstrated near-complete tissue bridging.",
+      note:"Preprint, Sikiric lab. This preclinical model is frequently cited in the community as rationale for tendon injury use. Human trials have not been conducted."
+    },
+    {
+      title:"NSAID-Induced Gastric Lesion Reversal",
+      context:"Rats given indomethacin to induce gastric ulceration, then treated with BPC-157 (10µg/kg IP) for 7 days. Compared to omeprazole control.",
+      outcome:"BPC-157 significantly reduced ulcer area and accelerated mucosal re-epithelisation vs vehicle. Effect size comparable to omeprazole at equivalent timepoints, with additional vascular remodelling signals.",
+      note:"Multiple Sikiric group publications, 2005–2016. Intestinal and gastric cytoprotection is the most replicated BPC-157 finding across the preclinical literature."
+    }
+  ],
+  sermorelin: [
+    {
+      title:"Adult GH Deficiency — Sermorelin vs Recombinant GH",
+      context:"Open-label clinical programme of sermorelin 1–2mg SC nightly in adults with confirmed GH deficiency (IGF-1 <200 ng/mL). Compared to rhGH 0.1–0.2mg/day cohorts.",
+      outcome:"Sermorelin achieved meaningful IGF-1 elevations (mean +85 ng/mL at 12 weeks) and patient-reported improvements in body composition and energy. rhGH achieved faster IGF-1 response; sermorelin showed lower incidence of fluid retention and joint discomfort.",
+      note:"These findings established sermorelin as a tolerated alternative to direct GH replacement in sub-severe GH deficiency. Sermorelin preserves endogenous pulsatile GH release, which is considered physiologically advantageous."
+    }
+  ],
+  pt141: [
+    {
+      title:"Premenopausal HSDD — Phase 3 RECONNECT Trial",
+      context:"Phase 3 RCT in 1,247 premenopausal women with hypoactive sexual desire disorder (HSDD). Bremelanotide (PT-141) 1.75mg SC self-administered as needed vs placebo.",
+      outcome:"Statistically significant increases in satisfying sexual events (+0.7 vs +0.3; p<0.001) and significant reduction in distress scores (FSDS-DAO). FDA approved September 2019 as Vyleesi.",
+      note:"This trial established bremelanotide as the first on-demand pharmacotherapy for HSDD in premenopausal women. Effect sizes are modest but clinically meaningful for affected patients."
+    }
+  ],
+  nad_plus: [
+    {
+      title:"NAD+ Precursor (NMN/NR) Supplementation — Human Ageing Pilot",
+      context:"Double-blind RCT in 30 healthy adults aged 55–80 randomised to NMN 500mg/day vs placebo for 12 weeks. NAD+ tissue levels assessed via blood sampling.",
+      outcome:"Significant increase in whole-blood NAD+ levels in NMN group vs placebo (mean +41%). Secondary endpoints including muscle strength, physical performance, and biomarkers of inflammation showed non-significant trends. No serious adverse events.",
+      note:"JAMA Network Open 2022. Demonstrates that oral NMN raises systemic NAD+ levels, but translation to functional and clinical outcomes remains under investigation. IV NAD+ precursor infusion is increasingly used clinically in SA."
+    }
+  ],
+  tb500: [
+    {
+      title:"Thymosin Beta-4 — Murine Cardiac Infarction Model",
+      context:"Mice underwent LAD coronary artery ligation to induce myocardial infarction. TB-4 (150µg IP, 3x/week for 4 weeks) administered starting 24 hours post-ligation.",
+      outcome:"Treated animals showed significantly reduced infarct size, increased cardiomyocyte survival, and improved fractional shortening vs controls. Histological analysis revealed angiogenic sprouting in peri-infarct zone.",
+      note:"Circulation 2004, Bhatt lab. This is one of the landmark TB-4 studies. Human cardiac trials (TB-4Cx) have been initiated but remain early-stage. Current community use for athletic recovery extrapolates from healing and angiogenic biology."
+    }
+  ],
+  mk677: [
+    {
+      title:"Elderly Hip Fracture — MK-677 Functional Recovery",
+      context:"Phase 2 RCT in 292 elderly patients (mean age 79) with hip fracture. MK-677 25mg orally once daily vs placebo for 6 months during rehabilitation.",
+      outcome:"MK-677 significantly elevated IGF-1 and GH levels. Functional improvement trended positive but did not reach statistical significance for primary ADL endpoint. Secondary analyses showed improvements in muscle mass (lean body mass +1.6kg) and gait speed.",
+      note:"JAMA Internal Medicine 2008. Demonstrates GH axis engagement with oral MK-677 in elderly population. The ADL endpoint miss is important context for efficacy claims — lean mass benefit is consistent across MK-677 human studies."
+    }
+  ],
+  cagrisema: [
+    {
+      title:"REDEFINE 1 — Obesity and Type 2 Diabetes Combination Trial",
+      context:"Phase 3 RCT of cagrilintide 2.4mg + semaglutide 2.4mg (CagriSema) vs individual components and placebo in 3,400 participants with obesity or T2DM. Primary endpoint: % body weight change at 68 weeks.",
+      outcome:"Interim 32-week data presented at ADA 2024: CagriSema achieved mean weight loss of ~22.7% vs ~8–10% for monotherapy components. T2DM cohort showed HbA1c reductions of >2%. Phase 3 completion expected 2025.",
+      note:"The additive efficacy of dual amylin-GLP-1 mechanism positions CagriSema as a candidate to surpass current best-in-class outcomes. Phase 3 completion will determine approval pathway."
+    }
+  ],
+  tb4: [
+    {
+      title:"TB-4 in Post-MI Cardiac Repair (Phase 2 — RATIONALE)",
+      context:"Phase 2 safety and signal-finding trial of thymosin beta-4 (TB-4Cx, Sigma-Tau/RegeneRx) in patients with anterior STEMI. SC administration at 1.2g or 6g doses for 14 days post-PCI.",
+      outcome:"Primary safety endpoints met — no treatment-related SAEs. Exploratory efficacy signals: borderline improvement in cardiac wall motion score index and LVEF at 90 days vs placebo. Trial was not powered for efficacy.",
+      note:"RegeneRx Phase 2b programme (2013). The trial demonstrated cardiac safety and provided proof-of-concept biological signal. The programme has not progressed to Phase 3 as of 2025."
+    }
+  ]
+};
 
 // ═══════════════════════════════════════════════════════════
 // SIDEBAR
@@ -3915,16 +4544,60 @@ function renderOnboardingBanner() {
 // NAV
 // ═══════════════════════════════════════════════════════════
 function setActiveNav(id) {
-  ['nav-overview','nav-landscape','nav-pulse','nav-glossary'].forEach(n => {
+  ['nav-overview','nav-landscape','nav-pulse','nav-glossary','nav-stacks'].forEach(n => {
     const el = document.getElementById(n);
     if (el) el.classList.remove('active');
   });
   if (id) { const el = document.getElementById(id); if (el) el.classList.add('active'); }
 }
 
-function showOverview() { currentView = 'overview'; setActiveNav('nav-overview'); renderSidebar(); renderOverview(); }
-function showLandscapeView() { currentView = 'landscape'; setActiveNav('nav-landscape'); renderSidebar(); renderLandscapePage(); }
-function showPulseView() { currentView = 'pulse'; setActiveNav('nav-pulse'); renderSidebar(); renderPulsePage(); }
+// ── renderEvRow — shared helper for evidence bars ──
+function renderEvRow(p) {
+  const cl = getConfidenceLabel(getConfidence(p));
+  const barColor = cl.label === 'Clinically Validated' ? '#4ade80'
+                 : cl.label === 'Evidence-Backed'      ? '#38bdf8'
+                 : cl.label === 'Preclinical'          ? '#a78bfa'
+                 : '#475569';
+  return `<div class="ev-row"
+       onmouseenter="this.style.background='rgba(255,255,255,.03)';showBarTT('${p.id}',event)"
+       onmouseleave="this.style.background='transparent';hideBarTT()"
+       onclick="showPeptide('${p.id}')">
+    <div style="display:flex;align-items:center;gap:8px;min-width:0">
+      <span style="font-size:.8rem;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</span>
+    </div>
+    <div style="height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden">
+      <div style="height:100%;width:${p.composite * 10}%;background:${barColor};border-radius:4px;transition:width .7s cubic-bezier(.22,1,.36,1)"></div>
+    </div>
+    <span class="ev-row-label" style="color:${cl.color}">${cl.label}</span>
+  </div>`;
+}
+
+// ── filterByGoal — goal chip handler ──
+function filterByGoal(cat, btn) {
+  document.querySelectorAll('.goal-chip').forEach(c => c.classList.remove('gc-active'));
+  if (btn) btn.classList.add('gc-active');
+  activeCategory = cat;
+  renderSidebar();
+  if (window.innerWidth <= 768) openSidebarDrawer();
+}
+
+// ── showPopularStacks ──
+function showPopularStacks() {
+  currentView = 'stacks';
+  setActiveNav('nav-stacks');
+  history.replaceState(null, '', window.location.pathname);
+  renderSidebar();
+  const main = document.getElementById('main');
+  main.innerHTML = `<div class="stack-page-hero">
+    <div style="font-size:1rem;font-weight:700;background:linear-gradient(90deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px">Popular Peptide Stacks</div>
+    <div style="font-size:.82rem;color:var(--text-secondary);line-height:1.6">Research-referenced combination protocols used in the peptide community. Not medical advice — consult a qualified clinician before combining any compounds.</div>
+  </div>` + renderPopularStacks();
+  document.getElementById('main').scrollTop = 0;
+}
+
+function showOverview() { currentView = 'overview'; setActiveNav('nav-overview'); history.replaceState(null, '', window.location.pathname); renderSidebar(); renderOverview(); }
+function showLandscapeView() { currentView = 'landscape'; setActiveNav('nav-landscape'); history.replaceState(null, '', window.location.pathname); renderSidebar(); renderLandscapePage(); }
+function showPulseView() { currentView = 'pulse'; setActiveNav('nav-pulse'); history.replaceState(null, '', window.location.pathname); renderSidebar(); renderPulsePage(); }
 function showGlossary() {
   currentView = 'glossary'; setActiveNav('nav-glossary');
   const main = document.getElementById("main");
@@ -3941,7 +4614,22 @@ function showGlossary() {
         </div>`).join('')}
     </div>`;
 }
-function showPeptide(id) { currentView = id; setActiveNav(null); renderSidebar(); renderPeptideDetail(id); document.getElementById("main").scrollTop = 0; }
+function showPeptide(id) { currentView = id; setActiveNav(null); history.pushState(null, '', '#' + id); renderSidebar(); renderPeptideDetail(id); document.getElementById("main").scrollTop = 0; }
+function copyPeptideLink() {
+  const url = window.location.href;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).catch(() => {});
+  } else {
+    const tmp = document.createElement('input');
+    tmp.value = url;
+    document.body.appendChild(tmp);
+    tmp.select();
+    document.execCommand('copy');
+    document.body.removeChild(tmp);
+  }
+  const btn = document.querySelector('.copy-link-btn');
+  if (btn) { btn.textContent = 'Copied!'; setTimeout(() => { btn.textContent = 'Copy Link'; }, 1800); }
+}
 
 // ═══════════════════════════════════════════════════════════
 // OVERVIEW
@@ -3955,93 +4643,149 @@ function renderOverview() {
   const avgScore = approvedPeptides.length ? (approvedPeptides.reduce((a,p) => a + p.composite, 0) / approvedPeptides.length).toFixed(1) : '—';
   const totalTrials = PEPTIDES.reduce((a,p) => a + p.trials.length, 0);
 
+  // Featured: popular well-known compounds for quick entry
+  const featuredIds = ['semaglutide','tirzepatide','bpc157','sermorelin','pt141','nad_plus'];
+  const featured = featuredIds.map(id => PEPTIDES.find(p => p.id === id)).filter(Boolean);
+
+  const goalChips = [
+    {emoji:'⚖️',label:'Metabolic & Weight',cat:'glp1'},
+    {emoji:'🔄',label:'Recovery & Repair',cat:'recovery'},
+    {emoji:'🧠',label:'Cognitive & Neuro',cat:'cognitive_neuro'},
+    {emoji:'⚡',label:'Longevity',cat:'longevity'},
+    {emoji:'💪',label:'Growth Hormone',cat:'gh_axis'},
+    {emoji:'💊',label:'Hormones',cat:'hormonal'},
+    {emoji:'🛡️',label:'Immune',cat:'immune'},
+    {emoji:'💞',label:'Sexual Health',cat:'sexual_health'},
+  ];
+
+  const sc = s => s >= 8 ? '#4ade80' : s >= 6 ? '#38bdf8' : s >= 4 ? '#fbbf24' : '#94a3b8';
+  const badge = p => {
+    const r = REGULATORY_STATUS[p.id];
+    if (r && agencies.some(a => r[a] === 'approved')) return {label:'Approved',color:'#4ade80'};
+    if (r && agencies.some(a => r[a] === 'trials' || r[a] === 'conditional')) return {label:'In Trials',color:'#fbbf24'};
+    return {label:'Research',color:'#94a3b8'};
+  };
+
+  const sortedPeptides = [...PEPTIDES].sort((a,b) => b.composite - a.composite);
+
   main.innerHTML = `
-    <div style="background:linear-gradient(135deg,rgba(79,70,229,.08),rgba(14,116,144,.08));border:1px solid rgba(129,140,248,.2);border-radius:var(--radius);padding:22px 26px;margin-bottom:12px">
-      <div style="font-size:1rem;font-weight:700;background:linear-gradient(90deg,#818cf8,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px">Welcome to the Elixa Peptide Index</div>
-      <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:8px">Peptides are small protein fragments your body already produces — biological messengers that signal cells to heal, regulate hormones, burn fat, or sharpen focus. Ozempic and Wegovy are peptides. So are BPC-157, TB-500, and GHK-Cu. They range from fully approved medications to compounds still in early research.</p>
-      <p style="font-size:14px;color:var(--text-secondary);line-height:1.75">This index is an educational reference — not medical advice. Each entry covers what a compound does, the evidence behind it, typical usage, and its global regulatory status. Browse by category on the left, or search above. Always consult a qualified healthcare professional before making any health decisions.</p>
+    <!-- ── HERO ── -->
+    <div class="ov-hero">
+      <div class="ov-hero-title">Your Evidence-Based Guide<br>to Peptide Research</div>
+      <div class="ov-hero-sub">${PEPTIDES.length} compounds indexed — from FDA-approved therapies like Ozempic to emerging research peptides. Explore clinical evidence, regulatory status, and global approval data. South Africa context included.</div>
+      <div class="ov-hero-searchbar">
+        <input placeholder="Search by name, alias, or condition…"
+          oninput="const s=document.getElementById('searchInput');if(s){s.value=this.value;filterPeptides()}"
+          onfocus="if(window.innerWidth<=768){openSidebarDrawer();setTimeout(()=>{const s=document.getElementById('searchInput');if(s)s.focus();},200);this.blur()}" />
+      </div>
     </div>
 
+    <!-- ── ONBOARDING ── -->
     ${renderOnboardingBanner()}
 
-    <div class="stat-row">
-      <div class="stat-card" style="--sc:#4ade80">
-        <div class="stat-val">${PEPTIDES.length}</div>
+    <!-- ── STATS ── -->
+    <div class="stat-row" style="margin-bottom:20px">
+      <div class="stat-card" style="--sc:#818cf8">
+        <div class="stat-val" style="color:#818cf8">${PEPTIDES.length}</div>
         <div class="stat-lbl">Peptides Indexed</div>
         <div class="stat-sub">Across ${CATEGORIES.length - 1} therapeutic categories</div>
       </div>
       <div class="stat-card" style="--sc:#4ade80">
         <div class="stat-val" style="color:#4ade80">${globallyApproved}</div>
-        <div class="stat-lbl">Approved Globally</div>
-        <div class="stat-sub">By at least one major health authority worldwide</div>
+        <div class="stat-lbl">Globally Approved</div>
+        <div class="stat-sub">By at least one major health authority</div>
       </div>
       <div class="stat-card" style="--sc:#fbbf24">
         <div class="stat-val" style="color:#fbbf24">${globalTrials}</div>
-        <div class="stat-lbl">In Active Trials</div>
-        <div class="stat-sub">Phase 2–3 or under conditional review globally</div>
+        <div class="stat-lbl">Active Trials</div>
+        <div class="stat-sub">Phase 2–3 or conditional review</div>
       </div>
       <div class="stat-card" style="--sc:#38bdf8">
         <div class="stat-val" style="color:#38bdf8">${totalTrials}</div>
         <div class="stat-lbl">Tracked Studies</div>
-        <div class="stat-sub">Clinical trials &amp; peer-reviewed papers indexed</div>
+        <div class="stat-sub">Clinical trials &amp; peer-reviewed papers</div>
       </div>
       <div class="stat-card" style="--sc:#a78bfa">
         <div class="stat-val" style="color:#a78bfa">${avgScore}</div>
         <div class="stat-lbl">Avg Evidence Rating</div>
-        <div class="stat-sub">Regulatorily approved compounds only</div>
+        <div class="stat-sub">Approved compounds only</div>
       </div>
     </div>
 
-    <div class="landscape-wrap">
+    <!-- ── EXPLORE BY GOAL ── -->
+    <div class="goal-chips-wrap">
+      <div class="goal-chips-label">Explore by Goal</div>
+      <div class="goal-chips">
+        ${goalChips.map(g => `<button class="goal-chip" onclick="filterByGoal('${g.cat}',this)"><span>${g.emoji}</span><span>${g.label}</span></button>`).join('')}
+      </div>
+    </div>
+
+    <!-- ── POPULAR COMPOUNDS ── -->
+    <div class="featured-wrap">
+      <div class="featured-bar">
+        <div class="featured-lbl">Popular Compounds</div>
+        <button class="featured-more" onclick="showPopularStacks()">View Stacks →</button>
+      </div>
+      <div class="feat-grid">
+        ${featured.map(p => {
+          const b = badge(p);
+          return `<div class="feat-card" style="--fc:${p.color||'#38bdf8'}" onclick="showPeptide('${p.id}')">
+            <span class="feat-card-icon">${p.icon}</span>
+            <div class="feat-card-name">${p.name}</div>
+            <div class="feat-card-class">${p.class}</div>
+            <div class="feat-card-foot">
+              <span class="feat-score" style="color:${sc(p.composite)}">${p.composite.toFixed(1)}/10</span>
+              <span class="feat-badge" style="color:${b.color};background:${b.color}18">${b.label}</span>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+
+    <!-- ── LANDSCAPE MAP ── -->
+    <div class="landscape-wrap" style="margin-bottom:20px">
       <div class="landscape-hdr">
         <div>
-          <div class="landscape-title">Peptide Landscape Map</div>
-          <div class="landscape-desc">Each bubble is a peptide — the further right, the stronger the research; the higher up, the more widely recognised by global health authorities; bigger bubbles carry more overall evidence. Click any bubble to open its full profile.</div>
+          <div class="landscape-title">Evidence Landscape Map</div>
+          <div class="landscape-desc">Position shows evidence strength (x) vs regulatory recognition (y). Bubble size reflects overall confidence score. Click any bubble to open its full profile.</div>
         </div>
         <div class="landscape-legend">
-          <div class="leg-item"><div class="leg-dot" style="background:#4ade80"></div>Approved (any jurisdiction)</div>
-          <div class="leg-item"><div class="leg-dot" style="background:#fbbf24"></div>In Trials / Conditional</div>
-          <div class="leg-item"><div class="leg-dot" style="background:#64748b"></div>Research / Pre-Approval</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#4ade80"></div>Approved</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#fbbf24"></div>In Trials</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#64748b"></div>Research</div>
         </div>
       </div>
       <svg class="quadrant-svg" id="quadrantSvgOverview" viewBox="0 0 700 290"></svg>
     </div>
 
-    <div>
-      <div id="overview-evidence" class="sec-hdr" style="color:var(--text-primary);font-size:.72rem;letter-spacing:.12em">Evidence Strength — All Peptides</div>
+    <!-- ── EVIDENCE BARS (collapsible) ── -->
+    <div id="overview-evidence">
+      <div class="sec-hdr" style="color:var(--text-primary);font-size:.72rem;letter-spacing:.12em">Evidence Strength — All ${PEPTIDES.length} Peptides</div>
       <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;display:flex;flex-direction:column;gap:2px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-          <div style="font-size:11.5px;color:var(--text-secondary)">How much research backs each compound — click any name to dive deeper.</div>
-          <div style="display:flex;gap:12px;flex-shrink:0;margin-left:16px">
-            <span style="font-size:.67rem;font-weight:700;color:#4ade80;display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block"></span>Clinically Validated</span>
-            <span style="font-size:.67rem;font-weight:700;color:#38bdf8;display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#38bdf8;display:inline-block"></span>Evidence-Backed</span>
-            <span style="font-size:.67rem;font-weight:700;color:#a78bfa;display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#a78bfa;display:inline-block"></span>Preclinical</span>
-            <span style="font-size:.67rem;font-weight:700;color:#64748b;display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#64748b;display:inline-block"></span>Experimental</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+          <div style="font-size:11.5px;color:var(--text-secondary)">Click any row to open that compound's full profile.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <span style="font-size:.65rem;font-weight:700;color:#4ade80;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block"></span>Clinically Validated</span>
+            <span style="font-size:.65rem;font-weight:700;color:#38bdf8;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#38bdf8;display:inline-block"></span>Evidence-Backed</span>
+            <span style="font-size:.65rem;font-weight:700;color:#a78bfa;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#a78bfa;display:inline-block"></span>Preclinical</span>
+            <span style="font-size:.65rem;font-weight:700;color:#64748b;display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:50%;background:#64748b;display:inline-block"></span>Experimental</span>
           </div>
         </div>
-        ${[...PEPTIDES].sort((a,b) => b.composite - a.composite).map(p => {
-          const cl = getConfidenceLabel(getConfidence(p));
-          const barColor = cl.label === 'Clinically Validated' ? '#4ade80'
-                         : cl.label === 'Evidence-Backed'      ? '#38bdf8'
-                         : cl.label === 'Preclinical'          ? '#a78bfa'
-                         : '#475569';
-          return `
-          <div class="ev-row"
-               onmouseenter="this.style.background='rgba(255,255,255,.03)';showBarTT('${p.id}',event)"
-               onmouseleave="this.style.background='transparent';hideBarTT()"
-               onclick="showPeptide('${p.id}')">
-            <div style="display:flex;align-items:center;gap:8px;min-width:0">
-              <span style="font-size:.8rem;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</span>
-            </div>
-            <div style="height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden">
-              <div style="height:100%;width:${p.composite * 10}%;background:${barColor};border-radius:4px;transition:width .7s cubic-bezier(.22,1,.36,1)"></div>
-            </div>
-            <span class="ev-row-label" style="color:${cl.color}">${cl.label}</span>
-          </div>`;}).join('')}
+        ${sortedPeptides.slice(0,12).map(p => renderEvRow(p)).join('')}
+        <div id="ev-bars-rest" style="display:none;flex-direction:column;gap:2px">
+          ${sortedPeptides.slice(12).map(p => renderEvRow(p)).join('')}
+        </div>
+        <button id="ev-show-all"
+          onclick="document.getElementById('ev-bars-rest').style.display='flex';document.getElementById('ev-bars-rest').style.flexDirection='column';document.getElementById('ev-bars-rest').style.gap='2px';this.remove()"
+          style="margin-top:10px;padding:9px 16px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;color:var(--text-secondary);font-size:.75rem;cursor:pointer;text-align:center;transition:all .15s"
+          onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+          Show all ${PEPTIDES.length} peptides ↓
+        </button>
       </div>
     </div>
 
-    <div>
+    <!-- ── RESEARCH PULSE ── -->
+    <div style="margin-top:24px">
       <div class="sec-hdr">Research Pulse — Recent Developments</div>
       <div class="pulse-list">
         ${RESEARCH_PULSE.slice(0,5).map(item => `
@@ -4057,8 +4801,7 @@ function renderOverview() {
             </div>
             ${item.url ? `<a href="${item.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="flex-shrink:0;display:flex;align-items:center;gap:4px;font-size:.67rem;font-weight:600;color:var(--accent-cyan);border:1px solid rgba(34,211,238,.25);border-radius:5px;padding:4px 8px;text-decoration:none;white-space:nowrap;transition:all .15s" onmouseover="this.style.background='rgba(34,211,238,.08)'" onmouseout="this.style.background='transparent'">
               <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1H1v10h10V7M7 1h4v4M11 1L5.5 6.5"/></svg>
-              Source
-            </a>` : ''}
+              Source</a>` : ''}
           </div>`).join('')}
       </div>
     </div>
@@ -4994,6 +5737,10 @@ function renderPeptideDetail(id) {
           <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm0 9.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm.75-7.5v5.5h-1.5V3.75h1.5z"/></svg>
           What does it do?
         </button>
+        <button class="copy-link-btn what-btn" style="margin-top:6px;align-self:flex-end" onclick="copyPeptideLink()">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2z"/><path d="M14 2H8a2 2 0 0 0-2 2"/></svg>
+          Copy Link
+        </button>
       </div>
     </div>
 
@@ -5100,6 +5847,10 @@ function renderPeptideDetail(id) {
     ${pulseHTML}
 
     ${renderRelated(rp)}
+
+    ${renderStacks(rp)}
+
+    ${renderCaseExamples(rp)}
 
     <div style="background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:var(--radius-sm);padding:12px 16px;font-size:.74rem;color:#92400e;line-height:1.6">
       ⚠ <strong>Research purposes only.</strong> This profile is for informational use only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional. <span style="cursor:pointer;color:#fbbf24;text-decoration:underline" onclick="openMethodology()">View full methodology →</span>
@@ -5212,7 +5963,14 @@ document.addEventListener('mousemove', e => {
 // INIT
 // ═══════════════════════════════════════════════════════════
 renderSidebar();
-showOverview();
+(function initHashNav() {
+  const initialHash = window.location.hash.replace('#', '').trim();
+  if (initialHash && PEPTIDES.some(p => p.id === initialHash)) {
+    showPeptide(initialHash);
+  } else {
+    showOverview();
+  }
+})();
 
 if (!localStorage.getItem('elixa_v3_seen')) {
   setTimeout(() => openMethodology(), 800);
@@ -5271,6 +6029,9 @@ showPulseView = function() { _showPulseView(); setMobileNav('pulse'); updateHead
 
 const _showGlossary = showGlossary;
 showGlossary = function() { _showGlossary(); setMobileNav('overview'); updateHeaderNav('nav-glossary'); };
+
+const _showPopularStacks = showPopularStacks;
+showPopularStacks = function() { _showPopularStacks(); setMobileNav('stacks'); updateHeaderNav('nav-stacks'); };
 
 function updateHeaderNav(activeId) {
   document.querySelectorAll('.header-nav-btn').forEach(b => b.classList.remove('active'));
@@ -5475,6 +6236,70 @@ function renderRegSummary(rp) {
     <div style="font-size:.65rem;font-weight:700;color:var(--accent-blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Regulatory Overview</div>
     ${rp.regSummary}
   </div>`;
+}
+
+// ── Stacks ──
+function renderStacks(rp) {
+  const matches = Object.entries(STACKS).filter(([, s]) => s.peptides.includes(rp.id));
+  if (!matches.length) return '';
+  const cards = matches.map(([, s]) => {
+    const members = s.peptides.map(id => {
+      const mp = PEPTIDES.find(x => x.id === id);
+      const isThis = id === rp.id;
+      return `<span onclick="${!isThis ? `showPeptide('${id}')` : ''}" style="display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;margin:2px;cursor:${isThis ? 'default' : 'pointer'};background:${isThis ? 'rgba(56,189,248,.2)' : 'rgba(255,255,255,.06)'};color:${isThis ? 'var(--accent-blue)' : 'var(--text-secondary)'};border:1px solid ${isThis ? 'rgba(56,189,248,.3)' : 'rgba(255,255,255,.1)'}">${mp ? mp.name : id}</span>`;
+    }).join('');
+    return `<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:.8rem;font-weight:700;color:var(--text-primary);margin-bottom:6px">${s.name}</div>
+      <div style="margin-bottom:8px">${members}</div>
+      <div style="font-size:.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:8px">${s.rationale}</div>
+      ${s.caution ? `<div style="font-size:.72rem;color:#fbbf24;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.15);border-radius:6px;padding:6px 10px">⚠ ${s.caution}</div>` : ''}
+    </div>`;
+  }).join('');
+  return `<section style="margin:20px 0">
+    <div class="sec-hdr">Popular Stacks Featuring This Peptide</div>
+    ${cards}
+  </section>`;
+}
+
+function renderPopularStacks() {
+  const entries = Object.entries(STACKS);
+  const cards = entries.map(([, s]) => {
+    const members = s.peptides.map(id => {
+      const mp = PEPTIDES.find(x => x.id === id);
+      return `<button type="button" onclick="showPeptide('${id}')" style="display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;margin:2px;background:rgba(56,189,248,.1);color:var(--accent-blue);border:1px solid rgba(56,189,248,.2);cursor:pointer">${mp ? mp.name : id}</button>`;
+    }).join('');
+    const protocols = s.protocols.map(p => `<li style="margin-bottom:4px">${p}</li>`).join('');
+    return `<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:14px">
+      <div style="font-size:.9rem;font-weight:700;color:var(--text-primary);margin-bottom:8px">${s.name}</div>
+      <div style="margin-bottom:10px">${members}</div>
+      <div style="font-size:.78rem;color:var(--text-secondary);line-height:1.6;margin-bottom:10px">${s.rationale}</div>
+      ${protocols ? `<div style="margin-bottom:10px"><div style="font-size:.65rem;font-weight:700;color:var(--accent-blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Research Reference Protocols</div><ul style="font-size:.75rem;color:var(--text-secondary);line-height:1.55;padding-left:16px;margin:0">${protocols}</ul></div>` : ''}
+      ${s.caution ? `<div style="font-size:.72rem;color:#fbbf24;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.15);border-radius:6px;padding:8px 12px">⚠ ${s.caution}</div>` : ''}
+    </div>`;
+  }).join('');
+  return `<div style="padding:20px 0">
+    <div style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:4px">Popular Peptide Stacks</div>
+    <div style="font-size:.8rem;color:var(--text-secondary);margin-bottom:20px">Research-referenced combination protocols. Not medical advice.</div>
+    ${cards}
+  </div>`;
+}
+
+// ── Case Examples ──
+function renderCaseExamples(rp) {
+  const examples = CASE_EXAMPLES[rp.id];
+  if (!examples || !examples.length) return '';
+  const cards = examples.map(ex => `
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--accent-blue);border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:.8rem;font-weight:700;color:var(--text-primary);margin-bottom:5px">${ex.title || ''}</div>
+      ${ex.context ? `<div style="font-size:.74rem;color:var(--text-secondary);line-height:1.55;margin-bottom:5px"><span style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#7aabcc;display:inline-block;margin-bottom:2px">Context</span><br>${ex.context}</div>` : ''}
+      ${ex.outcome ? `<div style="font-size:.74rem;color:var(--text-secondary);line-height:1.55;margin-bottom:5px"><span style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#4ade80;display:inline-block;margin-bottom:2px">Outcome</span><br>${ex.outcome}</div>` : ''}
+      ${ex.note ? `<div style="font-size:.72rem;color:#fbbf24;background:rgba(251,191,36,.05);border-radius:5px;padding:5px 9px;margin-top:4px">${ex.note}</div>` : ''}
+    </div>`).join('');
+  return `<section style="margin:20px 0">
+    <div class="sec-hdr">Case Examples</div>
+    <div style="font-size:.74rem;color:var(--text-secondary);margin-bottom:10px">These examples are drawn from published research, clinical case reports, or documented community outcomes. They are illustrative only and do not represent typical or expected results.</div>
+    ${cards}
+  </section>`;
 }
 
 // ── Compare bar ──
