@@ -128,6 +128,16 @@ header{display:flex;align-items:center;gap:14px;padding:13px 24px;border-bottom:
 .mech-simple-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#818cf8;opacity:.7;margin-bottom:4px;display:flex;align-items:center;gap:5px}
 .mech-science-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);opacity:.7;margin-bottom:4px;display:flex;align-items:center;gap:5px;margin-top:10px}
 .mech-divider{border:none;border-top:1px solid var(--border);margin:10px 0;max-width:600px}
+/* ── Research Maturity Badge ── */
+.maturity-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;border:1px solid;font-size:.67rem;font-weight:700;letter-spacing:.05em;cursor:help;margin-bottom:8px;transition:filter .15s}
+.maturity-badge:hover{filter:brightness(1.25)}
+.maturity-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.maturity-s1{border-color:rgba(239,68,68,.4);color:#f87171;background:rgba(239,68,68,.07)}
+.maturity-s2{border-color:rgba(249,115,22,.4);color:#fb923c;background:rgba(249,115,22,.07)}
+.maturity-s3{border-color:rgba(234,179,8,.4);color:#facc15;background:rgba(234,179,8,.07)}
+.maturity-s4{border-color:rgba(34,211,238,.4);color:#22d3ee;background:rgba(34,211,238,.07)}
+.maturity-s5{border-color:rgba(59,130,246,.4);color:#60a5fa;background:rgba(59,130,246,.07)}
+.maturity-s6{border-color:rgba(74,222,128,.4);color:#4ade80;background:rgba(74,222,128,.07)}
 .hero-badges{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
 .badge{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 14px;border-radius:var(--radius-sm);border:1px solid;font-size:.69rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;min-width:100px;text-align:center}
 
@@ -2803,6 +2813,72 @@ function expandGlossaryTerms(text) {
 }
 
 // ═══════════════════════════════════════════════════════════
+// RESEARCH MATURITY LADDER
+// Stage 1: Preclinical  2: Early Human  3: Clinical Trials
+// Stage 4: Limited Reg  5: Approved Limited  6: Globally Approved
+// ═══════════════════════════════════════════════════════════
+const RESEARCH_MATURITY = {
+  semaglutide:        { label:"Globally Approved",      stage:6, note:"Approved globally across major regulators for diabetes and/or obesity indications." },
+  tirzepatide:        { label:"Globally Approved",      stage:6, note:"Approved by major regulators for diabetes and obesity-related indications." },
+  retatrutide:        { label:"Clinical Trials",        stage:3, note:"Strong Phase 2 data with Phase 3 trials underway, but not yet approved." },
+  liraglutide:        { label:"Globally Approved",      stage:6, note:"Globally approved for diabetes and weight-management indications." },
+  aod9604:            { label:"Clinical Trials",        stage:3, note:"Reached human obesity trials, but results did not support broad therapeutic approval." },
+  bpc157:             { label:"Preclinical",            stage:1, note:"Mostly animal and laboratory research with no established approved human indication." },
+  tb500:              { label:"Preclinical",            stage:1, note:"Primarily preclinical and grey-market use, without formal therapeutic approval." },
+  ara290:             { label:"Clinical Trials",        stage:3, note:"Human trials exist for inflammatory and neuropathic conditions, but no broad approval." },
+  cjc1295_ipa:        { label:"Early Human Studies",   stage:2, note:"Human safety exposure exists, but the combination is not an approved medicine." },
+  sermorelin:         { label:"Approved — Limited",    stage:5, note:"Historically approved in limited settings, but not broadly available as a current global medicine." },
+  ipamorelin:         { label:"Early Human Studies",   stage:2, note:"Human safety studies exist, but it has not progressed to recognised approval." },
+  tesamorelin:        { label:"Approved — Limited",    stage:5, note:"Approved in limited jurisdictions for HIV-associated abdominal fat reduction." },
+  hexarelin:          { label:"Early Human Studies",   stage:2, note:"Human studies exist, but it remains unapproved for routine clinical use." },
+  mk677:              { label:"Clinical Trials",        stage:3, note:"Has human clinical data, but no major therapeutic approval." },
+  ghkcu:              { label:"Early Human Studies",   stage:2, note:"Used mainly in cosmetics and early wound-healing research, not as an approved drug." },
+  epitalon:           { label:"Preclinical",            stage:1, note:"Evidence remains largely preclinical or low-quality human evidence." },
+  motsc:              { label:"Preclinical",            stage:1, note:"Still mainly early metabolic and ageing biology research." },
+  glutathione:        { label:"Clinical Trials",        stage:3, note:"Human clinical use exists, but therapeutic claims remain mixed and indication-specific." },
+  semax:              { label:"Limited Registration",  stage:4, note:"Registered in Russia/CIS contexts, but not FDA or EMA approved." },
+  selank:             { label:"Limited Registration",  stage:4, note:"Registered in limited Russian/CIS contexts, with limited global regulatory acceptance." },
+  dsip:               { label:"Preclinical",            stage:1, note:"Human evidence is sparse and inconsistent, with no recognised approval." },
+  dihexa:             { label:"Preclinical",            stage:1, note:"Mainly preclinical neurobiology research with no approved human indication." },
+  pt141:              { label:"Approved — Limited",    stage:5, note:"FDA-approved for HSDD in premenopausal women, but not broadly globally approved." },
+  melanotan2:         { label:"Preclinical",            stage:1, note:"Not approved as a medicine and mostly exists in research or grey-market use." },
+  kisspeptin10:       { label:"Early Human Studies",   stage:2, note:"Human reproductive endocrinology studies exist, but no approved therapeutic use." },
+  thymosin_a1:        { label:"Approved — Limited",    stage:5, note:"Approved in several non-US jurisdictions, but not broadly approved by FDA/EMA." },
+  humanin:            { label:"Preclinical",            stage:1, note:"Mostly preclinical ageing, mitochondrial, and neuroprotection research." },
+  collagen_peptides:  { label:"Clinical Trials",        stage:3, note:"Human trials support some supplement uses, but it is not a regulated drug therapy." },
+  ghrp2:              { label:"Early Human Studies",   stage:2, note:"Human endocrine studies exist, but it is not broadly approved." },
+  igf1lr3:            { label:"Preclinical",            stage:1, note:"Primarily research-use and bodybuilding-market exposure, without approved medical status." },
+  pegmgf:             { label:"Preclinical",            stage:1, note:"Mostly preclinical muscle-growth research with no approved human indication." },
+  follistatin:        { label:"Preclinical",            stage:1, note:"Research remains experimental, especially around muscle biology and gene-based approaches." },
+  cerebrolysin:       { label:"Approved — Limited",    stage:5, note:"Approved or used in multiple countries, but not FDA-approved and evidence remains debated." },
+  vip:                { label:"Early Human Studies",   stage:2, note:"Human studies exist in selected conditions, but no broad approved peptide-drug status." },
+  oxytocin:           { label:"Globally Approved",      stage:6, note:"Globally approved and widely used in obstetric medicine." },
+  gonadorelin:        { label:"Globally Approved",      stage:6, note:"Approved internationally for diagnostic and reproductive endocrine use." },
+  ll37:               { label:"Preclinical",            stage:1, note:"Still mainly antimicrobial and immunology research without therapeutic approval." },
+  glatiramer_acetate: { label:"Globally Approved",      stage:6, note:"Globally approved for relapsing forms of multiple sclerosis." },
+  octreotide:         { label:"Globally Approved",      stage:6, note:"Globally approved for acromegaly and neuroendocrine-related indications." },
+  teriparatide:       { label:"Globally Approved",      stage:6, note:"Globally approved for osteoporosis treatment in appropriate high-risk patients." },
+};
+
+const _maturityMeta = [
+  { cls:'maturity-s1', dot:'#f87171', prefix:'① ' },
+  { cls:'maturity-s2', dot:'#fb923c', prefix:'② ' },
+  { cls:'maturity-s3', dot:'#facc15', prefix:'③ ' },
+  { cls:'maturity-s4', dot:'#22d3ee', prefix:'④ ' },
+  { cls:'maturity-s5', dot:'#60a5fa', prefix:'⑤ ' },
+  { cls:'maturity-s6', dot:'#4ade80', prefix:'⑥ ' },
+];
+
+function renderMaturityBadge(p) {
+  const m = RESEARCH_MATURITY[p.id];
+  if (!m) return '';
+  const meta = _maturityMeta[m.stage - 1];
+  return `<span class="maturity-badge ${meta.cls}" title="Research Stage ${m.stage}/6 — ${m.note}">
+    <span class="maturity-dot" style="background:${meta.dot}"></span>
+    ${meta.prefix}${m.label}
+  </span>`;
+}
+
 // ═══════════════════════════════════════════════════════════
 // SIMPLE MECHANISM — plain-language (ELI16) descriptions
 // Shown ABOVE the scientific mechanism in the hero card
@@ -2849,6 +2925,56 @@ const SIMPLE_MECHANISM = {
   octreotide:         "Somatostatin is a hormone your body uses as an off-switch for other hormones — telling glands to stop producing. Octreotide is a longer-lasting synthetic copy of somatostatin. It's used to treat conditions where the body overproduces hormones (like the excess GH in acromegaly, or the hormones from carcinoid tumours) and to reduce secretions in certain gut conditions.",
   teriparatide:       "Parathyroid hormone controls calcium in the body and governs bone turnover. Here's the counterintuitive science: injected continuously, PTH causes bone loss — but injected in short daily pulses, it does the opposite and actually builds new bone. Teriparatide is the first 1–34 fragment of PTH given as daily pulses. It's one of the only osteoporosis treatments that actually adds bone mass rather than just slowing its loss.",
 };
+
+// ═══════════════════════════════════════════════════════════
+// KNOWN UNKNOWNS — key unanswered research questions per peptide
+// Rendered as an amber callout in the Overview section
+// ═══════════════════════════════════════════════════════════
+const KNOWN_UNKNOWNS = {
+  bpc157:      "The major unanswered question is whether BPC-157 is safe in humans beyond short, poorly documented exposure. There is still no robust human efficacy dataset for tendon, gut, nerve, or wound-healing claims, and regulators remain concerned about injectable-route safety, impurities, and immunogenicity.",
+  tb500:       "TB-500 has almost no reliable human exposure data, so its real safety profile is largely unknown. The key gap is whether thymosin-beta-4 fragments meaningfully improve healing in humans without unwanted angiogenesis, immune effects, or off-target tissue growth.",
+  ara290:      "ARA-290 has some human trial signals in small-fiber neuropathy, but the unanswered question is whether those effects are durable, clinically meaningful, and reproducible in larger Phase 3-style studies. Long-term immune, nerve, and erythropoietin-receptor pathway effects remain incompletely mapped.",
+  aod9604:     "AOD-9604's fat-loss mechanism remains scientifically unsettled because early human obesity data did not establish clear therapeutic efficacy. Regulators also flag limited safety information, possible serious adverse-event signals, and unresolved risks around peptide impurities and immune reactions.",
+  cjc1295_ipa: "The big unknown is what chronic GH/IGF-1 stimulation from CJC-1295 plus ipamorelin does over years, especially for glucose control, oedema, cardiovascular strain, and cancer-risk signalling. Human safety data for many compounded injectable routes remains thin, and FDA has flagged serious adverse events with CJC-1295.",
+  sermorelin:  "Sermorelin has a clearer historical clinical footprint than many research peptides, but its anti-ageing and performance use still lacks strong long-term outcome data. The unanswered issue is whether modest GH stimulation in non-deficient adults produces benefit that outweighs endocrine, glucose, and IGF-1-related risks.",
+  ipamorelin:  "Ipamorelin's selectivity is often marketed as reassurance, but long-term human safety data for common injectable use is still inadequate. FDA has flagged immunogenicity concerns and serious adverse events in an IV motility study, leaving dose, route, and chronic-use safety unresolved.",
+  hexarelin:   "Hexarelin is a potent GH secretagogue, but the unanswered questions are cardiovascular, prolactin/cortisol, and glucose-metabolic effects with repeated use. Most confidence comes from older or limited studies, not modern long-term trials in healthy users.",
+  mk677:       "MK-677 has human trial data, but its long-term risk-benefit remains unresolved outside narrow research contexts. The key blockers are fluid retention, insulin resistance, appetite/weight gain, and a trial safety signal involving congestive heart failure in frail older patients.",
+  epitalon:    "Epitalon's longevity claims remain far ahead of the evidence. The central unknowns are whether telomerase-related effects translate into safe human lifespan or healthspan benefit, and whether chronic use could alter cancer biology or immune function.",
+  motsc:       "MOTS-c is biologically interesting, but there is no meaningful human exposure dataset establishing safety, dosing, or efficacy. The major unknown is whether mitochondrial-signalling effects seen preclinically translate into predictable metabolic benefit without immune or off-target risks.",
+  semax:       "Semax has regional clinical use and research history, but global regulators lack strong modern trial packages for common claimed indications. The unanswered questions are durability of cognitive or neuroprotective effects, optimal route/dose, and long-term neuroendocrine or immune safety.",
+  selank:      "Selank's anxiolytic and cognitive claims remain limited by small, regional, and hard-to-generalise human evidence. The key unknowns are whether benefits replicate in large blinded trials and whether chronic immune-modulating or neuropeptide effects are safe.",
+  dsip:        "DSIP's sleep claims remain scientifically unsettled because human evidence is inconsistent and mechanistic explanations are not clean. The unanswered questions are whether it reliably changes sleep architecture, who responds, and what chronic neuroendocrine exposure does.",
+  dihexa:      "Dihexa is one of the highest-uncertainty compounds here because there is essentially no established human exposure data. The main concern is whether HGF/c-Met-related synaptogenic signalling could create off-target growth, cancer, or neurological risks.",
+  melanotan2:  "Melanotan II has real melanocortin activity, but the safety questions are serious: melanoma case reports, priapism, blood-pressure/autonomic effects, and neurological adverse events remain unresolved. Long-term dermatologic risk is especially unclear because pigmentation pathways are not cosmetic toys.",
+  kisspeptin10:"Kisspeptin-10 clearly affects the reproductive hormone axis, but therapeutic use is limited by short half-life and incomplete safety data for repeated administration. The key unknowns are fertility-axis disruption, sex-hormone downstream effects, and route-specific immunogenicity.",
+  humanin:     "Humanin is still mostly a preclinical ageing/metabolic/neuroprotection story. The unanswered questions are basic: human dosing, pharmacokinetics, tissue targeting, chronic safety, and whether mitochondrial-stress signalling can be modified without unintended systemic effects.",
+  ghrp2:       "GHRP-2's unresolved risks centre on glucose control, cortisol/prolactin effects, and immune reactions from compounded injectable or nasal products. FDA has flagged serious adverse-event reports, but causality and safe-use boundaries remain unclear.",
+  igf1lr3:     "IGF-1 LR3 has a major evidence gap because it is not supported by proper human therapeutic safety trials. The biggest unknowns are hypoglycaemia, organ/tissue growth, cancer-signalling risk, and how its extended activity changes normal IGF-1 physiology.",
+  pegmgf:      "PEG-MGF lacks identified human exposure data for drug products, making safety and efficacy essentially unanswered. The key concerns are immunogenicity, peptide impurities, and whether local muscle-repair signalling could cause abnormal tissue growth or systemic effects.",
+  follistatin:  "Follistatin biology is powerful but blunt: it affects myostatin and other TGF-beta-family pathways, not just muscle size. The unanswered questions are fertility, tumour biology, cardiac effects, tendon/bone balance, and whether injectable peptide use resembles gene-therapy research.",
+  cerebrolysin: "Cerebrolysin has more clinical literature than most items here, especially in stroke and brain injury, but results remain mixed and jurisdiction-dependent. The unanswered questions are which patients truly benefit, optimal timing/dose, and whether functional gains persist beyond trial windows.",
+  vip:          "VIP has plausible immune, pulmonary, and vascular biology, but clinical translation remains uncertain. The major unknowns are hypotension, immune-shift effects, route-specific safety, and whether benefits seen in small or condition-specific studies generalise.",
+  ll37:         "LL-37 is biologically active in host defence, inflammation, reproduction, and cancer-related pathways, which makes it scientifically interesting but risky. FDA specifically flags insufficient human safety data plus nonclinical concerns around male reproduction and possible pro-tumour effects.",
+};
+
+function renderKnownUnknowns(p) {
+  const text = KNOWN_UNKNOWNS[p.id];
+  if (!text) return '';
+  return `<div style="
+    background:rgba(251,191,36,.06);
+    border:1px solid rgba(251,191,36,.25);
+    border-left:3px solid #fbbf24;
+    border-radius:8px;
+    padding:12px 14px;
+    margin-top:4px;
+  ">
+    <div style="font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fbbf24;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+      <span>❓</span> Known Unknowns
+    </div>
+    <div style="font-size:.8rem;color:#d4a72c;line-height:1.65">${text}</div>
+  </div>`;
+}
 
 // RISK LEVEL — per-peptide safety profile
 // ═══════════════════════════════════════════════════════════
@@ -3882,6 +4008,7 @@ function renderPeptideDetail(id) {
         <div class="hero-alts">${p.altNames}</div>
         ${brandsHTML}
         <div style="font-size:.67rem;font-weight:600;color:${catColor};opacity:.7;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;margin-top:6px">${p.class}</div>
+        ${renderMaturityBadge(p)}
         ${SIMPLE_MECHANISM[p.id] ? `
           <div class="mech-simple-label">💡 In plain terms</div>
           <div class="mech-simple">${SIMPLE_MECHANISM[p.id]}</div>
@@ -3909,7 +4036,10 @@ function renderPeptideDetail(id) {
       <button class="anav-btn" data-sec="sec-trials" onclick="scrollToSection('sec-trials')">Trials</button>
     </div>
 
-    <div id="sec-overview">${renderBestFor(p)}</div>
+    <div id="sec-overview">
+      ${renderBestFor(p)}
+      ${renderKnownUnknowns(p)}
+    </div>
 
     ${renderConfidenceBar(p)}
 
