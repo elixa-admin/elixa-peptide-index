@@ -823,6 +823,15 @@ details.sahpra-details[open] .sahpra-toggle-chevron{transform:rotate(90deg)}
 
 </style>
 </head>
+<script>
+window.onerror = function(msg, src, line, col, err) {
+  var d = document.createElement('div');
+  d.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#7f1d1d;color:#fca5a5;font-family:monospace;font-size:12px;padding:10px 16px;line-height:1.5';
+  d.innerHTML = '🔴 JS Error: ' + msg + ' (line ' + line + ')' + (err ? '<br>' + err.stack : '');
+  document.body.prepend(d);
+  return false;
+};
+</script>
 <body>
 
 <!-- Disclaimer strip -->
@@ -1183,11 +1192,11 @@ const RESEARCH_PULSE = [
     headline:"Cosmetic peptide reviews highlighted GHK-Cu as one of the better-known copper peptides, while noting that topical skin evidence is stronger than systemic anti-ageing claims.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu" },
-  { date:"Jan 2025", peptideId:"cjc1295_ipamorelin", peptide:"CJC-1295 / Ipamorelin", color:"#fbbf24",
+  { date:"Jan 2025", peptideId:"cjc1295", peptide:"CJC-1295 / Ipamorelin", color:"#fbbf24",
     headline:"Clinical interest in GH secretagogue combinations remained concentrated in wellness and hormone-clinic settings, with limited regulator-reviewed evidence for anti-ageing or body-composition claims.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295+/+Ipamorelin" },
-  { date:"Apr 2024", peptideId:"cjc1295_ipamorelin", peptide:"CJC-1295 / Ipamorelin", color:"#fbbf24",
+  { date:"Apr 2024", peptideId:"cjc1295", peptide:"CJC-1295 / Ipamorelin", color:"#fbbf24",
     headline:"Endocrine safety discussions continued to emphasise monitoring IGF-1, glucose and fluid-retention markers when GH-axis peptides are used outside formal indications.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295+/+Ipamorelin" },
@@ -1247,11 +1256,11 @@ const RESEARCH_PULSE = [
     headline:"Studies of EPO-derived peptides kept ARA-290 in the spotlight for potential non-haematopoietic repair effects, but approval pathways remained unsettled.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=ARA-290" },
-  { date:"Feb 2025", peptideId:"thymosin_alpha1", peptide:"Thymosin Alpha-1", color:"#34d399",
+  { date:"Feb 2025", peptideId:"thymosin_a1", peptide:"Thymosin Alpha-1", color:"#34d399",
     headline:"Immune-modulation reviews continued to discuss thymosin alpha-1 for infection, immune dysfunction and adjunctive therapy contexts, with evidence varying by indication.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=Thymosin+Alpha-1" },
-  { date:"Oct 2024", peptideId:"thymosin_alpha1", peptide:"Thymosin Alpha-1", color:"#34d399",
+  { date:"Oct 2024", peptideId:"thymosin_a1", peptide:"Thymosin Alpha-1", color:"#34d399",
     headline:"Global regulatory status remained uneven: thymosin alpha-1 is used in some countries, but is not uniformly approved across major Western regulators.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=Thymosin+Alpha-1" },
@@ -1287,11 +1296,11 @@ const RESEARCH_PULSE = [
     headline:"Recent reviews described Humanin as promising in preclinical ageing models, but still far from validated human therapy.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=Humanin" },
-  { date:"Jan 2025", peptideId:"collagen", peptide:"Collagen Peptides", color:"#c084fc",
+  { date:"Jan 2025", peptideId:"collagen_peptides", peptide:"Collagen Peptides", color:"#c084fc",
     headline:"Human studies continued to support modest benefits of collagen peptides for skin elasticity, hydration and joint comfort, depending on dose and duration.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=Collagen+Peptides" },
-  { date:"Apr 2024", peptideId:"collagen", peptide:"Collagen Peptides", color:"#c084fc",
+  { date:"Apr 2024", peptideId:"collagen_peptides", peptide:"Collagen Peptides", color:"#c084fc",
     headline:"Nutrition reviews noted that collagen peptide effects are plausible but generally modest, with product quality and study design influencing outcomes.",
     source:"Research Review", type:"study",
     url:"https://pubmed.ncbi.nlm.nih.gov/?term=Collagen+Peptides" },
@@ -2953,6 +2962,8 @@ const PEPTIDES = [
 
   ,{
     id:"goserelin",name:"Goserelin",icon:"🔬",color:"#a78bfa",category:"hormonal",class:"GnRH agonist",
+    t1:4.5, t2:8.0, t3:8.5, composite:6.4,
+    evidence_x:4.5, access_y:7.8,
     altNames:"Zoladex · Goserelin acetate",
     mechanism:"A synthetic GnRH analogue that initially stimulates then continuously downregulates pituitary GnRH receptors. Sustained exposure desensitises the receptor, suppressing LH and FSH release and reducing sex hormones to castrate or menopausal levels. Used to deprive hormone-sensitive tumours and ectopic tissue of their hormonal driver.",
     fdaStatus:"approved",fdaLabel:"FDA-approved for prostate cancer, endometriosis, and breast cancer in premenopausal women.",
@@ -2990,6 +3001,8 @@ const PEPTIDES = [
   }
   ,{
     id:"leuprolide",name:"Leuprolide",icon:"🔬",color:"#818cf8",category:"hormonal",class:"GnRH agonist",
+    t1:4.5, t2:8.0, t3:8.5, composite:6.4,
+    evidence_x:4.5, access_y:7.8,
     altNames:"Leuprorelin · Lupron · Lupron Depot · Eligard",
     mechanism:"A potent synthetic GnRH agonist that produces an initial brief surge in LH and FSH (the 'flare'), then desensitises pituitary GnRH receptors through continuous stimulation. The result is profound suppression of gonadal sex hormone production. Available in multiple depot formulations ranging from daily SC injection to 6-monthly IM implants.",
     fdaStatus:"approved",fdaLabel:"FDA-approved for prostate cancer, endometriosis, uterine fibroids, and central precocious puberty.",
@@ -5401,7 +5414,7 @@ function renderEvRow(p) {
       <span style="font-size:.8rem;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</span>
     </div>
     <div style="height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden">
-      <div style="height:100%;width:${p.composite * 10}%;background:${barColor};border-radius:4px;transition:width .7s cubic-bezier(.22,1,.36,1)"></div>
+      <div style="height:100%;width:${((p.composite||0) * 10)}%;background:${barColor};border-radius:4px;transition:width .7s cubic-bezier(.22,1,.36,1)"></div>
     </div>
     <span class="ev-row-label" style="color:${cl.color}">${cl.label}</span>
   </div>`;
@@ -5569,7 +5582,7 @@ function renderOverview() {
             <div class="feat-card-name">${p.name}</div>
             <div class="feat-card-class">${p.class}</div>
             <div class="feat-card-foot">
-              <span class="feat-score" style="color:${sc(p.composite)}">${p.composite.toFixed(1)}/10</span>
+              <span class="feat-score" style="color:${sc(p.composite)}">${typeof p.composite==="number" ? p.composite.toFixed(1) : "—"}/10</span>
               <span class="feat-badge" style="color:${b.color};background:${b.color}18">${b.label}</span>
             </div>
           </div>`;
