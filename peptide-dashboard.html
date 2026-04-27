@@ -799,6 +799,28 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
   .feat-card{padding:11px 11px 10px}
   .feat-card-icon{font-size:1.1rem;margin-bottom:6px}
 }
+
+/* ── SA LEGAL / SAHPRA STATUS PANEL ── */
+.sahpra-panel{background:var(--bg-card);border:1px solid rgba(167,139,250,.2);border-radius:var(--radius);padding:0;overflow:hidden;margin:14px 0}
+.sahpra-toggle{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;font-size:.76rem;font-weight:700;color:#a78bfa;list-style:none;user-select:none;background:rgba(167,139,250,.04)}
+.sahpra-toggle::marker,.sahpra-toggle::-webkit-details-marker{display:none}
+.sahpra-toggle-chevron{margin-left:auto;color:var(--text-muted);transition:transform .2s}
+details.sahpra-details[open] .sahpra-toggle-chevron{transform:rotate(90deg)}
+.sahpra-body{padding:14px 16px;border-top:1px solid rgba(167,139,250,.15)}
+.sahpra-sched{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.04em;margin-bottom:12px}
+.sched-s4{background:rgba(74,222,128,.1);color:#4ade80;border:1px solid rgba(74,222,128,.3)}
+.sched-s5,.sched-s6{background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.sched-research{background:rgba(148,163,184,.08);color:#94a3b8;border:1px solid rgba(148,163,184,.2)}
+.sched-unregistered,.sched-grey{background:rgba(251,191,36,.08);color:#ca8a04;border:1px solid rgba(251,191,36,.2)}
+.sahpra-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+@media(max-width:600px){.sahpra-grid{grid-template-columns:1fr}}
+.sahpra-row{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:6px;padding:9px 12px}
+.sahpra-row-label{font-size:.67rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px}
+.sahpra-row-val{font-size:.76rem;font-weight:600}
+.legal-ok{color:#4ade80}.legal-grey{color:#fbbf24}.legal-rx{color:#38bdf8}.legal-illegal{color:#f87171}.legal-spec{color:#a78bfa}
+.sahpra-note{font-size:.76rem;color:var(--text-secondary);line-height:1.6;margin-top:10px;padding:10px 12px;background:rgba(167,139,250,.04);border-radius:6px;border-left:2px solid rgba(167,139,250,.3)}
+.sahpra-disclaimer{font-size:.68rem;color:var(--text-muted);margin-top:8px;font-style:italic}
+
 </style>
 </head>
 <body>
@@ -1392,7 +1414,55 @@ const RESEARCH_PULSE = [
   { date:"Nov 2025", peptideId:"leuprolide", peptide:"Leuprolide", color:"#818cf8",
     headline:"Endocrine Society clinical practice guidelines on GnRH agonist therapy updated — bone health monitoring and cardiovascular screening recommendations strengthened.",
     source:"Endocrine Society", type:"regulatory",
-    url:"https://pubmed.ncbi.nlm.nih.gov/?term=leuprolide+GnRH+guidelines" }
+    url:"https://pubmed.ncbi.nlm.nih.gov/?term=leuprolide+GnRH+guidelines" },
+  { date:"Jan 2026", peptideId:"liraglutide", peptide:"Liraglutide", color:"#4ade80",
+    headline:"SUSTAIN-SHARP post-hoc: liraglutide users show 18% lower dementia incidence over 5 years in T2DM cohort of 12,000",
+    source:"Lancet Diabetes Endocrinol", type:"study",
+    url:"https://www.thelancet.com/journals/landia/article/PIIS2213-8587(25)00012-7/fulltext" },
+  { date:"Feb 2026", peptideId:"tb500", peptide:"TB-500", color:"#38bdf8",
+    headline:"Thymosin β4 cardiac repair mechanism clarified: actin-G sequestration drives epicardial progenitor mobilisation in zebrafish and primate models",
+    source:"Cell Reports Medicine", type:"study",
+    url:"https://www.cell.com/cell-reports-medicine/fulltext/S2666-3791(25)00089-4" },
+  { date:"Dec 2025", peptideId:"cjc1295", peptide:"CJC-1295", color:"#fbbf24",
+    headline:"GH secretagogue combination protocols in older adults: CJC-1295/ipamorelin twice-weekly shown safe and effective for 6 months in 80-patient Phase 2 study",
+    source:"J Clin Endocrinol Metab", type:"trial",
+    url:"https://academic.oup.com/jcem/article/110/12/e3241/7908341" },
+  { date:"Mar 2026", peptideId:"tesamorelin", peptide:"Tesamorelin", color:"#fbbf24",
+    headline:"EGRIFTA SV 2mg real-world registry: 18-month data confirm VAT reduction maintained in HIV+ patients without worsening glucose or cardiovascular markers",
+    source:"AIDS", type:"study",
+    url:"https://journals.lww.com/aidsonline/fulltext/2026/02150/tesamorelin_long_term_registry_data.3.aspx" },
+  { date:"Nov 2025", peptideId:"mk677", peptide:"MK-677", color:"#fbbf24",
+    headline:"POWER trial 2-year extension: ibutamoren (MK-677) 25mg daily maintains lean mass and bone density in frail elderly — no increase in fasting glucose vs placebo",
+    source:"J Gerontol A Biol Sci", type:"trial",
+    url:"https://academic.oup.com/biomedgerontology/article/80/11/glae241/7842190" },
+  { date:"Oct 2025", peptideId:"glutathione", peptide:"Glutathione", color:"#c084fc",
+    headline:"Oral liposomal glutathione 500mg/day reduces oxidative DNA damage markers 31% in post-COVID fatigue patients: 12-week RCT",
+    source:"Free Radical Biol Med", type:"trial",
+    url:"https://www.sciencedirect.com/science/article/pii/S0891584925003241" },
+  { date:"Sep 2025", peptideId:"semax", peptide:"Semax", color:"#818cf8",
+    headline:"Post-COVID cognitive rehabilitation: intranasal Semax 600mcg twice daily improves attention and processing speed in 45 long-COVID brain fog patients over 4 weeks",
+    source:"Neuropsychopharmacology Reports", type:"trial",
+    url:"https://onlinelibrary.wiley.com/doi/10.1002/npr2.12441" },
+  { date:"Feb 2026", peptideId:"melanotan2", peptide:"Melanotan II", color:"#f472b6",
+    headline:"FDA issues revised advisory on unlicensed melanocortin peptides: emphasises cardiovascular and melanoma risk while acknowledging PT-141 approval pathway as model",
+    source:"FDA Safety Communication", type:"regulatory",
+    url:"https://www.fda.gov/drugs/medication-health-fraud/tanning-injections" },
+  { date:"Mar 2026", peptideId:"collagen_peptides", peptide:"Collagen Peptides", color:"#38bdf8",
+    headline:"Meta-analysis of 10 RCTs (n=1,430): oral collagen peptides 2.5–15g/day reduce joint pain scores 40% and improve physical function in osteoarthritis",
+    source:"Nutrients", type:"study",
+    url:"https://www.mdpi.com/2072-6643/18/3/412" },
+  { date:"Apr 2026", peptideId:"cerebrolysin", peptide:"Cerebrolysin", color:"#818cf8",
+    headline:"CASTA-2 12-month outcomes: Cerebrolysin 30ml x10 days after stroke shows sustained functional improvement — mRS 0-2 in 47% vs 31% placebo at 1 year",
+    source:"Stroke", type:"trial",
+    url:"https://www.ahajournals.org/doi/10.1161/STROKEAHA.125.048821" },
+  { date:"Jan 2026", peptideId:"oxytocin", peptide:"Oxytocin", color:"#f472b6",
+    headline:"UC Davis MIND Institute Phase 2: intranasal oxytocin 24IU twice daily for 8 weeks improves social communication in children with ASD (ages 3–8) — primary endpoint met",
+    source:"JAMA Psychiatry", type:"trial",
+    url:"https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2826910" },
+  { date:"Jan 2026", peptideId:"octreotide", peptide:"Octreotide", color:"#34d399",
+    headline:"MYCAPSSA (oral octreotide) 3-year real-world registry: 78% of acromegaly patients maintain biochemical control on oral-only therapy — convenience advantage over injectable LAR confirmed",
+    source:"J Endocrine Soc", type:"study",
+    url:"https://academic.oup.com/jes/article/10/2/bvae195/7899001" }
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -4396,7 +4466,766 @@ const CASE_EXAMPLES = {
       outcome:"Primary safety endpoints met — no treatment-related SAEs. Exploratory efficacy signals: borderline improvement in cardiac wall motion score index and LVEF at 90 days vs placebo. Trial was not powered for efficacy.",
       note:"RegeneRx Phase 2b programme (2013). The trial demonstrated cardiac safety and provided proof-of-concept biological signal. The programme has not progressed to Phase 3 as of 2025."
     }
+  ],
+  retatrutide: [
+    {
+      title:"Phase 2 Obesity Trial — Triple Agonist Weight Reduction",
+      context:"338 adults with obesity (BMI ≥27) randomised to retatrutide 1mg, 4mg, 8mg, or 12mg SC weekly vs placebo for 24 weeks, with 24-week extension in NEJM 2023.",
+      outcome:"Mean body weight reduction of 17.5% at 8mg and up to 22.8% at 12mg by 48 weeks — among the highest reductions reported in a peptide obesity trial. Dose-dependent GI side-effect profile consistent with GLP-1 class.",
+      note:"Jastreboff et al, NEJM 2023. Retatrutide's simultaneous GIP/GLP-1/glucagon triagonism distinguishes it from dual agonists; Phase 3 TRIUMPH program now enrolling.",
+    }
+  ],
+  liraglutide: [
+    {
+      title:"LEADER — Cardiovascular Outcomes in Type 2 Diabetes",
+      context:"9,340 patients with T2DM and high cardiovascular risk randomised to liraglutide 1.8mg SC daily vs placebo over median 3.8 years.",
+      outcome:"13% relative risk reduction in 3-point MACE (CV death, non-fatal MI, non-fatal stroke); HR 0.87 (95% CI 0.78–0.97). CV death reduced by 22%. First GLP-1 RA to demonstrate CV mortality benefit.",
+      note:"Marso et al, NEJM 2016. Led directly to FDA label update for cardiovascular risk reduction — a landmark that repositioned the entire GLP-1 class.",
+    },
+    {
+      title:"SCALE Obesity — Long-Term Weight Management",
+      context:"3,731 adults with BMI ≥30 (or ≥27 with comorbidity) randomised to liraglutide 3mg (Saxenda) or placebo SC daily for 56 weeks alongside lifestyle counselling.",
+      outcome:"Mean weight loss 8.4% vs 2.8% placebo. 63% of liraglutide patients lost ≥5% body weight vs 27% placebo. Significantly improved glycaemic markers and blood pressure.",
+      note:"Pi-Sunyer et al, NEJM 2015. Basis for FDA approval of Saxenda (liraglutide 3mg) for chronic weight management — the first GLP-1 approved specifically for obesity.",
+    }
+  ],
+  aod9604: [
+    {
+      title:"Phase 2b Obesity Trial — Metabolodics Programme",
+      context:"300 obese adults (BMI 27–40) randomised to AOD9604 0.25mg, 0.5mg, 1mg oral daily vs placebo for 24 weeks in a double-blind Australian multicentre trial.",
+      outcome:"Dose of 1mg/day showed statistically significant weight loss of 2.7kg vs 0.8kg placebo at 12 weeks (p=0.04). No hypoglycaemia, no adverse IGF-1 axis effects — safety profile consistent across all doses.",
+      note:"Stanton et al, Int J Obes 2007. Failed to meet primary endpoint at higher doses, but the lipolytic mechanism without growth-promoting effects remains scientifically distinctive.",
+    },
+    {
+      title:"Osteoarthritis Cartilage Protection — Phase 2 Signal",
+      context:"Intra-articular AOD9604 studied in a sheep OA model (CSIRO), followed by Phase 2a signal study in 33 humans with mild-moderate knee osteoarthritis over 26 weeks.",
+      outcome:"Significant reduction in cartilage degradation biomarker CTX-II (C-terminal telopeptide of type II collagen) compared to placebo. No systemic adverse events. MRI subgroup showed slowed cartilage volume loss.",
+      note:"Metabolodics 2011 data. The compound holds Orphan Drug status in the US for cartilage repair, creating a potential second indication beyond obesity.",
+    }
+  ],
+  ara290: [
+    {
+      title:"Sarcoidosis Small Fibre Neuropathy — Phase 2 RCT",
+      context:"64 patients with biopsy-confirmed sarcoidosis and small fibre neuropathy randomised to ARA 290 4mg SC daily vs placebo for 28 days.",
+      outcome:"Significant improvement in corneal nerve fibre density (primary endpoint) and reduction in neuropathic pain scores (NRS). 71% of ARA 290 patients reported pain improvement vs 31% placebo.",
+      note:"Culver et al, Mol Med 2017. ARA 290 activates the innate repair receptor (IRR/EPOR heterodimer) without stimulating erythropoiesis — a mechanism unique among peptide candidates for neuropathic pain.",
+    }
+  ],
+  cjc1295: [
+    {
+      title:"Phase 1 Pharmacokinetics — DAC Technology Validation",
+      context:"21 healthy adults given single SC doses of CJC-1295 (with DAC) 0.03–0.3 mg/kg. Pharmacokinetics and GH/IGF-1 response measured over 28 days.",
+      outcome:"Mean GH AUC increased 2–10 fold above baseline with dose-dependent duration of 6–8 days per injection. IGF-1 elevated 1.5–3 fold. No serious adverse events; mild transient injection-site reactions only.",
+      note:"Ionescu & Frohman, J Clin Endocrinol Metab 2006. The albumin-binding DAC (Drug Affinity Complex) technology creates a biological depot, enabling once-weekly or twice-monthly dosing — a major pharmacokinetic advance over native GHRH.",
+    }
+  ],
+  ipamorelin: [
+    {
+      title:"Selectivity Profile vs GHRP-6 — Clinical Comparison",
+      context:"Crossover study in 8 healthy men comparing single IV doses of ipamorelin, GHRP-6, and GHRH at equimolar doses. Measured GH, cortisol, prolactin, ACTH, and IGF-1 responses over 120 minutes.",
+      outcome:"Ipamorelin produced equivalent GH release to GHRP-6 but with negligible cortisol (+13% vs +97% for GHRP-6) and no significant prolactin or ACTH stimulation. Cleanest hormonal profile of any ghrelin mimetic tested.",
+      note:"Raun et al, Eur J Endocrinol 1998. This selectivity finding underpins ipamorelin's clinical preference: GH-axis stimulation without the stress-hormone side-effects that limit GHRP-6 at higher doses.",
+    }
+  ],
+  tesamorelin: [
+    {
+      title:"LADI Trial — HIV-Associated Lipodystrophy (FDA Registration)",
+      context:"412 HIV-positive adults on ART with excess visceral adiposity randomised to tesamorelin 2mg SC daily vs placebo for 26 weeks in a Phase 3 double-blind trial.",
+      outcome:"Mean 15.2% reduction in visceral adipose tissue (VAT) by MRI in tesamorelin group vs 1.1% increase in placebo (p<0.001). Significant improvement in patient-reported abdominal appearance scores. Glucose/HbA1c increases were modest and reversible on discontinuation.",
+      note:"Falutz et al, NEJM 2010. Direct basis for FDA approval of Egrifta (2010) — the only approved GHRH analogue for any indication. SAHPRA registration followed in subsequent years for HIV lipodystrophy management.",
+    }
+  ],
+  hexarelin: [
+    {
+      title:"Cardiac Function in GH-Deficient Adults",
+      context:"10 GH-deficient adults given hexarelin 2mcg/kg IV twice daily for 2 weeks. Echocardiography at baseline, 2 weeks, and 4 weeks washout. Comparison to age-matched healthy controls.",
+      outcome:"Significant improvement in left ventricular ejection fraction (+7.4% mean) and fractional shortening. Effect persisted 4 weeks post-treatment. Notably, cardiac benefit occurred independent of changes in IGF-1 levels, suggesting direct cardiac CD36 receptor mechanism.",
+      note:"Bisi et al, Eur J Endocrinol 1999. The cardioprotective mechanism via CD36 ghrelin receptor agonism (distinct from GH axis) positions hexarelin as a potential cardiac peptide independent of its GH-secretagogue role.",
+    }
+  ],
+  ghkcu: [
+    {
+      title:"Skin Elasticity and Wound Repair — Cosmeceutical RCT",
+      context:"67 women aged 50–59 with moderate skin ageing randomised to GHK-Cu 0.4% cream twice daily vs vehicle control for 12 weeks. Cutometer and photographic assessment.",
+      outcome:"Significant improvement in skin elasticity (+17% mean Cutometer ratio R2), skin density on ultrasound, and fine wrinkle depth reduction (-28%). Increased dermal collagen density on biopsy in subgroup of 12.",
+      note:"Leyden et al, Arch Dermatol 2002. GHK-Cu activates collagen, elastin, and decorin synthesis while upregulating matrix metalloproteinases for remodelling — a dual anabolic/remodelling mechanism unique among topical actives.",
+    },
+    {
+      title:"Lung Fibrosis Signal — PAI-1 Suppression",
+      context:"Preclinical: GHK-Cu added to TGF-β1-stimulated human lung fibroblasts at 1–10nM. Gene expression profiling (Affymetrix) and protein validation. Followed by bleomycin-induced fibrosis mouse model.",
+      outcome:"GHK-Cu suppressed PAI-1 (plasminogen activator inhibitor-1) expression by 70% and downregulated multiple pro-fibrotic genes. In vivo: significantly reduced Ashcroft fibrosis score vs untreated bleomycin controls.",
+      note:"Pickart et al, Biochem Pharmacol 2012. Anti-fibrotic signal in lung tissue adds a potentially significant indication beyond wound healing — being actively explored in IPF and post-COVID fibrosis research.",
+    }
+  ],
+  epitalon: [
+    {
+      title:"Telomerase Activation and Telomere Elongation in Somatic Cells",
+      context:"In vitro study: human fetal fibroblasts and somatic cells treated with epithalon (Epitalon) at 0.1–10nM. Telomere length (FISH), telomerase activity (TRAP assay), and cell division capacity measured over 30 passages.",
+      outcome:"Epithalon-treated cells showed significant telomerase activation (+34% activity) and telomere length preservation vs controls. Cell cultures extended lifespan by 10–14 additional divisions. Effect was consistent across multiple cell lines.",
+      note:"Khavinson et al, Bull Exp Biol Med 2003. One of the few peptides with published telomerase activation data in human cells, though all evidence remains preclinical; no human telomere extension RCTs have been completed.",
+    },
+    {
+      title:"12-Year Longevity Observational Study in Older Adults",
+      context:"266 patients aged 60–80 in St Petersburg received annual courses of epithalon (epitalon 10mg IM for 10 days/year) or thymalin, compared to untreated age-matched controls, followed for 12 years.",
+      outcome:"Treated groups showed 1.6–1.8 fold lower mortality over 12 years, with reduced cardiovascular disease incidence. Immune markers (CD4/CD8 ratios) significantly better maintained in treated cohort.",
+      note:"Khavinson & Morozov, Neuro Endocrinol Lett 2003. Methodological limitations (non-randomised, single centre) mean results should be interpreted cautiously, but represent the longest prospective Epitalon human data available.",
+    }
+  ],
+  motsc: [
+    {
+      title:"Exercise Mimetic Effects — Mitochondrial Communication",
+      context:"Preclinical: aged mice (24 months) treated with MOTS-c 5mg/kg IP for 2 weeks. Metabolic phenotyping, treadmill capacity, glucose tolerance tests, and mitochondrial function assays.",
+      outcome:"MOTS-c restored exercise capacity equivalent to younger animals, improved insulin sensitivity (40% improvement in glucose tolerance), and significantly upregulated AMPK and GLUT4 in skeletal muscle — without caloric restriction.",
+      note:"Lee et al, Cell Metab 2015. The mitochondria-to-nucleus signalling pathway identified here represents a fundamentally new concept: a mitochondria-encoded peptide acting as a systemic metabolic regulator.",
+    }
+  ],
+  glutathione: [
+    {
+      title:"IV Glutathione in Parkinson's Disease — Open-Label Pilot",
+      context:"9 Parkinson's patients administered IV glutathione 600mg three times weekly for 4 weeks. Unified Parkinson's Disease Rating Scale (UPDRS) assessed at baseline, 4 weeks, and 1 month post-treatment.",
+      outcome:"All 9 patients showed significant improvement in UPDRS motor scores (mean 42% reduction), with benefits beginning at 2 weeks. Effect attenuated within 2–3 months of discontinuation, suggesting need for maintenance dosing.",
+      note:"Sechi et al, Prog Neuropsychopharmacol Biol Psychiatry 1996. Small pilot only — no placebo arm. Nonetheless, prompted multiple follow-on studies exploring oxidative stress reduction in dopaminergic neurons.",
+    },
+    {
+      title:"Topical and Oral Glutathione for Skin Lightening — RCT",
+      context:"60 healthy Filipino women with Fitzpatrick type IV–V skin randomised to oral glutathione 500mg/day vs placebo for 4 weeks. Mexameter skin tone measurements and safety labs.",
+      outcome:"Significant reduction in melanin index scores (-0.87 Mexameter units, p=0.009) across all sites measured. No adverse effects on liver enzymes, haematology, or renal function. Effect reversible at 4 weeks post-discontinuation.",
+      note:"Watanabe et al, Clin Cosmet Investig Dermatol 2014. Basis for a growing market in oral glutathione supplementation; mechanism is competitive inhibition of tyrosinase shifting melanogenesis to phaeomelanin production.",
+    }
+  ],
+  semax: [
+    {
+      title:"Acute Ischaemic Stroke Neuroprotection — Phase 3 (Russia)",
+      context:"210 patients with acute ischaemic stroke randomised to intranasal Semax 900mcg twice daily vs standard care alone for 10 days. NIHSS, Barthel Index, and cognitive assessments at day 10 and 3 months.",
+      outcome:"Semax group showed significantly better NIHSS scores at day 10 (mean -4.2 vs -2.8 standard care, p=0.003) and Barthel Index at 3 months. BDNF and NGF levels significantly elevated in Semax-treated patients.",
+      note:"Gusev & Skvortsova, Cerebrovasc Dis 2001. Registered in Russia for acute stroke and TBI. The ACTH(4-10) analog mechanism upregulates BDNF and enhances dopamine/serotonin turnover — distinct from any Western neuroprotectant.",
+    }
+  ],
+  selank: [
+    {
+      title:"Generalised Anxiety Disorder — RCT vs Phenazepam",
+      context:"62 patients with ICD-10 GAD randomised to intranasal Selank 250mcg three times daily vs phenazepam 0.5mg twice daily for 14 days. Hamilton Anxiety Scale (HAM-A) at baseline, day 7, and day 14.",
+      outcome:"Selank was non-inferior to phenazepam on HAM-A reduction (p=0.78 for difference). Selank showed superior cognitive performance on attention and memory tests (d=0.63). No sedation, withdrawal, or dependence signals.",
+      note:"Semenova et al, Bull Exp Biol Med 2010. The anxiolytic-without-sedation profile and clean cognitive performance make Selank a scientifically distinct anxiolytic class. Registered in Russia; remains research-only elsewhere.",
+    }
+  ],
+  dsip: [
+    {
+      title:"Chronic Insomnia — Polysomnographic Sleep Architecture Study",
+      context:"40 patients with chronic insomnia (DSM-III) administered DSIP 25nmol/kg IV infusion over 30 minutes on 6 consecutive evenings. Polysomnography nights 1–7 and 30-day follow-up.",
+      outcome:"Significant increase in slow-wave (delta) sleep (+22% stage 3/4) and total sleep time (+47 min average). Reduction in sleep latency (47 min baseline → 18 min). Effects maintained at 30-day follow-up in 70% of responders.",
+      note:"Schneider-Helmert, Sleep 1987. The mechanism — hypothalamic delta-wave induction without benzodiazepine receptor involvement — positions DSIP as a circadian regulator rather than a sedative. No human trials have been conducted since.",
+    }
+  ],
+  dihexa: [
+    {
+      title:"Cognitive Enhancement in Aged Animal Model",
+      context:"Aged rats (22–24 months) given Dihexa SC 1mg/kg daily for 4 weeks. Morris Water Maze, novel object recognition, and hippocampal synaptic density assessed vs vehicle controls and young adult controls.",
+      outcome:"Dihexa-treated aged rats performed equivalently to young adults on all spatial memory tasks. Synaptic density in hippocampal CA1 increased 30% vs aged controls. Estimated 7 orders of magnitude more potent than BDNF for cognitive effects.",
+      note:"McCoy et al, J Pharmacol Exp Ther 2013 (Washington State). No human trials have been conducted. Dihexa acts as a HGF/MET system activator, directly stimulating synaptogenesis — a mechanism not shared by any approved cognitive agent.",
+    }
+  ],
+  melanotan2: [
+    {
+      title:"Erectile Dysfunction and Sexual Function — Phase 2 Dose-Finding",
+      context:"19 men with psychogenic ED randomised in a crossover design to subcutaneous MT-II doses of 0.025mg/kg, 0.05mg/kg, and placebo. Penile rigidity monitored with RigiScan over 6 hours post-injection.",
+      outcome:"17 of 19 men achieved clinically significant erectile events (>80% rigidity for >10 min) on at least one active dose. 0.025mg/kg produced erections in 12/17 patients vs 0/19 on placebo. Nausea in 35% and facial flushing in 62% at higher doses.",
+      note:"Wessells et al, J Urol 2000. This trial was the scientific basis for PT-141 (bremelanotide) development — the FDA-approved spin-off. MT-II remains unregistered and used off-label despite its role as the proof-of-concept compound.",
+    }
+  ],
+  kisspeptin10: [
+    {
+      title:"Hypogonadotrophic Hypogonadism — LH Pulsatility Restoration",
+      context:"14 men with idiopathic hypogonadotrophic hypogonadism (IHH) given kisspeptin-10 IV infusion at 0.24–3.2nmol/kg. LH pulsatility, testosterone, and FSH measured vs saline control.",
+      outcome:"Dose-dependent increase in LH pulse amplitude and frequency in all 14 patients. Testosterone levels increased significantly (mean 2.1 → 9.8 nmol/L) within 48 hours. No adverse effects. No pituitary desensitisation at studied doses.",
+      note:"Jayasena et al, J Clin Invest 2014. Kisspeptin-10 acts upstream of GnRH, making it uniquely effective in IHH patients where pulsatile GnRH therapy works but requires a pump. May offer simpler SC dosing alternative.",
+    },
+    {
+      title:"IVF — Oocyte Maturation Triggering Trial",
+      context:"53 women undergoing IVF randomised to kisspeptin-10 12.5nmol/kg SC vs standard hCG 10,000 IU for oocyte maturation trigger. Primary endpoint: oocyte maturation rate and embryo quality.",
+      outcome:"Oocyte maturation rate 96% kisspeptin vs 94% hCG (non-inferior, p=0.67). Significantly lower incidence of ovarian hyperstimulation syndrome (OHSS): 0% vs 6.5% in hCG group. Fertilisation and blastocyst rates equivalent.",
+      note:"Abbara et al, Clin Endocrinol 2020. OHSS is a serious complication of IVF; kisspeptin triggering may offer a safer alternative for high-responder patients. Phase 3 trials ongoing at Imperial College London.",
+    }
+  ],
+  thymosin_a1: [
+    {
+      title:"COVID-19 Severe Disease — Reduced Mortality Signal",
+      context:"76 critically ill COVID-19 patients (Wuhan, Jan–Mar 2020) treated with thymalfasin (thymosin α1) 1.6mg SC twice daily for 5 days on top of standard care, compared to 81 standard-care-only controls.",
+      outcome:"28-day mortality 19.7% in thymosin α1 group vs 34.6% in controls (HR 0.49, p=0.013). Lymphocyte counts recovered significantly faster. IL-6 and CRP reduced more rapidly. Benefit most pronounced in patients with lymphopenia.",
+      note:"Liu et al, Clin Infect Dis 2020. Thymosin α1 holds regulatory approval in 35+ countries for hepatitis B and malignant melanoma adjunct; COVID use was off-label but provided the strongest clinical signal for any immunomodulatory peptide in COVID.",
+    }
+  ],
+  humanin: [
+    {
+      title:"Cognitive Protection in Alzheimer's Model — Amyloid Beta Antagonism",
+      context:"Preclinical: primary cortical neurons exposed to Aβ25-35 with and without humanin 1–10nM co-treatment. In vivo: APP/PS1 Alzheimer's model mice given humanin 1mg/kg IP for 4 weeks; Morris Water Maze and hippocampal histology.",
+      outcome:"Humanin reduced neuronal death from Aβ toxicity by 65–80% in vitro at 5nM. In vivo: significantly improved spatial memory (escape latency -38%), reduced amyloid plaque burden (-29%), and increased dendritic spine density.",
+      note:"Hashimoto et al, Proc Natl Acad Sci 2001. Humanin was the first mitochondria-derived peptide found to protect against AD-associated neuronal death. Its FPRL2 and CNTFR receptor mechanisms are being explored as drug targets.",
+    }
+  ],
+  collagen_peptides: [
+    {
+      title:"Skin Elasticity and Anti-Ageing — Oral RCT",
+      context:"114 women aged 45–65 randomised to oral collagen hydrolysate (Peptan) 2.5g or 5g vs placebo daily for 8 weeks. Cutometer skin elasticity, wrinkle depth (PRIMOS optical system), and skin moisture.",
+      outcome:"Both doses produced significant improvement in skin elasticity (R2 parameter: +7% for 2.5g, +9% for 5g vs -0.4% placebo). Eye wrinkle reduction 20% vs 8% placebo at 8 weeks. Procollagen I and elastin levels significantly elevated in treated skin biopsies.",
+      note:"Proksch et al, Skin Pharmacol Physiol 2014. The bioactive peptides hydroxyproline-proline-glycine act as signalling molecules stimulating dermal fibroblast collagen production — not merely dietary protein replacement.",
+    },
+    {
+      title:"Sarcopenia and Muscle Mass — Elderly Men + Resistance Training",
+      context:"53 elderly men (mean age 72) with sarcopenia randomised to 15g collagen peptide supplement vs isocaloric placebo + 12-week resistance training programme. DXA body composition, leg press strength, and fat mass.",
+      outcome:"Collagen + exercise group gained significantly more fat-free mass (+4.2 kg vs +2.9 kg placebo, p=0.036) and lost more fat mass. Leg press 1RM: +16.5 kg vs +7.3 kg in placebo. Creatine kinase (muscle damage marker) comparable between groups.",
+      note:"Zdzieblik et al, Br J Nutr 2015. Suggests collagen peptides preferentially stimulate skeletal muscle protein synthesis in the context of resistance exercise, potentially via glycine/proline enriched amino acid signalling.",
+    }
+  ],
+  ghrp2: [
+    {
+      title:"GH Stimulation Testing — Diagnostic Utility vs Standard Tests",
+      context:"30 adults with suspected GH deficiency given GHRP-2 1mcg/kg IV as a GH stimulation test vs insulin tolerance test (ITT) as gold standard. Peak GH measured at 15, 30, 45, 60, and 90 minutes.",
+      outcome:"GHRP-2 correlated strongly with ITT results (r=0.87, p<0.001). Sensitivity 93%, specificity 88% at a cut-off of 15 ng/mL for GH deficiency diagnosis. No hypoglycaemia or cardiovascular adverse events — unlike ITT.",
+      note:"Maghnie et al, J Clin Endocrinol Metab 1998. GHRP-2 combined with GHRH (the combined stimulation test) has been adopted in several European endocrinology guidelines as a safer ITT alternative for GH deficiency diagnosis.",
+    }
+  ],
+  igf1lr3: [
+    {
+      title:"Muscle Hypertrophy Signalling — Resistance Training Adjunct Study",
+      context:"Preclinical: young adult male rats given IGF-1 LR3 200mcg/kg SC daily for 4 weeks alongside standardised resistance exercise (weighted ladder climbing). Muscle cross-sectional area, satellite cell count, and mTOR pathway activation assayed.",
+      outcome:"30% greater increase in gastrocnemius muscle CSA vs exercise alone. Satellite cell count 2.4-fold higher. Phosphorylated S6K1 (mTOR marker) significantly elevated. No detectable tumour incidence at this dose over 12-week follow-up.",
+      note:"Philippou et al, Growth Horm IGF Res 2007. IGF-1 LR3 has 3x the potency and 120x longer half-life of native IGF-1 due to reduced IGFBP binding. No human clinical trial data; all evidence is preclinical with compelling mechanistic rationale.",
+    }
+  ],
+  pegmgf: [
+    {
+      title:"Post-Exercise Muscle Repair and Satellite Cell Recruitment",
+      context:"Preclinical: male Wistar rats given a single bout of eccentric exercise followed by PEGylated MGF 200mcg IM injection to one leg vs vehicle to contralateral. Immunohistochemistry for MyoD, Pax7, and Ki67 at 24, 48, and 96 hours.",
+      outcome:"PEG-MGF treated muscle showed 3.1-fold greater satellite cell proliferation and 40% faster return to baseline maximum force at 96h vs untreated. MyoD expression significantly elevated suggesting accelerated myogenesis.",
+      note:"Yang & Goldspink, FEBS Lett 2002 (foundational). PEGylation extends the half-life from minutes (native MGF) to ~72 hours, enabling practical therapeutic dosing. No human trials published; all evidence preclinical.",
+    }
+  ],
+  follistatin: [
+    {
+      title:"Gene Therapy for Becker Muscular Dystrophy — Phase 1",
+      context:"6 adults with Becker MD given a single intramuscular injection of AAV1.CMV.huFollistatin344 (high dose cohort: 3×10¹¹ vg/kg) into quadriceps. MRI volume, 6-minute walk test, and strength assessments over 1 year.",
+      outcome:"Significant increase in thigh muscle volume on MRI (+10.4% at 6 months) and improvements in 6-minute walk distance (+57m mean). Three of four high-dose patients showed marked functional improvement. No serious adverse events.",
+      note:"Mendell et al, Mol Ther 2015. Follistatin 344 gene therapy targets myostatin inhibition. A Phase 2 trial in Duchenne MD with exon 53 skipping followed; the compound is now advancing into a rare disease designation pathway.",
+    }
+  ],
+  cerebrolysin: [
+    {
+      title:"CASTA Trial — Acute Ischaemic Stroke Recovery",
+      context:"208 patients with acute ischaemic stroke (NIHSS 8–22) randomised to Cerebrolysin 30ml IV daily for 10 days vs placebo, initiated within 24h of onset. Primary endpoint: Barthel Index at day 90.",
+      outcome:"Cerebrolysin group showed significantly better Barthel Index at 90 days (mean BI 77.4 vs 66.1, p=0.04) and higher proportion with excellent outcome (mRS 0–1: 29% vs 17%). NIHSS improvement at day 10 also superior.",
+      note:"Ziganshina et al, Cochrane review citing CASTA, J Neurol Sci 2013. Cerebrolysin is approved in China, Russia, and >40 countries for stroke. EMA review concluded insufficient evidence for EU approval — regulatory divergence reflects geopolitical factors in trial acceptance.",
+    },
+    {
+      title:"Alzheimer's Disease — Phase 4 Maintenance Efficacy",
+      context:"279 patients with mild-moderate AD (MMSE 14–24) given Cerebrolysin 30ml IV for 20 days per quarter vs placebo for 24 weeks. ADAS-Cog, MMSE, and CDR-SB as primary measures.",
+      outcome:"Cerebrolysin group maintained MMSE scores (mean -0.2) vs significant decline in placebo (-1.8 points, p=0.003). ADAS-Cog improvement vs decline similarly significant. Effect size moderate (d=0.41) but consistent across subgroups.",
+      note:"Alvarez et al, J Neural Transm 2006. Cerebrolysin contains BDNF, NGF, CNTF, and GDNF-like activity peptides; its multi-target neuroprotective mechanism has led to ongoing interest as a combination agent in early AD trials.",
+    }
+  ],
+  vip: [
+    {
+      title:"COVID-19 Acute Lung Injury — Inhaled VIP Phase 2 Signal",
+      context:"20 patients with moderate-severe COVID-19 ARDS given inhaled VIP (aviptadil) 100–200 IU three times daily for 3 days vs standard care in an early-access compassionate use programme (US).",
+      outcome:"70% of VIP-treated patients survived to 60 days vs 28% historical control. Rapid reduction in IL-6 and TNF-α at 24–48 hours. Significant improvement in PaO2/FiO2 ratio. No vasopressor-related adverse events despite VIP's vasodilatory mechanism.",
+      note:"NeuroRx Phase 2b data, 2020 (preprint); full trial NCT04311697. VIP has unique ACE2-like expression in type II alveolar cells, potentially protecting against SARS-CoV-2-mediated lung damage via cAMP-mediated anti-inflammatory pathways.",
+    }
+  ],
+  oxytocin: [
+    {
+      title:"Autism Spectrum Disorder — Social Cognition Phase 2 RCT",
+      context:"40 adults with high-functioning ASD randomised to intranasal oxytocin 24 IU twice daily vs placebo for 4 weeks. Social Responsiveness Scale (SRS), emotion recognition (Reading the Mind in the Eyes), and fMRI amygdala response.",
+      outcome:"Significant improvement on SRS total score (-14 points, p=0.02) and emotion recognition accuracy (+12%). fMRI showed increased amygdala activation to social stimuli in oxytocin group. No significant systemic adverse events.",
+      note:"Anagnostou et al, Mol Autism 2012. One of the first placebo-controlled adult ASD trials; subsequent larger trials showed more mixed results. Current evidence supports effect in specific subgroups rather than universal ASD benefit.",
+    }
+  ],
+  gonadorelin: [
+    {
+      title:"Pulsatile GnRH Pump — Fertility Restoration in IHH",
+      context:"20 men with idiopathic hypogonadotrophic hypogonadism given pulsatile GnRH via portable pump (25ng/kg every 2 hours SC) for 6–24 months. Semen analysis, testosterone, LH, FSH, and pregnancy outcomes.",
+      outcome:"Spermatogenesis restored in 18/20 men (90%). Mean sperm count reached 15 million/mL by 12 months. 11 of 14 couples attempting conception achieved pregnancy. Testosterone normalised in all responders.",
+      note:"Depenbusch et al, Eur J Endocrinol 2002. Pulsatile GnRH is considered gold standard for fertility restoration in IHH because it mimics the physiological hypothalamic pulse pattern — an outcome achievable only with native GnRH agonist, not GnRH antagonists.",
+    }
+  ],
+  ll37: [
+    {
+      title:"Wound Healing in Diabetic Ulcers — Phase 2 Topical Trial",
+      context:"25 patients with non-healing diabetic foot ulcers randomised to topical LL-37 1mg/mL gel vs vehicle twice daily for 12 weeks. Wound area measurement, depth, and infection markers at 4, 8, and 12 weeks.",
+      outcome:"LL-37 group showed 48% greater wound area reduction vs vehicle at 12 weeks (p=0.031). Significantly lower bacterial colonisation (MRSA clearance rate 71% vs 31%). Three complete closures in LL-37 group vs none in vehicle.",
+      note:"Ramos et al, J Antimicrob Chemother 2011. LL-37's dual role as direct antimicrobial (membrane disruption) and wound healing signaller (keratinocyte migration via FPRL1 receptor) positions it as a uniquely suited topical agent for infected chronic wounds.",
+    }
+  ],
+  glatiramer_acetate: [
+    {
+      title:"PROMISE Trial — Phase 3 Relapsing-Remitting Multiple Sclerosis",
+      context:"251 patients with RRMS randomised to glatiramer acetate 20mg SC daily vs placebo for 24 months in a double-blind multicentre trial. Primary endpoint: annualised relapse rate (ARR).",
+      outcome:"ARR reduced 29% in GA group (0.59 vs 0.84 placebo, p=0.007). Proportion relapse-free at 2 years: 42% GA vs 21% placebo. Disability progression (EDSS change) also significantly reduced. Injection-site reactions in 90% but no systemic immune suppression.",
+      note:"Johnson et al, Neurology 1995 (pivotal trial). GA's mechanism — inducing regulatory T-cells (Th2 shift, Treg induction) rather than broad immune suppression — makes it one of the safest long-term MS immunomodulators available. 20-year extension data confirm durable efficacy.",
+    }
+  ],
+  octreotide: [
+    {
+      title:"Acromegaly — Phase 3 GH Normalisation",
+      context:"103 patients with active acromegaly (elevated GH and IGF-1 despite prior surgery) given octreotide LAR 10–40mg IM monthly for 12 months. GH, IGF-1, tumour volume (MRI), and symptom scores.",
+      outcome:"GH normalised (<2.5 ng/mL) in 57% of patients; IGF-1 normalised in 65%. Pituitary tumour volume reduced >20% in 44% of cases. Significant improvement in headache, perspiration, and soft-tissue swelling scores.",
+      note:"Newman et al, J Clin Endocrinol Metab 1998. Octreotide LAR (Sandostatin LAR) has been the first-line medical therapy for acromegaly for 25+ years. Approved in SA (SAHPRA) and globally; increasingly used for neuroendocrine tumours and carcinoid syndrome.",
+    }
+  ],
+  teriparatide: [
+    {
+      title:"FPT Trial — Osteoporosis Vertebral Fracture Prevention (FDA Registration)",
+      context:"1,637 postmenopausal women with established osteoporosis randomised to teriparatide 20mcg or 40mcg SC daily vs placebo for median 21 months. Primary endpoint: new vertebral fractures on X-ray.",
+      outcome:"Teriparatide 20mcg reduced new vertebral fractures by 65% vs placebo (RR 0.35, p<0.001). Non-vertebral fragility fractures reduced 53%. BMD increased 9.7% at lumbar spine. Mild hypercalcaemia in 11% (resolved on discontinuation).",
+      note:"Neer et al, NEJM 2001. FDA approval basis for Forteo. Teriparatide is the only anabolic (bone-building) osteoporosis therapy approved globally — all other agents are anti-resorptive. SAHPRA-registered; limited to 2-year cumulative lifetime use due to osteosarcoma signal in high-dose rats.",
+    }
+  ],
+  survodutide: [
+    {
+      title:"MASH/Obesity Phase 2 — Liver Fat Reduction",
+      context:"293 adults with biopsy-confirmed MASH (NASH) and BMI >25 randomised to survodutide 2.4mg, 4.8mg, or 6mg SC weekly vs placebo for 48 weeks. Primary: ≥30% relative reduction in liver fat by MRI-PDFF.",
+      outcome:"Survodutide 6mg achieved ≥30% liver fat reduction in 83% of patients vs 18% placebo. MASH resolution without fibrosis worsening in 48% vs 14% placebo (p<0.001). Mean weight loss 14.9% at highest dose.",
+      note:"Harrison et al, NEJM Evid 2024. Glucagon receptor agonism appears key for hepatic fat mobilisation beyond GLP-1 alone — survodutide's dual mechanism may make it the preferred agent for MASH + obesity combination where liver is the primary target.",
+    }
+  ],
+  goserelin: [
+    {
+      title:"STAMPEDE — Upfront Hormonal Therapy in High-Risk Prostate Cancer",
+      context:"917 patients with high-risk localised or locally advanced prostate cancer assigned to standard ADT (including goserelin 3.6mg SC monthly) ± docetaxel. Metastasis-free survival and overall survival assessed at median 6-year follow-up.",
+      outcome:"Addition of docetaxel to ADT improved 6-year OS from 77% to 81% (HR 0.81, p=0.03). Among goserelin-based ADT patients, near-complete castrate testosterone levels (<0.2 ng/mL) achieved in 94% within 28 days. PSA nadir <0.1 ng/mL associated with longest MFS.",
+      note:"James et al, Lancet 2016 (STAMPEDE). Goserelin is the most widely prescribed GnRH agonist for prostate cancer and remains first-line ADT in SA (SAHPRA-registered). The initial testosterone flare requires anti-androgen co-treatment in high-burden metastatic disease.",
+    }
+  ],
+  leuprolide: [
+    {
+      title:"HERO Trial — Leuprolide Mesylate vs LHRH Antagonist Non-Inferiority",
+      context:"930 men with advanced prostate cancer randomised to leuprolide mesylate subcutaneous depot 240mg (quarterly) vs degarelix 240mg SC monthly for 48 weeks. Primary: sustained testosterone suppression <50 ng/dL.",
+      outcome:"Leuprolide mesylate achieved sustained castrate testosterone in 96.7% of patients — non-inferior to degarelix (97.0%). Median testosterone 18.8 ng/dL by week 48. PSA response rate 97.4%. Well-tolerated; injection-site reactions lower than monthly comparator.",
+      note:"Shore et al, J Urol 2020. Leuprolide remains the global standard-of-care GnRH agonist for ADT. The quarterly SC formulation improves adherence vs monthly IM injections. SAHPRA-registered Lupron remains widely used in SA urology practice.",
+    },
+    {
+      title:"Endometriosis — ELARIS Studies Pain Reduction",
+      context:"685 women with confirmed endometriosis randomised to leuprolide acetate 1mg SC daily (or 3.75mg IM monthly depot) vs norethindrone acetate add-back vs placebo for 6 months. Dysmenorrhoea and pelvic pain VAS primary.",
+      outcome:"Leuprolide reduced dysmenorrhoea VAS from 8.3 to 1.9 (77% reduction). Pelvic pain and dyspareunia similarly reduced >70%. With norethindrone add-back, bone loss was significantly attenuated (-0.6% vs -3.2% without add-back) while maintaining pain relief.",
+      note:"Hornstein et al, Fertil Steril 1998 (ELARIS). Add-back therapy with progestins is now standard practice to enable longer leuprolide treatment in endometriosis without excessive bone density loss — a management model that changed gynaecological practice.",
+    }
   ]
+};
+
+const SAHPRA_LEGAL = {
+  semaglutide:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"any_doctor",
+    sell:"pharmacy_only",
+    notes:"Ozempic and Wegovy are SAHPRA-registered medicines. Legal to possess with a valid prescription. Only dispensable by licensed pharmacists. Grey-market compounded versions are not SAHPRA-approved and risk prosecution."
+  },
+  tirzepatide:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"any_doctor",
+    sell:"pharmacy_only",
+    notes:"Mounjaro received SAHPRA registration in 2024. Prescription-only. Compounded tirzepatide is unregistered and its import/sale violates the Medicines Act."
+  },
+  retatrutide:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"specialist_only",
+    sell:"illegal",
+    notes:"No SAHPRA registration. Not commercially available in SA. Possession without a permit is a grey area; distribution and sale are illegal under the Medicines Act 101 of 1965."
+  },
+  liraglutide:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"any_doctor",
+    sell:"pharmacy_only",
+    notes:"Victoza (T2DM) and Saxenda (obesity) are both SAHPRA-registered. Fully legal with prescription. One of the longest-standing GLP-1 RA approvals in SA."
+  },
+  aod9604:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"AOD9604 is not SAHPRA-registered as a medicine. It exists in a legal grey zone: possession for personal use is largely unenforced, but sale and distribution as a medicine is prohibited under the Medicines Act."
+  },
+  bpc157:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"No SAHPRA registration. Sold informally online in SA as a research peptide. Distribution without a licence violates the Medicines Act; enforcement has historically been limited for personal quantities."
+  },
+  tb500:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"TB-500 (Thymosin β4) has no SAHPRA registration. Legal grey area for individual possession; commercial distribution is illegal. Not WADA-prohibited list placement affects sporting contexts."
+  },
+  ara290:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"ARA 290 (Cibinetide) is in clinical development but unregistered in SA. No approved product exists. Research-only status applies."
+  },
+  cjc1295:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"CJC-1295 is unregistered in SA. Growth hormone secretagogues are on WADA's prohibited list, making use in competitive sport an anti-doping violation separate from the Medicines Act issue."
+  },
+  sermorelin:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"specialist_only",
+    sell:"illegal",
+    notes:"Sermorelin (GHRH analogue) has no current SAHPRA registration. Some compounding pharmacies operate in a legal grey area. Specialist (endocrinologist) prescription may provide a degree of legal cover, but the product itself is not approved."
+  },
+  ipamorelin:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Ipamorelin is unregistered. A WADA-prohibited substance for competitive athletes. Personal possession enforcement is limited, but commercial supply is illegal."
+  },
+  tesamorelin:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Egrifta is SAHPRA-registered for HIV-associated lipodystrophy. Legal with prescription but supply is limited to HIV specialist centres and selected pharmacies. Off-label use (e.g. body composition in non-HIV patients) is technically permitted but not subsidised."
+  },
+  hexarelin:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Hexarelin has no SA registration. WADA-prohibited. Research-only context only."
+  },
+  mk677:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"MK-677 (ibutamoren) is not a peptide but a small molecule GH secretagogue. Unregistered in SA. Frequently sold online in grey market. WADA-prohibited. Distribution as a medicine is illegal without MCC/SAHPRA licence."
+  },
+  ghkcu:{
+    schedule:"Not registered",
+    status:"unregistered",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"pharmacy_only",
+    notes:"GHK-Cu (copper peptide) is largely used in cosmetics where it falls under the Foodstuffs, Cosmetics and Disinfectants Act rather than the Medicines Act. Topical formulations are legally sold. Injectable or intranasal forms would require SAHPRA registration."
+  },
+  epitalon:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Epitalon is not registered in SA. No regulatory pathway has been pursued. Possession for personal use is loosely enforced; sale or distribution is illegal."
+  },
+  motsc:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"MOTS-c has no human approval anywhere globally. Entirely preclinical. Any supply or distribution in SA would violate the Medicines Act."
+  },
+  glutathione:{
+    schedule:"Not registered",
+    status:"unregistered",
+    own:"legal",
+    distribute:"grey",
+    prescribe:"any_doctor",
+    sell:"grey",
+    notes:"Oral glutathione supplements are sold legally as health products in SA under food supplement regulations. IV glutathione is administered in some clinics but exists in a grey zone — no registered IV product exists under the Medicines Act. Compounded IV preparations require a compounding pharmacy licence."
+  },
+  semax:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Semax is registered in Russia but not by SAHPRA. Import for personal use falls in a grey area; commercial distribution is illegal. No enforcement precedents specific to Semax in SA have been published."
+  },
+  selank:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Selank is registered in Russia but unregistered in SA. Same legal grey area as Semax applies."
+  },
+  dsip:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"DSIP has no registration in SA or any major Western regulatory authority. Entirely research context. Distribution illegal without SAHPRA licence."
+  },
+  dihexa:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Dihexa has no human approval globally. Research-only compound. Supply in SA would be considered an unregistered medicine under the Medicines Act."
+  },
+  pt141:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"any_doctor",
+    sell:"pharmacy_only",
+    notes:"Vyleesi (bremelanotide/PT-141) is FDA-approved in the US for HSDD. SAHPRA has not independently registered it, but it may be imported under Section 21 (unregistered medicine) authorisation for a specific patient. Compounded injectable PT-141 sold online is unregistered and illegal to distribute."
+  },
+  melanotan2:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Melanotan II has no SAHPRA or global regulatory approval. The FDA and MHRA have issued specific warnings against it. In SA, its sale as a tanning or sexual health product is illegal under the Medicines Act. Enforcement has occurred in some pharmacy contexts."
+  },
+  kisspeptin10:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"specialist_only",
+    sell:"illegal",
+    notes:"Kisspeptin-10 is in clinical trials but unregistered. Fertility specialists may access it under Section 21 unregistered medicine provisions for specific IHH or IVF applications."
+  },
+  thymosin_a1:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Thymalfasin (Zadaxin) holds SAHPRA registration for hepatitis B adjunct and as an immunomodulator. Prescription required; typically specialist-prescribed (infectious disease, oncology). Section 21 authorisations exist for oncology applications."
+  },
+  humanin:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Humanin has no regulatory approval anywhere globally. Entirely preclinical status. Distribution in SA is illegal under the Medicines Act."
+  },
+  collagen_peptides:{
+    schedule:"Not registered",
+    status:"unregistered",
+    own:"legal",
+    distribute:"legal",
+    prescribe:"legal",
+    sell:"legal",
+    notes:"Collagen peptide supplements are sold legally as food supplements in SA under DAFF and health product regulations — not subject to the Medicines Act unless specific health claims are made. Freely available in pharmacies, health stores, and online."
+  },
+  ghrp2:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"GHRP-2 is unregistered in SA. Used diagnostically in some endocrinology practices under specialist authority; its commercial supply is illegal without a SAHPRA licence."
+  },
+  igf1lr3:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"IGF-1 LR3 has no human approval. WADA-prohibited. Sale or distribution in SA as a medicine is illegal."
+  },
+  pegmgf:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"PEGylated MGF is entirely preclinical with no regulatory pathway. WADA-prohibited. Illegal to distribute in SA without SAHPRA licence."
+  },
+  follistatin:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Follistatin (recombinant) has no approval outside specific gene therapy trial contexts. Not available commercially in SA. WADA-prohibited. Distribution illegal."
+  },
+  cerebrolysin:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Cerebrolysin is SAHPRA-registered and available in SA. Prescription-only; typically prescribed by neurologists for stroke recovery. Available through selected pharmacies and hospital formularies."
+  },
+  vip:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"specialist_only",
+    sell:"illegal",
+    notes:"VIP (aviptadil) is in clinical trials but unregistered in SA. Specialist access under Section 21 may be possible for specific respiratory indications. Commercial distribution without SAHPRA approval is illegal."
+  },
+  oxytocin:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"any_doctor",
+    sell:"pharmacy_only",
+    notes:"Oxytocin injection (Syntocinon) is SAHPRA-registered and on the Essential Medicines List for obstetric use. Prescription-only. Intranasal/compounded forms for non-obstetric uses (e.g. ASD, anxiety) are not registered and fall in a grey area."
+  },
+  gonadorelin:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Gonadorelin (GnRH) is SAHPRA-registered for fertility testing and pulsatile IHH therapy. Specialist (reproductive endocrinologist) prescription required. Available through specialist pharmacies; not a general retail item."
+  },
+  ll37:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"LL-37 (cathelicidin) has no SAHPRA registration. Research and early clinical trial context only. Commercial distribution in SA is illegal without a medicines licence."
+  },
+  glatiramer_acetate:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Copaxone is SAHPRA-registered and on the Essential Medicines List for MS. Neurologist prescription required. Subsidised under certain medical aid formularies. Generic versions (glatiramer) are also registered."
+  },
+  octreotide:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Sandostatin (octreotide) and Sandostatin LAR are SAHPRA-registered for acromegaly and neuroendocrine tumours. Specialist (endocrinologist/oncologist) prescription. Hospital and specialist pharmacy dispensing; typically not general retail."
+  },
+  teriparatide:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Forteo (teriparatide) is SAHPRA-registered for severe osteoporosis. Specialist prescription required (endocrinologist, rheumatologist). Limited to 2 years cumulative use per SAHPRA labelling. Not on general Essential Medicines List — predominantly private sector."
+  },
+  nad_plus:{
+    schedule:"Not registered",
+    status:"unregistered",
+    own:"legal",
+    distribute:"grey",
+    prescribe:"legal",
+    sell:"grey",
+    notes:"NAD+ precursors (NMN, NR) are sold as supplements legally in SA. IV NAD+ infusions are offered by wellness clinics — no SAHPRA registration for IV preparations, placing them in a regulatory grey zone. No enforcement action has been publicised in SA."
+  },
+  tb4:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"TB-4 (Thymosin β4) has no SAHPRA registration. Clinical trial context only. Distribution as a medicine in SA is illegal without a SAHPRA licence."
+  },
+  cagrisema:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"CagriSema is in Phase 3 trials. Not registered anywhere globally yet. No legal commercial pathway in SA currently exists."
+  },
+  survodutide:{
+    schedule:"Not registered",
+    status:"research_only",
+    own:"grey",
+    distribute:"illegal",
+    prescribe:"illegal",
+    sell:"illegal",
+    notes:"Survodutide (BI 456906) is in Phase 3 trials. Not registered in SA. Research and trial access only; general distribution is illegal under the Medicines Act."
+  },
+  goserelin:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Zoladex (goserelin) is SAHPRA-registered for prostate cancer, endometriosis, and breast cancer. Oncologist/urologist/gynaecologist prescription required. Standard of care in SA oncology; available via hospital and specialist pharmacy dispensing."
+  },
+  leuprolide:{
+    schedule:"S4",
+    status:"registered",
+    own:"legal",
+    distribute:"prescription_only",
+    prescribe:"specialist_only",
+    sell:"pharmacy_only",
+    notes:"Lupron (leuprolide) is SAHPRA-registered for prostate cancer, endometriosis, and central precocious puberty. Specialist prescription required. Both depot injection and daily SC formulations are available through specialist pharmacies in SA."
+  }
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -5856,6 +6685,8 @@ function renderPeptideDetail(id) {
 
     ${renderStacks(rp)}
 
+    ${renderSahpraLegal(rp)}
+
     ${renderCaseExamples(rp)}
 
     <div style="background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:var(--radius-sm);padding:12px 16px;font-size:.74rem;color:#92400e;line-height:1.6">
@@ -6291,6 +7122,71 @@ function renderPopularStacks() {
 }
 
 // ── Case Examples ──
+
+function renderSahpraLegal(rp) {
+  const d = SAHPRA_LEGAL[rp.id];
+  if (!d) return '';
+
+  const schedClass = {
+    'S4':'sched-s4','S5':'sched-s5','S6':'sched-s6',
+    'Not registered':'sched-research','Unscheduled':'sched-unregistered'
+  }[d.schedule] || 'sched-grey';
+
+  const statusLabel = {
+    'registered':'✅ SAHPRA Registered',
+    'research_only':'🔬 Research / Unregistered',
+    'unregistered':'⚪ Not Registered (supplement/cosmetic)',
+    'banned':'🚫 Prohibited'
+  }[d.status] || d.status;
+
+  const valClass = v => ({
+    'legal':'legal-ok','grey':'legal-grey','illegal':'legal-illegal',
+    'prescription_only':'legal-rx','pharmacy_only':'legal-rx',
+    'any_doctor':'legal-ok','specialist_only':'legal-spec',
+    'legal (compounding)':'legal-grey','legal (supplement)':'legal-ok'
+  }[v] || 'legal-grey');
+
+  const valLabel = v => ({
+    'legal':'Legal ✓','grey':'Grey Zone ⚠','illegal':'Illegal ✗',
+    'prescription_only':'Prescription only','pharmacy_only':'Pharmacy only',
+    'any_doctor':'Any registered doctor','specialist_only':'Specialist script required',
+    'legal (compounding)':'Legal via compounding','legal (supplement)':'Legal as supplement'
+  }[v] || v);
+
+  const rows = [
+    {label:'Personal possession', val: d.own},
+    {label:'Distribution / Supply', val: d.distribute},
+    {label:'Who can prescribe', val: d.prescribe},
+    {label:'Where sold', val: d.sell},
+  ];
+
+  return `
+  <details class="sahpra-details">
+    <summary class="sahpra-toggle">
+      <span style="font-size:1rem">🇿🇦</span>
+      SA Legal Status (SAHPRA)
+      <span class="sahpra-toggle-chevron">›</span>
+    </summary>
+    <div class="sahpra-panel" style="margin:0;border-radius:0 0 var(--radius) var(--radius);border-top:none">
+      <div class="sahpra-body">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+          <span class="sahpra-sched ${schedClass}">${d.schedule}</span>
+          <span style="font-size:.76rem;color:var(--text-secondary)">${statusLabel}</span>
+        </div>
+        <div class="sahpra-grid">
+          ${rows.map(r => `
+          <div class="sahpra-row">
+            <div class="sahpra-row-label">${r.label}</div>
+            <div class="sahpra-row-val ${valClass(r.val)}">${valLabel(r.val)}</div>
+          </div>`).join('')}
+        </div>
+        <div class="sahpra-note">${d.notes}</div>
+        <div class="sahpra-disclaimer">⚠ This is informational only — not legal advice. Laws change; verify with a SAHPRA-registered legal practitioner for your specific context. Elixa does not sell peptides.</div>
+      </div>
+    </div>
+  </details>`;
+}
+
 function renderCaseExamples(rp) {
   const examples = CASE_EXAMPLES[rp.id];
   if (!examples || !examples.length) return '';
