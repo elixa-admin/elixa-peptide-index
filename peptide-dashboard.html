@@ -823,15 +823,6 @@ details.sahpra-details[open] .sahpra-toggle-chevron{transform:rotate(90deg)}
 
 </style>
 </head>
-<script>
-window.onerror = function(msg, src, line, col, err) {
-  var d = document.createElement('div');
-  d.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#7f1d1d;color:#fca5a5;font-family:monospace;font-size:12px;padding:10px 16px;line-height:1.5';
-  d.innerHTML = '🔴 JS Error: ' + msg + ' (line ' + line + ')' + (err ? '<br>' + err.stack : '');
-  document.body.prepend(d);
-  return false;
-};
-</script>
 <body>
 
 <!-- Disclaimer strip -->
@@ -3045,6 +3036,7 @@ const PEPTIDES = [
 // STATE + CONSTANTS
 // ═══════════════════════════════════════════════════════════
 let currentView = 'overview';
+const compareState = { items: [] };
 let activeCategory = 'all';
 let searchTerm = '';
 
@@ -7218,7 +7210,6 @@ function renderCaseExamples(rp) {
 }
 
 // ── Compare bar ──
-const compareState = { items: [] };
 
 function ensureCompareBar() {
   let bar = document.getElementById('compareBar');
