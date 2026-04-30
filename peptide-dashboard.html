@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Elixa Peptide Index"/>
 <meta name="twitter:description" content="Evidence-based peptide research intelligence. 46 compounds indexed."/>
 <!-- PWA — installable as app on mobile -->
-<link rel="manifest" href='data:application/manifest+json,{"name":"Elixa Peptide Index","short_name":"Elixa","description":"Evidence-based peptide research intelligence — 46 compounds indexed","start_url":"/","display":"standalone","orientation":"portrait","background_color":"%23060b16","theme_color":"%23060b16","categories":["health","medical","reference"]}'>
+<link rel="manifest" href='data:application/manifest+json,{"name":"Elixa Peptide Index","short_name":"Elixa","description":"Evidence-based peptide research intelligence — 46 compounds indexed","start_url":"/","display":"standalone","orientation":"portrait","background_color":"%23060b16","theme_color":"%23060b16","categories":["health","medical","reference"],"icons":[{"src":"/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}'>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Elixa"/>
@@ -672,17 +672,34 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
 /* ── COMPARISON PAGE ── */
 .comparison-page{padding-bottom:84px}
 .comparison-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}
-.comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.compare-profile{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px}
-.compare-profile h2{margin:0 0 8px;color:var(--text-primary);font-size:20px}
-.compare-score{color:var(--text-secondary);font-size:13px;margin-bottom:14px}
-.compare-section-title{margin:16px 0 8px;color:var(--text-primary);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.compare-hero{display:grid;grid-template-columns:1fr 1fr;border-radius:14px;overflow:hidden;border:1px solid var(--border);margin-bottom:16px}
+.compare-hero-cell{padding:16px 20px;position:relative}
+.compare-hero-cell+.compare-hero-cell{border-left:1px solid var(--border)}
+.compare-hero-name{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.compare-hero-score{font-size:2rem;font-weight:800;line-height:1}
+.compare-hero-score span{font-size:.85rem;color:var(--text-secondary);font-weight:400}
+.compare-score-bar{height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin:8px 0}
+.compare-score-fill{height:100%;border-radius:3px}
+.compare-conf-label{font-size:.7rem;margin-top:4px}
+.compare-table{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.compare-table-hdr{display:grid;grid-template-columns:140px 1fr 1fr;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)}
+.compare-table-hdr-cell{padding:10px 14px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.compare-table-hdr-cell+.compare-table-hdr-cell{border-left:1px solid var(--border)}
+.compare-row{display:grid;grid-template-columns:140px 1fr 1fr;border-bottom:1px solid rgba(30,51,82,.5)}
+.compare-row:last-child{border-bottom:none}
+.compare-row-label{padding:10px 14px;font-size:.75rem;color:var(--text-muted);font-weight:600;display:flex;align-items:center}
+.compare-row-val{padding:10px 14px;font-size:.78rem;color:var(--text-secondary);border-left:1px solid rgba(30,51,82,.5);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.compare-yes{color:#4ade80}.compare-no{color:#94a3b8}.compare-warn{color:#fbbf24}.compare-bad{color:#f87171}
 @media(max-width:760px){
   #compareBar{flex-direction:column;align-items:stretch;padding:12px}
   .compare-bar-actions{width:100%}
   .compare-action,.compare-clear{flex:1}
   .comparison-header{align-items:flex-start;flex-direction:column}
-  .comparison-grid{grid-template-columns:1fr}
+  .compare-hero{grid-template-columns:1fr}
+  .compare-hero-cell+.compare-hero-cell{border-left:none;border-top:1px solid var(--border)}
+  .compare-table-hdr,.compare-row{grid-template-columns:100px 1fr 1fr}
+  .compare-row-label,.compare-table-hdr-cell{padding:8px 10px}
+  .compare-row-val{padding:8px 10px}
 }
 
 /* ══════════════════════════════════════════════════════
@@ -5452,7 +5469,7 @@ function showPopularStacks() {
   document.getElementById('main').scrollTop = 0;
 }
 
-function showOverview() { currentView = 'overview'; setActiveNav('nav-overview'); history.replaceState(null, '', window.location.pathname); renderSidebar(); renderOverview(); }
+function showOverview() { currentView = 'overview'; setActiveNav('nav-overview'); history.replaceState(null, '', window.location.pathname); renderSidebar(); renderOverview(); setJsonLdOverview(); }
 function showLandscapeView() { currentView = 'landscape'; setActiveNav('nav-landscape'); history.replaceState(null, '', window.location.pathname); renderSidebar(); renderLandscapePage(); }
 function showPulseView() { currentView = 'pulse'; setActiveNav('nav-pulse'); history.replaceState(null, '', window.location.pathname); renderSidebar(); renderPulsePage(); }
 function showGlossary() {
@@ -5484,6 +5501,7 @@ function showPeptide(id) {
   }
   renderSidebar();
   renderPeptideDetail(id);
+  setJsonLdPeptide(resolvePeptide(id));
   document.getElementById("main").scrollTop = 0;
 }
 function copyPeptideLink() {
@@ -7309,28 +7327,109 @@ function showComparison() {
 function renderComparisonPage() {
   const main = document.getElementById('main');
   if (!main) return;
-  const selected = compareState.items.slice(0,2).map(id => resolvePeptide(id)).filter(Boolean);
-  if (selected.length < 2) return;
-  const cards = selected.map(rp => `
-    <article class="compare-profile">
-      <h2 style="color:${rp.color||'var(--text-primary)'}">${rp.name}</h2>
-      <div class="compare-score">Composite score: <strong>${typeof rp.composite==='number' ? rp.composite.toFixed(1)+'/10' : 'Not scored'}</strong></div>
-      ${renderSnapshot(rp)}
-      <div class="compare-section-title">Decision Flags</div>${renderDecisionFlags(rp)}
-      <div class="compare-section-title">Trust Level</div>${renderTrust(rp)}
-      ${rp.riskData ? `<div class="compare-section-title">Risk Level</div>
-        <section class="snapshot-card"><div class="snapshot-defs">
-          <div class="snapshot-row"><div class="snapshot-label">Level</div><div class="snapshot-value">${rp.riskData.level||'Not defined'}</div></div>
-          <div class="snapshot-row"><div class="snapshot-label">Rationale</div><div class="snapshot-value">${rp.riskData.rationale||'No rationale available.'}</div></div>
-        </div></section>` : ''}
-    </article>`).join('');
+  const [a, b] = compareState.items.slice(0,2).map(id => resolvePeptide(id)).filter(Boolean);
+  if (!a || !b) return;
+
+  function confLabel(rp) {
+    const cl = (typeof getConfidenceLabel === 'function' && typeof getConfidence === 'function') ? getConfidenceLabel(getConfidence(rp)) : null;
+    return cl ? cl.label : '—';
+  }
+  function scoreColor(s) { return s >= 8 ? '#4ade80' : s >= 6 ? '#38bdf8' : s >= 4 ? '#fbbf24' : '#94a3b8'; }
+  function flag(val, yesText, noText, yesClass, noClass) {
+    return val ? `<span class="${yesClass||'compare-warn'}">${yesText}</span>` : `<span class="${noClass||'compare-no'}">${noText}</span>`;
+  }
+
+  function heroCell(rp) {
+    const sc = typeof rp.composite === 'number' ? rp.composite : null;
+    const pct = sc !== null ? Math.round(sc * 10) : 0;
+    const col = sc !== null ? scoreColor(sc) : '#94a3b8';
+    const cl = confLabel(rp);
+    return `<div class="compare-hero-cell" style="background:linear-gradient(135deg,${col}0d,transparent)">
+      <div class="compare-hero-name" style="color:${col}">${rp.name}</div>
+      <div class="compare-hero-score" style="color:${col}">${sc !== null ? sc.toFixed(1) : '—'}<span>/10</span></div>
+      <div class="compare-score-bar"><div class="compare-score-fill" style="width:${pct}%;background:linear-gradient(90deg,${col},${col}99)"></div></div>
+      <div class="compare-conf-label" style="color:${col}">${cl}</div>
+    </div>`;
+  }
+
+  function regText(rp) {
+    const snap = rp.snapshot; if (snap && snap.regulatory) return snap.regulatory;
+    const rs = (typeof REGULATORY_STATUS !== 'undefined') ? REGULATORY_STATUS[rp.id] : null;
+    if (!rs) return '—';
+    const approved = ['fda','ema','mhra','tga','hc','pmda','anvisa','nmpa','sahpra'].filter(a => rs[a]==='approved').map(a=>a.toUpperCase());
+    return approved.length ? approved.join(' · ') : 'Not approved';
+  }
+
+  function row(label, valA, valB) {
+    return `<div class="compare-row">
+      <div class="compare-row-label">${label}</div>
+      <div class="compare-row-val">${valA}</div>
+      <div class="compare-row-val">${valB}</div>
+    </div>`;
+  }
+
+  const rows = [
+    row('Evidence score',
+      `<strong style="color:${scoreColor(a.composite)}">${typeof a.composite==='number'?a.composite.toFixed(1)+'/10':'—'}</strong>`,
+      `<strong style="color:${scoreColor(b.composite)}">${typeof b.composite==='number'?b.composite.toFixed(1)+'/10':'—'}</strong>`),
+    row('Confidence',
+      `<span>${confLabel(a)}</span>`,
+      `<span>${confLabel(b)}</span>`),
+    row('Regulatory',
+      `<span>${regText(a)}</span>`,
+      `<span>${regText(b)}</span>`),
+    row('Risk level',
+      a.riskData ? `<span class="${a.riskData.level==='Low'?'compare-yes':a.riskData.level==='High'?'compare-bad':'compare-warn'}">${a.riskData.level}</span>` : '<span class="compare-no">—</span>',
+      b.riskData ? `<span class="${b.riskData.level==='Low'?'compare-yes':b.riskData.level==='High'?'compare-bad':'compare-warn'}">${b.riskData.level}</span>` : '<span class="compare-no">—</span>'),
+    row('Supervision',
+      a.flags ? flag(a.flags.requires_medical_supervision,'Required','Lower burden','compare-warn','compare-yes') : '<span class="compare-no">—</span>',
+      b.flags ? flag(b.flags.requires_medical_supervision,'Required','Lower burden','compare-warn','compare-yes') : '<span class="compare-no">—</span>'),
+    row('Legal status',
+      a.flags ? flag(a.flags.legal_grey_area,'Grey area','Clearer pathway','compare-warn','compare-yes') : '<span class="compare-no">—</span>',
+      b.flags ? flag(b.flags.legal_grey_area,'Grey area','Clearer pathway','compare-warn','compare-yes') : '<span class="compare-no">—</span>'),
+    row('WADA concern',
+      a.flags ? flag(a.flags.sport_banned,'Prohibited','Not flagged','compare-bad','compare-yes') : '<span class="compare-no">—</span>',
+      b.flags ? flag(b.flags.sport_banned,'Prohibited','Not flagged','compare-bad','compare-yes') : '<span class="compare-no">—</span>'),
+    row('Long-term data',
+      a.flags ? flag(!a.flags.long_term_unknown,'Available','Unknown','compare-yes','compare-warn') : '<span class="compare-no">—</span>',
+      b.flags ? flag(!b.flags.long_term_unknown,'Available','Unknown','compare-yes','compare-warn') : '<span class="compare-no">—</span>'),
+    row('Human evidence',
+      a.flags ? flag(a.flags.strong_human_evidence,'Strong','Limited','compare-yes','compare-warn') : '<span class="compare-no">—</span>',
+      b.flags ? flag(b.flags.strong_human_evidence,'Strong','Limited','compare-yes','compare-warn') : '<span class="compare-no">—</span>'),
+    row('Known for',
+      `<span>${a.snapshot&&a.snapshot.primary ? a.snapshot.primary : (a.class||'—')}</span>`,
+      `<span>${b.snapshot&&b.snapshot.primary ? b.snapshot.primary : (b.class||'—')}</span>`),
+    row('Key risk',
+      `<span>${a.snapshot&&a.snapshot.risk ? a.snapshot.risk : '—'}</span>`,
+      `<span>${b.snapshot&&b.snapshot.risk ? b.snapshot.risk : '—'}</span>`),
+  ];
+
   main.innerHTML = `
     <section class="comparison-page">
       <div class="comparison-header">
-        <div><h1>Peptide Comparison</h1><p style="color:var(--text-secondary);font-size:.85rem;margin-top:4px">Side-by-side evidence, risk, flags and trust signals.</p></div>
+        <div>
+          <h1 style="font-size:1.1rem;font-weight:700">Peptide Comparison</h1>
+          <p style="color:var(--text-secondary);font-size:.78rem;margin-top:3px">Evidence · Risk · Regulatory · Decision flags</p>
+        </div>
         <button type="button" class="comparison-back" onclick="showOverview()">← Back</button>
       </div>
-      <div class="comparison-grid">${cards}</div>
+      <div class="compare-hero">${heroCell(a)}${heroCell(b)}</div>
+      <div class="compare-table">
+        <div class="compare-table-hdr">
+          <div class="compare-table-hdr-cell" style="color:var(--text-muted)">Attribute</div>
+          <div class="compare-table-hdr-cell" style="color:${a.color||'var(--accent-blue)'}">
+            ${a.icon ? `<span style="margin-right:5px">${a.icon}</span>` : ''}${a.name}
+          </div>
+          <div class="compare-table-hdr-cell" style="color:${b.color||'var(--accent-cyan)'}">
+            ${b.icon ? `<span style="margin-right:5px">${b.icon}</span>` : ''}${b.name}
+          </div>
+        </div>
+        ${rows.join('')}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        ${renderInsight(a)||''}
+        ${renderInsight(b)||''}
+      </div>
     </section>`;
   main.scrollTop = 0;
 }
@@ -7340,6 +7439,46 @@ function initAccordions() {
     if (details.dataset.accordionReady === 'true') return;
     details.dataset.accordionReady = 'true';
   });
+}
+
+// ═══════════════════════════════════════════════════════════
+// JSON-LD — structured data for search engines
+// ═══════════════════════════════════════════════════════════
+function setJsonLd(data) {
+  let el = document.getElementById('json-ld');
+  if (!el) { el = document.createElement('script'); el.id = 'json-ld'; el.type = 'application/ld+json'; document.head.appendChild(el); }
+  el.textContent = JSON.stringify(data);
+}
+
+function setJsonLdOverview() {
+  setJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Elixa Peptide Index',
+    url: 'https://project-mbn4q.vercel.app/',
+    description: 'Evidence-based peptide research platform covering ' + PEPTIDES.length + ' compounds — clinical trials, regulatory status, dosing context, and global approval data.',
+    publisher: { '@type': 'Organization', name: 'Elixa' }
+  });
+}
+
+function setJsonLdPeptide(rp) {
+  if (!rp) return;
+  const base = 'https://project-mbn4q.vercel.app/';
+  const snap = rp.snapshot || {};
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Drug',
+    name: rp.name,
+    url: base + '?peptide=' + rp.id,
+    description: snap.summary || rp.mechanism || rp.name + ' — peptide research profile on the Elixa Peptide Index.',
+    alternateName: rp.altNames ? rp.altNames.split(',').map(s => s.trim()).filter(Boolean) : undefined,
+    drugClass: rp.class || undefined,
+    legalStatus: snap.regulatory || undefined,
+    isPartOf: { '@type': 'WebSite', name: 'Elixa Peptide Index', url: base }
+  };
+  // strip undefined keys
+  Object.keys(data).forEach(k => data[k] === undefined && delete data[k]);
+  setJsonLd(data);
 }
 
 // ═══════════════════════════════════════════════════════════
