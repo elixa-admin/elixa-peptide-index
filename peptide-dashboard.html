@@ -13,7 +13,7 @@
 <meta property="og:description" content="Evidence-based peptide research intelligence. Explore 46 compounds — clinical trials, regulatory status, dosing, and global approvals."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://project-mbn4q.vercel.app/"/>
-<meta property="og:image" content="https://project-mbn4q.vercel.app/og-preview.png"/>
+<meta property="og:image" content="https://project-mbn4q.vercel.app/icon-512.png"/>
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Elixa Peptide Index"/>
@@ -24,6 +24,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Elixa"/>
 <meta name="mobile-web-app-capable" content="yes"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
 <!-- Three.js r128 — loaded for Landscape Map 3D view -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
@@ -6860,9 +6862,19 @@ renderSidebar();
 })();
 
 if (!localStorage.getItem('elixa_v3_seen')) {
-  setTimeout(() => openMethodology(), 800);
+  const arrivedViaDeepLink = !!window.location.hash.replace('#','').trim();
+  if (!arrivedViaDeepLink) setTimeout(() => openMethodology(), 800);
   localStorage.setItem('elixa_v3_seen', '1');
 }
+
+window.addEventListener('popstate', () => {
+  const hash = window.location.hash.replace('#', '').trim();
+  if (hash && PEPTIDES.some(p => p.id === hash)) {
+    showPeptide(hash);
+  } else {
+    showOverview();
+  }
+});
 
 // ═══════════════════════════════════════════════════════════
 // MOBILE — TOUCH DETECTION
@@ -7485,15 +7497,7 @@ function setJsonLdPeptide(rp) {
 // SERVICE WORKER — cache-first for fast repeat loads
 // ═══════════════════════════════════════════════════════════
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  const _swSrc = `
-const CACHE='elixa-v1';
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.add('/')))});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))))});
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(r=>r||(fetch(e.request).then(res=>{if(res&&res.status===200){const c=res.clone();caches.open(CACHE).then(ca=>ca.put(e.request,c))}return res}))));});
-`;
-  const _swBlob = new Blob([_swSrc],{type:'text/javascript'});
-  const _swUrl = URL.createObjectURL(_swBlob);
-  navigator.serviceWorker.register(_swUrl,{scope:'./'}).catch(()=>{});
+  navigator.serviceWorker.register('/sw.js').catch(() => {});
 }
 
 </script>
