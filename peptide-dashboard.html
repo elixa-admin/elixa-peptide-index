@@ -4,17 +4,26 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Elixa Peptide Index — Evidence-Based Research Platform</title>
-<meta name="description" content="The Elixa Peptide Index is an evidence-based research platform covering 25+ peptides — clinical trials, regulatory status, dosing context, and global approval data in one place."/>
+<meta name="description" content="The Elixa Peptide Index is an evidence-based research platform covering 46 peptides — clinical trials, regulatory status, dosing context, and global approval data in one place."/>
 <meta name="theme-color" content="#060b16"/>
+<link rel="canonical" href="https://project-mbn4q.vercel.app/"/>
+<meta name="robots" content="index, follow"/>
 <!-- Open Graph — controls preview when shared on WhatsApp, Slack, X, iMessage -->
 <meta property="og:title" content="Elixa Peptide Index"/>
-<meta property="og:description" content="Evidence-based peptide research intelligence. Explore 25+ compounds — clinical trials, regulatory status, dosing, and global approvals."/>
+<meta property="og:description" content="Evidence-based peptide research intelligence. Explore 46 compounds — clinical trials, regulatory status, dosing, and global approvals."/>
 <meta property="og:type" content="website"/>
-<meta property="og:image" content="https://elixa.vercel.app/og-preview.png"/>
+<meta property="og:url" content="https://project-mbn4q.vercel.app/"/>
+<meta property="og:image" content="https://project-mbn4q.vercel.app/og-preview.png"/>
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Elixa Peptide Index"/>
-<meta name="twitter:description" content="Evidence-based peptide research intelligence. 25+ compounds indexed."/>
+<meta name="twitter:description" content="Evidence-based peptide research intelligence. 46 compounds indexed."/>
+<!-- PWA — installable as app on mobile -->
+<link rel="manifest" href='data:application/manifest+json,{"name":"Elixa Peptide Index","short_name":"Elixa","description":"Evidence-based peptide research intelligence — 46 compounds indexed","start_url":"/","display":"standalone","orientation":"portrait","background_color":"%23060b16","theme_color":"%23060b16","categories":["health","medical","reference"]}'>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Elixa"/>
+<meta name="mobile-web-app-capable" content="yes"/>
 <!-- Three.js r128 — loaded for Landscape Map 3D view -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
@@ -436,7 +445,7 @@ a.reg-wada-row{text-decoration:none;cursor:pointer;transition:opacity .15s}
   .mobile-nav{display:block}
 
   /* ── Grids → responsive ── */
-  .stat-row{grid-template-columns:1fr 1fr;gap:10px}
+  .stat-row{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
   .score-panel{grid-template-columns:1fr;gap:12px}
   .composite-ring{flex-direction:row;align-items:center;gap:16px}
   .ring-caption{text-align:left;max-width:none}
@@ -623,8 +632,11 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
 .sec-accordion-content{padding:14px 0 4px}
 
 /* ── ELIXA INSIGHT ── */
-.insight-callout{background:var(--bg-card);border-left:3px solid var(--accent-blue);border-radius:12px;padding:14px;margin:14px 0;color:var(--text-secondary);font-size:14px;line-height:1.55;font-style:italic}
-.insight-callout strong{display:block;color:var(--text-primary);font-style:normal;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.insight-callout{background:linear-gradient(135deg,rgba(56,189,248,.07) 0%,rgba(129,140,248,.04) 100%);border:1px solid rgba(56,189,248,.18);border-left:3px solid var(--accent-blue);border-radius:0 10px 10px 0;padding:16px 18px;margin:16px 0;color:var(--text-secondary);font-size:.83rem;line-height:1.65;font-style:normal}
+.insight-callout strong{display:flex;align-items:center;gap:6px;color:var(--accent-blue);font-style:normal;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;opacity:.9}
+.insight-callout strong::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent-blue);opacity:.6}
+.insight-callout p{margin:.5rem 0 0;color:var(--text-secondary)}
+.insight-callout p:first-of-type{margin-top:0}
 
 /* ── TRUST BAR ── */
 .trust-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0}
@@ -921,7 +933,11 @@ details.sahpra-details[open] .sahpra-toggle-chevron{transform:rotate(90deg)}
       <div class="cat-label">Categories</div>
       <div id="catList"></div>
     </div>
-    <div class="sidebar-list" id="peptideList"></div>
+    <div class="sidebar-list-hint" style="display:flex;align-items:center;justify-content:center;padding:4px 0 2px;gap:4px;font-size:.62rem;color:var(--text-dim);letter-spacing:.05em">
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" opacity=".5"><path d="M5 7L1 3h8z"/></svg>
+    Peptides below
+  </div>
+  <div class="sidebar-list" id="peptideList"></div>
   </nav>
   <main class="main" id="main"></main>
 </div>
@@ -5261,6 +5277,7 @@ function renderSidebar() {
     filtered.map(p => {
       const isActive = currentView === p.id;
       const cl = getConfidenceLabel(getConfidence(p));
+      const shortLabel = cl.label === 'Clinically Validated' ? 'Validated' : cl.label === 'Evidence-Backed' ? 'Ev.-Backed' : cl.label;
       const isCompared = compareState && compareState.items && compareState.items.includes(p.id);
       return `<div style="position:relative">
         <button class="p-btn ${isActive ? 'active' : ''}" onclick="showPeptide('${p.id}')" style="border-left:3px solid ${p.color}22;padding-left:8px;padding-right:34px">
@@ -5268,7 +5285,7 @@ function renderSidebar() {
             <span class="p-name" style="color:${isActive ? 'var(--accent-blue)' : 'var(--text-primary)'}">${p.name}</span>
             <span class="p-class">${p.class}</span>
           </div>
-          <span style="font-size:.65rem;font-weight:700;color:${cl.color};white-space:nowrap;flex-shrink:0">${cl.label}</span>
+          <span style="font-size:.65rem;font-weight:700;color:${cl.color};white-space:nowrap;flex-shrink:0">${shortLabel}</span>
         </button>
         <button type="button" class="compare-btn ${isCompared ? 'active' : ''}" data-compare-id="${p.id}" onclick="toggleCompare('${p.id}',event)">${isCompared ? '✓' : '+'}</button>
       </div>`;
@@ -5454,7 +5471,21 @@ function showGlossary() {
         </div>`).join('')}
     </div>`;
 }
-function showPeptide(id) { currentView = id; setActiveNav(null); history.pushState(null, '', '#' + id); renderSidebar(); renderPeptideDetail(id); document.getElementById("main").scrollTop = 0; }
+function showPeptide(id) {
+  currentView = id;
+  setActiveNav(null);
+  history.pushState(null, '', '#' + id);
+  const _tp = PEPTIDES.find(x => x.id === id);
+  if (_tp) document.title = _tp.name + ' | Elixa Peptide Index';
+  const _metaDesc = document.querySelector('meta[name="description"]');
+  if (_metaDesc && _tp) {
+    const _snap = (typeof PEPTIDE_SNAPSHOT !== 'undefined') ? PEPTIDE_SNAPSHOT[id] : null;
+    if (_snap && _snap.summary) _metaDesc.setAttribute('content', _tp.name + ' — ' + _snap.summary + ' | Elixa Peptide Index');
+  }
+  renderSidebar();
+  renderPeptideDetail(id);
+  document.getElementById("main").scrollTop = 0;
+}
 function copyPeptideLink() {
   const url = window.location.href;
   if (navigator.clipboard && window.isSecureContext) {
@@ -5595,7 +5626,7 @@ function renderOverview() {
           <div class="leg-item"><div class="leg-dot" style="background:#64748b"></div>Research</div>
         </div>
       </div>
-      <svg class="quadrant-svg" id="quadrantSvgOverview" viewBox="0 0 700 290"></svg>
+      <svg class="quadrant-svg" id="quadrantSvgOverview" viewBox="0 0 700 360"></svg>
     </div>
 
     <!-- ── EVIDENCE BARS (collapsible) ── -->
@@ -5657,7 +5688,7 @@ function drawQuadrant(svgId) {
   if (!svg) return;
   const vb = svg.getAttribute('viewBox') || '0 0 700 340';
   const [,, W, H] = vb.split(' ').map(Number);
-  const pad = { left:56, right:24, top:24, bottom:44 };
+  const pad = { left:56, right:24, top:52, bottom:72 };
   const cW = W - pad.left - pad.right;
   const cH = H - pad.top - pad.bottom;
   const mx = pad.left, my = pad.top;
@@ -5681,10 +5712,10 @@ function drawQuadrant(svgId) {
 
   // ── Quadrant backgrounds ──
   const quads = [
-    { x:mx,   y:my,   w:midX-mx,    h:midY-my,    fill:'rgba(56,189,248,.04)',  label:'Emerging Leaders',    sub:'Strong research · awaiting approval', color:'#38bdf8', anchor:'start', tx:mx+10,      ty:my+17 },
-    { x:midX, y:my,   w:mx+cW-midX, h:midY-my,    fill:'rgba(74,222,128,.05)', label:'Established',          sub:'Strong research · globally approved',  color:'#4ade80', anchor:'end',   tx:mx+cW-10,   ty:my+17 },
-    { x:mx,   y:midY, w:midX-mx,    h:my+cH-midY, fill:'rgba(148,163,184,.02)',label:'Research Stage',       sub:'Early science · not yet approved',     color:'#94a3b8', anchor:'start', tx:mx+10,      ty:my+cH-19 },
-    { x:midX, y:midY, w:mx+cW-midX, h:my+cH-midY, fill:'rgba(251,191,36,.03)', label:'Community Favourites', sub:'Limited evidence · widely accessible',  color:'#fbbf24', anchor:'end',   tx:mx+cW-10,   ty:my+cH-19 },
+    { x:mx,   y:my,   w:midX-mx,    h:midY-my,    fill:'rgba(56,189,248,.04)',  label:'Emerging Leaders',    sub:'Strong research · awaiting approval', color:'#38bdf8', anchor:'start', tx:mx,         ty:my-32 },
+    { x:midX, y:my,   w:mx+cW-midX, h:midY-my,    fill:'rgba(74,222,128,.05)', label:'Established',          sub:'Strong research · globally approved',  color:'#4ade80', anchor:'end',   tx:mx+cW,      ty:my-32 },
+    { x:mx,   y:midY, w:midX-mx,    h:my+cH-midY, fill:'rgba(148,163,184,.02)',label:'Research Stage',       sub:'Early science · not yet approved',     color:'#94a3b8', anchor:'start', tx:mx,         ty:my+cH+22 },
+    { x:midX, y:midY, w:mx+cW-midX, h:my+cH-midY, fill:'rgba(251,191,36,.03)', label:'Community Favourites', sub:'Limited evidence · widely accessible',  color:'#fbbf24', anchor:'end',   tx:mx+cW,      ty:my+cH+22 },
   ];
   quads.forEach(q => {
     const bgW = Math.max(q.label.length * 6.4, q.sub.length * 5.1) + 20;
@@ -5701,7 +5732,7 @@ function drawQuadrant(svgId) {
   html += `<line x1="${midX}" y1="${my}" x2="${midX}" y2="${my+cH}" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4,3"/>`;
   html += `<line x1="${mx}" y1="${midY}" x2="${mx+cW}" y2="${midY}" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4,3"/>`;
   html += `<rect x="${mx}" y="${my}" width="${cW}" height="${cH}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>`;
-  html += `<text x="${mx+cW/2}" y="${my+cH+38}" fill="rgba(255,255,255,.35)" font-size="9.5" font-family="system-ui,sans-serif" text-anchor="middle" font-weight="600">← Less Researched      Evidence Maturity      More Researched →</text>`;
+  html += `<text x="${mx+cW/2}" y="${my+cH+55}" fill="rgba(255,255,255,.4)" font-size="9.5" font-family="system-ui,sans-serif" text-anchor="middle" font-weight="600">← Less Researched      Evidence Maturity      More Researched →</text>`;
   html += `<text x="${mx-42}" y="${my+cH/2}" fill="rgba(255,255,255,.35)" font-size="9.5" font-family="system-ui,sans-serif" text-anchor="middle" font-weight="600" transform="rotate(-90,${mx-42},${my+cH/2})">← Less Approved      Regulatory Index      Widely Approved →</text>`;
   [0,2,4,6,8,10].forEach(v => {
     const x = toX(v), y = toY(v);
@@ -6523,7 +6554,7 @@ function renderPeptideDetail(id) {
         <h4>Serious / Rare</h4>
         <div class="safety-tags">${p.safety.serious.map(x => `<span class="safety-tag s-serious">${x}</span>`).join('')}</div>
       </div>
-    </div>` : '';
+    </div>` : `<div style="padding:16px 18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);font-size:.8rem;color:var(--text-muted);line-height:1.6"><strong style="color:var(--text-secondary);display:block;margin-bottom:4px">Safety data under review</strong>A formal safety profile for this compound is not yet available in our index. This does not imply the compound is safe — it reflects limited published clinical data. Exercise caution and consult a qualified practitioner before considering any use.</div>`;
 
   const saHTML = p.saContext ? `
     <div style="background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.2);border-radius:var(--radius-sm);padding:14px 16px;font-size:.8rem;color:var(--text-secondary);line-height:1.65">
@@ -6577,10 +6608,7 @@ function renderPeptideDetail(id) {
           <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm0 9.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm.75-7.5v5.5h-1.5V3.75h1.5z"/></svg>
           What does it do?
         </button>
-        <button class="copy-link-btn what-btn" style="margin-top:6px;align-self:flex-end" onclick="copyPeptideLink()">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2z"/><path d="M14 2H8a2 2 0 0 0-2 2"/></svg>
-          Copy Link
-        </button>
+
       </div>
     </div>
 
@@ -6658,8 +6686,7 @@ function renderPeptideDetail(id) {
     </div>
 
     <div id="sec-dosing">
-      ${renderDosing(p)}
-      ${renderAdministration(p)}
+      ${renderDosing(p) || renderAdministration(p) ? renderDosing(p) + renderAdministration(p) : `<div style="padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);font-size:.8rem;color:var(--text-muted);line-height:1.6"><strong style="color:var(--text-secondary);display:block;margin-bottom:4px">Dosing data under review</strong>Dosing protocols for this compound are not yet standardised in published literature. Elixa will update this section as peer-reviewed guidance emerges. Do not attempt to source or administer this compound without qualified medical supervision.</div>`}
     </div>
 
     <details class="sec-accordion" id="sec-studies">
@@ -7017,7 +7044,19 @@ function renderSnapshot(rp) {
 
 function renderInsight(rp) {
   if (!rp || !rp.insight) return '';
-  return `<aside class="insight-callout"><strong>Elixa Insight</strong>${rp.insight}</aside>`;
+  const ins = rp.insight;
+  // If it's a plain string (legacy), render directly
+  if (typeof ins === 'string') {
+    return `<aside class="insight-callout"><strong>ELIXA INSIGHT</strong><p style="margin:.5rem 0 0">${ins}</p></aside>`;
+  }
+  // Object with structured fields
+  const rows = [];
+  if (ins.positioning)    rows.push(`<p style="margin:.35rem 0 0"><span style="color:var(--accent-blue);font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase">User Positioning</span><br>${ins.positioning}</p>`);
+  if (ins.reality_check)  rows.push(`<p style="margin:.35rem 0 0"><span style="color:#f59e0b;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Reality Check</span><br>${ins.reality_check}</p>`);
+  if (ins.best_for)       rows.push(`<p style="margin:.35rem 0 0"><span style="color:#4ade80;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Best For</span><br>${ins.best_for}</p>`);
+  if (ins.avoid_if)       rows.push(`<p style="margin:.35rem 0 0"><span style="color:#f87171;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Avoid If</span><br>${ins.avoid_if}</p>`);
+  if (!rows.length) return '';
+  return `<aside class="insight-callout"><strong>ELIXA INSIGHT</strong>${rows.join('')}</aside>`;
 }
 
 function renderDecisionFlags(rp) {
@@ -7054,7 +7093,7 @@ function renderTrust(rp) {
     <section class="trust-bar">
       <div class="trust-row">
         <span><strong>Trust Signal</strong></span>
-        <span>${rawLevel} · Human evidence: ${trust.human || 'Limited'}</span>
+        <span>${rawLevel} · Human evidence: ${trust.human === true ? 'Strong' : trust.human === false ? 'Limited' : (trust.human || 'Limited')}</span>
       </div>
       <div class="trust-track"><div class="trust-fill trust-fill-${levelKey}" style="width:${width}%"></div></div>
       ${trust.note || trust.reviewed ? `<p class="trust-note">${trust.note || ''}${trust.reviewed ? ` Last reviewed: ${trust.reviewed}.` : ''}</p>` : ''}
@@ -7301,6 +7340,21 @@ function initAccordions() {
     if (details.dataset.accordionReady === 'true') return;
     details.dataset.accordionReady = 'true';
   });
+}
+
+// ═══════════════════════════════════════════════════════════
+// SERVICE WORKER — cache-first for fast repeat loads
+// ═══════════════════════════════════════════════════════════
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  const _swSrc = `
+const CACHE='elixa-v1';
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.add('/')))});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))))});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(r=>r||(fetch(e.request).then(res=>{if(res&&res.status===200){const c=res.clone();caches.open(CACHE).then(ca=>ca.put(e.request,c))}return res}))));});
+`;
+  const _swBlob = new Blob([_swSrc],{type:'text/javascript'});
+  const _swUrl = URL.createObjectURL(_swBlob);
+  navigator.serviceWorker.register(_swUrl,{scope:'./'}).catch(()=>{});
 }
 
 </script>
