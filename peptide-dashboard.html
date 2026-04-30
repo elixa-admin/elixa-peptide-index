@@ -101,7 +101,7 @@ header{display:flex;align-items:center;gap:14px;padding:13px 24px;border-bottom:
 
 /* ── OVERVIEW CARDS ── */
 .stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;position:relative;overflow:hidden}
+.stat-card{background:linear-gradient(145deg,rgba(var(--sc-rgb,56,189,248),.09) 0%,rgba(var(--sc-rgb,56,189,248),.03) 100%);border:1px solid rgba(var(--sc-rgb,56,189,248),.18);border-radius:var(--radius);padding:16px 18px;position:relative;overflow:hidden}
 .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--sc,#38bdf8),transparent)}
 .stat-val{font-size:1.7rem;font-weight:700;color:var(--text-primary);line-height:1}
 .stat-lbl{font-size:.74rem;color:var(--text-secondary);margin-top:5px;letter-spacing:.03em}
@@ -147,6 +147,14 @@ header{display:flex;align-items:center;gap:14px;padding:13px 24px;border-bottom:
 .mech-simple-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#818cf8;opacity:.7;margin-bottom:4px;display:flex;align-items:center;gap:5px}
 .mech-science-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);opacity:.7;margin-bottom:4px;display:flex;align-items:center;gap:5px;margin-top:10px}
 .mech-divider{border:none;border-top:1px solid var(--border);margin:10px 0;max-width:600px}
+.mech-details{margin-top:8px;max-width:600px}
+.mech-details summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);opacity:.75;user-select:none;transition:opacity .15s}
+.mech-details summary::-webkit-details-marker{display:none}
+.mech-details summary::marker{display:none}
+.mech-details summary:hover{opacity:1}
+.mech-details summary .mech-chevron{font-size:.65rem;transition:transform .2s;display:inline-block}
+.mech-details[open] summary .mech-chevron{transform:rotate(90deg)}
+.mech-details .hero-mech{margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
 /* ── Hype Detector callout ── */
 .hype-callout{background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.22);border-left:3px solid #f59e0b;border-radius:8px;margin-top:4px;overflow:hidden}
 .hype-toggle{display:flex;align-items:center;gap:8px;padding:11px 14px;cursor:pointer;font-size:.76rem;font-weight:700;color:#fbbf24;letter-spacing:.03em;list-style:none;user-select:none}
@@ -388,15 +396,14 @@ a.reg-wada-row{text-decoration:none;cursor:pointer;transition:opacity .15s}
 .menu-btn:hover,.menu-btn:active{color:var(--text-primary);background:var(--bg-hover)}
 .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;backdrop-filter:blur(2px)}
 .sidebar-overlay.open{display:block}
-.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(3,7,18,.98);border-top:2px solid rgba(34,211,238,.28);backdrop-filter:blur(20px);padding-bottom:env(safe-area-inset-bottom,0);box-shadow:0 -8px 32px rgba(0,0,0,.6),0 -1px 0 rgba(34,211,238,.08)}
-.mobile-nav-inner{display:flex;justify-content:space-around;align-items:stretch;height:62px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.mnav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px 6px;border:none;background:none;color:#4e6a84;font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:all .18s ease;flex:1;-webkit-tap-highlight-color:transparent;min-height:48px;justify-content:center;position:relative}
-.mnav-btn::after{content:'';position:absolute;top:-2px;left:18%;right:18%;height:2px;background:var(--accent-cyan);border-radius:0 0 3px 3px;opacity:0;transition:opacity .18s ease;box-shadow:0 0 10px rgba(34,211,238,.9),0 0 20px rgba(34,211,238,.5)}
-.mnav-btn.active{color:#22d3ee;filter:drop-shadow(0 0 5px rgba(34,211,238,.55))}
-.mnav-btn.active::after{opacity:1}
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(4,8,20,.97);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(24px);padding:0 8px;padding-bottom:env(safe-area-inset-bottom,0);box-shadow:0 -12px 40px rgba(0,0,0,.7)}
+.mobile-nav-inner{display:flex;justify-content:space-around;align-items:center;height:64px;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:2px}
+.mnav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 10px 5px;border:none;background:none;color:#3d566e;font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:color .15s,background .15s;flex:1;-webkit-tap-highlight-color:transparent;min-height:48px;justify-content:center;position:relative;border-radius:12px}
+.mnav-btn::after{display:none}
+.mnav-btn.active{color:#22d3ee;background:rgba(34,211,238,.12)}
 .mnav-btn:active{opacity:.7}
-.mnav-btn svg{width:22px;height:22px;stroke-width:1.75;stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:all .18s ease}
-.mnav-btn.active svg{stroke-width:2.1}
+.mnav-btn svg{width:22px;height:22px;stroke-width:1.75;stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke-width .15s}
+.mnav-btn.active svg{stroke-width:2.2}
 
 /* ═══════════════════════════════════════════════════════════
    RESPONSIVE — TABLET (≤ 900px)
@@ -604,19 +611,22 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
 /* ── Overview evidence bar rows ── */
 .ev-row{display:grid;grid-template-columns:180px 1fr auto;gap:14px;align-items:center;border-radius:6px;padding:4px 6px;transition:background .15s;cursor:pointer}
 .ev-row-label{font-size:.72rem;font-weight:700;min-width:140px;text-align:right;white-space:nowrap}
+.ev-row-bar{height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}
 @media(max-width:600px){
-  .ev-row{grid-template-columns:1fr auto;gap:8px}
-  .ev-row-label{min-width:0;font-size:.72rem;max-width:100px;overflow:hidden;text-overflow:ellipsis}
+  .ev-row{display:flex;align-items:center;gap:8px;padding:7px 6px}
+  .ev-row-bar{display:none}
+  .ev-row-label{min-width:0;font-size:.68rem;font-weight:700;white-space:nowrap;padding:2px 8px;border-radius:999px;background:rgba(var(--ev-rgb,56,189,248),.12);margin-left:auto;flex-shrink:0}
 }
 
 /* ── SNAPSHOT CARD ── */
-.snapshot-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;margin:16px 0}
+.snapshot-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;margin:16px 0;position:relative;overflow:hidden}
+.snapshot-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#818cf8,#38bdf8,#4ade80)}
 .snapshot-card h3{margin:0 0 14px;color:var(--text-primary);font-size:15px;font-weight:700}
-.snapshot-defs{display:grid;gap:10px}
-.snapshot-row{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:start}
-.snapshot-label{color:var(--text-secondary);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.snapshot-value{color:var(--text-primary);font-size:14px;line-height:1.45}
-@media(max-width:600px){.snapshot-row{grid-template-columns:1fr;gap:4px}}
+.snapshot-defs{display:grid;gap:7px}
+.snapshot-row{display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-radius:8px;border-left:3px solid var(--snap-color,var(--border));background:rgba(255,255,255,.02)}
+.snapshot-label{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--snap-color,var(--text-muted));opacity:.9}
+.snapshot-value{color:var(--text-primary);font-size:.84rem;line-height:1.5}
+@media(max-width:600px){.snapshot-row{gap:3px}}
 
 /* ── DECISION FLAGS ── */
 .decision-flags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
@@ -634,11 +644,13 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
 .sec-accordion-content{padding:14px 0 4px}
 
 /* ── ELIXA INSIGHT ── */
-.insight-callout{background:linear-gradient(135deg,rgba(56,189,248,.07) 0%,rgba(129,140,248,.04) 100%);border:1px solid rgba(56,189,248,.18);border-left:3px solid var(--accent-blue);border-radius:0 10px 10px 0;padding:16px 18px;margin:16px 0;color:var(--text-secondary);font-size:.83rem;line-height:1.65;font-style:normal}
-.insight-callout strong{display:flex;align-items:center;gap:6px;color:var(--accent-blue);font-style:normal;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;opacity:.9}
+.insight-callout{background:var(--bg-card);border:1px solid rgba(56,189,248,.2);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.83rem;line-height:1.65}
+.insight-callout strong{display:flex;align-items:center;gap:6px;color:var(--accent-blue);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;opacity:.9}
 .insight-callout strong::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent-blue);opacity:.6}
-.insight-callout p{margin:.5rem 0 0;color:var(--text-secondary)}
-.insight-callout p:first-of-type{margin-top:0}
+.insight-row{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:8px;border-left:3px solid var(--ir-color,var(--border));background:rgba(var(--ir-rgb,56,189,248),.06);margin-bottom:7px}
+.insight-row:last-child{margin-bottom:0}
+.insight-row-label{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ir-color,var(--accent-blue))}
+.insight-row-text{color:var(--text-secondary);font-size:.82rem;line-height:1.6}
 
 /* ── TRUST BAR ── */
 .trust-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0}
@@ -909,7 +921,7 @@ details.sahpra-details[open] .sahpra-toggle-chevron{transform:rotate(90deg)}
 <!-- Mobile bottom nav -->
 <nav class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-inner">
-    <button class="mnav-btn" id="mnav-peptides" onclick="toggleSidebar()">
+    <button class="mnav-btn" id="mnav-peptides" onclick="toggleSidebar()" aria-label="Browse peptides">
       <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4"/><path d="M9 3h6"/><path d="M15 3h4a2 2 0 0 1 2 2v4"/><path d="M3 9v6"/><path d="M21 9v6"/><path d="M3 15v4a2 2 0 0 0 2 2h4"/><path d="M15 21h4a2 2 0 0 0 2-2v-4"/><path d="M9 21h6"/></svg>
       Peptides
     </button>
@@ -5576,27 +5588,27 @@ function renderOverview() {
 
     <!-- ── STATS ── -->
     <div class="stat-row" style="margin-bottom:20px">
-      <div class="stat-card" style="--sc:#818cf8">
+      <div class="stat-card" style="--sc:#818cf8;--sc-rgb:129,140,248">
         <div class="stat-val" style="color:#818cf8">${PEPTIDES.length}</div>
         <div class="stat-lbl">Peptides Indexed</div>
         <div class="stat-sub">Across ${CATEGORIES.length - 1} therapeutic categories</div>
       </div>
-      <div class="stat-card" style="--sc:#4ade80">
+      <div class="stat-card" style="--sc:#4ade80;--sc-rgb:74,222,128">
         <div class="stat-val" style="color:#4ade80">${globallyApproved}</div>
         <div class="stat-lbl">Globally Approved</div>
         <div class="stat-sub">By at least one major health authority</div>
       </div>
-      <div class="stat-card" style="--sc:#fbbf24">
+      <div class="stat-card" style="--sc:#fbbf24;--sc-rgb:251,191,36">
         <div class="stat-val" style="color:#fbbf24">${globalTrials}</div>
         <div class="stat-lbl">Active Trials</div>
         <div class="stat-sub">Phase 2–3 or conditional review</div>
       </div>
-      <div class="stat-card" style="--sc:#38bdf8">
+      <div class="stat-card" style="--sc:#38bdf8;--sc-rgb:56,189,248">
         <div class="stat-val" style="color:#38bdf8">${totalTrials}</div>
         <div class="stat-lbl">Tracked Studies</div>
         <div class="stat-sub">Clinical trials &amp; peer-reviewed papers</div>
       </div>
-      <div class="stat-card" style="--sc:#a78bfa">
+      <div class="stat-card" style="--sc:#a78bfa;--sc-rgb:167,139,250">
         <div class="stat-val" style="color:#a78bfa">${avgScore}</div>
         <div class="stat-lbl">Avg Evidence Rating</div>
         <div class="stat-sub">Approved compounds only</div>
@@ -6484,10 +6496,10 @@ function renderBrandAttribution(brands) {
   const rows = Object.entries(byCompany);
   if (!rows.length) return '';
   const rowsHTML = rows.map(([company, brs]) => {
-    const brandList = brs.map((b, i) =>
-      `<span style="color:rgba(240,245,255,.85);font-weight:600">${b.name}</span><span style="color:#8fa6c0"> (${b.indication})</span>${i < brs.length - 1 ? '<span style="color:var(--border);margin:0 5px">·</span>' : ''}`
-    ).join('');
-    return `<div><span class="brand-attr-company">${company}</span><span style="color:var(--text-dim);margin:0 5px">—</span>${brandList}</div>`;
+    const brandList = brs.map(b =>
+      `<span style="color:rgba(240,245,255,.85);font-weight:600">${b.name}</span>`
+    ).join('<span style="color:var(--border);margin:0 6px">·</span>');
+    return `<div><span class="brand-attr-company">${company}</span><span style="color:var(--text-dim);margin:0 6px">—</span>${brandList}</div>`;
   }).join('');
   return `<div class="brand-attribution">
     <span style="font-size:15px;flex-shrink:0;margin-top:1px">🏢</span>
@@ -6617,10 +6629,11 @@ function renderPeptideDetail(id) {
         ${SIMPLE_MECHANISM[p.id] ? `
           <div class="mech-simple-label">💡 In plain terms</div>
           <div class="mech-simple">${SIMPLE_MECHANISM[p.id]}</div>
-          <hr class="mech-divider">
-          <div class="mech-science-label">⚗️ Mechanism of action</div>
-        ` : ''}
-        <div class="hero-mech">${expandGlossaryTerms(p.mechanism)}</div>
+          <details class="mech-details">
+            <summary><span class="mech-chevron">▶</span>&nbsp;⚗️ Mechanism of action</summary>
+            <div class="hero-mech">${expandGlossaryTerms(p.mechanism)}</div>
+          </details>
+        ` : `<div class="hero-mech">${expandGlossaryTerms(p.mechanism)}</div>`}
       </div>
       <div class="hero-badges" style="align-items:flex-end">
         ${renderRegulatoryBadges(p)}
@@ -6876,6 +6889,20 @@ window.addEventListener('popstate', () => {
   }
 });
 
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeMethodology();
+    closeCallout();
+    if (currentView === 'comparison') showOverview();
+  }
+  if (e.key === '/' && e.ctrlKey) {
+    e.preventDefault();
+    const search = document.getElementById('searchInput');
+    if (search) { search.focus(); }
+  }
+});
+
 // ═══════════════════════════════════════════════════════════
 // MOBILE — TOUCH DETECTION
 // ═══════════════════════════════════════════════════════════
@@ -7059,15 +7086,21 @@ function resolvePeptide(id) {
 function renderSnapshot(rp) {
   if (!rp || !rp.snapshot) return '';
   const s = rp.snapshot;
+  function srow(label, value, color) {
+    return `<div class="snapshot-row" style="--snap-color:${color}">
+      <div class="snapshot-label">${label}</div>
+      <div class="snapshot-value">${value}</div>
+    </div>`;
+  }
   return `
     <section class="snapshot-card">
       <h3>Executive Snapshot</h3>
       <div class="snapshot-defs">
-        <div class="snapshot-row"><div class="snapshot-label">Summary</div><div class="snapshot-value">${s.summary || 'No short summary available.'}</div></div>
-        <div class="snapshot-row"><div class="snapshot-label">Known For</div><div class="snapshot-value">${s.primary || 'Not clearly established.'}</div></div>
-        <div class="snapshot-row"><div class="snapshot-label">Evidence</div><div class="snapshot-value">${s.evidence || 'Evidence level unclear.'}</div></div>
-        <div class="snapshot-row"><div class="snapshot-label">Regulatory</div><div class="snapshot-value">${s.regulatory || 'Regulatory status varies by jurisdiction.'}</div></div>
-        <div class="snapshot-row"><div class="snapshot-label">Key Risk</div><div class="snapshot-value">${s.risk || 'Risk profile not fully established.'}</div></div>
+        ${srow('Summary',    s.summary    || 'No short summary available.',              '#c8d5e8')}
+        ${srow('Known For',  s.primary    || 'Not clearly established.',                 '#818cf8')}
+        ${srow('Evidence',   s.evidence   || 'Evidence level unclear.',                  '#38bdf8')}
+        ${srow('Regulatory', s.regulatory || 'Regulatory status varies by jurisdiction.','#4ade80')}
+        ${srow('Key Risk',   s.risk       || 'Risk profile not fully established.',      '#f59e0b')}
       </div>
     </section>`;
 }
@@ -7075,16 +7108,20 @@ function renderSnapshot(rp) {
 function renderInsight(rp) {
   if (!rp || !rp.insight) return '';
   const ins = rp.insight;
-  // If it's a plain string (legacy), render directly
-  if (typeof ins === 'string') {
-    return `<aside class="insight-callout"><strong>ELIXA INSIGHT</strong><p style="margin:.5rem 0 0">${ins}</p></aside>`;
+  function irow(label, text, color, rgb) {
+    return `<div class="insight-row" style="--ir-color:${color};--ir-rgb:${rgb}">
+      <div class="insight-row-label">${label}</div>
+      <div class="insight-row-text">${text}</div>
+    </div>`;
   }
-  // Object with structured fields
+  if (typeof ins === 'string') {
+    return `<aside class="insight-callout"><strong>ELIXA INSIGHT</strong>${irow('Insight', ins, '#38bdf8', '56,189,248')}</aside>`;
+  }
   const rows = [];
-  if (ins.positioning)    rows.push(`<p style="margin:.35rem 0 0"><span style="color:var(--accent-blue);font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase">User Positioning</span><br>${ins.positioning}</p>`);
-  if (ins.reality_check)  rows.push(`<p style="margin:.35rem 0 0"><span style="color:#f59e0b;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Reality Check</span><br>${ins.reality_check}</p>`);
-  if (ins.best_for)       rows.push(`<p style="margin:.35rem 0 0"><span style="color:#4ade80;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Best For</span><br>${ins.best_for}</p>`);
-  if (ins.avoid_if)       rows.push(`<p style="margin:.35rem 0 0"><span style="color:#f87171;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Avoid If</span><br>${ins.avoid_if}</p>`);
+  if (ins.positioning)   rows.push(irow('User Positioning', ins.positioning,  '#38bdf8', '56,189,248'));
+  if (ins.reality_check) rows.push(irow('Reality Check',    ins.reality_check,'#f59e0b', '245,158,11'));
+  if (ins.best_for)      rows.push(irow('Best For',         ins.best_for,     '#4ade80', '74,222,128'));
+  if (ins.avoid_if)      rows.push(irow('Avoid If',         ins.avoid_if,     '#f87171', '248,113,113'));
   if (!rows.length) return '';
   return `<aside class="insight-callout"><strong>ELIXA INSIGHT</strong>${rows.join('')}</aside>`;
 }
