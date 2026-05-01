@@ -136,7 +136,7 @@ header{display:flex;align-items:center;gap:14px;padding:13px 24px;border-bottom:
 .pulse-peptide-chip{font-size:.72rem;padding:2px 8px;border-radius:10px;font-weight:600}
 
 /* ── HERO CARD ── */
-.hero-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;display:flex;gap:18px;align-items:flex-start;position:relative;overflow:hidden}
+.hero-card{background:#000;border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;display:flex;gap:18px;align-items:flex-start;position:relative;overflow:hidden}
 .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--hc,#38bdf8),transparent)}
 .hero-icon{width:52px;height:52px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
 .hero-info{flex:1}
@@ -367,8 +367,8 @@ a.reg-wada-row{text-decoration:none;cursor:pointer;transition:opacity .15s}
 .btn-primary:hover{opacity:.88}
 .btn-ghost{padding:9px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:none;color:var(--text-secondary);font-size:.8rem;cursor:pointer;transition:all .15s}
 .btn-ghost:hover{border-color:var(--text-secondary);color:var(--text-primary)}
-.disclaimer-strip{background:rgba(251,191,36,.06);border-bottom:1px solid rgba(251,191,36,.2);padding:7px 24px;font-size:.72rem;color:#ca8a04;display:flex;align-items:center;gap:8px;cursor:pointer;transition:background .15s}
-.disclaimer-strip:hover{background:rgba(251,191,36,.1)}
+.disclaimer-strip{background:rgba(251,191,36,.08);border-bottom:1px solid rgba(251,191,36,.25);padding:7px 24px;font-size:.72rem;color:#ca8a04;display:flex;align-items:center;gap:8px;cursor:pointer;transition:background .15s}
+.disclaimer-strip:hover{background:rgba(251,191,36,.12)}
 
 /* ── CALLOUT ── */
 .callout-overlay{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);animation:fadeIn .18s ease}
@@ -397,7 +397,7 @@ a.reg-wada-row{text-decoration:none;cursor:pointer;transition:opacity .15s}
 .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;backdrop-filter:blur(2px)}
 .sidebar-overlay.open{display:block}
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(4,8,20,.97);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(24px);padding:0 8px;padding-bottom:env(safe-area-inset-bottom,0);box-shadow:0 -12px 40px rgba(0,0,0,.7)}
-.mobile-nav-inner{display:flex;justify-content:space-around;align-items:center;height:64px;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:2px}
+.mobile-nav-inner{display:flex;justify-content:space-around;align-items:center;height:64px;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:2px;background:#1a1f2e;border-top:1px solid rgba(56,189,248,.2)}
 .mnav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 10px 5px;border:none;background:none;color:#3d566e;font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:color .15s,background .15s;flex:1;-webkit-tap-highlight-color:transparent;min-height:48px;justify-content:center;position:relative;border-radius:12px}
 .mnav-btn::after{display:none}
 .mnav-btn.active{color:#22d3ee;background:rgba(34,211,238,.12)}
@@ -645,7 +645,7 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
 
 /* ── ELIXA INSIGHT ── */
 .insight-callout{background:var(--bg-card);border:1px solid rgba(56,189,248,.2);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:.83rem;line-height:1.65}
-.insight-callout strong{display:flex;align-items:center;gap:6px;color:var(--accent-blue);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;opacity:.9}
+.insight-callout strong{display:flex;align-items:center;gap:6px;color:#e0f2fe;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;text-shadow:0 0 10px rgba(6,182,212,.8),0 0 20px rgba(6,182,212,.5),0 0 30px rgba(6,182,212,.3),inset 0 -1px 2px rgba(0,0,0,.5),inset 0 1px 1px rgba(255,255,255,.5)}
 .insight-callout strong::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent-blue);opacity:.6}
 .insight-row{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:8px;border-left:3px solid var(--ir-color,var(--border));background:rgba(var(--ir-rgb,56,189,248),.06);margin-bottom:7px}
 .insight-row:last-child{margin-bottom:0}
@@ -653,15 +653,20 @@ a,button,.cat-btn,.p-btn,.anav-btn,.mnav-btn{-webkit-tap-highlight-color:transpa
 .insight-row-text{color:var(--text-secondary);font-size:.82rem;line-height:1.6}
 
 /* ── TRUST BAR ── */
-.trust-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0}
-.trust-row{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--text-secondary);font-size:12px;margin-bottom:8px}
-.trust-row strong{color:var(--text-primary);font-size:13px}
-.trust-track{width:100%;height:8px;background:var(--border);border-radius:3px;overflow:hidden}
-.trust-fill{height:100%;border-radius:3px;transition:width .25s ease}
-.trust-fill-high{background:#10b981}
-.trust-fill-moderate-high,.trust-fill-moderate,.trust-fill-medium,.trust-fill-mixed{background:#f59e0b}
-.trust-fill-low,.trust-fill-very-low{background:#ef4444}
-.trust-note{margin:10px 0 0;color:var(--text-secondary);font-size:12px;line-height:1.45}
+.trust-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:14px 0;display:flex;gap:20px;align-items:flex-start}
+.trust-circle{display:flex;flex-direction:column;align-items:center;gap:10px}
+.trust-ring{width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.trust-ring-background{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.08) 100%)}
+.trust-ring-progress{position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--ring-color, #10b981) 0% calc(var(--score, 5) * 10%), rgba(255,255,255,.08) calc(var(--score, 5) * 10%) 100%);opacity:.6}
+.trust-ring-inner{position:relative;width:76px;height:76px;border-radius:50%;background:var(--bg-base);display:flex;align-items:center;justify-content:center;flex-direction:column;border:2px solid var(--ring-color, #10b981);z-index:1}
+.trust-ring-score{font-size:2rem;font-weight:800;color:var(--ring-color, #10b981);line-height:1}
+.trust-ring-label{font-size:.65rem;font-weight:700;color:var(--text-dim)}
+.trust-label{font-size:.75rem;font-weight:700;color:var(--text-primary);text-align:center}
+.trust-sublabel{font-size:.7rem;color:var(--ring-color, #10b981);font-weight:600}
+.trust-meta{flex:1;display:flex;flex-direction:column;gap:12px}
+.trust-meta-block{display:flex;flex-direction:column;gap:4px}
+.trust-meta-label{font-size:.7rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.05em}
+.trust-meta-note{font-size:.82rem;color:var(--text-secondary);line-height:1.5}
 
 /* ── RELATED COMPOUNDS ── */
 .related-section{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;margin:24px 0 16px}
@@ -3449,8 +3454,8 @@ function renderConditionSignals(p) {
     </div>`;
   }).join('');
 
-  return `<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px">
-    <div class="sec-hdr" style="margin-bottom:8px">Condition Signals — Autoimmune &amp; Chronic Disease</div>
+  return `<div style="background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.25);border-radius:var(--radius);padding:18px 20px">
+    <div class="sec-hdr" style="margin-bottom:8px;color:#a78bfa">Condition Signals — Autoimmune &amp; Chronic Disease</div>
     <div style="font-size:.76rem;color:var(--text-dim);line-height:1.55;margin-bottom:13px">Where research suggests this compound may be relevant — or harmful — for specific autoimmune and chronic conditions. Only connections with ≥ 50% evidence confidence shown. <strong style="color:var(--text-secondary)">Tap any chip to expand.</strong></div>
     <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px">${chipsHTML}</div>
     <div id="cs-detail-wrap-${p.id}" style="display:none;margin-top:4px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px">
@@ -3524,7 +3529,7 @@ function renderPurposeBarometers(p) {
   if (!p.purposes) return '';
   return `<div>
     <div class="sec-hdr">Effect Profile — Purpose Barometers</div>
-    <div style="font-size:11.5px;color:var(--text-dim);line-height:1.6;margin-bottom:12px;background:rgba(255,255,255,.02);border-left:2px solid var(--border);padding:7px 12px;border-radius:0 4px 4px 0"><strong style="color:var(--text-secondary)">How to read these scores:</strong> A low or N/A score does not mean a peptide has a negative effect in that domain — it simply means its influence there is less pronounced or less studied. Focus on the domains where evidence is strongest for your specific goals.</div>
+    <div style="font-size:11.5px;color:var(--text-dim);line-height:1.6;margin-bottom:12px;background:rgba(74,222,128,.1);border-left:2px solid rgba(74,222,128,.3);padding:7px 12px;border-radius:0 4px 4px 0"><strong style="color:var(--text-secondary)">How to read these scores:</strong> A low or N/A score does not mean a peptide has a negative effect in that domain — it simply means its influence there is less pronounced or less studied. Focus on the domains where evidence is strongest for your specific goals.</div>
     <div class="purpose-grid">
       ${PURPOSES.map(pur => {
         const score = p.purposes[pur.key];
@@ -4010,10 +4015,10 @@ function renderConfidenceBar(p) {
 
   return `<div class="confidence-bar-wrap">
 
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:7px 11px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:6px">
-      <span style="font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7aabcc;white-space:nowrap">How to read</span>
-      <span style="color:var(--border);flex-shrink:0">·</span>
-      <span style="font-size:11px;color:var(--text-dim);line-height:1.45">Each track places this compound on a spectrum. The <strong style="color:var(--text-secondary);font-weight:600">highlighted label</strong> shows its current position — further right signals a stronger evidence base or broader community use.</span>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:10px 12px;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.25);border-radius:6px">
+      <span style="font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#22d3ee;white-space:nowrap">💡 How to read</span>
+      <span style="color:rgba(34,211,238,.3);flex-shrink:0">·</span>
+      <span style="font-size:11px;color:var(--text-secondary);line-height:1.45">Each track places this compound on a spectrum. The <strong style="color:var(--text-primary);font-weight:600">highlighted label</strong> shows its current position — further right signals a stronger evidence base or broader community use.</span>
     </div>
 
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
@@ -5324,7 +5329,14 @@ function renderSidebar() {
 }
 
 function setCategory(id) { activeCategory = id; renderSidebar(); }
-function filterPeptides() { searchTerm = document.getElementById("searchInput").value.toLowerCase(); renderSidebar(); }
+function filterPeptides() {
+  searchTerm = document.getElementById("searchInput").value.toLowerCase();
+  renderSidebar();
+  if (currentView === 'overview') {
+    const svgEl = document.getElementById('quadrantSvgOverview');
+    if (svgEl) drawQuadrant('quadrantSvgOverview');
+  }
+}
 
 // ═══════════════════════════════════════════════════════════
 // ═══════════════════════════════════════════════════════════
@@ -5456,7 +5468,10 @@ function renderEvRow(p) {
     <div style="height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden">
       <div style="height:100%;width:${((p.composite||0) * 10)}%;background:${barColor};border-radius:4px;transition:width .7s cubic-bezier(.22,1,.36,1)"></div>
     </div>
-    <span class="ev-row-label" style="color:${cl.color}">${cl.label}</span>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <span style="font-size:.72rem;font-weight:800;color:${barColor};min-width:28px;text-align:right">${typeof p.composite==='number' ? p.composite.toFixed(1) : '—'}</span>
+      <span class="ev-row-label" style="color:${cl.color}">${cl.label}</span>
+    </div>
   </div>`;
 }
 
@@ -5764,16 +5779,16 @@ function drawQuadrant(svgId) {
   html += `<line x1="${midX}" y1="${my}" x2="${midX}" y2="${my+cH}" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4,3"/>`;
   html += `<line x1="${mx}" y1="${midY}" x2="${mx+cW}" y2="${midY}" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4,3"/>`;
   html += `<rect x="${mx}" y="${my}" width="${cW}" height="${cH}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>`;
-  html += `<text x="${mx+cW/2}" y="${my+cH+55}" fill="rgba(255,255,255,.4)" font-size="9.5" font-family="system-ui,sans-serif" text-anchor="middle" font-weight="600">← Less Researched      Evidence Maturity      More Researched →</text>`;
-  html += `<text x="${mx-42}" y="${my+cH/2}" fill="rgba(255,255,255,.35)" font-size="9.5" font-family="system-ui,sans-serif" text-anchor="middle" font-weight="600" transform="rotate(-90,${mx-42},${my+cH/2})">← Less Approved      Regulatory Index      Widely Approved →</text>`;
+  html += `<text x="${mx+cW/2}" y="${my+cH+55}" fill="rgba(255,255,255,.5)" font-size="11" font-family="system-ui,sans-serif" text-anchor="middle" font-weight="600">← Less Researched      Evidence Maturity      More Researched →</text>`;
+  html += `<text x="${mx-42}" y="${my+cH/2}" fill="rgba(255,255,255,.45)" font-size="11" font-family="system-ui,sans-serif" text-anchor="middle" font-weight="600" transform="rotate(-90,${mx-42},${my+cH/2})">← Less Approved      Regulatory Index      Widely Approved →</text>`;
   [0,2,4,6,8,10].forEach(v => {
     const x = toX(v), y = toY(v);
-    html += `<text x="${x}" y="${my+cH+14}" fill="rgba(255,255,255,.2)" font-size="8" font-family="system-ui" text-anchor="middle">${v}</text>`;
-    html += `<text x="${mx-8}" y="${y+3}" fill="rgba(255,255,255,.2)" font-size="8" font-family="system-ui" text-anchor="end">${v}</text>`;
+    html += `<text x="${x}" y="${my+cH+14}" fill="rgba(255,255,255,.35)" font-size="9.5" font-family="system-ui" text-anchor="middle">${v}</text>`;
+    html += `<text x="${mx-8}" y="${y+3}" fill="rgba(255,255,255,.35)" font-size="9.5" font-family="system-ui" text-anchor="end">${v}</text>`;
   });
 
   // ── Build dot data — small uniform dots + right-side labels ──
-  const DOT_R = 5;
+  const DOT_R = 6;
   const LABEL_GAP = 8; // px between dot edge and label start
   const LABEL_H = 11;  // px height of label for collision detection
   const EST_CHAR_W = 5.8; // avg px per char at font-size 9
@@ -5788,7 +5803,8 @@ function drawQuadrant(svgId) {
     const flipLeft = rightEdge > mx + cW - 4;
     const lx = flipLeft ? cx - DOT_R - LABEL_GAP : cx + DOT_R + LABEL_GAP;
     const anchor = flipLeft ? 'end' : 'start';
-    return { p, cx, cy, lx, ly: cy + 4, anchor, dc: dotColors[status], status, nameW, flipLeft };
+    const matched = !searchTerm || p.name.toLowerCase().includes(searchTerm) || (p.altNames||'').toLowerCase().includes(searchTerm) || (p.class||'').toLowerCase().includes(searchTerm);
+    return { p, cx, cy, lx, ly: cy + 4, anchor, dc: dotColors[status], status, nameW, flipLeft, matched };
   });
 
   // Vertical collision nudge — sort by x then y, nudge overlapping labels
@@ -5808,19 +5824,20 @@ function drawQuadrant(svgId) {
   });
 
   // ── Draw: glows first, then dots, then labels on top ──
-  rawDots.forEach(({p, cx, cy}) => {
-    html += `<circle cx="${cx}" cy="${cy}" r="${DOT_R+6}" fill="${p.color}0e" stroke="none"/>`;
+  rawDots.forEach(({p, cx, cy, matched}) => {
+    if (matched) html += `<circle cx="${cx}" cy="${cy}" r="${DOT_R+6}" fill="${p.color}0e" stroke="none"/>`;
   });
 
-  rawDots.forEach(({p, cx, cy, dc, finalLy, lx, flipLeft}) => {
+  rawDots.forEach(({p, cx, cy, dc, finalLy, lx, flipLeft, matched}) => {
     const safe = p.id.replace(/[^a-z0-9_]/gi,'_');
+    const opacity = matched ? 1 : 0.15;
     // Leader line only if label was shifted more than 8px vertically
     const shift = Math.abs(finalLy - (cy + 4));
-    if (shift > 8) {
+    if (shift > 8 && matched) {
       const lineEnd = flipLeft ? cx - DOT_R - 2 : cx + DOT_R + 2;
       html += `<line x1="${lineEnd}" y1="${cy}" x2="${flipLeft ? lx + 2 : lx - 2}" y2="${finalLy - 3}" stroke="${p.color}50" stroke-width="0.8" stroke-dasharray="2,2"/>`;
     }
-    html += `<g id="bbl_${safe}" class="map-bubble" style="cursor:pointer" onclick="showPeptide('${p.id}')" data-id="${p.id}">
+    html += `<g id="bbl_${safe}" class="map-bubble" style="cursor:pointer;opacity:${opacity}" onclick="showPeptide('${p.id}')" data-id="${p.id}">
       <circle cx="${cx}" cy="${cy}" r="${DOT_R+8}" fill="transparent" stroke="none"/>
       <circle cx="${cx}" cy="${cy}" r="${DOT_R}" fill="${p.color}" stroke="rgba(8,15,28,.4)" stroke-width="1"/>
       <circle cx="${cx}" cy="${cy}" r="2" fill="${dc}" stroke="rgba(8,15,28,.5)" stroke-width="0.8"/>
@@ -5828,10 +5845,11 @@ function drawQuadrant(svgId) {
   });
 
   // Labels last — always on top
-  rawDots.forEach(({p, lx, finalLy, anchor}) => {
+  rawDots.forEach(({p, lx, finalLy, anchor, matched}) => {
+    const labelOpacity = matched ? '.9' : '.15';
     html += `<text x="${lx}" y="${finalLy}"
       text-anchor="${anchor}"
-      fill="rgba(240,245,255,.9)"
+      fill="rgba(240,245,255,${labelOpacity})"
       font-size="9"
       font-weight="600"
       font-family="system-ui,sans-serif"
@@ -6624,6 +6642,10 @@ function renderPeptideDetail(id) {
         <h2 style="color:${catColor}">${p.name}</h2>
         <div class="hero-alts">${p.altNames}</div>
         ${brandsHTML}
+        <button class="what-btn" style="margin-top:8px;margin-bottom:8px;align-self:flex-start" onclick="openCallout('${p.id}')">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm0 9.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm.75-7.5v5.5h-1.5V3.75h1.5z"/></svg>
+          What does it do?
+        </button>
         <div style="font-size:.67rem;font-weight:600;color:${catColor};opacity:.7;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;margin-top:6px">${p.class}</div>
         ${renderMaturityBadge(p)}
         ${SIMPLE_MECHANISM[p.id] ? `
@@ -6637,11 +6659,6 @@ function renderPeptideDetail(id) {
       </div>
       <div class="hero-badges" style="align-items:flex-end">
         ${renderRegulatoryBadges(p)}
-        <button class="what-btn" style="margin-top:4px;align-self:flex-end" onclick="openCallout('${p.id}')">
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm0 9.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm.75-7.5v5.5h-1.5V3.75h1.5z"/></svg>
-          What does it do?
-        </button>
-
       </div>
     </div>
 
@@ -6656,18 +6673,15 @@ function renderPeptideDetail(id) {
     </div>
 
     <div id="sec-overview">
-      ${renderSnapshot(rp)}
+      ${renderSahpraLegal(rp)}
+      ${renderBestFor(p)}
       ${renderInsight(rp)}
       ${renderDecisionFlags(rp)}
-      ${renderTrust(rp)}
-      ${renderRegSummary(rp)}
-      ${renderBestFor(p)}
       ${renderKnownUnknowns(p)}
+      ${saHTML}
     </div>
 
     ${renderConfidenceBar(p)}
-
-    ${renderConditionSignals(p)}
 
     <div id="sec-evidence" class="score-panel">
       <div class="composite-ring">
@@ -6703,15 +6717,10 @@ function renderPeptideDetail(id) {
       </div>
     </div>
 
-    <div style="margin-top:10px;padding:11px 16px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.73rem;color:var(--text-dim);line-height:1.6">
-      <strong style="color:var(--text-secondary);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px">How this score was compiled</strong>
-      Each tier is scored 0–10 by editorial assessment against published evidence. Human Studies (50%) draws from peer-reviewed clinical trials on PubMed and ClinicalTrials.gov. Lab &amp; Animal Research (25%) reflects the depth of preclinical mechanistic and animal-model literature. Real-World Reports (25%) aggregates observed outcomes from structured community sources including r/Peptides, Longecity, and practitioner notes — treated as anecdotal signal, not clinical proof. The composite score is not algorithmic; it is a calibrated editorial judgement updated as significant new evidence or regulatory decisions emerge. <span style="cursor:pointer;color:#38bdf8;text-decoration:none" onclick="openMethodology()">View full methodology →</span>
-    </div>
+    <div id="sec-effects" style="margin-top:28px">
+      ${renderConditionSignals(p)}
 
-    ${saHTML}
-
-    <div id="sec-effects">
-      ${renderPurposeBarometers(p)}
+      <div style="margin-top:28px">${renderPurposeBarometers(p)}</div>
       <div style="margin-top:22px">
         <div class="sec-hdr">Efficacy by Domain</div>
         <div class="efficacy-grid">${effHTML}</div>
@@ -6750,12 +6759,10 @@ function renderPeptideDetail(id) {
 
     ${renderStacks(rp)}
 
-    ${renderSahpraLegal(rp)}
-
     ${renderCaseExamples(rp)}
 
-    <div style="background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:var(--radius-sm);padding:12px 16px;font-size:.74rem;color:#92400e;line-height:1.6">
-      ⚠ <strong>Research purposes only.</strong> This profile is for informational use only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional. <span style="cursor:pointer;color:#fbbf24;text-decoration:underline" onclick="openMethodology()">View full methodology →</span>
+    <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:var(--radius-sm);padding:12px 16px;font-size:.74rem;color:#dc2626;line-height:1.6">
+      ⚠ <strong>Research purposes only.</strong> This profile is for informational use only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional. <span style="cursor:pointer;color:#ef4444;text-decoration:underline" onclick="openMethodology()">View full methodology →</span>
     </div>
   `;
 
@@ -6784,9 +6791,9 @@ function renderRing(p) {
 }
 
 const TIER_SOURCES = {
-  t1: `<span style="font-size:.67rem;color:var(--text-muted);margin-top:5px;display:block">Sources: <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none">PubMed</a> · <a href="https://clinicaltrials.gov" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none">ClinicalTrials.gov</a> · NEJM · FDA/EMA filings</span>`,
-  t2: `<span style="font-size:.67rem;color:var(--text-muted);margin-top:5px;display:block">Sources: <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none">PubMed</a> · bioRxiv preprints · In vitro & animal model literature</span>`,
-  t3: `<span style="font-size:.67rem;color:var(--text-muted);margin-top:5px;display:block">Sources: r/Peptides · r/PeptidesScience · r/nootropics · Longecity forums · Practitioner reports</span>`
+  t1: `<button style="display:block;margin-top:8px;padding:4px 9px;font-size:.67rem;font-weight:600;border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.08);color:#4ade80;border-radius:4px;cursor:pointer;transition:all .15s" title="PubMed, ClinicalTrials.gov, peer-reviewed journals, and FDA/EMA regulatory filings" onmouseover="this.style.background='rgba(74,222,128,.15)'" onmouseout="this.style.background='rgba(74,222,128,.08)'">🔬 Clinical sources</button>`,
+  t2: `<button style="display:block;margin-top:8px;padding:4px 9px;font-size:.67rem;font-weight:600;border:1px solid rgba(56,189,248,.3);background:rgba(56,189,248,.08);color:#38bdf8;border-radius:4px;cursor:pointer;transition:all .15s" title="PubMed, bioRxiv preprints, in vitro studies, and animal model literature" onmouseover="this.style.background='rgba(56,189,248,.15)'" onmouseout="this.style.background='rgba(56,189,248,.08)'">🧪 Preclinical sources</button>`,
+  t3: `<button style="display:block;margin-top:8px;padding:4px 9px;font-size:.67rem;font-weight:600;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.08);color:#a78bfa;border-radius:4px;cursor:pointer;transition:all .15s" title="Community forums, practitioner notes, and user reports" onmouseover="this.style.background='rgba(167,139,250,.15)'" onmouseout="this.style.background='rgba(167,139,250,.08)'">📋 Community sources</button>`
 };
 function getTier1Desc(p) {
   if (p.t1 >= 8) return `Robust human clinical trial data. Multiple large RCTs with strong effect sizes. ${p.fdaLabel}.${TIER_SOURCES.t1}`;
@@ -7147,23 +7154,47 @@ function renderDecisionFlags(rp) {
 function renderTrust(rp) {
   if (!rp || !rp.trust) return '';
   const trust = rp.trust;
-  const rawLevel = String(trust.level || 'Moderate');
-  const levelKey = rawLevel.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  let width = 55;
-  if (levelKey === 'high') width = 90;
-  else if (levelKey === 'moderate-high') width = 75;
-  else if (levelKey === 'moderate' || levelKey === 'mixed') width = 60;
-  else if (levelKey === 'moderate-low') width = 45;
-  else if (levelKey === 'low') width = 32;
-  else if (levelKey === 'very-low') width = 18;
+  const levelMap = { high:9, 'moderate-high':7, moderate:6, mixed:6, 'moderate-low':4, low:3, 'very-low':1 };
+  const levelKey = String(trust.level || 'Moderate').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const overallScore = levelMap[levelKey] || 6;
+  const humanScore = trust.human === true ? 8 : trust.human === false ? 3 : 5;
+  const levelColor = levelKey==='high' ? '#10b981' : levelKey.includes('moderate-high') ? '#f59e0b' : levelKey.includes('moderate') ? '#f59e0b' : '#ef4444';
+  const humanColor = humanScore >= 7 ? '#10b981' : humanScore >= 5 ? '#f59e0b' : '#ef4444';
+  const reviewedText = trust.reviewed === true || trust.reviewed === 'true' ? 'Current' : trust.reviewed || 'Not specified';
   return `
     <section class="trust-bar">
-      <div class="trust-row">
-        <span><strong>Trust Signal</strong></span>
-        <span>${rawLevel} · Human evidence: ${trust.human === true ? 'Strong' : trust.human === false ? 'Limited' : (trust.human || 'Limited')}</span>
+      <div class="trust-circle">
+        <div class="trust-ring">
+          <div class="trust-ring-background"></div>
+          <div class="trust-ring-progress" style="--ring-color:${levelColor};--score:${overallScore}"></div>
+          <div class="trust-ring-inner" style="--ring-color:${levelColor}">
+            <div class="trust-ring-score">${overallScore}</div>
+            <div class="trust-ring-label">/10</div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div class="trust-label">Overall Trust</div>
+          <div class="trust-sublabel">${levelKey.replace(/-/g,' ')}</div>
+        </div>
       </div>
-      <div class="trust-track"><div class="trust-fill trust-fill-${levelKey}" style="width:${width}%"></div></div>
-      ${trust.note || trust.reviewed ? `<p class="trust-note">${trust.note || ''}${trust.reviewed ? ` Last reviewed: ${trust.reviewed}.` : ''}</p>` : ''}
+      <div class="trust-circle">
+        <div class="trust-ring">
+          <div class="trust-ring-background"></div>
+          <div class="trust-ring-progress" style="--ring-color:${humanColor};--score:${humanScore}"></div>
+          <div class="trust-ring-inner" style="--ring-color:${humanColor}">
+            <div class="trust-ring-score">${humanScore}</div>
+            <div class="trust-ring-label">/10</div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div class="trust-label">Human Evidence</div>
+          <div class="trust-sublabel">${trust.human === true ? 'Strong' : trust.human === false ? 'Limited' : 'Moderate'}</div>
+        </div>
+      </div>
+      <div class="trust-meta">
+        ${trust.note ? `<div class="trust-meta-block"><div class="trust-meta-label">Summary</div><div class="trust-meta-note">${trust.note}</div></div>` : ''}
+        ${trust.reviewed ? `<div class="trust-meta-block"><div class="trust-meta-label">Last Reviewed</div><div class="trust-meta-note">${reviewedText}</div></div>` : ''}
+      </div>
     </section>`;
 }
 
@@ -7271,31 +7302,39 @@ function renderSahpraLegal(rp) {
     {label:'Where sold', val: d.sell},
   ];
 
+  const regSummary = rp && rp.regSummary ? rp.regSummary : '';
+
   return `
-  <details class="sahpra-details">
-    <summary class="sahpra-toggle">
-      <span style="font-size:1rem">🇿🇦</span>
-      SA Legal Status (SAHPRA)
-      <span class="sahpra-toggle-chevron">›</span>
-    </summary>
-    <div class="sahpra-panel" style="margin:0;border-radius:0 0 var(--radius) var(--radius);border-top:none">
-      <div class="sahpra-body">
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-          <span class="sahpra-sched ${schedClass}">${d.schedule}</span>
-          <span style="font-size:.76rem;color:var(--text-secondary)">${statusLabel}</span>
+  <div style="background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.15);border-radius:8px;padding:0;font-size:.8rem;color:var(--text-secondary);margin:14px 0">
+    ${regSummary ? `<div style="padding:12px 14px;border-bottom:1px solid rgba(56,189,248,.15);line-height:1.6">
+      <div style="font-size:.65rem;font-weight:700;color:var(--accent-blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Regulatory Overview</div>
+      ${regSummary}
+    </div>` : ''}
+    <details class="sahpra-details" style="all:unset;display:block">
+      <summary class="sahpra-toggle" style="padding:12px 14px;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none">
+        <span style="font-size:1rem">🇿🇦</span>
+        <span style="flex:1">SA Legal Status (SAHPRA)</span>
+        <span class="sahpra-toggle-chevron" style="transition:transform .2s">›</span>
+      </summary>
+      <div class="sahpra-panel" style="margin:0;padding:12px 14px;border-top:1px solid rgba(56,189,248,.15);border-radius:0 0 8px 8px">
+        <div class="sahpra-body">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+            <span class="sahpra-sched ${schedClass}">${d.schedule}</span>
+            <span style="font-size:.76rem;color:var(--text-secondary)">${statusLabel}</span>
+          </div>
+          <div class="sahpra-grid">
+            ${rows.map(r => `
+            <div class="sahpra-row">
+              <div class="sahpra-row-label">${r.label}</div>
+              <div class="sahpra-row-val ${valClass(r.val)}">${valLabel(r.val)}</div>
+            </div>`).join('')}
+          </div>
+          <div class="sahpra-note">${d.notes}</div>
+          <div class="sahpra-disclaimer">⚠ This is informational only — not legal advice. Laws change; verify with a SAHPRA-registered legal practitioner for your specific context. Elixa does not sell peptides.</div>
         </div>
-        <div class="sahpra-grid">
-          ${rows.map(r => `
-          <div class="sahpra-row">
-            <div class="sahpra-row-label">${r.label}</div>
-            <div class="sahpra-row-val ${valClass(r.val)}">${valLabel(r.val)}</div>
-          </div>`).join('')}
-        </div>
-        <div class="sahpra-note">${d.notes}</div>
-        <div class="sahpra-disclaimer">⚠ This is informational only — not legal advice. Laws change; verify with a SAHPRA-registered legal practitioner for your specific context. Elixa does not sell peptides.</div>
       </div>
-    </div>
-  </details>`;
+    </details>
+  </div>`;
 }
 
 function renderCaseExamples(rp) {
